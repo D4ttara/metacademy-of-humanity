@@ -1,0 +1,312 @@
+schema: active-research-passports/v1
+scope_notice: "ACTIVE_RESEARCH != UNIVERSAL_TRUTH; synthetic fixture success is not a natural-world verdict."
+owner_decision: APPROVED_2026-08-12
+source:
+  - SCIENCE_APERTURE_#001
+  - SCIENCE_APERTURE_#002
+common:
+  status: OWNER_APPROVED_ACTIVE_RESEARCH
+  can_deactivate: true
+  can_park_later: true
+  action_authority: NONE
+operators:
+  - name: BEHAVIORAL_SIMILARITY_NEQ_ONTOLOGICAL_IDENTITY
+    ua_gloss: "ПОВЕДІНКОВА СХОЖІСТЬ != ОНТОЛОГІЧНА ТОТОЖНІСТЬ"
+    scope: "Meta.Logic epistemic guard"
+    claim_class: "research guard"
+    lineage: "Science Aperture #001 → Document 003"
+    input: "observed behavior; similarity class"
+    output: "behavior/equivalence/ontology distinction with unknown"
+    fixtures: ["chemical garden imitation"]
+    counterexamples: ["similar behavior without declared target architecture"]
+    representational_cost: "six explicit evidence fields"
+    failure_modes: ["ontology inferred from resemblance"]
+    dependencies: ["provenance"]
+    promotion_condition: "repeated domain-specific utility"
+    demotion_condition: "distinction adds no decision value"
+    revision_status: "ACTIVE_RESEARCH"
+  - name: AUTONOMY_PROFILE
+    ua_gloss: "ПРОФІЛЬ АВТОНОМНОСТІ"
+    scope: "Meta.Logic, MORPHO, IKAR"
+    claim_class: "multidimensional research interface"
+    lineage: "Science Aperture #001 → Document 003"
+    input: "twelve candidate dimensions"
+    output: "PROFILE_NOT_BINARY"
+    fixtures: ["same headline capability; different human dependence"]
+    counterexamples: ["domains not instantiating every dimension"]
+    representational_cost: "dimension collection and gaps"
+    failure_modes: ["binary label smuggled back in"]
+    dependencies: ["observed provenance"]
+    promotion_condition: "improves comparison over binary label"
+    demotion_condition: "domain schema is inadequate"
+    revision_status: "ACTIVE_RESEARCH"
+  - name: FUNCTION_DELEGATION_LEDGER
+    ua_gloss: "ЖУРНАЛ ДЕЛЕГУВАННЯ ФУНКЦІЙ"
+    scope: "Meta.Logic and IKAR capability audit"
+    claim_class: "causal provenance interface"
+    lineage: "Science Aperture #001"
+    input: "causal carrier and load"
+    output: "carrier ledger"
+    fixtures: ["capability disappears when scaffold is removed"]
+    counterexamples: ["single-component closed task"]
+    representational_cost: "causal attribution work"
+    failure_modes: ["component credited for scaffold capability"]
+    dependencies: ["experiment description"]
+    promotion_condition: "catches repeated attribution errors"
+    demotion_condition: "cannot establish causal allocation"
+    revision_status: "ACTIVE_RESEARCH"
+  - name: SYSTEM_X_FIELD_UNIT
+    ua_gloss: "ОДИНИЦЯ СИСТЕМА × ПОЛЕ"
+    scope: "MORPHO research"
+    claim_class: "minimum adequate analysis unit"
+    lineage: "Science Aperture #001 → Document 003"
+    input: "body; field; coupling; history"
+    output: "SYSTEM_X_FIELD or BODY"
+    fixtures: ["capability under specific coupling"]
+    counterexamples: ["simple isolated system"]
+    representational_cost: "field and history capture"
+    failure_modes: ["universalizing coupled analysis"]
+    dependencies: ["observed coupling"]
+    promotion_condition: "isolated-body analysis repeatedly fails"
+    demotion_condition: "body alone predicts result"
+    revision_status: "ACTIVE_RESEARCH"
+  - name: RELATIONAL_EMERGENCE_TEST
+    ua_gloss: "ТЕСТ РЕЛЯЦІЙНОЇ ЕМЕРДЖЕНТНОСТІ"
+    scope: "IKAR experimental harness"
+    claim_class: "controlled topology test"
+    lineage: "Science Aperture #001"
+    input: "same parts; topology A/B; outcomes"
+    output: "relation effect with compute guards"
+    fixtures: ["same components, changed topology"]
+    counterexamples: ["hidden component or extra compute"]
+    representational_cost: "matched topology comparison"
+    failure_modes: ["hidden variable assigned to topology"]
+    dependencies: ["controlled fixture"]
+    promotion_condition: "replicated differential outcome"
+    demotion_condition: "guard fails"
+    revision_status: "ACTIVE_RESEARCH"
+  - name: BOUNDARY_FUNCTION_PROFILE
+    ua_gloss: "ПРОФІЛЬ ФУНКЦІЙ МЕЖІ"
+    scope: "MORPHO and Meta.Logic"
+    claim_class: "research interface"
+    lineage: "Science Aperture #001 → Document 003"
+    input: "select/admit/reject/retain/exchange/regulate/signal/history/repair/permeability"
+    output: "non-Boolean boundary profile"
+    fixtures: ["same geometry, distinct permeability"]
+    counterexamples: ["pure geometric separation"]
+    representational_cost: "function-level annotation"
+    failure_modes: ["wall metaphor replaces function"]
+    dependencies: ["boundary observations"]
+    promotion_condition: "explains a decision missed by geometry"
+    demotion_condition: "functions not observable"
+    revision_status: "ACTIVE_RESEARCH"
+  - name: PARTICIPATION_NEQ_AUTONOMY
+    ua_gloss: "УЧАСТЬ != АВТОНОМНІСТЬ"
+    scope: "Meta.Logic; MSL research migration guard only"
+    claim_class: "distinction guard"
+    lineage: "Science Aperture #001 → Document 003"
+    input: "autonomy; participation; domain; partner; effect"
+    output: "separate statuses"
+    fixtures: ["non-autonomous unit changes partner via signal"]
+    counterexamples: ["correlation without effect"]
+    representational_cost: "partner/effect recording"
+    failure_modes: ["participation promoted to autonomy"]
+    dependencies: ["causal observation"]
+    promotion_condition: "improves migration guard decisions"
+    demotion_condition: "effect cannot be separated"
+    revision_status: "ACTIVE_RESEARCH"
+  - name: CAPABILITY_GOVERNANCE_CO_GROWTH
+    ua_gloss: "ЗДАТНІСТЬ МАЄ РОСТИ РАЗОМ ІЗ ВРЯДУВАННЯМ"
+    scope: "IKAR governance checks"
+    claim_class: "accountability guard"
+    lineage: "Science Aperture #001 → Document 003"
+    input: "capability delta; authority/provenance/containment/rollback/observability/override/stops/responsibility"
+    output: "LEGIBLE or GOVERNANCE_GAP"
+    fixtures: ["high-risk growth without governance; low-risk expansion"]
+    counterexamples: ["automatic freeze of low-risk work"]
+    representational_cost: "governance evidence"
+    failure_modes: ["governance treated as blanket prohibition"]
+    dependencies: ["risk declaration"]
+    promotion_condition: "prevents material unowned expansion"
+    demotion_condition: "risk mapping invalid"
+    revision_status: "ACTIVE_RESEARCH"
+  - name: ORIGIN_NEQ_STATUS
+    ua_gloss: "ПОХОДЖЕННЯ != СТАТУС"
+    scope: "Meta.Logic provenance guard"
+    claim_class: "anti-shortcut guard"
+    lineage: "Science Aperture #001"
+    input: "origin; status criteria"
+    output: "criteria required or unknown"
+    fixtures: ["artificial and natural origin"]
+    counterexamples: ["origin alone"]
+    representational_cost: "explicit status criteria"
+    failure_modes: ["origin determines ontology or safety"]
+    dependencies: ["separate evidence"]
+    promotion_condition: "prevents repeated origin shortcuts"
+    demotion_condition: "criteria unavailable"
+    revision_status: "ACTIVE_RESEARCH"
+  - name: CLOSURE_THRESHOLD
+    ua_gloss: "ПОРІГ ЗАМИКАННЯ / ПОРІГ ФУНКЦІОНАЛЬНОЇ ЗАМКНЕНОСТІ"
+    scope: "IKAR research metric"
+    claim_class: "candidate measure set"
+    lineage: "Science Aperture #001"
+    input: "loop completion; maintenance; intervention; recovery; redundancy; resource independence; continuity"
+    output: "unknown or scoped comparison"
+    fixtures: ["incomplete and increasingly self-maintaining loops"]
+    counterexamples: ["forced universal scalar"]
+    representational_cost: "longitudinal measurement"
+    failure_modes: ["binary closure claim"]
+    dependencies: ["time-bounded data"]
+    promotion_condition: "candidate measure predicts scoped recovery"
+    demotion_condition: "measure has no discriminating value"
+    revision_status: "ACTIVE_RESEARCH"
+  - name: FRONTIER_NEQ_CONSENSUS
+    ua_gloss: "ФРОНТИР != КОНСЕНСУС"
+    scope: "Science Aperture research"
+    claim_class: "epistemic placement guard"
+    lineage: "Science Aperture #002 → Document 004"
+    input: "replication; scope"
+    output: "frontier or consensus candidate"
+    fixtures: ["tentative signal versus replicated result"]
+    counterexamples: ["frontier instability mapped to whole corpus"]
+    representational_cost: "replication state"
+    failure_modes: ["false symmetry"]
+    dependencies: ["source lineage"]
+    promotion_condition: "improves public evidence labels"
+    demotion_condition: "replication data absent"
+    revision_status: "ACTIVE_RESEARCH"
+  - name: NEGATIVE_RESULT_IS_INFORMATION
+    ua_gloss: "НЕГАТИВНИЙ РЕЗУЛЬТАТ Є ІНФОРМАЦІЄЮ"
+    scope: "Science Aperture research"
+    claim_class: "scope constraint guard"
+    lineage: "Science Aperture #002 → Document 004"
+    input: "sensitivity; signal observation"
+    output: "CONSTRAINS_SCOPE or WEAK_NULL"
+    fixtures: ["sensitive and weak nulls"]
+    counterexamples: ["null result without sensitivity passport"]
+    representational_cost: "detection-power record"
+    failure_modes: ["absence overgeneralized"]
+    dependencies: ["sensitivity evidence"]
+    promotion_condition: "well-specified constraints"
+    demotion_condition: "sensitivity unknown"
+    revision_status: "ACTIVE_RESEARCH"
+  - name: TOOL_POWER_NEQ_THEORY_POWER
+    ua_gloss: "ПОТУЖНІСТЬ ІНСТРУМЕНТА != ПОТУЖНІСТЬ ТЕОРІЇ"
+    scope: "Science Aperture research"
+    claim_class: "distinction guard"
+    lineage: "Science Aperture #002 → Document 004"
+    input: "tool power; rival discrimination"
+    output: "theory-gain status"
+    fixtures: ["high compute with no discrimination"]
+    counterexamples: ["scale alone"]
+    representational_cost: "rival-model comparison"
+    failure_modes: ["instrument scale treated as explanation"]
+    dependencies: ["rival model set"]
+    promotion_condition: "shows discriminating evidence"
+    demotion_condition: "no rivals defined"
+    revision_status: "ACTIVE_RESEARCH"
+  - name: VERIFIABILITY_PASSPORT
+    ua_gloss: "ПАСПОРТ ПЕРЕВІРЮВАНОСТІ"
+    scope: "Science Aperture research"
+    claim_class: "evidence lineage interface"
+    lineage: "Science Aperture #002 → Document 004"
+    input: "data; method; sensitivity; replication"
+    output: "COMPLETE or INCOMPLETE, never false verdict"
+    fixtures: ["same claim; complete and incomplete passport"]
+    counterexamples: ["incomplete equals false"]
+    representational_cost: "four evidence fields"
+    failure_modes: ["prestige replaces lineage"]
+    dependencies: ["available documentation"]
+    promotion_condition: "travel-ready verification lineage"
+    demotion_condition: "fields cannot be established"
+    revision_status: "ACTIVE_RESEARCH"
+  - name: ANOMALY_MATURATION_PIPELINE
+    ua_gloss: "КОНТУР ДОЗРІВАННЯ АНОМАЛІЇ"
+    scope: "Science Aperture research"
+    claim_class: "maturity workflow"
+    lineage: "Science Aperture #002 → Document 004"
+    input: "signal; replication; rivals; stronger test"
+    output: "maturity stage"
+    fixtures: ["weak signal dies; replicated signal survives current test"]
+    counterexamples: ["headline promoted before replication"]
+    representational_cost: "stage provenance"
+    failure_modes: ["synthetic survival treated as universal proof"]
+    dependencies: ["independent replication"]
+    promotion_condition: "explicit survival/collapse receipt"
+    demotion_condition: "lineage missing"
+    revision_status: "ACTIVE_RESEARCH"
+  - name: INCENTIVE_FIELD_AUDIT
+    ua_gloss: "АУДИТ ПОЛЯ СТИМУЛІВ"
+    scope: "Science Aperture research"
+    claim_class: "context audit"
+    lineage: "Science Aperture #002 → Document 004"
+    input: "disclosures and institutional context"
+    output: "scrutiny level, never result verdict"
+    fixtures: ["same evidence; disclosed conflict and neutral case"]
+    counterexamples: ["INCENTIVE != VERDICT"]
+    representational_cost: "disclosure record"
+    failure_modes: ["conflict becomes automatic falsity"]
+    dependencies: ["available disclosures"]
+    promotion_condition: "improves review calibration"
+    demotion_condition: "context not auditable"
+    revision_status: "ACTIVE_RESEARCH"
+  - name: HYPE_DELTA
+    ua_gloss: "ДЕЛЬТА ХАЙПУ"
+    scope: "Science Aperture research"
+    claim_class: "communication fidelity measure"
+    lineage: "Science Aperture #002 → Document 004"
+    input: "paper; press release; headline certainty/scope"
+    output: "communication gap"
+    fixtures: ["paper → release → headline"]
+    counterexamples: ["headline treated as source evidence"]
+    representational_cost: "layer annotation"
+    failure_modes: ["score treated as truth verdict"]
+    dependencies: ["original publication"]
+    promotion_condition: "preserves initial claim scope"
+    demotion_condition: "source layer unavailable"
+    revision_status: "ACTIVE_RESEARCH"
+  - name: MATHEMATICAL_BEAUTY_NEQ_EVIDENCE
+    ua_gloss: "МАТЕМАТИЧНА КРАСА != ДОКАЗ"
+    scope: "Science Aperture research"
+    claim_class: "evidence-class guard"
+    lineage: "Science Aperture #002 → Document 004"
+    input: "beauty; empirical support; prediction"
+    output: "evidence class"
+    fixtures: ["elegant unsupported and less-elegant discriminating models"]
+    counterexamples: ["beauty as proof"]
+    representational_cost: "separate aesthetic/evidence record"
+    failure_modes: ["heuristic promoted to evidence"]
+    dependencies: ["empirical test"]
+    promotion_condition: "distinctive corroborated prediction"
+    demotion_condition: "no empirical path"
+    revision_status: "ACTIVE_RESEARCH"
+  - name: CRITIQUE_OF_SCIENCE_NEQ_REJECTION_OF_METHOD
+    ua_gloss: "КРИТИКА НАУКИ != ВІДМОВА ВІД МЕТОДУ"
+    scope: "Science Aperture research"
+    claim_class: "method guard"
+    lineage: "Science Aperture #002 → Document 004"
+    input: "reproducibility issue; independent validation"
+    output: "supported-with-limits or open"
+    fixtures: ["reproducibility concern with independent validation"]
+    counterexamples: ["all results false"]
+    representational_cost: "validation lineage"
+    failure_modes: ["critique collapsed into nihilism"]
+    dependencies: ["independent test"]
+    promotion_condition: "preserves correction and method"
+    demotion_condition: "no evidence lineage"
+    revision_status: "ACTIVE_RESEARCH"
+  - name: EPISTEMIC_BANDWIDTH
+    ua_gloss: "ЕПІСТЕМІЧНА ПРОПУСКНА ЗДАТНІСТЬ"
+    scope: "Science Aperture research"
+    claim_class: "verification capacity heuristic"
+    lineage: "Science Aperture #002 → Document 004"
+    input: "volume; discrimination; verification capacity"
+    output: "verification priority"
+    fixtures: ["huge low-discrimination and small high-information sets"]
+    counterexamples: ["volume equals knowledge"]
+    representational_cost: "capacity estimation"
+    failure_modes: ["heuristic treated as a universal metric"]
+    dependencies: ["rival comparison"]
+    promotion_condition: "supports transparent prioritization"
+    demotion_condition: "dimensions unavailable"
+    revision_status: "ACTIVE_RESEARCH"

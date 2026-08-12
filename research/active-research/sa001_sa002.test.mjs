@@ -1,0 +1,26 @@
+import assert from "node:assert/strict";
+import * as o from "./operators.mjs";
+
+const receipts = [];
+const check = (operator, fixture, baseline, failureGuard, result) => { assert.equal(result, true); receipts.push({ operator, fixture, baseline, failure_guard: failureGuard, result: "PASS", status_after: o.ACTIVE, scope_after: "BOUND_SYNTHETIC_FIXTURE" }); };
+check("BEHAVIORAL_SIMILARITY_NEQ_ONTOLOGICAL_IDENTITY", "chemical garden imitation", "ontology asserted", "imitation is not identity", o.behavioralSimilarity("growth", "life-like").ONTOLOGICAL_CLAIM === "UNASSERTED");
+check("AUTONOMY_PROFILE", "same capability, different operator dependence", "binary autonomy", "profile not binary", o.autonomyProfile({ human_operator_dependence: 0.9 }).classification === "PROFILE_NOT_BINARY");
+check("FUNCTION_DELEGATION_LEDGER", "scaffold removed", "credit object only", "causal load named", o.delegationLedger([{ carrier: "INFRASTRUCTURE", load: 2 }]).causalLoad.INFRASTRUCTURE === 2);
+check("SYSTEM_X_FIELD_UNIT", "coupling-dependent capability", "isolated body", "simple systems remain simple", o.systemFieldUnit({ body: "cell", field: "medium", coupling: "feed", history: "t1" }).unit === "SYSTEM_X_FIELD");
+check("RELATIONAL_EMERGENCE_TEST", "same parts topology A/B", "component count", "no hidden compute", o.relationalEmergence({ sameParts: true, topologyA: "A", topologyB: "B", resultA: "none", resultB: "signal" }).relationEffect);
+check("BOUNDARY_FUNCTION_PROFILE", "same geometry, distinct permeability", "wall=true", "boundary not Boolean", o.boundaryProfile({ admit: "selective", regulate: "active" }).boundaryIsBoolean === false);
+check("PARTICIPATION_NEQ_AUTONOMY", "signal changes partner", "autonomy only", "two status fields", o.participationAutonomy({ autonomy: "low", participation: "yes", domain: "signal", partner: "host", effect: "changed" }).PARTICIPATION_STATUS === "yes");
+check("CAPABILITY_GOVERNANCE_CO_GROWTH", "material high-risk expansion", "capability alone", "authority must scale", o.governanceCoGrowth({ capabilityDelta: 2, governanceDelta: 0, risk: "high" }).verdict === "GOVERNANCE_GAP");
+check("ORIGIN_NEQ_STATUS", "artificial origin", "origin shortcut", "criteria separate", o.originStatus({ origin: "artificial", criteria: ["observed function"] }).status === "CRITERIA_REQUIRED");
+check("CLOSURE_THRESHOLD", "incomplete vs sustaining loop", "binary life switch", "unknown allowed", o.closureThreshold({ loop_completion: 0.8 }).conclusion === "UNKNOWN_UNTIL_SCOPE_EVIDENCE");
+check("FRONTIER_NEQ_CONSENSUS", "tentative signal", "frontier=corpus", "replication count", o.frontierConsensus({ replication: 0, scope: "tentative" }).zone === "FRONTIER");
+check("NEGATIVE_RESULT_IS_INFORMATION", "sensitive null", "null=nothing", "sensitivity passport", o.negativeResultInformation({ sensitivityKnown: true, signalObserved: false }).result === "CONSTRAINS_SCOPE");
+check("TOOL_POWER_NEQ_THEORY_POWER", "large compute no discrimination", "scale=explanation", "rival discrimination", o.toolTheory({ toolPower: 100, rivalDiscrimination: 0 }).verdict === "NO_THEORY_GAIN");
+check("VERIFIABILITY_PASSPORT", "missing replication", "incomplete=false", "passport not verdict", o.verifiabilityPassport({ data: true, method: true, sensitivity: true }).status === "INCOMPLETE");
+check("ANOMALY_MATURATION_PIPELINE", "weak signal", "headline=revolution", "replication before promotion", o.anomalyMaturation({ signal: true, replication: false, rivals: [], strongerTest: false }).stage === "AWAITING_REPLICATION");
+check("INCENTIVE_FIELD_AUDIT", "disclosed conflict", "incentive=verdict", "extra scrutiny only", o.incentiveFieldAudit({ conflict: true }).verdictOnResult === "NONE");
+check("HYPE_DELTA", "paper to headline", "headline=evidence", "preserve original", o.hypeDelta({ paper: 1, headline: 4 }).delta === 3);
+check("MATHEMATICAL_BEAUTY_NEQ_EVIDENCE", "elegant unsupported model", "beauty=proof", "evidence class", o.mathematicalBeauty({ beauty: 10, empiricalSupport: false, distinctivePrediction: false }).evidence === "NOT_ESTABLISHED");
+check("CRITIQUE_OF_SCIENCE_NEQ_REJECTION_OF_METHOD", "reproducibility concern + validation", "critique=nihilism", "method remains", o.critiqueOfScience({ reproducibilityIssue: true, independentValidation: true }).methodRejected === false);
+check("EPISTEMIC_BANDWIDTH", "huge volume low discrimination", "more data wins", "verification capacity", o.epistemicBandwidth({ volume: 1000000, discrimination: 0, verificationCapacity: 1 }).priority === "DO_NOT_SCALE_BY_VOLUME");
+console.log(JSON.stringify({ suite: "SA001_SA002", tests: receipts.length, receipts }, null, 2));
