@@ -1,7 +1,7 @@
 :root { --paper:#f7f5ef; --ink:#18211f; --muted:#58625f; --line:#c9cfca; --accent:#8c3f2d; --moss:#315c50; --max:76rem; }
 * { box-sizing:border-box; }
 html { scroll-behavior:smooth; }
-body { margin:0; background:var(--paper); color:var(--ink); font:400 17px/1.58 "IBM Plex Sans", "Segoe UI", Arial, sans-serif; }
+body { margin:0; overflow-x:hidden; background:var(--paper); color:var(--ink); font:400 17px/1.58 "IBM Plex Sans", "Segoe UI", Arial, sans-serif; }
 a { color:inherit; text-decoration-thickness:1px; text-underline-offset:3px; }
 a:hover { color:var(--accent); }
 a:focus-visible, button:focus-visible, input:focus-visible { outline:3px solid var(--accent); outline-offset:4px; }
