@@ -1,0 +1,16 @@
+name: Source proposal
+description: Propose a public-safe source for the library or research map.
+title: "[Source proposal]: "
+labels: ["source-proposal"]
+body:
+  - type: input
+    attributes: {label: Source URL}
+    validations: {required: true}
+  - type: textarea
+    attributes: {label: Why this source belongs here}
+    validations: {required: true}
+  - type: textarea
+    attributes: {label: Rights and provenance context, description: "State author, publisher, licence or public-use context; do not upload private copies."}
+    validations: {required: true}
+  - type: textarea
+    attributes: {label: Epistemic class and limits, description: "What kind of material is this, and what does it not establish?"}

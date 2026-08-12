@@ -1,0 +1,9 @@
+# Contributing to MET[Ȧ]CADEMY OF HUMANITY
+
+Thank you for helping the public field become clearer without making it flatter.
+
+Open a Discussion for exploratory questions; use an Issue for a specific correction, source proposal, research question or site bug; use a focused Pull Request for a proposed repository change. Keep a claim’s epistemic class visible: verified fact, engineering result, experience, tradition, working hypothesis, cultural image, metaphor or unknown are not interchangeable labels.
+
+For factual or bibliographic changes, include an exact location, a minimal proposed correction and provenance. Do not paste private correspondence, personal data, credentials, unlicensed third-party text or private Drive material. Do not present a metaphysical model as physical fact, or a beautiful resonance as proof.
+
+Small, reviewable changes win. Preserve version/date information, explain what changed and leave a route back to the source.

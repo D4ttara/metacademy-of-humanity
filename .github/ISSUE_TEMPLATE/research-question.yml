@@ -1,0 +1,13 @@
+name: Research question
+description: Add a bounded question with its assumptions and limits.
+title: "[Research question]: "
+labels: ["research-question"]
+body:
+  - type: textarea
+    attributes: {label: Question, description: "What is the question?"}
+    validations: {required: true}
+  - type: textarea
+    attributes: {label: Context and provenance, description: "Which source, experience, field or contradiction makes it matter?"}
+    validations: {required: true}
+  - type: textarea
+    attributes: {label: Limits, description: "What does this question not establish?"}

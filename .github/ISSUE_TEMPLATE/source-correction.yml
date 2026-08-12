@@ -1,0 +1,14 @@
+name: Source correction
+description: Report a factual, bibliographic or provenance correction.
+title: "[Source correction]: "
+labels: ["source-correction"]
+body:
+  - type: textarea
+    attributes: {label: Exact location, description: "URL, document version, heading, quote or line range."}
+    validations: {required: true}
+  - type: textarea
+    attributes: {label: Proposed correction, description: "State the smallest accurate correction."}
+    validations: {required: true}
+  - type: textarea
+    attributes: {label: Evidence and provenance, description: "Link primary or rights-clear source material when possible."}
+    validations: {required: true}
