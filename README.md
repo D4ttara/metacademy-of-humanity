@@ -15,6 +15,8 @@ GitHub Pages: enabled from the `main` branch through GitHub Actions after the fi
 - a 13-domain map preview that preserves undecided labels as open;
 - the Science Aperture v1.1 public index and editorial reading guide;
 - a small library of public-facing entry points.
+- Document 003, *Життя як організація* — a Ukrainian Research Brief with public PDF and Markdown forms;
+- participation routes for discussions, source-aware corrections, questions and focused pull requests.
 
 ## How to read Science Aperture
 
@@ -28,3 +30,6 @@ Different ways of knowing may enter the same graph without pretending to be the 
 
 Research in progress. Code/content licensing is being prepared. All rights reserved unless explicitly stated otherwise.
 
+## Participate
+
+Use [Discussions](https://github.com/D4ttara/metacademy-of-humanity/discussions) for open conversation, [Issues](https://github.com/D4ttara/metacademy-of-humanity/issues/new/choose) for bounded corrections or proposals, and [CONTRIBUTING.md](CONTRIBUTING.md) for repository changes. See [SOURCES_AND_PUBLICATION_BOUNDARIES.md](SOURCES_AND_PUBLICATION_BOUNDARIES.md) before proposing material.

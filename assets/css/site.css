@@ -44,6 +44,9 @@ section { padding:clamp(3.5rem,8vw,7rem) 0; border-bottom:1px solid var(--line);
 .open { color:var(--accent); }
 .search { width:100%; border:1px solid var(--ink); padding:.8rem; background:transparent; font:inherit; }
 .result { border-top:1px solid var(--line); padding:1.2rem 0; }
+.document-head { border-left:clamp(.45rem,1vw,.9rem) solid #2465a9; }
+.document-card { border-top:4px solid #2465a9; }
+.document-prose { padding-left:clamp(1rem,3vw,2.2rem); border-left:3px solid #2465a9; }
 footer { padding:3rem 0; font-size:.86rem; color:var(--muted); }
 @media (max-width:760px) { .top .wrap { align-items:flex-start; flex-direction:column; } .nav { justify-content:flex-start; } .copy,.aside { grid-column:1/-1; } .cards { grid-template-columns:1fr; } .domain-grid { grid-template-columns:1fr 1fr; } }
 @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }

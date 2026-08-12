@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://d4ttara.github.io/metacademy-of-humanity/sitemap.xml

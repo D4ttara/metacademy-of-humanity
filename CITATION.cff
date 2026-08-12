@@ -1,0 +1,9 @@
+cff-version: 1.2.0
+message: "If you use this public research material, please cite it as below."
+title: "MET[Ȧ]CADEMY OF HUMANITY"
+version: "Public alpha · Phase 2"
+date-released: 2026-08-12
+authors:
+  - family-names: "D4ttara"
+repository-code: "https://github.com/D4ttara/metacademy-of-humanity"
+url: "https://d4ttara.github.io/metacademy-of-humanity/"
