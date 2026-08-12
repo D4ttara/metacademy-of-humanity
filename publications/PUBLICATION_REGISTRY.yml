@@ -72,3 +72,20 @@ external_large_artifacts:
     local_path: publications/science-aperture/SCIENCE_APERTURE_PUBLIC_INDEX_v1.1.md
     external_url: null
     sha256: not_applicable_to_external_source_corpus
+library_bodies:
+  - title: "अन्तरम् · ANTARAM"
+    canonical_slug: antaram
+    class: "Experimental living Sanskrit sibling rebody"
+    source_work: "МІЖ 1.61 · Щось про тринадцять секунд"
+    version: ANTARAM-L4-VOICE-REBODY-V3
+    status: published_with_reviews_open
+    date: 2026-08-12
+    local_paths:
+      html: library/antaram/index.html
+      markdown: library/antaram/ANTARAM_MIZH_1.61_FREE_SANSKRIT_ADAPTATION_L4_VOICE_REBODY_V3.md
+    sha256: 56a3f0d28fd5108fe3517b82acf4ca6e92c7d7ef8b0bd31cc499932d3557b707
+    review_status:
+      native_sanskrit_review: OPEN
+      independent_philological_review: OPEN
+      live_recitation: OPEN
+    provenance: "Dattara Lab · MoH; exact Drive source verified locally before repository import"

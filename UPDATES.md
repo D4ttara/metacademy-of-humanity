@@ -4,3 +4,4 @@ The public update log records visible additions and corrections without pretendi
 
 - 2026-08-12 · Public alpha Phase 2: Document 003, participation routes, contribution/citation material, issue forms, public update mechanism and search discoverability files added.
 - 2026-08-12 · Public Phase 3 review branch: Document 003 English edition, Document 004 EN/UA editions, publication registry, EN/RU shell and bounded SA001/SA002 active-research receipts prepared. No stable runtime, MSL or action authority changed.
+- 2026-08-12 · Phase 3 review follow-up: exact Sanskrit literary body `ANTARAM` added to Library with SHA-256 and three explicit OPEN review states; homepage wordmark and shared editorial design-system details refined.
