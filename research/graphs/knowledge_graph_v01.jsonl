@@ -1,0 +1,7 @@
+{"id":"kg:sa003","type":"research_pass","label":"SA003 Two Graphs / Language Correction","status":"OWNER_APPROVED_ACTIVE_RESEARCH","evidence_class":"ENGINEERING_RESULT","provenance":"IKAR task SA003 v1.0","limits":"not a runtime activation"}
+{"id":"kg:time-relational","type":"concept","label":"Relational time","status":"ACTIVE_RESEARCH","evidence_class":"WORKING_HYPOTHESIS","provenance":"Document 005","limits":"not a claim that time vanished"}
+{"id":"kg:history-marker","type":"concept","label":"History marker","status":"ACTIVE_RESEARCH","evidence_class":"ENGINEERING_RESULT","provenance":"SA003 fixture set","limits":"synthetic fixtures only"}
+{"id":"kg:metaphysics-mirror","type":"protocol","label":"Science / metaphysics mirror","status":"ACTIVE_RESEARCH","evidence_class":"METAPHYSICAL_CLAIM","provenance":"SA003 mirror protocol","limits":"not physical evidence"}
+{"id":"kg:private-corpus","type":"provenance_receipt","label":"Private corpus archaeology receipt","status":"PRIVATE_NOT_PUBLISHED","evidence_class":"UNKNOWN","provenance":"local read-only corpus","limits":"no content or identifiers exported"}
+{"from":"kg:time-relational","relation":"REQUIRES","to":"kg:history-marker","status":"SUPPORTED_IN_FIXTURE","reason":"same coordinate can have distinct phases"}
+{"from":"kg:metaphysics-mirror","relation":"MUST_NOT_COLLAPSE_INTO","to":"kg:time-relational","status":"BOUNDARY","reason":"metaphysical candidate is not a physical result"}

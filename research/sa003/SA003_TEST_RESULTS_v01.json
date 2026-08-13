@@ -1,0 +1,23 @@
+{
+  "schema": "metacademy-sa003-test-results/v0.1",
+  "status": "PASS",
+  "date": "2026-08-13",
+  "fixtures": 10,
+  "results": [
+    {"id":"A","name":"local/global clocks","result":"PASS"},
+    {"id":"B","name":"ordering power","result":"PASS"},
+    {"id":"C","name":"coordinate is not direction","result":"PASS"},
+    {"id":"D","name":"history restores order","result":"PASS"},
+    {"id":"E","name":"relational rate boundary","result":"PASS"},
+    {"id":"F","name":"clock failure diagnostic","result":"PASS"},
+    {"id":"G","name":"horizon hold active","result":"PASS"},
+    {"id":"H","name":"cross-clock partial order","result":"PASS"},
+    {"id":"I","name":"recovery requires remainder","result":"PASS"},
+    {"id":"J","name":"metaphysical boundary","result":"PASS"}
+  ],
+  "limitations": [
+    "Synthetic fixtures test representation logic, not a physical theory of time.",
+    "No external model, network inference, live runtime or .META activation is involved.",
+    "A PASS means the stated guard held in the fixture; it is not universal validation."
+  ]
+}
