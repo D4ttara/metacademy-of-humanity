@@ -1,3 +1,109 @@
 schema: metacademy-publication-registry/v1
-updated: 2026-08-12
-documents: []
+updated: 2026-08-14
+documents:
+  - number: "003"
+    canonical_slug: life-as-organization
+    title:
+      en: Life as Organization
+      ua: Життя як організація
+    class: Research Brief
+    status: published
+    source_sa_items: ["Science Aperture #001"]
+    date: 2026-08-12
+    editions:
+      - language: en
+        version: v1.0
+        relation: primary public reading edition
+        local_paths:
+          html: documents/003-life-as-organization/en/index.html
+          markdown: documents/003-life-as-organization/METACADEMY_DOCUMENT_003_LIFE_AS_ORGANIZATION_EN_v1.0.md
+          pdf: documents/003-life-as-organization/METACADEMY_DOCUMENT_003_LIFE_AS_ORGANIZATION_EN_v1.0.pdf
+      - language: ua
+        version: v1.0
+        relation: language sibling; preserved approved edition
+        local_paths:
+          html: documents/003-life-as-organization/index.html
+          markdown: documents/003-life-as-organization/METACADEMY_DOCUMENT_003_LIFE_AS_ORGANIZATION_UA_v1.0.md
+          pdf: documents/003-life-as-organization/METACADEMY_DOCUMENT_003_LIFE_AS_ORGANIZATION_UA_v1.0.pdf
+  - number: "004"
+    canonical_slug: when-science-reaches-a-plateau
+    title:
+      en: When Science Reaches a Plateau
+      ua: Коли наука виходить на плато
+    class: Research Brief
+    status: published
+    source_sa_items: ["Science Aperture #002"]
+    date: 2026-08-12
+    editions:
+      - language: en
+        version: v1.1
+        relation: English reading edition
+        local_paths:
+          html: documents/004-when-science-reaches-a-plateau/en/index.html
+          markdown: documents/004-when-science-reaches-a-plateau/METACADEMY_DOCUMENT_004_SCIENCE_ON_A_PLATEAU_EN_v1.1.md
+          pdf: documents/004-when-science-reaches-a-plateau/METACADEMY_DOCUMENT_004_SCIENCE_ON_A_PLATEAU_EN_v1.1.pdf
+      - language: ua
+        version: v1.1
+        relation: Ukrainian language sibling
+        local_paths:
+          html: documents/004-when-science-reaches-a-plateau/ua/index.html
+          markdown: documents/004-when-science-reaches-a-plateau/METACADEMY_DOCUMENT_004_SCIENCE_ON_A_PLATEAU_UA_v1.1.md
+          pdf: documents/004-when-science-reaches-a-plateau/METACADEMY_DOCUMENT_004_SCIENCE_ON_A_PLATEAU_UA_v1.1.pdf
+  - number: "005"
+    canonical_slug: when-time-becomes-relational
+    title:
+      en: When Time Becomes Relational
+      ua: Коли час стає відношенням
+    class: Research Brief
+    status: publication_candidate
+    source_sa_items: ["Science Aperture #003"]
+    date: 2026-08-14
+    editions:
+      - language: en
+        version: v1.2
+        relation: English adaptation
+        local_paths:
+          html: documents/005-when-time-becomes-relational/en/index.html
+          markdown: documents/005-when-time-becomes-relational/METACADEMY_DOCUMENT_005_WHEN_TIME_BECOMES_RELATIONAL_EN_v1.2.md
+          pdf: documents/005-when-time-becomes-relational/METACADEMY_DOCUMENT_005_WHEN_TIME_BECOMES_RELATIONAL_EN_v1.2.pdf
+        sha256:
+          markdown: 966562a9f7cd51be48cf5020f17413c5d404c9b9b5cdd7c8285a733b70696671
+          pdf: 9efeac7057fb64221358dd2dad828d78d650511e2485be90f4ecce475dac81ce
+      - language: ua
+        version: v1.2
+        relation: Ukrainian adaptation
+        local_paths:
+          html: documents/005-when-time-becomes-relational/ua/index.html
+          markdown: documents/005-when-time-becomes-relational/METACADEMY_DOCUMENT_005_WHEN_TIME_BECOMES_RELATIONAL_UA_v1.2.md
+          pdf: documents/005-when-time-becomes-relational/METACADEMY_DOCUMENT_005_WHEN_TIME_BECOMES_RELATIONAL_UA_v1.2.pdf
+        sha256:
+          markdown: 482dd26fcaf3d0c2bde89d8eb6dc693d10a701848c195958e657dcdbfc3d03fa
+          pdf: 56ac5986089d53df196a7f824c7e8a260329760d504119087b0cab85eb947ddf
+    supersedes:
+      en: v1.0
+      ua: v1.0
+external_large_artifacts:
+  - name: Science Aperture 2021–2026 public index
+    version: v1.1
+    provenance: Academy editorial index; large source corpus remains rights-bounded
+    local_path: publications/science-aperture/SCIENCE_APERTURE_PUBLIC_INDEX_v1.1.md
+    external_url: null
+    sha256: not_applicable_to_external_source_corpus
+library_bodies:
+  - title: "अन्तरम् · ANTARAM"
+    canonical_slug: antaram
+    class: "Experimental living Sanskrit sibling rebody"
+    source_work: "МІЖ 1.61 · Щось про тринадцять секунд"
+    version: ANTARAM-L4-VOICE-REBODY-V3
+    status: published_with_reviews_open
+    date: 2026-08-12
+    local_paths:
+      html: library/antaram/index.html
+      ru_html: library/antaram/ru/index.html
+      markdown: library/antaram/ANTARAM_MIZH_1.61_FREE_SANSKRIT_ADAPTATION_L4_VOICE_REBODY_V3.md
+    sha256: 56a3f0d28fd5108fe3517b82acf4ca6e92c7d7ef8b0bd31cc499932d3557b707
+    review_status:
+      native_sanskrit_review: OPEN
+      independent_philological_review: OPEN
+      live_recitation: OPEN
+    provenance: "Dattara Lab · MoH; exact Drive source verified locally before repository import"
