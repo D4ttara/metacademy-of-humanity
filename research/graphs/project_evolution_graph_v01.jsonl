@@ -1,3 +1,4 @@
+{"id":"view:project","type":"VIEW_POLICY","label":"PROJECT_VIEW","status":"OWNER_APPROVED_ACTIVE_RESEARCH","root_ref":"moh:metagraph","provenance":"MOH Unified Metagraph Overlay v0.2","limits":"projection only; does not duplicate canonical nodes"}
 {"id":"pg:main-e72feac","kind":"baseline","date":"2026-08-13","status":"VERIFIED_READBACK","provenance":"origin/main e72feac","rollback":"git branch remains unchanged"}
 {"id":"pg:pr7","kind":"open_pull_request","date":"2026-08-13","status":"DO_NOT_MERGE_EN_RU","provenance":"PR #7","rollback":"leave open; update only after language PR merge"}
 {"id":"pg:sa001-sa002","kind":"research_layer","date":"2026-08-12","status":"OWNER_APPROVED_ACTIVE_RESEARCH","provenance":"main research/active-research","rollback":"additive files only"}

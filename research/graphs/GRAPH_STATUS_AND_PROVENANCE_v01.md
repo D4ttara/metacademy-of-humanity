@@ -1,10 +1,12 @@
-# Two-Graph Status and Provenance
+# Unified Metagraph Status and Provenance
 
-`KNOWLEDGE_GRAPH_V01` and `PROJECT_EVOLUTION_GRAPH_V01` are the sole core graphs of SA003. Both are additive research representations, not runtime infrastructure, public truth engines, or `.META` activation.
+`MOH_METAGRAPH_V02` is the sole canonical graph root of SA003. The former Knowledge and Project Evolution graph files remain preserved as **view fixtures**: query-oriented, public-safe projections over the same canonical node IDs, never competing roots.
 
-| Graph | Status | Provenance rule | Return path |
+| Layer | Status | Provenance rule | Return path |
 |---|---|---|---|
-| Knowledge | `OWNER_APPROVED_ACTIVE_RESEARCH` | every assertion declares evidence class and limit | remove an edge/node without changing source artifacts |
-| Evolution | `OWNER_APPROVED_ACTIVE_RESEARCH` | public-safe event receipts only | remove/rewrite event layer without changing stable history |
+| `MOH_METAGRAPH` | `OWNER_CLARIFIED_ADDITIVE_OVERLAY` | one identity per object/edge; every claim declares evidence class and limit | remove/add an overlay node without changing source artifacts |
+| Knowledge View | `OWNER_APPROVED_ACTIVE_RESEARCH` | claims, questions, contradictions, evidence and traditions | change query policy, not canonical identity |
+| Project View | `OWNER_APPROVED_ACTIVE_RESEARCH` | project, branch, test, artifact and maturity receipts | change query policy without rewriting history |
+| Chronology / Lineage / Evidence / Horizon / Access Views | `OWNER_APPROVED_ACTIVE_RESEARCH` | typed, receipt-bearing projections | preserve provenance and boundary guards |
 
-Private corpus material was consulted locally for archaeology but is not copied into these files. A graph edge is a traceable relation, not a proof; structural resonance remains a candidate explanation.
+`ONE GRAPH != ONE TRUTH != ONE EPISTEMOLOGY != ONE ACCESS LEVEL`. Private corpus material was consulted locally for archaeology but is not copied into these files. A graph edge is a traceable relation, not a proof; structural resonance remains a candidate explanation.
