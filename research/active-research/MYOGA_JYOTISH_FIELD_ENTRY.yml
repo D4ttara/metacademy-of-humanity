@@ -42,6 +42,12 @@ core_guards:
   - "PREDICTION != PROPHECY"
   - "ANSWER_PRECISION <= EVIDENCE_PRECISION"
   - "NEGATIVE_RESULT_STAYS"
+  - "BLIND_BEFORE_REVEAL"
+  - "HOLDOUT != TRAIN"
+  - "LEAKAGE_INVALIDATES_BLIND_CLAIM"
+  - "COUNTEREXAMPLES_STAY"
+  - "NO_UNIVERSAL_TRUTH_SCORE"
+  - "NO_CROSS_LAYER_AVERAGING"
   - "EVERYTHING_MAY_ENTER_THE_GRAPH"
   - "NOTHING_ENTERS_WITHOUT_PROVENANCE"
 research_spine:
@@ -56,26 +62,32 @@ research_spine:
   - competing_and_null_hypotheses
   - descriptive_calibration_and_negative_evidence
   - question_precision_budget
+  - blind_case_validation
+  - matched_case_contracts
+  - stratified_method_comparison
+  - counterexample_harvesting
 runtime:
-  current_engine: "M{Y}OGA_JYOTISH_V0_5"
+  current_engine: "M{Y}OGA_JYOTISH_V0_6"
   lineage:
     - "v0.1 Varga Operator Engine"
     - "v0.2 Relation Engine"
     - "v0.3 Time Engine"
     - "v0.4 Experience / Event Engine"
     - "v0.5 Prediction / Question Engine"
-  source_zip_sha256: "20839d24acea08bbd4eabd2e72f91488dce5c71af4c9a13943c9c9527184c7c8"
-  source_zip_bytes: 11805442
+    - "v0.6 Case Lab / Validation Engine"
+  source_zip_sha256: "48335027793a67b520ba5603e9c8af60ccd72af05fa0caecd887e203286be058"
+  source_zip_bytes: 11858135
   packaged_regression: "PASS / EXIT 0"
-  js_test_files: 143
+  js_test_files: 146
   python_base_tests: 3
-  msl_myoga_dotlinux_python_tests: 54
+  msl_myoga_dotlinux_python_tests: 58
   dotvm_c_test: "PASS"
-  drive_file_id: "1-zKiwdTywxjxhDFcgcMn2a7r6FvqG4Oc"
+  drive_file_id: "1dTXqEKKblppb3LL8S6zuQ1_8PWR0Ndpd"
   drive_root_folder_id: "1zTDw2KCkrre6my9aAH_LIRTfubVbz_b0"
+  drive_validation_folder_id: "1O-NfJ1M76pUyw_e5Hflzv1Z91vXBrmOt"
 msl_bridge:
-  runtime_snapshot: "MSL 0.9.0a1"
-  role: "M{Y}OGA is an executable laboratory case for domain-neutral MSL epistemic mechanisms; it is not a fact authority over MSL."
+  runtime_snapshot: "MSL 0.9.1a1"
+  role: "M{Y}OGA is an executable laboratory case for domain-neutral MSL epistemic and validation mechanisms; it is not a fact authority over MSL."
   mechanisms:
     - SOURCE_LAYER_NE_LENS
     - EVIDENCE_PASSPORT_V2
@@ -86,6 +98,11 @@ msl_bridge:
     - HOLDOUT_SEPARATION
     - DETERMINISTIC_RECURRENCE_NE_INDEPENDENT_EVIDENCE
     - COMPETING_AND_NULL_HYPOTHESES
+    - BLIND_CASE_SEAL
+    - VALIDATION_PARTITION
+    - MATCHED_CASE_CONTRACT
+    - COUNTEREXAMPLE_RECEIPT
+    - METHOD_COMPARISON_RECEIPT
 predecessor_lineage:
   source_identity: "SamYoga Jyotish"
   status: "CLOSED_AS_ACTIVE_PROJECT__MIGRATED_TO_MYOGA"
@@ -97,15 +114,17 @@ publication:
   manifesto_md: "documents/006-myoga-jyotish/METACADEMY_DOCUMENT_006_MYOGA_JYOTISH_MANIFEST_UA_v1.0.md"
   protocol: "documents/006-myoga-jyotish/MYOGA_DISCIPLINE_PROTOCOL_v0.1.md"
   runtime_msl_bridge: "documents/006-myoga-jyotish/MYOGA_RUNTIME_AND_MSL_BRIDGE_v0.5.md"
+  validation_layer: "documents/006-myoga-jyotish/MYOGA_CASE_LAB_VALIDATION_v0.6.md"
   migration_lineage: "research/lineage/SAMYOGA_TO_MYOGA_MIGRATION_2026-08-15.md"
   msl_integration: "research/msl/MSL_MYOGA_INTEGRATION_2026-08-15.md"
+  msl_validation: "research/msl/MSL_VALIDATION_PROTOCOL_0_9_1_2026-08-15.md"
   web: "documents/006-myoga-jyotish/index.html"
   manifesto_pdf_status: "VERIFIED_LOCAL_SPECIMEN_NOT_PUBLISHED_IN_REPOSITORY"
   manifesto_pdf_sha256: "c1c244e984c8ed0885dad20b4d2410a8042c915101e464a42eab42318b849073"
   manifesto_pdf_typography: "IBM Plex Sans + IBM Plex Serif + IBM Plex Mono"
   manifesto_pdf_font_fallback: "NONE"
   manifesto_pdf_supersedes_sha256: "b7eb1627c3521fc046c6bd778839bb21b46341877c24591e9ce03412a251adc2"
-math_status: "EXECUTABLE_V0_5 / VERIFIED_PACKAGE / TEXT_CRITICAL_FIELDS_MAY_REMAIN_OPEN"
+math_status: "EXECUTABLE_V0_6 / VERIFIED_PACKAGE / TEXT_CRITICAL_FIELDS_MAY_REMAIN_OPEN"
 history_boundary:
   rule: "Historical raw research corpora keep their original names and identifiers for provenance; they are not silently renamed."
   migration_rule: "Migration closes the active predecessor identity but never deletes or retroactively renames its historical corpus."
