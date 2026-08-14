@@ -1,0 +1,41 @@
+schema: metacademy-historical-publication/v1
+artifact: "Samyoga Jyotish · Book I"
+edition: "v1.0β"
+language: "UA"
+status: "CLOSED_PROJECT_ARCHIVAL_OVERVIEW"
+project_status: "Samyoga closed; no further work under this name"
+successor_research: "M{Y}OGA JYOTISH"
+canon_boundary: "Historical Samyoga artifact; not current M{Y}OGA or MET[Ȧ]CADEMY canon"
+source:
+  drive_file_id: "14uUDbxhkyi1ffxf6huw7HtjVfCLuV8NQ"
+  source_sha256: "eb66aec1dd79f84ad5b15bba455f80e0798733281fda688fd1c37e657026b904"
+  raw_sha256: "12db7c41515e90ae4c61bc860866047557df333034b97b4e0528c9d381e8f122"
+restored_from_raw:
+  - "Aquarius / Водолій"
+  - "10th house / 10-й дім"
+  - "Saturn / Сатурн"
+verified_files:
+  markdown:
+    filename: "SAMYOGA_JYOTISH_BOOK_I_HISTORICAL_BETA_UA_v1.0b.md"
+    sha256: "118c74273267754b1438ed713d8ff17678b9c982080eb743a5e6be9ce5b04b86"
+    repository_attachment_status: "PREPARED_NOT_ATTACHED_IN_THIS_CONNECTOR_PASS"
+  pdf:
+    filename: "SAMYOGA_JYOTISH_BOOK_I_HISTORICAL_BETA_UA_v1.0b.pdf"
+    sha256: "dc6e1b51b1f5c6020a1b528e4da1ec34c00176a5214419c3efdb5d8aed2c9333"
+    pages: 198
+    page_size: "A4"
+    typography: "IBM Plex Sans + IBM Plex Serif + IBM Plex Mono"
+    font_fallback: "NONE"
+    repository_attachment_status: "PREPARED_NOT_ATTACHED_IN_THIS_CONNECTOR_PASS"
+qa:
+  markdown_clickable_toc: "PASS"
+  markdown_toc_targets: 55
+  pdf_render_200dpi_all_pages: "PASS"
+  visual_all_pages: "PASS"
+  pdf_preflight: "PASS"
+  text_readback: "PASS"
+  critical_unicode: "PASS"
+  replacement_glyphs: 0
+  pdf_outline_items: 57
+  pdf_internal_links: 67
+copyright: "© 2026 Ievgen Karogod / Dattara · MET[Ȧ]CADEMY OF HUMANITY (MoH)"
