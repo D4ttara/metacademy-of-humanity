@@ -3,7 +3,9 @@ updated: 2026-08-14
 documents:
   - number: "003"
     canonical_slug: life-as-organization
-    title: {en: Life as Organization, ua: Життя як організація}
+    title:
+      en: Life as Organization
+      ua: Життя як організація
     class: Research Brief
     status: published
     source_sa_items: ["Science Aperture #001"]
@@ -16,7 +18,9 @@ documents:
           html: documents/003-life-as-organization/en/index.html
           markdown: documents/003-life-as-organization/METACADEMY_DOCUMENT_003_LIFE_AS_ORGANIZATION_EN_v1.0.md
           pdf: documents/003-life-as-organization/METACADEMY_DOCUMENT_003_LIFE_AS_ORGANIZATION_EN_v1.0.pdf
-        sha256: {markdown: cb880bf2e6e0caf3026bfebb330ed33a31bca67f443144f069a6e6a2d131c73f, pdf: ab2b090205bd5b3ff3e13819e611d1b7fb4d545eaef4325ef639ceb274391978}
+        sha256:
+          markdown: cb880bf2e6e0caf3026bfebb330ed33a31bca67f443144f069a6e6a2d131c73f
+          pdf: ab2b090205bd5b3ff3e13819e611d1b7fb4d545eaef4325ef639ceb274391978
       - language: ua
         version: v1.0
         relation: language sibling; preserved approved edition
@@ -24,12 +28,16 @@ documents:
           html: documents/003-life-as-organization/index.html
           markdown: documents/003-life-as-organization/METACADEMY_DOCUMENT_003_LIFE_AS_ORGANIZATION_UA_v1.0.md
           pdf: documents/003-life-as-organization/METACADEMY_DOCUMENT_003_LIFE_AS_ORGANIZATION_UA_v1.0.pdf
-        sha256: {markdown: 373220fa73947cb199d14fd3a5c0ec7bf2523cc2353d79ed5a3b5fc3800386a9, pdf: 01adb74d48912c8eeb5885b350c9a6c1504ad590d4a89a9424f050ffed559891}
+        sha256:
+          markdown: 373220fa73947cb199d14fd3a5c0ec7bf2523cc2353d79ed5a3b5fc3800386a9
+          pdf: 01adb74d48912c8eeb5885b350c9a6c1504ad590d4a89a9424f050ffed559891
     supersedes: null
     external_links: []
   - number: "004"
     canonical_slug: when-science-reaches-a-plateau
-    title: {en: When Science Reaches a Plateau, ua: Коли наука виходить на плато}
+    title:
+      en: When Science Reaches a Plateau
+      ua: Коли наука виходить на плато
     class: Research Brief
     status: published
     source_sa_items: ["Science Aperture #002"]
@@ -42,7 +50,9 @@ documents:
           html: documents/004-when-science-reaches-a-plateau/en/index.html
           markdown: documents/004-when-science-reaches-a-plateau/METACADEMY_DOCUMENT_004_SCIENCE_ON_A_PLATEAU_EN_v1.1.md
           pdf: documents/004-when-science-reaches-a-plateau/METACADEMY_DOCUMENT_004_SCIENCE_ON_A_PLATEAU_EN_v1.1.pdf
-        sha256: {markdown: bc37407ee8f254ae5d3a7c594e0550558d389adb246d4acbf5f8295883c56396, pdf: f06b977676dabbe680ca96add00de1d67656a73afd18a2e603dd2678ebcbc622}
+        sha256:
+          markdown: bc37407ee8f254ae5d3a7c594e0550558d389adb246d4acbf5f8295883c56396
+          pdf: f06b977676dabbe680ca96add00de1d67656a73afd18a2e603dd2678ebcbc622
       - language: ua
         version: v1.1
         relation: Ukrainian language sibling
@@ -50,12 +60,16 @@ documents:
           html: documents/004-when-science-reaches-a-plateau/ua/index.html
           markdown: documents/004-when-science-reaches-a-plateau/METACADEMY_DOCUMENT_004_SCIENCE_ON_A_PLATEAU_UA_v1.1.md
           pdf: documents/004-when-science-reaches-a-plateau/METACADEMY_DOCUMENT_004_SCIENCE_ON_A_PLATEAU_UA_v1.1.pdf
-        sha256: {markdown: d07e1ae28ac936495120706c0a2ce16d89e2bda1df54401829f8b1169887358d, pdf: d3463745f8aa6024a76a2dcd1bfb2919a50642a2eb5e0ae06da9d1f66adb9978}
+        sha256:
+          markdown: d07e1ae28ac936495120706c0a2ce16d89e2bda1df54401829f8b1169887358d
+          pdf: d3463745f8aa6024a76a2dcd1bfb2919a50642a2eb5e0ae06da9d1f66adb9978
     supersedes: null
     external_links: []
   - number: "006"
     canonical_slug: myoga-jyotish
-    title: {ua: "M{Y}OGA JYOTISH - Маніфест дисципліни", en: "M{Y}OGA JYOTISH - Field Manifesto"}
+    title:
+      ua: "M{Y}OGA JYOTISH — Маніфест дисципліни"
+      en: "M{Y}OGA JYOTISH — Field Manifesto"
     class: Field Manifesto
     status: published
     date: 2026-08-14
@@ -67,7 +81,9 @@ documents:
           html: documents/006-myoga-jyotish/index.html
           markdown: documents/006-myoga-jyotish/METACADEMY_DOCUMENT_006_MYOGA_JYOTISH_MANIFEST_UA_v1.0.md
           protocol: documents/006-myoga-jyotish/MYOGA_DISCIPLINE_PROTOCOL_v0.1.md
-        sha256: {markdown: 4dca048fbe60f7de71267d8e933f419a49aae7db0fe50c6cf6253478433c1147, protocol: 10b7501142c5968677f99f1a40ee42b610e64dfe786b8634d2162b90b2f5f02c}
+        sha256:
+          markdown: 4dca048fbe60f7de71267d8e933f419a49aae7db0fe50c6cf6253478433c1147
+          protocol: 10b7501142c5968677f99f1a40ee42b610e64dfe786b8634d2162b90b2f5f02c
     supersedes: null
     external_links: []
     note: "Number 005 is reserved by an existing Academy document lineage outside this repository snapshot. A verified local PDF publication specimen exists but is not declared as a repository path in this registry entry."
@@ -147,7 +163,7 @@ documents:
     supersedes: null
     external_links: []
 external_large_artifacts:
-  - name: Science Aperture 2021-2026 public index
+  - name: Science Aperture 2021–2026 public index
     version: v1.1
     provenance: Academy editorial index; large source corpus remains rights-bounded
     local_path: publications/science-aperture/SCIENCE_APERTURE_PUBLIC_INDEX_v1.1.md
@@ -161,9 +177,15 @@ library_bodies:
     version: ANTARAM-L4-VOICE-REBODY-V3
     status: published_with_reviews_open
     date: 2026-08-12
-    local_paths: {html: library/antaram/index.html, ru_html: library/antaram/ru/index.html, markdown: library/antaram/ANTARAM_MIZH_1.61_FREE_SANSKRIT_ADAPTATION_L4_VOICE_REBODY_V3.md}
+    local_paths:
+      html: library/antaram/index.html
+      ru_html: library/antaram/ru/index.html
+      markdown: library/antaram/ANTARAM_MIZH_1.61_FREE_SANSKRIT_ADAPTATION_L4_VOICE_REBODY_V3.md
     sha256: 56a3f0d28fd5108fe3517b82acf4ca6e92c7d7ef8b0bd31cc499932d3557b707
-    review_status: {native_sanskrit_review: OPEN, independent_philological_review: OPEN, live_recitation: OPEN}
+    review_status:
+      native_sanskrit_review: OPEN
+      independent_philological_review: OPEN
+      live_recitation: OPEN
     provenance: "Dattara Lab · MoH; exact Drive source verified locally before repository import"
 research_fields:
   - canonical_name: "M{Y}OGA JYOTISH"
