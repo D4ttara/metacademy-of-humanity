@@ -2,6 +2,7 @@
 
 The public update log records visible additions and corrections without pretending that every change is a new doctrine.
 
+- 2026-08-15 · Historical Library entry added for `Samyoga Jyotish · Book I` v1.0β. Samyoga is explicitly marked as a closed project and historical/overview material; successor research is `M{Y}OGA JYOTISH`. The verified MD/PDF package and checksums were prepared, while repository attachment status remains explicit rather than claiming unverified binary paths.
 - 2026-08-14 · `M{Y}OGA JYOTISH` publicly declared as an active MET[Ȧ]CADEMY research discipline. Document 006 Field Manifesto, the 108-point Discipline Protocol, machine-readable research entry, site/research discovery links and publication-registry receipt added. Historical raw corpora were not retroactively renamed.
 - 2026-08-12 · Public alpha Phase 2: Document 003, participation routes, contribution/citation material, issue forms, public update mechanism and search discoverability files added.
 - 2026-08-12 · Public Phase 3 review branch: Document 003 English edition, Document 004 EN/UA editions, publication registry, EN/RU shell and bounded SA001/SA002 active-research receipts prepared. No stable runtime, MSL or action authority changed.
