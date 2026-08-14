@@ -1,5 +1,5 @@
 schema: metacademy-publication-registry/v1
-updated: 2026-08-12
+updated: 2026-08-14
 documents:
   - number: "003"
     canonical_slug: life-as-organization
@@ -63,6 +63,38 @@ documents:
         sha256:
           markdown: d07e1ae28ac936495120706c0a2ce16d89e2bda1df54401829f8b1169887358d
           pdf: d3463745f8aa6024a76a2dcd1bfb2919a50642a2eb5e0ae06da9d1f66adb9978
+    supersedes: null
+    external_links: []
+  - number: "005"
+    canonical_slug: when-time-becomes-relational
+    title:
+      en: When Time Becomes Relational
+      ua: Коли час стає відношенням
+    class: Research Brief
+    status: publication_candidate
+    source_sa_items: ["Science Aperture #003"]
+    date: 2026-08-14
+    editions:
+      - language: en
+        version: v1.2
+        relation: English adaptation
+        local_paths:
+          html: documents/005-when-time-becomes-relational/en/index.html
+          markdown: documents/005-when-time-becomes-relational/METACADEMY_DOCUMENT_005_WHEN_TIME_BECOMES_RELATIONAL_EN_v1.2.md
+          pdf: documents/005-when-time-becomes-relational/METACADEMY_DOCUMENT_005_WHEN_TIME_BECOMES_RELATIONAL_EN_v1.2.pdf
+        sha256:
+          markdown: 966562a9f7cd51be48cf5020f17413c5d404c9b9b5cdd7c8285a733b70696671
+          pdf: 9efeac7057fb64221358dd2dad828d78d650511e2485be90f4ecce475dac81ce
+      - language: ua
+        version: v1.2
+        relation: Ukrainian adaptation
+        local_paths:
+          html: documents/005-when-time-becomes-relational/ua/index.html
+          markdown: documents/005-when-time-becomes-relational/METACADEMY_DOCUMENT_005_WHEN_TIME_BECOMES_RELATIONAL_UA_v1.2.md
+          pdf: documents/005-when-time-becomes-relational/METACADEMY_DOCUMENT_005_WHEN_TIME_BECOMES_RELATIONAL_UA_v1.2.pdf
+        sha256:
+          markdown: 482dd26fcaf3d0c2bde89d8eb6dc693d10a701848c195958e657dcdbfc3d03fa
+          pdf: eb6db1e9fc2a12441791612be1032b56e50f65456cdb3a71610e4644b7877a24
     supersedes: null
     external_links: []
 external_large_artifacts:
