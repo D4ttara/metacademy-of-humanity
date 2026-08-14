@@ -14,10 +14,12 @@ discipline_protocol: "MYOGA_DISCIPLINE_PROTOCOL_v0.1.md"
 runtime_bridge: "MYOGA_RUNTIME_AND_MSL_BRIDGE_v0.5.md"
 validation_layer: "MYOGA_CASE_LAB_VALIDATION_v0.6.md"
 benchmark_layer: "MYOGA_CORPUS_BENCHMARK_v0.7.md"
-current_executable_research_engine: "M{Y}OGA_JYOTISH_V0_7"
+reference_corpus_layer: "MYOGA_REFERENCE_CORPUS_v0.8.md"
+current_executable_research_engine: "M{Y}OGA_JYOTISH_V0_8"
 msl_compatibility_runtime: "0.9.1a1"
-msl_research_frontier: "0.9.2a1"
-math_status: "EXECUTABLE_V0_7 / VERIFIED_PACKAGE / TEXT_CRITICAL_FIELDS_MAY_REMAIN_OPEN"
+msl_benchmark_frontier: "0.9.2a1"
+msl_reference_corpus_frontier: "0.9.3a1"
+math_status: "EXECUTABLE_V0_8 / VERIFIED_PACKAGE / ROUND0_NO_EFFICACY_CLAIM / TEXT_CRITICAL_FIELDS_MAY_REMAIN_OPEN"
 historical_raw_rename: false
 ```
 
@@ -30,11 +32,13 @@ Public research boundaries: classical sources remain classical; M{Y}OGA extensio
 
 ## Current executable research lineage
 
-`v0.1 Varga → v0.2 Relation → v0.3 Time → v0.4 Experience/Event → v0.5 Prediction/Question → v0.6 Case Lab/Validation → v0.7 Corpus/Benchmark`
+`v0.1 Varga → v0.2 Relation → v0.3 Time → v0.4 Experience/Event → v0.5 Prediction/Question → v0.6 Case Lab/Validation → v0.7 Corpus/Benchmark → v0.8 Reference Corpus/Round 0`
 
-The prediction architecture is documented in [`MYOGA_RUNTIME_AND_MSL_BRIDGE_v0.5.md`](MYOGA_RUNTIME_AND_MSL_BRIDGE_v0.5.md), blind/holdout validation in [`MYOGA_CASE_LAB_VALIDATION_v0.6.md`](MYOGA_CASE_LAB_VALIDATION_v0.6.md), and the current corpus/benchmark frontier in [`MYOGA_CORPUS_BENCHMARK_v0.7.md`](MYOGA_CORPUS_BENCHMARK_v0.7.md).
+The prediction architecture is documented in [`MYOGA_RUNTIME_AND_MSL_BRIDGE_v0.5.md`](MYOGA_RUNTIME_AND_MSL_BRIDGE_v0.5.md), blind/holdout validation in [`MYOGA_CASE_LAB_VALIDATION_v0.6.md`](MYOGA_CASE_LAB_VALIDATION_v0.6.md), corpus/benchmark machinery in [`MYOGA_CORPUS_BENCHMARK_v0.7.md`](MYOGA_CORPUS_BENCHMARK_v0.7.md), and the source-passported seed corpus in [`MYOGA_REFERENCE_CORPUS_v0.8.md`](MYOGA_REFERENCE_CORPUS_v0.8.md).
 
-MSL integration is a domain-neutral epistemic bridge, not a claim that M{Y}OGA governs all MSL knowledge. The 0.9.2a1 research frontier adds versioned corpus manifests, method-version pins, cross-round leakage receipts, synthetic-twin non-independence guards, longitudinal benchmark receipts and hypothesis-retirement receipts while preserving the 0.9.1a1 compatibility runtime.
+v0.8 adds public-reference Source Passports, birth-data quality gates, synthetic controls and a reproducible Round 0. Round 0 validates corpus/protocol integrity only and does **not** emit an astrological efficacy verdict. Public exact-time cases are not eligible for high-resolution house/ascendant/D60-sensitive testing until geography and historical timezone provenance are closed.
+
+MSL integration remains a domain-neutral epistemic bridge, not a claim that M{Y}OGA governs all MSL knowledge. The 0.9.3a1 reference-corpus frontier adds source-quality gates, reference-case receipts, resolution eligibility, synthetic-control receipts and corpus-integrity receipts while preserving earlier compatibility/frontier fields.
 
 **Do not retroactively rename historical raw corpora.** Historical lineage is recorded separately from the public manifesto.
 
