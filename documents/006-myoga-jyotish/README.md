@@ -12,8 +12,10 @@ status: "ACTIVE_RESEARCH"
 public_manifesto: "./"
 discipline_protocol: "MYOGA_DISCIPLINE_PROTOCOL_v0.1.md"
 runtime_bridge: "MYOGA_RUNTIME_AND_MSL_BRIDGE_v0.5.md"
-current_executable_research_engine: "M{Y}OGA_JYOTISH_V0_5"
-math_status: "EXECUTABLE_V0_5 / VERIFIED_PACKAGE / TEXT_CRITICAL_FIELDS_MAY_REMAIN_OPEN"
+validation_layer: "MYOGA_CASE_LAB_VALIDATION_v0.6.md"
+current_executable_research_engine: "M{Y}OGA_JYOTISH_V0_6"
+msl_research_snapshot: "0.9.1a1"
+math_status: "EXECUTABLE_V0_6 / VERIFIED_PACKAGE / TEXT_CRITICAL_FIELDS_MAY_REMAIN_OPEN"
 historical_raw_rename: false
 ```
 
@@ -26,9 +28,11 @@ Public research boundaries: classical sources remain classical; M{Y}OGA extensio
 
 ## Current executable research lineage
 
-`v0.1 Varga → v0.2 Relation → v0.3 Time → v0.4 Experience/Event → v0.5 Prediction/Question`
+`v0.1 Varga → v0.2 Relation → v0.3 Time → v0.4 Experience/Event → v0.5 Prediction/Question → v0.6 Case Lab/Validation`
 
-The executable runtime is documented in [`MYOGA_RUNTIME_AND_MSL_BRIDGE_v0.5.md`](MYOGA_RUNTIME_AND_MSL_BRIDGE_v0.5.md). MSL integration is a domain-neutral epistemic bridge, not a claim that M{Y}OGA governs all MSL knowledge.
+The v0.5 prediction architecture is documented in [`MYOGA_RUNTIME_AND_MSL_BRIDGE_v0.5.md`](MYOGA_RUNTIME_AND_MSL_BRIDGE_v0.5.md). The current blind/holdout validation frontier is documented in [`MYOGA_CASE_LAB_VALIDATION_v0.6.md`](MYOGA_CASE_LAB_VALIDATION_v0.6.md).
+
+MSL integration is a domain-neutral epistemic bridge, not a claim that M{Y}OGA governs all MSL knowledge. MSL 0.9.1a1 adds blind-case sealing, explicit validation partitions, matched-case contracts, counterexample receipts and stratified method-comparison receipts.
 
 **Do not retroactively rename historical raw corpora.** Historical lineage is recorded separately from the public manifesto.
 
