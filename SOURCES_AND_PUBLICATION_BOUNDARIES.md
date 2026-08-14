@@ -17,6 +17,7 @@
 - MoH literary corpus: excluded pending a separate Owner publication decision.
 - Internal metagraph, personal context, technical packages, secret-bearing material, private links and local paths: excluded.
 - Document 003: published from an owner-provided Ukrainian Markdown/PDF pair as a Research Brief v1.0. Its Science Aperture #001 provenance is named; it does not republish third-party transcript blocks.
+- Document 006 / `M{Y}OGA JYOTISH`: public Field Manifesto and public discipline protocol are included. Historical raw conversation corpora, private life-case material and unpublished working books remain outside the public repo and are not retroactively renamed.
 
 ## Known source constraint
 
