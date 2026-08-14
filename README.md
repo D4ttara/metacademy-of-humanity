@@ -14,9 +14,16 @@ GitHub Pages: enabled from the `main` branch through GitHub Actions after the fi
 - concise research-track introductions;
 - a 13-domain map preview that preserves undecided labels as open;
 - the Science Aperture v1.1 public index and editorial reading guide;
-- a small library of public-facing entry points.
+- a small library of public-facing entry points;
 - Document 003, *Життя як організація* — a Ukrainian Research Brief with public PDF and Markdown forms;
+- Document 006, *M{Y}OGA JYOTISH* — a Ukrainian Field Manifesto plus a 108-point public discipline protocol;
 - participation routes for discussions, source-aware corrections, questions and focused pull requests.
+
+## M{Y}OGA JYOTISH
+
+`M{Y}OGA JYOTISH` is the canonical public name of an active research discipline. Short forms are `M{Y}OGA` and machine-safe `MYOGA`; `M{Y}OGA JYOTIṢA` is a scholarly transliteration sibling.
+
+`{Y}` is the JOIN FIELD: the same Y belongs to `MY` and `YOGA`. Historical raw corpora are not retroactively renamed. See `documents/006-myoga-jyotish/` and `research/myoga-jyotish/`.
 
 ## How to read Science Aperture
 
