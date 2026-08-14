@@ -50,8 +50,9 @@ research_spine:
   - semantic_migration_between_astrological_systems
 publication:
   manifesto_md: "documents/006-myoga-jyotish/METACADEMY_DOCUMENT_006_MYOGA_JYOTISH_MANIFEST_UA_v1.0.md"
-  manifesto_pdf: "documents/006-myoga-jyotish/METACADEMY_DOCUMENT_006_MYOGA_JYOTISH_MANIFEST_UA_v1.0.pdf"
   protocol: "documents/006-myoga-jyotish/MYOGA_DISCIPLINE_PROTOCOL_v0.1.md"
   web: "documents/006-myoga-jyotish/index.html"
+  manifesto_pdf_status: "VERIFIED_LOCAL_SPECIMEN_NOT_PUBLISHED_IN_REPOSITORY"
+  manifesto_pdf_sha256: "b7eb1627c3521fc046c6bd778839bb21b46341877c24591e9ce03412a251adc2"
 history_boundary:
   rule: "Historical raw research corpora keep their original names and identifiers for provenance; they are not silently renamed."
