@@ -1,0 +1,57 @@
+schema: metacademy-research-field/v1
+canonical_name: "M{Y}OGA JYOTISH"
+scholarly_name: "M{Y}OGA JYOTIṢA"
+aliases:
+  - "M{Y}OGA"
+  - "MYOGA"
+status: active_research
+date_declared: 2026-08-14
+institution: "MET[Ȧ]CADEMY OF HUMANITY"
+public_document: "documents/006-myoga-jyotish/"
+founder_provenance:
+  owner: "Ievgen Karogod / Dattara"
+  devotional_reading:
+    M: "Śiva / Rudra offering; Dattātreya as guru-wisdom lineage"
+    MY: "local embodiment / my yoga"
+  status: "FOUNDER_DEVOTIONAL_PROVENANCE; not universal etymology"
+symbol_system:
+  full: "M{Y}OGA JYOTISH"
+  braces:
+    reading: "field / transformable relation / conjunction-space"
+    source_relation: "compatible with current MET[Ȧ]CADEMY sign grammar where braces mark field/process states"
+  delta:
+    rule: "SYNTHESIS_GAIN = RESULT - SIMPLE_SUM_OF_SOURCES"
+    note: "the braces are not a literal mathematical delta operator; delta is the explicit research operator for emergent difference"
+epistemic_classes:
+  - CLASSICAL_SOURCE
+  - LATER_TRADITION
+  - ASTRONOMICAL_MATHEMATICAL
+  - LIVED_PROVENANCE
+  - MYOGA_HYPOTHESIS
+  - METAPHYSICAL_RESEARCH
+  - METAPHOR
+  - UNKNOWN
+core_guards:
+  - "JOIN != ERASE"
+  - "MAP != TERRITORY"
+  - "PRECISION != TRUTH"
+  - "SENSITIVITY != VALIDITY"
+  - "SOURCE != INTERPRETATION"
+  - "TRADITION != MYOGA_EXTENSION"
+  - "EVERYTHING_MAY_ENTER_THE_GRAPH"
+  - "NOTHING_ENTERS_WITHOUT_PROVENANCE"
+research_spine:
+  - varga_ontology_and_mathematics
+  - outer_planet_individualization
+  - relational_fingerprint
+  - jagriti_activation
+  - rectification_and_uncertainty
+  - counterexamples_and_holdout_validation
+  - semantic_migration_between_astrological_systems
+publication:
+  manifesto_md: "documents/006-myoga-jyotish/METACADEMY_DOCUMENT_006_MYOGA_JYOTISH_MANIFEST_UA_v1.0.md"
+  manifesto_pdf: "documents/006-myoga-jyotish/METACADEMY_DOCUMENT_006_MYOGA_JYOTISH_MANIFEST_UA_v1.0.pdf"
+  protocol: "documents/006-myoga-jyotish/MYOGA_DISCIPLINE_PROTOCOL_v0.1.md"
+  web: "documents/006-myoga-jyotish/index.html"
+history_boundary:
+  rule: "Historical raw research corpora keep their original names and identifiers for provenance; they are not silently renamed."
