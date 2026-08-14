@@ -53,6 +53,9 @@ publication:
   protocol: "documents/006-myoga-jyotish/MYOGA_DISCIPLINE_PROTOCOL_v0.1.md"
   web: "documents/006-myoga-jyotish/index.html"
   manifesto_pdf_status: "VERIFIED_LOCAL_SPECIMEN_NOT_PUBLISHED_IN_REPOSITORY"
-  manifesto_pdf_sha256: "b7eb1627c3521fc046c6bd778839bb21b46341877c24591e9ce03412a251adc2"
+  manifesto_pdf_sha256: "c1c244e984c8ed0885dad20b4d2410a8042c915101e464a42eab42318b849073"
+  manifesto_pdf_typography: "IBM Plex Sans + IBM Plex Serif + IBM Plex Mono"
+  manifesto_pdf_font_fallback: "NONE"
+  manifesto_pdf_supersedes_sha256: "b7eb1627c3521fc046c6bd778839bb21b46341877c24591e9ce03412a251adc2"
 history_boundary:
   rule: "Historical raw research corpora keep their original names and identifiers for provenance; they are not silently renamed."
