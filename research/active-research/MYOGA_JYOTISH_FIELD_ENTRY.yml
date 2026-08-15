@@ -8,175 +8,78 @@ status: active_research
 date_declared: 2026-08-14
 institution: "MET[Ȧ]CADEMY OF HUMANITY"
 public_document: "documents/006-myoga-jyotish/"
-founder_provenance:
-  owner: "Ievgen Karogod / Dattara"
-  devotional_reading:
-    M: "Śiva / Rudra offering; Dattātreya as guru-wisdom lineage"
-    MY: "local embodiment / my yoga"
-  status: "FOUNDER_DEVOTIONAL_PROVENANCE; not universal etymology"
-symbol_system:
-  full: "M{Y}OGA JYOTISH"
-  braces:
-    reading: "field / transformable relation / conjunction-space"
-    source_relation: "compatible with current MET[Ȧ]CADEMY sign grammar where braces mark field/process states"
-  delta:
-    rule: "SYNTHESIS_GAIN = RESULT - SIMPLE_SUM_OF_SOURCES"
-    note: "the braces are not a literal mathematical delta operator; delta is the explicit research operator for emergent difference"
-epistemic_classes:
-  - CLASSICAL_SOURCE
-  - LATER_TRADITION
-  - ASTRONOMICAL_MATHEMATICAL
-  - LIVED_PROVENANCE
-  - MYOGA_HYPOTHESIS
-  - METAPHYSICAL_RESEARCH
-  - METAPHOR
-  - UNKNOWN
-core_guards:
-  - "JOIN != ERASE"
-  - "MAP != TERRITORY"
-  - "PRECISION != TRUTH"
-  - "SENSITIVITY != VALIDITY"
+
+frontier:
+  empirical_ancestor: "M{Y}OGA_JYOTISH_V0_16"
+  engineering_audit_frontier: "M{Y}OGA_V0_16_1_INTERMEDIATE_AUDIT_HARDENING"
+  msl_executable_frontier: "0.10.2a1"
+  new_empirical_round: false
+  historical_results_rewritten: false
+  distribution_status: "PRIVATE_RESEARCH_ARCHIVE_NOT_DISTRIBUTABLE"
+
+version_axes:
+  conceptual: "MSL 3.x conceptual / pre-textbook"
+  executable_research: "MSL 0.10.2a1 / M{Y}OGA v0.16.1 audit hardening"
+  compatibility_runtime: "separate axis; not a research-frontier claim"
+  commercial_product: "separate axis; no commercial build declared here"
+
+public_epistemic_guards:
+  - "PROVENANCE BEFORE CERTAINTY"
   - "SOURCE != INTERPRETATION"
   - "SOURCE_LAYER != LENS"
   - "TRADITION != MYOGA_EXTENSION"
-  - "PREDICTION != PROPHECY"
-  - "ANSWER_PRECISION <= EVIDENCE_PRECISION"
+  - "PRECISION != TRUTH"
   - "NEGATIVE_RESULT_STAYS"
   - "BLIND_BEFORE_REVEAL"
   - "HOLDOUT != TRAIN"
-  - "LEAKAGE_INVALIDATES_BLIND_CLAIM"
-  - "COUNTEREXAMPLES_STAY"
-  - "NO_UNIVERSAL_TRUTH_SCORE"
-  - "NO_CROSS_LAYER_AVERAGING"
-  - "CORPUS_VERSION_PINNED"
-  - "METHOD_VERSION_PINNED"
-  - "METHOD_VERSIONS_NEVER_SILENTLY_MERGED"
-  - "HOLDOUT_EXPOSURE_INVALIDATES_CLEAN_BLIND_CLAIM"
-  - "SYNTHETIC_TWIN_NE_INDEPENDENT_EVIDENCE"
-  - "HYPOTHESIS_RETIREMENT_NE_ERASURE"
-  - "CORPUS_CONSTRUCTION != DOMAIN_VALIDATION"
-  - "REQUESTED_RESOLUTION <= SOURCE_SUPPORTED_RESOLUTION"
-  - "DATE_ONLY != EXACT_TIME"
-  - "HIGH_RESOLUTION_REQUIRES_TIME_GEO_TIMEZONE"
-  - "SYNTHETIC_CONTROL != INDEPENDENT_HISTORICAL_EVIDENCE"
-  - "EVERYTHING_MAY_ENTER_THE_GRAPH"
-  - "NOTHING_ENTERS_WITHOUT_PROVENANCE"
-research_spine:
-  - varga_ontology_and_mathematics
-  - outer_planet_individualization
-  - relational_fingerprint
-  - jagriti_activation
-  - rectification_and_uncertainty
-  - counterexamples_and_holdout_validation
-  - semantic_migration_between_astrological_systems
-  - prediction_preregistration_and_falsification
-  - competing_and_null_hypotheses
-  - descriptive_calibration_and_negative_evidence
-  - question_precision_budget
-  - blind_case_validation
-  - matched_case_contracts
-  - stratified_method_comparison
-  - counterexample_harvesting
-  - versioned_corpus_manifests
-  - deterministic_stratified_splits
-  - method_version_pinning
-  - cross_round_leakage_audits
-  - longitudinal_benchmarking
-  - synthetic_twin_stress_tests
-  - hypothesis_retirement_with_lineage
-  - source_passported_public_reference_cases
-  - birth_data_quality_gating
-  - corpus_integrity_round0
-runtime:
-  current_engine: "M{Y}OGA_JYOTISH_V0_8"
-  lineage:
-    - "v0.1 Varga Operator Engine"
-    - "v0.2 Relation Engine"
-    - "v0.3 Time Engine"
-    - "v0.4 Experience / Event Engine"
-    - "v0.5 Prediction / Question Engine"
-    - "v0.6 Case Lab / Validation Engine"
-    - "v0.7 Corpus / Benchmark Engine"
-    - "v0.8 Reference Corpus / Round 0 Integrity Engine"
-  source_zip_sha256: "c8bd89e93bbfe2989e6c0899791ca51f401833cdc0d545b553ac673ce010c49a"
-  source_zip_bytes: 11902633
-  packaged_regression: "PASS / EXIT 0"
-  js_test_files: 152
-  python_base_tests: 3
-  msl_myoga_dotlinux_python_tests: 69
-  dotvm_c_test: "PASS"
-  drive_file_id: "1IeTraeaCdP41XVpYQlihQDGvXzz3y8ga"
-  drive_root_folder_id: "1zTDw2KCkrre6my9aAH_LIRTfubVbz_b0"
-  drive_reference_corpus_folder_id: "1-YqzfoShLEiVjdh9TdicJfeMIlWvJg4E"
-  drive_msl_0_9_3_folder_id: "1HabBbzzbTNDCVIll5CNZ6tsFZ8gJAp0s"
-reference_corpus:
-  corpus_id: "MYOGA_REFERENCE_CORPUS_2026_08_15"
-  dataset_version: "0.8.0"
-  corpus_sha256: "a776c2a03385e2b634e83d285f912ba4c71301ea0d13f4386fb10d3e95f1515c"
-  round0_sha256: "c2048574ea455b60eedffd93f36801267099ab7b458a9c4b7cb2b814a3985999"
-  public_historical_cases: 4
-  synthetic_controls: 6
-  source_passports: 11
-  exact_public_civil_time_sources: 2
-  public_high_resolution_eligible_round0: 0
-  round0_claim_boundary: "CORPUS_AND_PROTOCOL_INTEGRITY_ONLY__NO_ASTROLOGICAL_EFFICACY_CLAIM"
-msl_bridge:
-  compatibility_runtime: "MSL 0.9.1a1"
-  benchmark_frontier: "MSL 0.9.2a1"
-  reference_corpus_frontier: "MSL 0.9.3a1"
-  role: "M{Y}OGA is an executable laboratory case for domain-neutral MSL epistemic, validation, benchmark and reference-corpus mechanisms; it is not a fact authority over MSL."
-  mechanisms:
-    - SOURCE_LAYER_NE_LENS
-    - EVIDENCE_PASSPORT_V2
-    - IMMUTABLE_OVERLAY
-    - PRECISION_BUDGET
-    - PREREGISTRATION_HASH
-    - NEGATIVE_EVIDENCE_RECEIPT
-    - HOLDOUT_SEPARATION
-    - DETERMINISTIC_RECURRENCE_NE_INDEPENDENT_EVIDENCE
-    - COMPETING_AND_NULL_HYPOTHESES
-    - BLIND_CASE_SEAL
-    - VALIDATION_PARTITION
-    - MATCHED_CASE_CONTRACT
-    - COUNTEREXAMPLE_RECEIPT
-    - METHOD_COMPARISON_RECEIPT
-    - CORPUS_MANIFEST
-    - METHOD_VERSION_PIN
-    - CROSS_ROUND_LEAKAGE_AUDIT
-    - SYNTHETIC_TWIN_RECEIPT
-    - LONGITUDINAL_BENCHMARK_RECEIPT
-    - HYPOTHESIS_RETIREMENT_RECEIPT
-    - SOURCE_QUALITY_GATE
-    - REFERENCE_CASE_RECEIPT
-    - RESOLUTION_ELIGIBILITY_RECEIPT
-    - SYNTHETIC_CONTROL_RECEIPT
-    - CORPUS_INTEGRITY_ROUND_RECEIPT
+  - "RETAIN_ACTIVE != TRUTH"
+  - "LOW_COVERAGE_REVIEW != METHOD_FALSEHOOD"
+  - "PUBLIC_SUMMARY != SOURCE_RELEASE"
+  - "RESEARCH_ARCHIVE != DISTRIBUTABLE_BUILD"
+  - "PRIVATE_DATA_MUST_BE_UNREPRESENTABLE_IN_PUBLIC_BUILD"
+  - "OPPORTUNITY != INDEPENDENT_CASE"
+  - "WORK != EDITION"
+  - "PRODUCT_DESCENDANT != RESEARCH_REOPEN"
+
+publication_firewall:
+  policy: "governance/PUBLICATION_FIREWALL.md"
+  default: deny_unclassified_distribution
+  public_surfaces:
+    - PUBLIC_CONSTITUTION
+    - PUBLIC_RESEARCH_SUMMARY
+    - INTENTIONALLY_PUBLIC_ARTIFACT
+  non_public_surfaces:
+    - PRIVATE_METHOD
+    - SEALED_EVIDENCE
+    - PRIVATE_PII
+    - PRIVATE_RESEARCH_ARCHIVE
+    - COMMERCIAL_PRODUCT_INTERNALS
+  private_locator_ids_in_public_metadata: false
+  exact_private_distribution_paths_in_public_metadata: false
+
+research_lineage:
+  summary: "v0.1-v0.16 empirical/research lineage is preserved by historical receipts; v0.16.1 hardens integrity and publication boundaries without creating a new empirical result."
+  detailed_historical_receipts: "documents/006-myoga-jyotish/"
+  note: "Some earlier public receipts disclosed more methodology than the v0.16.1 firewall permits for future publication. Ordinary Git commits cannot revoke already-published Git history."
+
 predecessor_lineage:
   source_identity: "SamYoga Jyotish"
   status: "CLOSED_AS_ACTIVE_PROJECT__MIGRATED_TO_MYOGA"
   target_identity: "M{Y}OGA JYOTISH"
   historical_source_identifiers_preserved: true
   compatibility_namespace: "samyoga"
-  book_one_status: "HISTORICAL_SOURCE_PRESERVING_EXTERNAL_AI_DRAFT / NON_CANONICAL / NO_RUNTIME_AUTHORITY"
+  possible_commercial_descendant_rule: "PRODUCT_DESCENDANT_OF_CLOSED_RESEARCH_LINE"
+  research_reopened_by_product: false
+
 publication:
   manifesto_md: "documents/006-myoga-jyotish/METACADEMY_DOCUMENT_006_MYOGA_JYOTISH_MANIFEST_UA_v1.0.md"
   protocol: "documents/006-myoga-jyotish/MYOGA_DISCIPLINE_PROTOCOL_v0.1.md"
-  runtime_msl_bridge: "documents/006-myoga-jyotish/MYOGA_RUNTIME_AND_MSL_BRIDGE_v0.5.md"
-  validation_layer: "documents/006-myoga-jyotish/MYOGA_CASE_LAB_VALIDATION_v0.6.md"
-  benchmark_layer: "documents/006-myoga-jyotish/MYOGA_CORPUS_BENCHMARK_v0.7.md"
-  reference_corpus_layer: "documents/006-myoga-jyotish/MYOGA_REFERENCE_CORPUS_v0.8.md"
-  migration_lineage: "research/lineage/SAMYOGA_TO_MYOGA_MIGRATION_2026-08-15.md"
-  msl_integration: "research/msl/MSL_MYOGA_INTEGRATION_2026-08-15.md"
-  msl_validation: "research/msl/MSL_VALIDATION_PROTOCOL_0_9_1_2026-08-15.md"
-  msl_benchmark: "research/msl/MSL_CORPUS_BENCHMARK_PROTOCOL_0_9_2_2026-08-15.md"
-  msl_reference_corpus: "research/msl/MSL_REFERENCE_CORPUS_PROTOCOL_0_9_3_2026-08-15.md"
-  web: "documents/006-myoga-jyotish/index.html"
-  manifesto_pdf_status: "VERIFIED_LOCAL_SPECIMEN_NOT_PUBLISHED_IN_REPOSITORY"
-  manifesto_pdf_sha256: "c1c244e984c8ed0885dad20b4d2410a8042c915101e464a42eab42318b849073"
-  manifesto_pdf_typography: "IBM Plex Sans + IBM Plex Serif + IBM Plex Mono"
-  manifesto_pdf_font_fallback: "NONE"
-  manifesto_pdf_supersedes_sha256: "b7eb1627c3521fc046c6bd778839bb21b46341877c24591e9ce03412a251adc2"
-math_status: "EXECUTABLE_V0_8 / VERIFIED_PACKAGE / ROUND0_NO_EFFICACY_CLAIM / TEXT_CRITICAL_FIELDS_MAY_REMAIN_OPEN"
+  public_entry: "documents/006-myoga-jyotish/README.md"
+  publication_firewall: "governance/PUBLICATION_FIREWALL.md"
+  manifesto_body_changed_by_v0_16_1_audit: false
+
 history_boundary:
   rule: "Historical raw research corpora keep their original names and identifiers for provenance; they are not silently renamed."
   migration_rule: "Migration closes the active predecessor identity but never deletes or retroactively renames its historical corpus."
+
+copyright: "© 2026 Ievgen Karogod / Dattara · MET[Ȧ]CADEMY OF HUMANITY (MoH)"
