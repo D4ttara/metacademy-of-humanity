@@ -25,7 +25,7 @@ GitHub Pages: enabled from the `main` branch through GitHub Actions after the fi
 
 `{Y}` is the JOIN FIELD: the same Y belongs to `MY` and `YOGA`. Historical raw corpora are not retroactively renamed. See `documents/006-myoga-jyotish/` and `research/myoga-jyotish/`.
 
-The current verified executable research frontier is **v0.12 Failure-Driven Revision**, paired with **MSL 0.9.7a1 Failure Revision + Promotion Lab II**. v0.11 remains an immutable negative result. v0.12 freezes two competing revision candidates and a day-precision null before any new unseen case is selected; retrospective Princess Anne replay is training diagnosis only, not validation or an efficacy claim.
+The current verified executable research frontier is **v0.13 Multi-Case Prospective Batch**, paired with **MSL 0.9.8a1 Prospective Batch Evaluation**. Ten source-gated event opportunities across three cases were evaluated with v0.12 revision methods frozen before case selection. Neither revision produced more hits than the frozen date-only null. The revisions reduced contradictions mainly by abstaining more often, so no predictive advantage is claimed: `ABSTENTION BENEFIT != PREDICTIVE ADVANTAGE`.
 
 ## How to read Science Aperture
 
