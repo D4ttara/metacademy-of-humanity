@@ -19,7 +19,8 @@ source_closure_layer: "MYOGA_SOURCE_CLOSURE_v0.9.md"
 method_freeze_layer: "MYOGA_METHOD_FREEZE_v0.10.md"
 blind_round_layer: "MYOGA_BLIND_ROUND_v0.11.md"
 failure_revision_layer: "MYOGA_FAILURE_REVISION_v0.12.md"
-current_executable_research_engine: "M{Y}OGA_JYOTISH_V0_12"
+prospective_batch_layer: "MYOGA_PROSPECTIVE_BATCH_v0.13.md"
+current_executable_research_engine: "M{Y}OGA_JYOTISH_V0_13"
 msl_compatibility_runtime: "0.9.1a1"
 msl_benchmark_frontier: "0.9.2a1"
 msl_reference_corpus_frontier: "0.9.3a1"
@@ -27,6 +28,7 @@ msl_cross_workstream_frontier: "0.9.4a1"
 msl_promotion_frontier: "0.9.5a1"
 msl_blind_evaluation_frontier: "0.9.6a1"
 msl_failure_revision_promotion2_frontier: "0.9.7a1"
+msl_prospective_batch_frontier: "0.9.8a1"
 msl_version_axes: "MSL 3.x conceptual/pre-textbook != MSL 0.9.x executable research runtime"
 parent_method_freeze_sha256: "307780dc21d009e1f5a05757472e943caf1422710dac800bc368eba6436ca8fc"
 v0_11_round_status: "MACHINE_BLIND_EVALUATION / RESEARCHER_NOT_BLIND"
@@ -39,8 +41,16 @@ v0_12_revision_freeze_sha256: "2badfc6b8215e2892509942e6d8358633d98972ffb3837633
 v0_12_revision_a: "MYOGA_VIMSHOTTARI_DOMAIN_CONVERGENCE_STRICT_V012"
 v0_12_revision_b: "MYOGA_VIMSHOTTARI_PD_DOMAIN_CONVERGENCE_STRICT_V012"
 v0_12_null: "NULL_DATE_ONLY_HASH_DOMAIN_BASELINE_V012"
-source_package_sha256: "e7c345d823ae9c39ae88578ec5416cce424f8e454d00765a382a1a903f8535fc"
-math_status: "EXECUTABLE_V0_12 / VERIFIED_PACKAGE / COMPETING_REVISIONS_FROZEN_BEFORE_NEW_CASE_SELECTION / V0_11_NEGATIVE_RESULT_PRESERVED / NO_EFFICACY_CLAIM"
+v0_13_visible_batch_sha256: "4dbc0a6a834c03eb12b9777877bf200da69f4e4854bbae4a3ff5f2ead74bed82"
+v0_13_prediction_seal_sha256: "126237a785a1b7892b0a2fff5ebf3853e6312a0d3b94eae19fcef6f2be12b458"
+v0_13_result_sha256: "715c37882f30d630ccc15d67c93d94aea0cf03ca354a2c73d73bb4df3722504d"
+v0_13_parent_result: "1 HIT / 7 CONTRADICTIONS / 2 UNRESOLVED / coverage 0.80"
+v0_13_strict_a_result: "0 HIT / 2 CONTRADICTIONS / 8 UNRESOLVED / coverage 0.20"
+v0_13_pd_b_result: "1 HIT / 5 CONTRADICTIONS / 4 UNRESOLVED / coverage 0.60"
+v0_13_null_result: "1 HIT / 9 CONTRADICTIONS / coverage 1.00"
+v0_13_conclusion: "NO_PROSPECTIVE_HIT_COUNT_ADVANTAGE_OVER_NULL_OBSERVED"
+source_package_sha256: "f172932c5f9e0528af8e668e7a54c98b96d478673f77c359668e65c5eceb11bc"
+math_status: "EXECUTABLE_V0_13 / VERIFIED_PACKAGE / METHODS_UNCHANGED_ACROSS_BATCH / NEGATIVE_NEUTRAL_RESULT / NO_EFFICACY_CLAIM"
 historical_raw_rename: false
 ```
 
@@ -53,17 +63,19 @@ Public research boundaries: classical sources remain classical; M{Y}OGA extensio
 
 ## Current executable research lineage
 
-`v0.1 Varga → v0.2 Relation → v0.3 Time → v0.4 Experience/Event → v0.5 Prediction/Question → v0.6 Case Lab/Validation → v0.7 Corpus/Benchmark → v0.8 Reference Corpus/Round 0 → v0.9 Source Closure → v0.10 Method Freeze → v0.11 Blind Round/Negative Result → v0.12 Failure-Driven Revision`
+`v0.1 Varga → v0.2 Relation → v0.3 Time → v0.4 Experience/Event → v0.5 Prediction/Question → v0.6 Case Lab/Validation → v0.7 Corpus/Benchmark → v0.8 Reference Corpus/Round 0 → v0.9 Source Closure → v0.10 Method Freeze → v0.11 Blind Round/Negative Result → v0.12 Failure-Driven Revision → v0.13 Multi-Case Prospective Batch`
 
-v0.11 remains an immutable negative lineage event: the frozen primary and frozen deterministic null each produced `1 HIT / 3 CONTRADICTIONS / NOT_SUPPORTED`, so no descriptive primary advantage was observed.
+v0.11 remains an immutable negative lineage event. v0.12 created two new competing revisions and froze them before new-case selection. v0.13 then evaluated those unchanged methods across ten source-gated event opportunities in Prince William, Prince Harry and Princess Eugenie.
 
-v0.12 does not reinterpret that outcome as a success. It records a typed failure diagnosis, creates two new competing method versions and a day-precision null, and freezes all three **before new unseen-case selection**. Candidate A adds strict abstention to the parent MD+AD feature profile; Candidate B tests MD+AD+Pratyantardaśā temporal depth with the same strict abstention gate. Their Princess Anne replay is explicitly training diagnosis, not prospective validation and not a basis for selecting a winner.
+The v0.13 batch found no hit-count advantage for either revision over the frozen date-only null. STRICT-A returned zero hits at 20% coverage; PD-B returned one hit, tying the null while covering 60% of opportunities. The revisions produced fewer contradictions by abstaining more often, so the result is recorded as calibration behavior rather than predictive superiority: `ABSTENTION BENEFIT != PREDICTIVE ADVANTAGE`.
 
-The nested-daśā source anchor does not turn the combined classifier into a classical formula. The combined event-domain rules remain `M{Y}OGA_EXTENSION` hypotheses with their own method IDs and lineage.
+The batch represented four of six frozen domains. `PRACTICE_DEVOTION` and `ADVERSITY_CRISIS` were not represented, so the result cannot adjudicate those domains. One planned event failed the source gate and remained `SOURCE_PENDING_NOT_EVALUATED`.
+
+The machine path was blind to event domains, but researcher blindness is not claimed because semantic biographical information was encountered during source archaeology. `PROSPECTIVE RELATIVE TO FREEZE != RESEARCHER BLIND`.
 
 The Python Astroprocessor research chain has canonical implementation ownership under `myoga.*`; retained `samyoga.*` imports are compatibility shims for historical software paths. This code migration does not rename or rewrite historical SamYoga publication artifacts.
 
-MSL integration remains domain-neutral. The `0.9.7a1` frontier adds Failure-Driven Revision receipts and Promotion Lab II for Mi6 v5.2–v5.3. Sixteen upstream candidate IDs map to fifteen experimental executable contract families; stable-canon mutation remains false. See [`../../research/msl/MSL_FAILURE_REVISION_PROMOTION_0_9_7_2026-08-15.md`](../../research/msl/MSL_FAILURE_REVISION_PROMOTION_0_9_7_2026-08-15.md).
+MSL integration remains domain-neutral. The `0.9.8a1` frontier evaluates methods componentwise as `<HIT, CONTRADICTION, COVERAGE, ABSTENTION, SPECIFICITY, STABILITY>` and prohibits collapsing lower contradictions plus lower coverage into a synthetic winner score. See [`../../research/msl/MSL_PROSPECTIVE_BATCH_0_9_8_2026-08-15.md`](../../research/msl/MSL_PROSPECTIVE_BATCH_0_9_8_2026-08-15.md).
 
 **Do not retroactively rename historical raw corpora.** Historical lineage is recorded separately from the public manifesto.
 
