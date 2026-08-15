@@ -25,7 +25,7 @@ GitHub Pages: enabled from the `main` branch through GitHub Actions after the fi
 
 `{Y}` is the JOIN FIELD: the same Y belongs to `MY` and `YOGA`. Historical raw corpora are not retroactively renamed. See `documents/006-myoga-jyotish/` and `research/myoga-jyotish/`.
 
-The current verified executable research frontier is **v0.15 Governance Round A / Domain Completion**, paired with **MSL 0.10.0a1 Governance Evidence Accumulation**. The first governance-eligible post-v0.14 batch contributes 1/2 required batches, 10/20 opportunities, 3/3 cases and 5/5 required domains. Governance adjudication aperture remains closed; no method is retained or retired. `GOVERNANCE PROGRESS != GOVERNANCE VERDICT`.
+The current verified executable research frontier is **v0.16 Governance Round B / Adjudication Aperture**, paired with **MSL 0.10.1a1 Governance Adjudication**. Two frozen-policy post-v0.14 batches now provide 20 opportunities across six cases and all six frozen domains. Under the predeclared governance rule, STRICT-A is `LOW_COVERAGE_REVIEW` and PD-B is `RETAIN_ACTIVE`. These are version-scoped research governance states, not efficacy claims or truth verdicts. `RETAIN_ACTIVE != TRUTH`.
 
 ## How to read Science Aperture
 

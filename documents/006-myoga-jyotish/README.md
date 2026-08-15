@@ -22,7 +22,8 @@ failure_revision_layer: "MYOGA_FAILURE_REVISION_v0.12.md"
 prospective_batch_layer: "MYOGA_PROSPECTIVE_BATCH_v0.13.md"
 method_governance_layer: "MYOGA_METHOD_GOVERNANCE_v0.14.md"
 governance_round_a_layer: "MYOGA_GOVERNANCE_ROUND_A_v0.15.md"
-current_executable_research_engine: "M{Y}OGA_JYOTISH_V0_15"
+governance_round_b_layer: "MYOGA_GOVERNANCE_ROUND_B_v0.16.md"
+current_executable_research_engine: "M{Y}OGA_JYOTISH_V0_16"
 msl_compatibility_runtime: "0.9.1a1"
 msl_benchmark_frontier: "0.9.2a1"
 msl_reference_corpus_frontier: "0.9.3a1"
@@ -33,6 +34,7 @@ msl_failure_revision_promotion2_frontier: "0.9.7a1"
 msl_prospective_batch_frontier: "0.9.8a1"
 msl_method_governance_frontier: "0.9.9a1"
 msl_governance_accumulation_frontier: "0.10.0a1"
+msl_governance_adjudication_frontier: "0.10.1a1"
 msl_version_axes: "MSL 3.x conceptual/pre-textbook != MSL 0.x executable research runtime"
 parent_method_freeze_sha256: "307780dc21d009e1f5a05757472e943caf1422710dac800bc368eba6436ca8fc"
 v0_11_round_status: "MACHINE_BLIND_EVALUATION / RESEARCHER_NOT_BLIND"
@@ -66,8 +68,24 @@ v0_15_pd_result: "1 HIT / 5 CONTRADICTIONS / 4 UNRESOLVED / coverage 0.60"
 v0_15_null_result: "0 HIT / 10 CONTRADICTIONS / coverage 1.00"
 v0_15_governance_progress: "1/2 batches / 10/20 opportunities / 3/3 cases / 5/5 required domains"
 v0_15_governance_status: "BATCH_1_ACCUMULATED__NO_RETIREMENT_ADJUDICATION_YET"
-source_package_sha256: "19eee827e8609174882021e98d871c55e2f5977a135ddf36d2ed9d3bcb6e5f83"
-math_status: "EXECUTABLE_V0_15 / VERIFIED_PACKAGE / FIRST_POST_GOVERNANCE_FREEZE_BATCH / NO_RETIREMENT_ADJUDICATION / NO_EFFICACY_CLAIM"
+v0_16_visible_batch_sha256: "aa613eb6e28a2f82f7daf5d7a7308868c0053a7494148b407715ea3747a578ef"
+v0_16_prediction_seal_sha256: "505a8d461428f58361dce1248c4fd25710685aec82607053fbd62d8f6c90f933"
+v0_16_result_sha256: "c96ceaafc005d72672b0f2c01ea6348f60ed927cf03c03380d60f7df071aadec"
+v0_16_msl_adjudication_sha256: "74cc4a100cb6d1b26b8c4b6ab6f2d811c8cc370c955c1f2c1cfa0de76d60cc9a"
+v0_16_strict_decision_sha256: "156685f6c66a17207f2ef0ae464792d0c9a0d11013a3e31fb931a653adac8282"
+v0_16_pd_decision_sha256: "d353306b4b256beb71c4611b37cbaef95af1772ae8eb4d372abccfe437b1444f"
+v0_16_round_b_parent_result: "3 HIT / 7 CONTRADICTIONS / coverage 1.00"
+v0_16_round_b_strict_result: "0 HIT / 0 CONTRADICTIONS / 10 UNRESOLVED / coverage 0.00"
+v0_16_round_b_pd_result: "1 HIT / 2 CONTRADICTIONS / 7 UNRESOLVED / coverage 0.30"
+v0_16_round_b_null_result: "1 HIT / 9 CONTRADICTIONS / coverage 1.00"
+v0_16_cross_batch_progress: "2/2 batches / 20/20 opportunities / 6 cases / 6/6 frozen domains"
+v0_16_strict_aggregate: "1 HIT / 2 CONTRADICTIONS / 17 UNRESOLVED / coverage 0.15 / LOW_COVERAGE_REVIEW"
+v0_16_pd_aggregate: "2 HIT / 7 CONTRADICTIONS / 11 UNRESOLVED / coverage 0.45 / RETAIN_ACTIVE"
+v0_16_null_aggregate: "1 HIT / 19 CONTRADICTIONS / coverage 1.00"
+v0_16_governance_status: "ADJUDICATION_APERTURE_OPEN__VERSION_SCOPED_DECISIONS__NO_EFFICACY_CLAIM"
+v0_16_source_sensitivity_rejection: "Caroline Kennedy rejected before seal; zero governance evidence"
+source_package_sha256: "ab5209e220f8868213380d9a00eb9c920f426c0d49182301fb9fd2da37d5d1cb"
+math_status: "EXECUTABLE_V0_16 / VERIFIED_PACKAGE / GOVERNANCE_ADJUDICATION_APERTURE_OPEN / STRICT_LOW_COVERAGE_REVIEW / PD_RETAIN_ACTIVE / NO_EFFICACY_CLAIM"
 historical_raw_rename: false
 ```
 
@@ -80,23 +98,24 @@ Public research boundaries: classical sources remain classical; M{Y}OGA extensio
 
 ## Current executable research lineage
 
-`v0.1 Varga → v0.2 Relation → v0.3 Time → v0.4 Experience/Event → v0.5 Prediction/Question → v0.6 Case Lab/Validation → v0.7 Corpus/Benchmark → v0.8 Reference Corpus/Round 0 → v0.9 Source Closure → v0.10 Method Freeze → v0.11 Blind Round/Negative Result → v0.12 Failure-Driven Revision → v0.13 Multi-Case Prospective Batch → v0.14 Method Governance / Retirement Protocol → v0.15 Governance Round A / Domain Completion`
+`v0.1 Varga → v0.2 Relation → v0.3 Time → v0.4 Experience/Event → v0.5 Prediction/Question → v0.6 Case Lab/Validation → v0.7 Corpus/Benchmark → v0.8 Reference Corpus/Round 0 → v0.9 Source Closure → v0.10 Method Freeze → v0.11 Blind Round/Negative Result → v0.12 Failure-Driven Revision → v0.13 Multi-Case Prospective Batch → v0.14 Method Governance / Retirement Protocol → v0.15 Governance Round A / Domain Completion → v0.16 Governance Round B / Adjudication Aperture`
 
-v0.11 remains an immutable negative lineage event. v0.12 created two competing revisions and froze them before new-case selection. v0.13 evaluated those unchanged methods across ten source-gated opportunities and found no prospective hit-count advantage over the date-only null. v0.14 then froze the governance policy before adjudicative evidence.
+v0.11 remains an immutable negative lineage event. v0.12 created two competing revisions and froze them before new-case selection. v0.13 evaluated those unchanged methods across ten source-gated opportunities and found no prospective hit-count advantage over the date-only null. v0.14 then froze the governance policy before adjudicative evidence. v0.15 supplied the first admissible post-policy-freeze governance batch.
 
-v0.15 is the first post-governance-freeze eligible batch. It contains ten opportunities across Pope Francis, Barack Obama and Coretta Scott King and represents five of six frozen domains, including the previously missing `PRACTICE_DEVOTION` and `ADVERSITY_CRISIS` coverage. The machine path remained blind to event-domain labels; strict researcher blindness is not claimed.
+v0.16 supplies the second admissible batch without changing v0.12 methods or the v0.14 policy. Across Round A + Round B the frozen ledger now contains twenty opportunities, six cases and all six frozen domains, so the predeclared adjudication aperture opens for the first time.
 
-The batch already satisfies the policy breadth requirements of three cases and five represented domains, but only accumulates **1/2 required batches** and **10/20 required opportunities**. Therefore governance adjudication remains closed. No method is retained, retired, revived or retuned in v0.15.
+Under that frozen policy, STRICT-A is `LOW_COVERAGE_REVIEW`: its aggregate coverage is 0.15. PD-B is `RETAIN_ACTIVE`: its aggregate coverage is 0.45 and it records two hits against one hit for the aggregate date-only null. These statuses are version-scoped research-governance decisions. They are not stable-canon promotion, ontological truth claims, or evidence of established astrological efficacy.
 
-`GOVERNANCE PROGRESS != GOVERNANCE VERDICT`  
-`BREADTH THRESHOLD MET != EVIDENCE VOLUME MET`  
-`ONE BATCH != TWO-BATCH POLICY`
+A proposed Caroline Kennedy case failed the declared coordinate-envelope output-stability gate before prediction sealing. It is preserved as source-sensitivity provenance but contributes zero governance evidence. The source uncertainty envelope was not narrowed after observing instability.
 
-Birth-location coordinates were treated as city-level source coordinates with a declared ±10 km envelope. Before reveal, the frozen parent/STRICT-A/PD-B outputs were recomputed at center/north/south/east/west points; all ten opportunities were output-stable. This supports output robustness within the declared envelope but does not invent exact birth-room coordinates.
+`ADJUDICATION APERTURE OPEN != EFFICACY PROOF`  
+`RETAIN ACTIVE != TRUTH`  
+`LOW COVERAGE REVIEW != METHOD FALSEHOOD`  
+`SOURCE SENSITIVITY REJECTION != METHOD FAILURE`
 
 The Python Astroprocessor research chain has canonical implementation ownership under `myoga.*`; retained `samyoga.*` imports are compatibility shims for historical software paths. This code migration does not rename or rewrite historical SamYoga publication artifacts.
 
-MSL integration remains domain-neutral. The `0.10.0a1` frontier adds `GovernanceEvidenceAccumulationReceipt` and `CoordinateEnvelopeReceipt`, separating accumulating governance evidence from an actual governance verdict. See [`../../research/msl/MSL_GOVERNANCE_ACCUMULATION_0_10_0_2026-08-15.md`](../../research/msl/MSL_GOVERNANCE_ACCUMULATION_0_10_0_2026-08-15.md).
+MSL integration remains domain-neutral. The `0.10.1a1` frontier introduces `GovernanceAdjudicationReceipt`, cross-batch frozen-policy adjudication, version-scoped method status and source-sensitivity rejection provenance. See [`../../research/msl/MSL_GOVERNANCE_ADJUDICATION_0_10_1_2026-08-15.md`](../../research/msl/MSL_GOVERNANCE_ADJUDICATION_0_10_1_2026-08-15.md).
 
 **Do not retroactively rename historical raw corpora.** Historical lineage is recorded separately from the public manifesto.
 
