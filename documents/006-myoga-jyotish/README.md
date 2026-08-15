@@ -21,7 +21,8 @@ blind_round_layer: "MYOGA_BLIND_ROUND_v0.11.md"
 failure_revision_layer: "MYOGA_FAILURE_REVISION_v0.12.md"
 prospective_batch_layer: "MYOGA_PROSPECTIVE_BATCH_v0.13.md"
 method_governance_layer: "MYOGA_METHOD_GOVERNANCE_v0.14.md"
-current_executable_research_engine: "M{Y}OGA_JYOTISH_V0_14"
+governance_round_a_layer: "MYOGA_GOVERNANCE_ROUND_A_v0.15.md"
+current_executable_research_engine: "M{Y}OGA_JYOTISH_V0_15"
 msl_compatibility_runtime: "0.9.1a1"
 msl_benchmark_frontier: "0.9.2a1"
 msl_reference_corpus_frontier: "0.9.3a1"
@@ -31,7 +32,8 @@ msl_blind_evaluation_frontier: "0.9.6a1"
 msl_failure_revision_promotion2_frontier: "0.9.7a1"
 msl_prospective_batch_frontier: "0.9.8a1"
 msl_method_governance_frontier: "0.9.9a1"
-msl_version_axes: "MSL 3.x conceptual/pre-textbook != MSL 0.9.x executable research runtime"
+msl_governance_accumulation_frontier: "0.10.0a1"
+msl_version_axes: "MSL 3.x conceptual/pre-textbook != MSL 0.x executable research runtime"
 parent_method_freeze_sha256: "307780dc21d009e1f5a05757472e943caf1422710dac800bc368eba6436ca8fc"
 v0_11_round_status: "MACHINE_BLIND_EVALUATION / RESEARCHER_NOT_BLIND"
 v0_11_primary: "1 HIT / 3 CONTRADICTIONS / NOT_SUPPORTED"
@@ -54,8 +56,18 @@ v0_13_conclusion: "NO_PROSPECTIVE_HIT_COUNT_ADVANTAGE_OVER_NULL_OBSERVED"
 v0_14_governance_policy_sha256: "c2300fb561a9da2910c6784484a3c8372f9357efbb305e79382b6e85af44eb92"
 v0_14_pilot_sha256: "49ad5fe55cbb486b8323b348db482385d165d98d0b8a00573e742b185b7bf3d8"
 v0_14_governance_status: "POLICY_FROZEN__NO_RETIREMENT_ADJUDICATION_YET"
-source_package_sha256: "6792650e3d512f1dea5399c2ffea252688f0ce690d88ddf375e0e854901ba09a"
-math_status: "EXECUTABLE_V0_14 / VERIFIED_PACKAGE / GOVERNANCE_POLICY_FROZEN / FEASIBILITY_PILOT_EXCLUDED_FROM_ADJUDICATION / NO_EFFICACY_CLAIM"
+v0_15_visible_batch_sha256: "8fd76d3fbd246f851dd554ff1cc30ef7fcbf17c73ddfb81e1f2f80a3d3f4b1d4"
+v0_15_prediction_seal_sha256: "97713bbdf45b29ba45bfcf50f75107b9fb4a572aa85d3afbd60c26d2238fc767"
+v0_15_result_sha256: "95eb4eec66e4f64804b496a84a1bcf2a5ff5342787fca2e80a154b76041d1e30"
+v0_15_msl_accumulation_sha256: "f68cf4a2002451cf78dc97b91a2f807f5cdb773456d69cee0e8811d302061683"
+v0_15_parent_result: "4 HIT / 6 CONTRADICTIONS / coverage 1.00"
+v0_15_strict_result: "1 HIT / 2 CONTRADICTIONS / 7 UNRESOLVED / coverage 0.30"
+v0_15_pd_result: "1 HIT / 5 CONTRADICTIONS / 4 UNRESOLVED / coverage 0.60"
+v0_15_null_result: "0 HIT / 10 CONTRADICTIONS / coverage 1.00"
+v0_15_governance_progress: "1/2 batches / 10/20 opportunities / 3/3 cases / 5/5 required domains"
+v0_15_governance_status: "BATCH_1_ACCUMULATED__NO_RETIREMENT_ADJUDICATION_YET"
+source_package_sha256: "19eee827e8609174882021e98d871c55e2f5977a135ddf36d2ed9d3bcb6e5f83"
+math_status: "EXECUTABLE_V0_15 / VERIFIED_PACKAGE / FIRST_POST_GOVERNANCE_FREEZE_BATCH / NO_RETIREMENT_ADJUDICATION / NO_EFFICACY_CLAIM"
 historical_raw_rename: false
 ```
 
@@ -68,22 +80,23 @@ Public research boundaries: classical sources remain classical; M{Y}OGA extensio
 
 ## Current executable research lineage
 
-`v0.1 Varga → v0.2 Relation → v0.3 Time → v0.4 Experience/Event → v0.5 Prediction/Question → v0.6 Case Lab/Validation → v0.7 Corpus/Benchmark → v0.8 Reference Corpus/Round 0 → v0.9 Source Closure → v0.10 Method Freeze → v0.11 Blind Round/Negative Result → v0.12 Failure-Driven Revision → v0.13 Multi-Case Prospective Batch → v0.14 Method Governance / Retirement Protocol`
+`v0.1 Varga → v0.2 Relation → v0.3 Time → v0.4 Experience/Event → v0.5 Prediction/Question → v0.6 Case Lab/Validation → v0.7 Corpus/Benchmark → v0.8 Reference Corpus/Round 0 → v0.9 Source Closure → v0.10 Method Freeze → v0.11 Blind Round/Negative Result → v0.12 Failure-Driven Revision → v0.13 Multi-Case Prospective Batch → v0.14 Method Governance / Retirement Protocol → v0.15 Governance Round A / Domain Completion`
 
-v0.11 remains an immutable negative lineage event. v0.12 created two competing revisions and froze them before new-case selection. v0.13 evaluated those unchanged methods across ten source-gated opportunities and found no prospective hit-count advantage over the date-only null.
+v0.11 remains an immutable negative lineage event. v0.12 created two competing revisions and froze them before new-case selection. v0.13 evaluated those unchanged methods across ten source-gated opportunities and found no prospective hit-count advantage over the date-only null. v0.14 then froze the governance policy before adjudicative evidence.
 
-v0.14 does not retune those methods and does not reinterpret v0.13. It freezes governance criteria for future `RETAIN_ACTIVE`, `LOW_COVERAGE_REVIEW`, `REVIEW_FOR_RETIREMENT`, or `INSUFFICIENT_GOVERNANCE_EVIDENCE` decisions. Retirement adjudication requires at least two post-governance-freeze batches, twenty opportunities, three cases, five of six domains, and the declared coverage gate. No method is retired in v0.14.
+v0.15 is the first post-governance-freeze eligible batch. It contains ten opportunities across Pope Francis, Barack Obama and Coretta Scott King and represents five of six frozen domains, including the previously missing `PRACTICE_DEVOTION` and `ADVERSITY_CRISIS` coverage. The machine path remained blind to event-domain labels; strict researcher blindness is not claimed.
 
-A D20/D30 feasibility pilot was inspected before the governance freeze and is therefore permanently excluded from retirement evidence: `RESEARCHER_PREEXPOSED__NOT_GOVERNANCE_EVIDENCE`. It demonstrates only that the source/ephemeris/domain-completion machinery can execute.
+The batch already satisfies the policy breadth requirements of three cases and five represented domains, but only accumulates **1/2 required batches** and **10/20 required opportunities**. Therefore governance adjudication remains closed. No method is retained, retired, revived or retuned in v0.15.
 
-`POLICY PRECEDES ADJUDICATIVE EVIDENCE`  
-`RETIREMENT != ERASURE`  
-`RETIREMENT != PROOF OF FALSEHOOD`  
-`PILOT != VALIDATION`
+`GOVERNANCE PROGRESS != GOVERNANCE VERDICT`  
+`BREADTH THRESHOLD MET != EVIDENCE VOLUME MET`  
+`ONE BATCH != TWO-BATCH POLICY`
+
+Birth-location coordinates were treated as city-level source coordinates with a declared ±10 km envelope. Before reveal, the frozen parent/STRICT-A/PD-B outputs were recomputed at center/north/south/east/west points; all ten opportunities were output-stable. This supports output robustness within the declared envelope but does not invent exact birth-room coordinates.
 
 The Python Astroprocessor research chain has canonical implementation ownership under `myoga.*`; retained `samyoga.*` imports are compatibility shims for historical software paths. This code migration does not rename or rewrite historical SamYoga publication artifacts.
 
-MSL integration remains domain-neutral. The `0.9.9a1` frontier introduces a typed `MethodGovernanceReceipt`, versioned governance policy, coverage safeguards, retirement/revival lineage, and the rule that a workstream cannot adjudicate with evidence already seen before the governing policy. See [`../../research/msl/MSL_METHOD_GOVERNANCE_0_9_9_2026-08-15.md`](../../research/msl/MSL_METHOD_GOVERNANCE_0_9_9_2026-08-15.md).
+MSL integration remains domain-neutral. The `0.10.0a1` frontier adds `GovernanceEvidenceAccumulationReceipt` and `CoordinateEnvelopeReceipt`, separating accumulating governance evidence from an actual governance verdict. See [`../../research/msl/MSL_GOVERNANCE_ACCUMULATION_0_10_0_2026-08-15.md`](../../research/msl/MSL_GOVERNANCE_ACCUMULATION_0_10_0_2026-08-15.md).
 
 **Do not retroactively rename historical raw corpora.** Historical lineage is recorded separately from the public manifesto.
 
