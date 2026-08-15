@@ -25,7 +25,7 @@ GitHub Pages: enabled from the `main` branch through GitHub Actions after the fi
 
 `{Y}` is the JOIN FIELD: the same Y belongs to `MY` and `YOGA`. Historical raw corpora are not retroactively renamed. See `documents/006-myoga-jyotish/` and `research/myoga-jyotish/`.
 
-The current verified executable research frontier is **v0.10 Method Freeze**, paired with the **MSL 0.9.5a1 Promotion Lab**. The first non-null contestant and its non-astrological null baseline are frozen before unseen-case selection; this is a preregistration milestone, not an efficacy claim.
+The current verified executable research frontier is **v0.11 Blind Round**, paired with the **MSL 0.9.6a1 Blind Evaluation protocol**. The first preregistered machine-blind four-event round returned a negative result: the frozen M{Y}OGA classifier and frozen deterministic null each produced `1 HIT / 3 CONTRADICTIONS / NOT_SUPPORTED`, so no descriptive primary advantage is claimed. The round is explicitly machine-blind but not represented as researcher-blind.
 
 ## How to read Science Aperture
 
