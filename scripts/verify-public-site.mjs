@@ -23,6 +23,7 @@ const required = [
   "documents/004-when-science-reaches-a-plateau/ua/index.html",
   "documents/004-when-science-reaches-a-plateau/METACADEMY_DOCUMENT_004_SCIENCE_ON_A_PLATEAU_EN_v1.1.pdf",
   "documents/004-when-science-reaches-a-plateau/METACADEMY_DOCUMENT_004_SCIENCE_ON_A_PLATEAU_UA_v1.1.pdf",
+  "assets/js/giscus.js",
   "publications/PUBLICATION_REGISTRY.yml", "governance/PUBLICATION_CANON.md",
   "research/active-research/OPERATOR_PASSPORTS.yml", "research/active-research/sa001_sa002.test.mjs",
   "ru/index.html", "ru/documents/index.html", "ru/library/index.html", "participate/index.html", "updates/index.html",
@@ -55,6 +56,17 @@ for (const page of readerPages) {
   if (!readFileSync(join(root, page), "utf8").includes('data-markdown-render="true"')) throw new Error(`Document reader missing: ${page}`);
 }
 
+const commentPages = [...readerPages, "science-aperture/index.html", "ru/science-aperture/index.html"];
+for (const page of commentPages) {
+  const text = readFileSync(join(root, page), "utf8");
+  if (!text.includes("assets/js/giscus.js") || !text.includes("data-giscus")) throw new Error(`Scoped discussion missing: ${page}`);
+}
+for (const page of ["index.html", "manifesto/index.html", "research/index.html", "library/index.html", "documents/index.html", "participate/index.html", "updates/index.html"]) {
+  if (readFileSync(join(root, page), "utf8").includes("data-giscus")) throw new Error(`Discussion escaped permitted scope: ${page}`);
+}
+const giscus = readFileSync(join(root, "assets/js/giscus.js"), "utf8");
+for (const token of ["R_kgDOT2k0ZA", "DIC_kwDOT2k0ZM4DDQAx", "Announcements", "dataset.loading"]) if (!giscus.includes(token)) throw new Error(`giscus configuration missing ${token}`);
+
 const registry = readFileSync(join(root, "publications/PUBLICATION_REGISTRY.yml"), "utf8");
 for (const token of ["life-as-organization", "when-science-reaches-a-plateau", "ANTARAM", "ru_html:", "sha256:"]) if (!registry.includes(token)) throw new Error(`Publication registry missing ${token}`);
 
@@ -62,4 +74,4 @@ const antaram = readFileSync(join(root, "library/antaram/ANTARAM_MIZH_1.61_FREE_
 const antaramHash = createHash("sha256").update(antaram).digest("hex");
 if (antaramHash !== "56a3f0d28fd5108fe3517b82acf4ca6e92c7d7ef8b0bd31cc499932d3557b707") throw new Error(`ANTARAM SHA mismatch: ${antaramHash}`);
 
-console.log(`PUBLIC_SITE_VERIFY=PASS files=${publicFiles.length} routes=7 language_shell=EN_RU document_readers=4 antaram_sha=PASS private_markers=0 domains=13`);
+console.log(`PUBLIC_SITE_VERIFY=PASS files=${publicFiles.length} routes=7 language_shell=EN_RU document_readers=4 scoped_giscus=6 antaram_sha=PASS private_markers=0 domains=13`);

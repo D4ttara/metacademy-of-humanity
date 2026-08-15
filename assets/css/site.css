@@ -67,6 +67,10 @@ section { padding:clamp(3.5rem,8vw,7rem) 0; border-bottom:1px solid var(--line);
 .document-reading h3 { margin-top:2rem; }
 .document-reading ul { padding-left:1.25rem; }
 .document-reading hr { border:0; border-top:1px solid var(--line); margin:2.5rem 0; }
+.discussion-section { padding-block:clamp(3rem,7vw,5rem); }
+.discussion-section .wrap { width:min(calc(100% - 2.5rem), 48rem); }
+[data-giscus] { margin-top:2rem; min-height:5rem; }
+[data-giscus] iframe { width:100%; border:0; }
 footer { padding:3rem 0; font-size:.86rem; color:var(--muted); }
 @media (max-width:760px) { .top .wrap { align-items:flex-start; flex-direction:column; } .nav { justify-content:flex-start; } .copy,.aside { grid-column:1/-1; } .cards { grid-template-columns:1fr; } .domain-grid { grid-template-columns:1fr 1fr; } }
 @media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
