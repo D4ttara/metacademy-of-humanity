@@ -20,7 +20,8 @@ method_freeze_layer: "MYOGA_METHOD_FREEZE_v0.10.md"
 blind_round_layer: "MYOGA_BLIND_ROUND_v0.11.md"
 failure_revision_layer: "MYOGA_FAILURE_REVISION_v0.12.md"
 prospective_batch_layer: "MYOGA_PROSPECTIVE_BATCH_v0.13.md"
-current_executable_research_engine: "M{Y}OGA_JYOTISH_V0_13"
+method_governance_layer: "MYOGA_METHOD_GOVERNANCE_v0.14.md"
+current_executable_research_engine: "M{Y}OGA_JYOTISH_V0_14"
 msl_compatibility_runtime: "0.9.1a1"
 msl_benchmark_frontier: "0.9.2a1"
 msl_reference_corpus_frontier: "0.9.3a1"
@@ -29,6 +30,7 @@ msl_promotion_frontier: "0.9.5a1"
 msl_blind_evaluation_frontier: "0.9.6a1"
 msl_failure_revision_promotion2_frontier: "0.9.7a1"
 msl_prospective_batch_frontier: "0.9.8a1"
+msl_method_governance_frontier: "0.9.9a1"
 msl_version_axes: "MSL 3.x conceptual/pre-textbook != MSL 0.9.x executable research runtime"
 parent_method_freeze_sha256: "307780dc21d009e1f5a05757472e943caf1422710dac800bc368eba6436ca8fc"
 v0_11_round_status: "MACHINE_BLIND_EVALUATION / RESEARCHER_NOT_BLIND"
@@ -49,8 +51,11 @@ v0_13_strict_a_result: "0 HIT / 2 CONTRADICTIONS / 8 UNRESOLVED / coverage 0.20"
 v0_13_pd_b_result: "1 HIT / 5 CONTRADICTIONS / 4 UNRESOLVED / coverage 0.60"
 v0_13_null_result: "1 HIT / 9 CONTRADICTIONS / coverage 1.00"
 v0_13_conclusion: "NO_PROSPECTIVE_HIT_COUNT_ADVANTAGE_OVER_NULL_OBSERVED"
-source_package_sha256: "f172932c5f9e0528af8e668e7a54c98b96d478673f77c359668e65c5eceb11bc"
-math_status: "EXECUTABLE_V0_13 / VERIFIED_PACKAGE / METHODS_UNCHANGED_ACROSS_BATCH / NEGATIVE_NEUTRAL_RESULT / NO_EFFICACY_CLAIM"
+v0_14_governance_policy_sha256: "c2300fb561a9da2910c6784484a3c8372f9357efbb305e79382b6e85af44eb92"
+v0_14_pilot_sha256: "49ad5fe55cbb486b8323b348db482385d165d98d0b8a00573e742b185b7bf3d8"
+v0_14_governance_status: "POLICY_FROZEN__NO_RETIREMENT_ADJUDICATION_YET"
+source_package_sha256: "6792650e3d512f1dea5399c2ffea252688f0ce690d88ddf375e0e854901ba09a"
+math_status: "EXECUTABLE_V0_14 / VERIFIED_PACKAGE / GOVERNANCE_POLICY_FROZEN / FEASIBILITY_PILOT_EXCLUDED_FROM_ADJUDICATION / NO_EFFICACY_CLAIM"
 historical_raw_rename: false
 ```
 
@@ -63,19 +68,22 @@ Public research boundaries: classical sources remain classical; M{Y}OGA extensio
 
 ## Current executable research lineage
 
-`v0.1 Varga → v0.2 Relation → v0.3 Time → v0.4 Experience/Event → v0.5 Prediction/Question → v0.6 Case Lab/Validation → v0.7 Corpus/Benchmark → v0.8 Reference Corpus/Round 0 → v0.9 Source Closure → v0.10 Method Freeze → v0.11 Blind Round/Negative Result → v0.12 Failure-Driven Revision → v0.13 Multi-Case Prospective Batch`
+`v0.1 Varga → v0.2 Relation → v0.3 Time → v0.4 Experience/Event → v0.5 Prediction/Question → v0.6 Case Lab/Validation → v0.7 Corpus/Benchmark → v0.8 Reference Corpus/Round 0 → v0.9 Source Closure → v0.10 Method Freeze → v0.11 Blind Round/Negative Result → v0.12 Failure-Driven Revision → v0.13 Multi-Case Prospective Batch → v0.14 Method Governance / Retirement Protocol`
 
-v0.11 remains an immutable negative lineage event. v0.12 created two new competing revisions and froze them before new-case selection. v0.13 then evaluated those unchanged methods across ten source-gated event opportunities in Prince William, Prince Harry and Princess Eugenie.
+v0.11 remains an immutable negative lineage event. v0.12 created two competing revisions and froze them before new-case selection. v0.13 evaluated those unchanged methods across ten source-gated opportunities and found no prospective hit-count advantage over the date-only null.
 
-The v0.13 batch found no hit-count advantage for either revision over the frozen date-only null. STRICT-A returned zero hits at 20% coverage; PD-B returned one hit, tying the null while covering 60% of opportunities. The revisions produced fewer contradictions by abstaining more often, so the result is recorded as calibration behavior rather than predictive superiority: `ABSTENTION BENEFIT != PREDICTIVE ADVANTAGE`.
+v0.14 does not retune those methods and does not reinterpret v0.13. It freezes governance criteria for future `RETAIN_ACTIVE`, `LOW_COVERAGE_REVIEW`, `REVIEW_FOR_RETIREMENT`, or `INSUFFICIENT_GOVERNANCE_EVIDENCE` decisions. Retirement adjudication requires at least two post-governance-freeze batches, twenty opportunities, three cases, five of six domains, and the declared coverage gate. No method is retired in v0.14.
 
-The batch represented four of six frozen domains. `PRACTICE_DEVOTION` and `ADVERSITY_CRISIS` were not represented, so the result cannot adjudicate those domains. One planned event failed the source gate and remained `SOURCE_PENDING_NOT_EVALUATED`.
+A D20/D30 feasibility pilot was inspected before the governance freeze and is therefore permanently excluded from retirement evidence: `RESEARCHER_PREEXPOSED__NOT_GOVERNANCE_EVIDENCE`. It demonstrates only that the source/ephemeris/domain-completion machinery can execute.
 
-The machine path was blind to event domains, but researcher blindness is not claimed because semantic biographical information was encountered during source archaeology. `PROSPECTIVE RELATIVE TO FREEZE != RESEARCHER BLIND`.
+`POLICY PRECEDES ADJUDICATIVE EVIDENCE`  
+`RETIREMENT != ERASURE`  
+`RETIREMENT != PROOF OF FALSEHOOD`  
+`PILOT != VALIDATION`
 
 The Python Astroprocessor research chain has canonical implementation ownership under `myoga.*`; retained `samyoga.*` imports are compatibility shims for historical software paths. This code migration does not rename or rewrite historical SamYoga publication artifacts.
 
-MSL integration remains domain-neutral. The `0.9.8a1` frontier evaluates methods componentwise as `<HIT, CONTRADICTION, COVERAGE, ABSTENTION, SPECIFICITY, STABILITY>` and prohibits collapsing lower contradictions plus lower coverage into a synthetic winner score. See [`../../research/msl/MSL_PROSPECTIVE_BATCH_0_9_8_2026-08-15.md`](../../research/msl/MSL_PROSPECTIVE_BATCH_0_9_8_2026-08-15.md).
+MSL integration remains domain-neutral. The `0.9.9a1` frontier introduces a typed `MethodGovernanceReceipt`, versioned governance policy, coverage safeguards, retirement/revival lineage, and the rule that a workstream cannot adjudicate with evidence already seen before the governing policy. See [`../../research/msl/MSL_METHOD_GOVERNANCE_0_9_9_2026-08-15.md`](../../research/msl/MSL_METHOD_GOVERNANCE_0_9_9_2026-08-15.md).
 
 **Do not retroactively rename historical raw corpora.** Historical lineage is recorded separately from the public manifesto.
 
