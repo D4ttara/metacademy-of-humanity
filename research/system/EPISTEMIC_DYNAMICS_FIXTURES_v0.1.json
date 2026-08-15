@@ -1,0 +1,13 @@
+{
+  "schema": "metacademy-epistemic-dynamics-fixtures/v0.1",
+  "status": "FROZEN_RESEARCH_FIXTURES",
+  "date": "2026-08-15",
+  "fixtures": [
+    {"id":"SA004-01-VT-J1210","tests":["historical_backsearch","multimodal_join","causality_guard","epistemic_worldline"],"must_not":["infer_causality_from_timing_only"]},
+    {"id":"SA004-02-G2","tests":["prediction_failure_localization","alternative_retention","discriminator_generation"],"must_not":["escalate_directly_to_fundamental_law"]},
+    {"id":"SA004-03-GIANT-ARC","tests":["post_hoc_audit","null_model","look_elsewhere","status_worldline"],"must_not":["equate_nominal_sigma_with_model_overturn"]},
+    {"id":"SA004-04-890MA","tests":["diagnosticity","conditional_claim","competing_interpretations","retirement_receipt"],"must_not":["upgrade_possible_to_established"]},
+    {"id":"SA004-05-EUMILLIPES","tests":["convergence_vs_lineage","constraint_field","dependency_audit"],"must_not":["infer_shared_origin_from_form_similarity"]},
+    {"id":"SA004-06-DISHBRAIN","tests":["closed_loop","consequence_receipt","capability_scope","consciousness_guard"],"must_not":["infer_subjective_experience_from_adaptive_behavior"]}
+  ]
+}

@@ -1,121 +1,193 @@
 schema: metacademy-publication-registry/v1
-updated: 2026-08-14
+updated: '2026-08-15'
 documents:
-  - number: "003"
-    canonical_slug: life-as-organization
-    title:
-      en: Life as Organization
-      ua: Життя як організація
-    class: Research Brief
-    status: published
-    source_sa_items: ["Science Aperture #001"]
-    date: 2026-08-12
-    editions:
-      - language: en
-        version: v1.0
-        relation: primary public reading edition
-        local_paths:
-          html: documents/003-life-as-organization/en/index.html
-          markdown: documents/003-life-as-organization/METACADEMY_DOCUMENT_003_LIFE_AS_ORGANIZATION_EN_v1.0.md
-          pdf: documents/003-life-as-organization/METACADEMY_DOCUMENT_003_LIFE_AS_ORGANIZATION_EN_v1.0.pdf
-        sha256:
-          markdown: cb880bf2e6e0caf3026bfebb330ed33a31bca67f443144f069a6e6a2d131c73f
-          pdf: ab2b090205bd5b3ff3e13819e611d1b7fb4d545eaef4325ef639ceb274391978
-      - language: ua
-        version: v1.0
-        relation: language sibling; preserved approved edition
-        local_paths:
-          html: documents/003-life-as-organization/index.html
-          markdown: documents/003-life-as-organization/METACADEMY_DOCUMENT_003_LIFE_AS_ORGANIZATION_UA_v1.0.md
-          pdf: documents/003-life-as-organization/METACADEMY_DOCUMENT_003_LIFE_AS_ORGANIZATION_UA_v1.0.pdf
-        sha256:
-          markdown: 373220fa73947cb199d14fd3a5c0ec7bf2523cc2353d79ed5a3b5fc3800386a9
-          pdf: 01adb74d48912c8eeb5885b350c9a6c1504ad590d4a89a9424f050ffed559891
-    supersedes: null
-    external_links: []
-  - number: "004"
-    canonical_slug: when-science-reaches-a-plateau
-    title:
-      en: When Science Reaches a Plateau
-      ua: Коли наука виходить на плато
-    class: Research Brief
-    status: published
-    source_sa_items: ["Science Aperture #002"]
-    date: 2026-08-12
-    editions:
-      - language: en
-        version: v1.1
-        relation: English reading edition
-        local_paths:
-          html: documents/004-when-science-reaches-a-plateau/en/index.html
-          markdown: documents/004-when-science-reaches-a-plateau/METACADEMY_DOCUMENT_004_SCIENCE_ON_A_PLATEAU_EN_v1.1.md
-          pdf: documents/004-when-science-reaches-a-plateau/METACADEMY_DOCUMENT_004_SCIENCE_ON_A_PLATEAU_EN_v1.1.pdf
-        sha256:
-          markdown: bc37407ee8f254ae5d3a7c594e0550558d389adb246d4acbf5f8295883c56396
-          pdf: f06b977676dabbe680ca96add00de1d67656a73afd18a2e603dd2678ebcbc622
-      - language: ua
-        version: v1.1
-        relation: Ukrainian language sibling
-        local_paths:
-          html: documents/004-when-science-reaches-a-plateau/ua/index.html
-          markdown: documents/004-when-science-reaches-a-plateau/METACADEMY_DOCUMENT_004_SCIENCE_ON_A_PLATEAU_UA_v1.1.md
-          pdf: documents/004-when-science-reaches-a-plateau/METACADEMY_DOCUMENT_004_SCIENCE_ON_A_PLATEAU_UA_v1.1.pdf
-        sha256:
-          markdown: d07e1ae28ac936495120706c0a2ce16d89e2bda1df54401829f8b1169887358d
-          pdf: d3463745f8aa6024a76a2dcd1bfb2919a50642a2eb5e0ae06da9d1f66adb9978
-    supersedes: null
-    external_links: []
-  - number: "006"
-    canonical_slug: myoga-jyotish
-    title:
-      ua: "M{Y}OGA JYOTISH — Маніфест дисципліни"
-      en: "M{Y}OGA JYOTISH — Field Manifesto"
-    class: Field Manifesto
-    status: published
-    date: 2026-08-14
-    editions:
-      - language: ua
-        version: v1.0
-        relation: primary public manifesto edition
-        local_paths:
-          html: documents/006-myoga-jyotish/index.html
-          markdown: documents/006-myoga-jyotish/METACADEMY_DOCUMENT_006_MYOGA_JYOTISH_MANIFEST_UA_v1.0.md
-          protocol: documents/006-myoga-jyotish/MYOGA_DISCIPLINE_PROTOCOL_v0.1.md
-        sha256:
-          markdown: 4dca048fbe60f7de71267d8e933f419a49aae7db0fe50c6cf6253478433c1147
-          protocol: 10b7501142c5968677f99f1a40ee42b610e64dfe786b8634d2162b90b2f5f02c
-    supersedes: null
-    external_links: []
-    note: "Number 005 is reserved by an existing Academy document lineage outside this repository snapshot. A verified local PDF publication specimen exists but is not declared as a repository path in this registry entry."
-external_large_artifacts:
-  - name: Science Aperture 2021–2026 public index
+- number: '003'
+  canonical_slug: life-as-organization
+  title:
+    en: Life as Organization
+    ua: Життя як організація
+  class: Research Brief
+  status: published
+  source_sa_items: ['Science Aperture #001']
+  date: 2026-08-12
+  editions:
+  - language: en
+    version: v1.0
+    relation: primary public reading edition
+    local_paths: {html: documents/003-life-as-organization/en/index.html, markdown: documents/003-life-as-organization/METACADEMY_DOCUMENT_003_LIFE_AS_ORGANIZATION_EN_v1.0.md, pdf: documents/003-life-as-organization/METACADEMY_DOCUMENT_003_LIFE_AS_ORGANIZATION_EN_v1.0.pdf}
+    sha256: {markdown: cb880bf2e6e0caf3026bfebb330ed33a31bca67f443144f069a6e6a2d131c73f, pdf: ab2b090205bd5b3ff3e13819e611d1b7fb4d545eaef4325ef639ceb274391978}
+  - language: ua
+    version: v1.0
+    relation: language sibling; preserved approved edition
+    local_paths: {html: documents/003-life-as-organization/index.html, markdown: documents/003-life-as-organization/METACADEMY_DOCUMENT_003_LIFE_AS_ORGANIZATION_UA_v1.0.md, pdf: documents/003-life-as-organization/METACADEMY_DOCUMENT_003_LIFE_AS_ORGANIZATION_UA_v1.0.pdf}
+    sha256: {markdown: 373220fa73947cb199d14fd3a5c0ec7bf2523cc2353d79ed5a3b5fc3800386a9, pdf: 01adb74d48912c8eeb5885b350c9a6c1504ad590d4a89a9424f050ffed559891}
+  supersedes: null
+  external_links: []
+- number: '004'
+  canonical_slug: when-science-reaches-a-plateau
+  title: {en: When Science Reaches a Plateau, ua: Коли наука виходить на плато}
+  class: Research Brief
+  status: published
+  source_sa_items: ['Science Aperture #002']
+  date: 2026-08-12
+  editions:
+  - language: en
     version: v1.1
-    provenance: Academy editorial index; large source corpus remains rights-bounded
-    local_path: publications/science-aperture/SCIENCE_APERTURE_PUBLIC_INDEX_v1.1.md
-    external_url: null
-    sha256: not_applicable_to_external_source_corpus
+    relation: English reading edition
+    local_paths: {html: documents/004-when-science-reaches-a-plateau/en/index.html, markdown: documents/004-when-science-reaches-a-plateau/METACADEMY_DOCUMENT_004_SCIENCE_ON_A_PLATEAU_EN_v1.1.md, pdf: documents/004-when-science-reaches-a-plateau/METACADEMY_DOCUMENT_004_SCIENCE_ON_A_PLATEAU_EN_v1.1.pdf}
+    sha256: {markdown: bc37407ee8f254ae5d3a7c594e0550558d389adb246d4acbf5f8295883c56396, pdf: f06b977676dabbe680ca96add00de1d67656a73afd18a2e603dd2678ebcbc622}
+  - language: ua
+    version: v1.1
+    relation: Ukrainian language sibling
+    local_paths: {html: documents/004-when-science-reaches-a-plateau/ua/index.html, markdown: documents/004-when-science-reaches-a-plateau/METACADEMY_DOCUMENT_004_SCIENCE_ON_A_PLATEAU_UA_v1.1.md, pdf: documents/004-when-science-reaches-a-plateau/METACADEMY_DOCUMENT_004_SCIENCE_ON_A_PLATEAU_UA_v1.1.pdf}
+    sha256: {markdown: d07e1ae28ac936495120706c0a2ce16d89e2bda1df54401829f8b1169887358d, pdf: d3463745f8aa6024a76a2dcd1bfb2919a50642a2eb5e0ae06da9d1f66adb9978}
+  supersedes: null
+  external_links: []
+- number: '006'
+  canonical_slug: myoga-jyotish
+  title: {ua: 'M{Y}OGA JYOTISH — Маніфест дисципліни', en: 'M{Y}OGA JYOTISH — Field Manifesto'}
+  class: Field Manifesto
+  status: published
+  date: 2026-08-14
+  editions:
+  - language: ua
+    version: v1.0
+    relation: primary public manifesto edition
+    local_paths: {html: documents/006-myoga-jyotish/index.html, markdown: documents/006-myoga-jyotish/METACADEMY_DOCUMENT_006_MYOGA_JYOTISH_MANIFEST_UA_v1.0.md, protocol: documents/006-myoga-jyotish/MYOGA_DISCIPLINE_PROTOCOL_v0.1.md}
+    sha256: {markdown: 4dca048fbe60f7de71267d8e933f419a49aae7db0fe50c6cf6253478433c1147, protocol: 10b7501142c5968677f99f1a40ee42b610e64dfe786b8634d2162b90b2f5f02c}
+  supersedes: null
+  external_links: []
+series_documents:
+- id: SA004-01
+  parent_source: 'Science Aperture #004 / Пушка #29'
+  item: 1
+  canonical_slug: evidence-arrives-out-of-order
+  title: {ua: Коли доказ приходить після події}
+  class: Science Aperture Research Note
+  status: review_candidate
+  date: 2026-08-15
+  implementation_relation: experimental_epistemic_dynamics
+  editions:
+  - language: ua
+    version: v0.1
+    local_paths: {html: documents/sa004-01-evidence-arrives-out-of-order/index.html, markdown: documents/sa004-01-evidence-arrives-out-of-order/METACADEMY_SA004_01_EVIDENCE_ARRIVES_OUT_OF_ORDER_UA_v0.1.md}
+    sha256: {markdown: 69ae0a4005da35c8a74fea8916d20453848f5d968e5e50d242ec4a30bff78829}
+    verified_local_pdf_sha256: a65078751290dc1fb698b126bf3c0464e1955b7b0f28324d473bc5b2b603296d
+    pdf_artifact_status: verified_local_pending_repository_attachment
+- id: SA004-02
+  parent_source: 'Science Aperture #004 / Пушка #29'
+  item: 2
+  canonical_slug: prediction-fails-before-theory
+  title: {ua: Коли прогноз ламається раніше за теорію}
+  class: Science Aperture Research Note
+  status: review_candidate
+  date: 2026-08-15
+  implementation_relation: experimental_epistemic_dynamics
+  editions:
+  - language: ua
+    version: v0.1
+    local_paths: {html: documents/sa004-02-prediction-fails-before-theory/index.html, markdown: documents/sa004-02-prediction-fails-before-theory/METACADEMY_SA004_02_PREDICTION_FAILS_BEFORE_THEORY_UA_v0.1.md}
+    sha256: {markdown: ce599775460b6c611302f55199a7b9e31b9b6471e3bbe1ef26ec6a00a79886fd}
+    verified_local_pdf_sha256: e72c98dbe46d82f75322bb64718fa12827119b848865b39030ae2d532f715409
+    pdf_artifact_status: verified_local_pending_repository_attachment
+- id: SA004-03
+  parent_source: 'Science Aperture #004 / Пушка #29'
+  item: 3
+  canonical_slug: anomaly-meets-search-space
+  title: {ua: Коли аномалія знаходить простір пошуку}
+  class: Science Aperture Research Note
+  status: review_candidate
+  date: 2026-08-15
+  implementation_relation: experimental_epistemic_dynamics
+  editions:
+  - language: ua
+    version: v0.1
+    local_paths: {html: documents/sa004-03-anomaly-meets-search-space/index.html, markdown: documents/sa004-03-anomaly-meets-search-space/METACADEMY_SA004_03_ANOMALY_MEETS_SEARCH_SPACE_UA_v0.1.md}
+    sha256: {markdown: 076ea1bc8ba43d463d6c6d6e2b7e6c7bd1eb4044f72ada1d1e76ca290501475b}
+    verified_local_pdf_sha256: 484b46ba83f4451aae0890364592063fdbd2d2dd115150238cefa7c6d2d12282
+    pdf_artifact_status: verified_local_pending_repository_attachment
+- id: SA004-04
+  parent_source: 'Science Aperture #004 / Пушка #29'
+  item: 4
+  canonical_slug: animal-that-may-not-be
+  title: {ua: Тварина, якої може не бути}
+  class: Science Aperture Research Note
+  status: review_candidate
+  date: 2026-08-15
+  implementation_relation: experimental_epistemic_dynamics
+  editions:
+  - language: ua
+    version: v0.1
+    local_paths: {html: documents/sa004-04-animal-that-may-not-be/index.html, markdown: documents/sa004-04-animal-that-may-not-be/METACADEMY_SA004_04_ANIMAL_THAT_MAY_NOT_BE_UA_v0.1.md}
+    sha256: {markdown: 1ef160a4af1640f976e57a70af1346909506b668ad0d1a7138586b6147e6c41e}
+    verified_local_pdf_sha256: ae84ff2e934bd26394100c92e6508af24c3dfbb10996b635ad708c3c587be13f
+    pdf_artifact_status: verified_local_pending_repository_attachment
+- id: SA004-05
+  parent_source: 'Science Aperture #004 / Пушка #29'
+  item: 5
+  canonical_slug: 1306-legs-convergent-form
+  title: {ua: 1306 ніг і форма, що виникла двічі}
+  class: Science Aperture Research Note
+  status: review_candidate
+  date: 2026-08-15
+  implementation_relation: experimental_epistemic_dynamics
+  editions:
+  - language: ua
+    version: v0.1
+    local_paths: {html: documents/sa004-05-1306-legs-convergent-form/index.html, markdown: documents/sa004-05-1306-legs-convergent-form/METACADEMY_SA004_05_1306_LEGS_CONVERGENT_FORM_UA_v0.1.md}
+    sha256: {markdown: 0c842b3df55fb9aced602244c268ad335a52e73cc55665a3162b6715e56f3f62}
+    verified_local_pdf_sha256: 346684dfba021b868b27f7bb5abc60322037fbec75ac7742d91c4b6dcdc309e1
+    pdf_artifact_status: verified_local_pending_repository_attachment
+- id: SA004-06
+  parent_source: 'Science Aperture #004 / Пушка #29'
+  item: 6
+  canonical_slug: neurons-get-a-world-back
+  title: {ua: Нейрони, які отримали світ у відповідь}
+  class: Science Aperture Research Note
+  status: review_candidate
+  date: 2026-08-15
+  implementation_relation: experimental_epistemic_dynamics
+  editions:
+  - language: ua
+    version: v0.1
+    local_paths: {html: documents/sa004-06-neurons-get-a-world-back/index.html, markdown: documents/sa004-06-neurons-get-a-world-back/METACADEMY_SA004_06_NEURONS_GET_A_WORLD_BACK_UA_v0.1.md}
+    sha256: {markdown: f1eaf4fdf51995e677fb98f65699a224d4428b24809e273c6df850a1c4dc276a}
+    verified_local_pdf_sha256: a4166ad2033ba5cd527d16dd0e7044e5a4530ce2918f80164784be6992a2e8dc
+    pdf_artifact_status: verified_local_pending_repository_attachment
+external_large_artifacts:
+- name: Science Aperture 2021–2026 public index
+  version: v1.1
+  provenance: Academy editorial index; large source corpus remains rights-bounded
+  local_path: publications/science-aperture/SCIENCE_APERTURE_PUBLIC_INDEX_v1.1.md
+  external_url: null
+  sha256: not_applicable_to_external_source_corpus
 library_bodies:
-  - title: "अन्तरम् · ANTARAM"
-    canonical_slug: antaram
-    class: "Experimental living Sanskrit sibling rebody"
-    source_work: "МІЖ 1.61 · Щось про тринадцять секунд"
-    version: ANTARAM-L4-VOICE-REBODY-V3
-    status: published_with_reviews_open
-    date: 2026-08-12
-    local_paths:
-      html: library/antaram/index.html
-      ru_html: library/antaram/ru/index.html
-      markdown: library/antaram/ANTARAM_MIZH_1.61_FREE_SANSKRIT_ADAPTATION_L4_VOICE_REBODY_V3.md
-    sha256: 56a3f0d28fd5108fe3517b82acf4ca6e92c7d7ef8b0bd31cc499932d3557b707
-    review_status:
-      native_sanskrit_review: OPEN
-      independent_philological_review: OPEN
-      live_recitation: OPEN
-    provenance: "Dattara Lab · MoH; exact Drive source verified locally before repository import"
+- title: अन्तरम् · ANTARAM
+  canonical_slug: antaram
+  class: Experimental living Sanskrit sibling rebody
+  source_work: МІЖ 1.61 · Щось про тринадцять секунд
+  version: ANTARAM-L4-VOICE-REBODY-V3
+  status: published_with_reviews_open
+  date: 2026-08-12
+  local_paths: {html: library/antaram/index.html, ru_html: library/antaram/ru/index.html, markdown: library/antaram/ANTARAM_MIZH_1.61_FREE_SANSKRIT_ADAPTATION_L4_VOICE_REBODY_V3.md}
+  sha256: 56a3f0d28fd5108fe3517b82acf4ca6e92c7d7ef8b0bd31cc499932d3557b707
+  review_status: {native_sanskrit_review: OPEN, independent_philological_review: OPEN, live_recitation: OPEN}
+  provenance: Dattara Lab · MoH; exact Drive source verified locally before repository import
 research_fields:
-  - canonical_name: "M{Y}OGA JYOTISH"
-    short_names: ["M{Y}OGA", "MYOGA"]
-    status: active_research
-    public_entry: research/active-research/MYOGA_JYOTISH_FIELD_ENTRY.yml
-    manifesto: documents/006-myoga-jyotish/
-    date_declared: 2026-08-14
+- canonical_name: M{Y}OGA JYOTISH
+  short_names: ['M{Y}OGA', MYOGA]
+  status: active_research
+  public_entry: research/active-research/MYOGA_JYOTISH_FIELD_ENTRY.yml
+  manifesto: documents/006-myoga-jyotish/
+  date_declared: 2026-08-14
+- canonical_name: EPISTEMIC DYNAMICS FABRIC
+  short_names: [EPISTEMIC DYNAMICS, EDF]
+  status: experimental_research_contract
+  public_entry: research/system/EPISTEMIC_DYNAMICS_FABRIC_v0.1.md
+  msl_candidate: research/msl/MSL_EPISTEMIC_DYNAMICS_0_10_2a1_2026-08-15.md
+  date_declared: 2026-08-15
+reserved_document_lineages:
+- number: '005'
+  title: When Time Becomes Relational / Коли час стає відношенням
+  status: existing_publication_lineage_pending_main_repository_attachment
+  note: Do not reuse or renumber.
