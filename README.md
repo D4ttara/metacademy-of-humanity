@@ -25,7 +25,7 @@ GitHub Pages: enabled from the `main` branch through GitHub Actions after the fi
 
 `{Y}` is the JOIN FIELD: the same Y belongs to `MY` and `YOGA`. Historical raw corpora are not retroactively renamed. See `documents/006-myoga-jyotish/` and `research/myoga-jyotish/`.
 
-The current verified executable research frontier is **v0.14 Method Governance / Retirement Protocol**, paired with **MSL 0.9.9a1 Method Governance**. v0.13 remains an immutable negative/neutral prospective batch. v0.14 does not tune the classifier; it freezes versioned criteria for future retention, low-coverage review, or retirement review, and explicitly excludes researcher-preexposed D20/D30 feasibility cases from governance evidence.
+The current verified executable research frontier is **v0.15 Governance Round A / Domain Completion**, paired with **MSL 0.10.0a1 Governance Evidence Accumulation**. The first governance-eligible post-v0.14 batch contributes 1/2 required batches, 10/20 opportunities, 3/3 cases and 5/5 required domains. Governance adjudication aperture remains closed; no method is retained or retired. `GOVERNANCE PROGRESS != GOVERNANCE VERDICT`.
 
 ## How to read Science Aperture
 
