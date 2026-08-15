@@ -87,6 +87,81 @@ documents:
     supersedes: null
     external_links: []
     note: "Number 005 is reserved by an existing Academy document lineage outside this repository snapshot. A verified local PDF publication specimen exists but is not declared as a repository path in this registry entry."
+  - number: "007"
+    canonical_slug: mor4mer
+    title: {ua: "MOR}4{MER - Маніфест обчислення, здатного змінювати власну форму"}
+    class: Public Manifest
+    status: pre-alpha
+    date: 2026-08-14
+    source_relation: "Manifest v1.2; Owner-led MOR}4{MER research lineage; public-safe constitutional projection"
+    editions:
+      - language: ua
+        version: v0.1
+        relation: primary PRE-ALPHA public manifesto edition
+        local_paths: {html: documents/007-mor4mer/index.html, markdown: documents/007-mor4mer/METACADEMY_DOCUMENT_007_MOR4MER_MANIFEST_UA_PRE_ALPHA_v0.1.md, pdf: documents/007-mor4mer/METACADEMY_DOCUMENT_007_MOR4MER_MANIFEST_UA_PRE_ALPHA_v0.1.pdf}
+        sha256: {html: ac1307578f1bd252100460e035241435da9118c07ab01a4a5099dc9771b71b80, markdown: eee074b4d31a64a31330e7c8b89c5c66f82d538bd9fccf84a825c5ea01d80a12, pdf: b493da1ca030bc3293672063c52a9ef245a8f54110e94c051597763cb0ae0dfc}
+    supersedes: null
+    external_links: []
+  - number: "008"
+    canonical_slug: intellectual-frame
+    title: {ua: "INTELLECTUAL FRAME - Маніфест живої одиниці розуміння"}
+    class: Public Manifest
+    status: pre-alpha
+    date: 2026-08-14
+    source_relation: "Manifest v1.2; Owner-led Intellectual Frame research lineage; public-safe constitutional projection"
+    editions:
+      - language: ua
+        version: v0.1
+        relation: primary PRE-ALPHA public manifesto edition
+        local_paths: {html: documents/008-intellectual-frame/index.html, markdown: documents/008-intellectual-frame/METACADEMY_DOCUMENT_008_INTELLECTUAL_FRAME_MANIFEST_UA_PRE_ALPHA_v0.1.md, pdf: documents/008-intellectual-frame/METACADEMY_DOCUMENT_008_INTELLECTUAL_FRAME_MANIFEST_UA_PRE_ALPHA_v0.1.pdf}
+        sha256: {html: cfff1d41af45cda4c78fd8af93a5466b5eab71af6e0a4cea45b7fb8b4405f2fc, markdown: 1bf7bb329e1784aefb37f2553bd84f24b5d5904b2360fb7a360ecfb980a7a4e5, pdf: 493b43663aaa7284c7a690bb3ef8136d1d9a9ce35c337151c861562a994653f0}
+    supersedes: null
+    external_links: []
+  - number: "009"
+    canonical_slug: connection-is-process
+    title: {ua: "CONNECTION IS PROCESS / TOPOLOGY FABRIC - Маніфест живого зв'язку"}
+    class: Public Manifest
+    status: pre-alpha
+    date: 2026-08-14
+    source_relation: "Manifest v1.2; Owner-led Connection Is Process and Topology Fabric research lineage; public-safe constitutional projection"
+    editions:
+      - language: ua
+        version: v0.1
+        relation: primary PRE-ALPHA public manifesto edition
+        local_paths: {html: documents/009-connection-is-process/index.html, markdown: documents/009-connection-is-process/METACADEMY_DOCUMENT_009_CONNECTION_IS_PROCESS_MANIFEST_UA_PRE_ALPHA_v0.1.md, pdf: documents/009-connection-is-process/METACADEMY_DOCUMENT_009_CONNECTION_IS_PROCESS_MANIFEST_UA_PRE_ALPHA_v0.1.pdf}
+        sha256: {html: 424268d56c1bed5cfcb791d55df29ae353612ff6b094c89fe9f4531f1006f196, markdown: 07c2eb2101f51076121d8e0b04f811c1ef573dc151e827b4bc97a007608cf622, pdf: 6861cc93e1998e9cc904e2790af9ed6d4ba03a0fdc6fe3eb051c212e64b3cc4c}
+    supersedes: null
+    external_links: []
+  - number: "010"
+    canonical_slug: meta-mood-ps
+    title: {ua: "META!MOOD·PS - Маніфест історично залежного поля стану"}
+    class: Public Manifest
+    status: pre-alpha
+    date: 2026-08-14
+    source_relation: "Manifest v1.2; Owner symbolic correction and META!MOOD·PS research lineage; public-safe constitutional projection"
+    editions:
+      - language: ua
+        version: v0.1
+        relation: primary PRE-ALPHA public manifesto edition
+        local_paths: {html: documents/010-meta-mood-ps/index.html, markdown: documents/010-meta-mood-ps/METACADEMY_DOCUMENT_010_META_MOOD_PS_MANIFEST_UA_PRE_ALPHA_v0.1.md, pdf: documents/010-meta-mood-ps/METACADEMY_DOCUMENT_010_META_MOOD_PS_MANIFEST_UA_PRE_ALPHA_v0.1.pdf}
+        sha256: {html: 95508349f3074897350ff902617a99d71e53048025a1f3a2e534070db876763f, markdown: 582598a547404542f5e5ee9733e58ed1dd50b8b5c03250cfdcfeca2d6ee06e46, pdf: 7b651dec2aced140fa788dba981af01bd40713b65373ba5d4a076214eda39912}
+    supersedes: null
+    external_links: []
+  - number: "011"
+    canonical_slug: coexis
+    title: {ua: "COEXIS - Маніфест співіснування за умов відкритого статусу"}
+    class: Public Manifest
+    status: pre-alpha
+    date: 2026-08-14
+    source_relation: "Manifest v1.2; Owner-led COEXIS and Dynamic Conscience Field research lineage; public-safe constitutional projection"
+    editions:
+      - language: ua
+        version: v0.1
+        relation: primary PRE-ALPHA public manifesto edition
+        local_paths: {html: documents/011-coexis/index.html, markdown: documents/011-coexis/METACADEMY_DOCUMENT_011_COEXIS_MANIFEST_UA_PRE_ALPHA_v0.1.md, pdf: documents/011-coexis/METACADEMY_DOCUMENT_011_COEXIS_MANIFEST_UA_PRE_ALPHA_v0.1.pdf}
+        sha256: {html: 556adceaca0f03ab841962ce0078a75ba0d11a8412002e98428fa660a644dc6c, markdown: 7467030f3630223175e5355856d0f57ebffb9558dc6f11566f2d6d3a12a07b02, pdf: 5e009acaba1c5a4099e380c127814ec9523b9e79dbb0f71bd344feea74c4c1f5}
+    supersedes: null
+    external_links: []
 external_large_artifacts:
   - name: Science Aperture 2021–2026 public index
     version: v1.1
