@@ -25,7 +25,7 @@ GitHub Pages: enabled from the `main` branch through GitHub Actions after the fi
 
 `{Y}` is the JOIN FIELD: the same Y belongs to `MY` and `YOGA`. Historical raw corpora are not retroactively renamed. See `documents/006-myoga-jyotish/` and `research/myoga-jyotish/`.
 
-The current verified executable research frontier is **v0.13 Multi-Case Prospective Batch**, paired with **MSL 0.9.8a1 Prospective Batch Evaluation**. Ten source-gated event opportunities across three cases were evaluated with v0.12 revision methods frozen before case selection. Neither revision produced more hits than the frozen date-only null. The revisions reduced contradictions mainly by abstaining more often, so no predictive advantage is claimed: `ABSTENTION BENEFIT != PREDICTIVE ADVANTAGE`.
+The current verified executable research frontier is **v0.14 Method Governance / Retirement Protocol**, paired with **MSL 0.9.9a1 Method Governance**. v0.13 remains an immutable negative/neutral prospective batch. v0.14 does not tune the classifier; it freezes versioned criteria for future retention, low-coverage review, or retirement review, and explicitly excludes researcher-preexposed D20/D30 feasibility cases from governance evidence.
 
 ## How to read Science Aperture
 
