@@ -1,0 +1,57 @@
+schema: metacademy-myoga-frontier/v1
+frontier: "M{Y}OGA_JYOTISH_V0_9"
+date: 2026-08-15
+parent_frontier: "M{Y}OGA_JYOTISH_V0_8"
+status: "VERIFIED_EXECUTABLE_RESEARCH_FRONTIER"
+source_package:
+  sha256: "f93ef66b5df4d0727a19f21655b6bc787400a0c088cd37cca71146081a72d77a"
+  bytes: 11897053
+  drive_file_id: "1zzChTQAgib4H4wilH2qK3QUW5QoLXAIS"
+verification:
+  packaged_reextract: true
+  js_test_files: 155
+  python_base_tests: 3
+  msl_myoga_dotlinux_python_tests: 75
+  dotvm_c: PASS
+  exit: 0
+source_closure:
+  case_id: "PUB_CHARLESIII_1948"
+  status: "SOURCE_CLOSED"
+  machine_blind_eligible: true
+  strict_researcher_blind_eligible: false
+  strict_blind_blocker: "EVENT_LEDGER_PREEXPOSED_IN_CURRENT_RESEARCH_SESSION"
+  inference_status: "BLOCKED_METHOD_SEMANTICS_NOT_PREREGISTERED"
+  closure_sha256: "422da20e22cb294d581c00b0b5f94ec22d976d252cb5f121e96e0b07f131f91b"
+  round1a_sha256: "d919a08d76bbc857dbdc8c582602214a1f3392a9b89fa75ec988a996151d0a6e"
+  coordinate_uncertainty_m: 500
+  geographic_basis: "ARCHIVAL_BUCKINGHAM_PALACE_REFERENCE_POINT__NOT_BIRTH_ROOM"
+  timezone_id: "Europe/London"
+  ephemeris: "Swiss Ephemeris 2.10.03 / Lahiri / canonical myoga.live_ephemeris"
+msl:
+  compatibility_runtime: "0.9.1a1"
+  benchmark_frontier: "0.9.2a1"
+  reference_corpus_frontier: "0.9.3a1"
+  cross_workstream_frontier: "0.9.4a1"
+  conceptual_axis: "MSL 3.0 + 3.1 candidate integration line"
+  translation_roadmap: "Mi6 v16"
+  translation_backlog: "Mi6 v5.1"
+  candidate_count_registered: 31
+  drive_registry_file_id: "1Jawwb2XiI5m4tn9Tbj5rPxXIFlJzuFG8"
+manifest_witness:
+  file: "MET_A_CADEMY_MANIFEST_V1.2_UA.md"
+  drive_file_id: "1GcbuTQs6U8RIysWGmqms9r9ZnjH437vg"
+  sha256: "459e9c69632dabaee23322243236bf64e5ac281fcad732cfc51c0a4b8bbdb114"
+workstreams:
+  MI6_TRANSLATION: "ACTIVE_CANDIDATE_GENERATION"
+  MYOGA_EXECUTABLE: "ACTIVE_EXECUTABLE_RESEARCH"
+  SAMYOGA_HISTORICAL_PUBLICATION: "CLOSED_PROJECT_ARCHIVAL_PROVENANCE_ONLY"
+  IMAGO_META_SYSTEM: "ACTIVE_SYSTEM_ARCHITECTURE_WITH_EXPLICIT_PROMOTION_GATES"
+guards:
+  - "SOURCE_CLOSURE != INTERPRETIVE_VALIDITY"
+  - "MACHINE_SEAL != RESEARCHER_BLINDNESS"
+  - "EPHEMERIS_CALCULATION != ASTROLOGICAL_EFFICACY"
+  - "LANGUAGE_PRESSURE_GAIN != UNIVERSAL_LAW"
+  - "CANDIDATE != STABLE_RUNTIME"
+  - "CONCEPTUAL_VERSION != RUNTIME_VERSION"
+  - "CONTEXTUAL_IDENTITY != GLOBAL_EXCLUSIVITY"
+  - "WORKSTREAM != CANON_AUTHORITY"
