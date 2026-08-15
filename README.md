@@ -25,6 +25,8 @@ GitHub Pages: enabled from the `main` branch through GitHub Actions after the fi
 
 `{Y}` is the JOIN FIELD: the same Y belongs to `MY` and `YOGA`. Historical raw corpora are not retroactively renamed. See `documents/006-myoga-jyotish/` and `research/myoga-jyotish/`.
 
+The current verified executable research frontier is **v0.10 Method Freeze**, paired with the **MSL 0.9.5a1 Promotion Lab**. The first non-null contestant and its non-astrological null baseline are frozen before unseen-case selection; this is a preregistration milestone, not an efficacy claim.
+
 ## How to read Science Aperture
 
 The Atlas preserves source-language provenance and keeps MetaAcademy editorial reflection separate from original material. The public repository intentionally publishes an index and summaries rather than full third-party transcript blocks; external-source rights stay with their respective owners.
