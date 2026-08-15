@@ -25,7 +25,9 @@ GitHub Pages: enabled from the `main` branch through GitHub Actions after the fi
 
 `{Y}` is the JOIN FIELD: the same Y belongs to `MY` and `YOGA`. Historical raw corpora are not retroactively renamed. See `documents/006-myoga-jyotish/` and `research/myoga-jyotish/`.
 
-The current verified executable research frontier is **v0.16 Governance Round B / Adjudication Aperture**, paired with **MSL 0.10.1a1 Governance Adjudication**. Two frozen-policy post-v0.14 batches now provide 20 opportunities across six cases and all six frozen domains. Under the predeclared governance rule, STRICT-A is `LOW_COVERAGE_REVIEW` and PD-B is `RETAIN_ACTIVE`. These are version-scoped research governance states, not efficacy claims or truth verdicts. `RETAIN_ACTIVE != TRUTH`.
+The verified empirical ancestor remains **v0.16 Governance Round B / Adjudication Aperture**. The current engineering frontier is **v0.16.1 Intermediate Audit Hardening**, paired with **MSL 0.10.2a1 Audit Hardening / Publication Firewall**. v0.16.1 is not a new empirical round and does not rewrite v0.16 results. It hardens provenance, packaging, version-axis and publication boundaries.
+
+From v0.16.1 onward, the public repository follows a **default-deny Publication Firewall**: constitutional text, high-level research status, generic epistemic guards and intentionally public artifacts may be published; private implementation, sealed/reveal payloads, private identifiers, distribution-ineligible archives and product internals stay outside the public surface. See [`governance/PUBLICATION_FIREWALL.md`](governance/PUBLICATION_FIREWALL.md).
 
 ## How to read Science Aperture
 
