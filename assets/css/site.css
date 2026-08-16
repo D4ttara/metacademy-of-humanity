@@ -68,9 +68,10 @@ a:focus-visible, button:focus-visible, input:focus-visible { outline:3px solid v
 .nav a { text-decoration:none; font-weight:500; }
 
 .hero {
-  padding:clamp(2.7rem,4.1vw,3.4rem) 0 clamp(2.25rem,3.4vw,2.8rem);
+  padding:clamp(2.7rem,4.1vw,3.4rem) 0 clamp(2.05rem,3vw,2.55rem);
   border-bottom:1px solid var(--line);
 }
+.hero + section { padding-top:clamp(2.65rem,4.6vw,4rem); }
 .hero .wrap, .pagehead .wrap {
   border-left:clamp(.56rem,.82vw,.72rem) solid var(--blue-stripe);
   padding-left:clamp(1.45rem,2.8vw,2.25rem);
@@ -119,12 +120,12 @@ h1 { font-size:clamp(2.65rem,5.55vw,5.2rem); font-weight:600; line-height:1; let
 h2 { font-size:clamp(1.85rem,3.9vw,3.25rem); font-weight:600; line-height:1.05; letter-spacing:-.018em; max-width:22ch; }
 h3 { font-size:1.36rem; font-weight:600; line-height:1.15; letter-spacing:-.006em; }
 .lede {
-  width:min(100%,44rem);
+  width:min(100%,48rem);
   margin:1.55rem 0 0;
   color:var(--muted);
   font:300 clamp(1.2rem,1.9vw,1.47rem)/1.45 "IBM Plex Sans","Segoe UI",Arial,sans-serif;
-  text-wrap:balance;
 }
+.lede-line { display:block; white-space:nowrap; }
 .hero .wrap > .lede + p {
   max-width:44rem;
   margin:1.18rem 0 0;
@@ -266,12 +267,14 @@ footer .author-link:hover { color:var(--accent-strong); }
   .cards { grid-template-columns:1fr; }
   .domain-grid { grid-template-columns:1fr 1fr; }
   .hero { padding:2.2rem 0 2rem; }
+  .hero + section { padding-top:2.6rem; }
   .hero-lockup { display:block; width:100%; }
   .hero-lockup .mark { width:100%; text-align:left; }
   .display-wordmark { display:grid; grid-template-columns:minmax(0,1fr); width:100%; font-size:clamp(2.35rem,10.8vw,4.1rem); letter-spacing:.006em; }
   .wordmark-main { white-space:normal; }
   .wordmark-sub { white-space:nowrap; justify-self:stretch; }
   .lede { max-width:34rem; }
+  .lede-line { white-space:normal; }
   .document-sign { white-space:normal; }
 }
 @media (max-width:430px) {
