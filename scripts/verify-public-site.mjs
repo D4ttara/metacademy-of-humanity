@@ -52,7 +52,11 @@ if ((fields.match(/<strong>(?:I|II|III|IV|V|VI|VII|VIII|IX|X|XI|XII|XIII · AI)<
 const home = readFileSync(join(root, "index.html"), "utf8");
 for (const route of ["manifesto/", "research/", "science-aperture/", "fields/", "library/", "documents/", "participate/"]) if (!home.includes(`href=\"${route}\"`)) throw new Error(`Home link missing: ${route}`);
 if (!home.includes('href="uk/"')) throw new Error("Home UKR language switch missing");
-if (!home.includes('MET[Ȧ]CADEMY <span class="wordmark-of">of</span> HUMANITY')) throw new Error("Canonical display wordmark missing");
+if (!home.includes('<span class="wordmark-main">MET[Ȧ]CADEMY</span><span class="wordmark-sub"><span class="wordmark-of">of</span> HUMANITY</span>')) throw new Error("Canonical structured display wordmark missing");
+
+const css = readFileSync(join(root, "assets/css/site.css"), "utf8");
+if (/IBM Plex Serif|Georgia\s*,\s*serif|font-family\s*:[^;]*serif/i.test(css)) throw new Error("Serif typography residue in public site CSS");
+if (!css.includes('--blue-stripe:') || !css.includes('.wordmark-main') || !css.includes('.wordmark-sub')) throw new Error("Document-led visual system guard missing");
 
 const readerPages = [
   "documents/003-life-as-organization/index.html",
@@ -71,4 +75,4 @@ const antaram = readFileSync(join(root, "library/antaram/ANTARAM_MIZH_1.61_FREE_
 const antaramHash = createHash("sha256").update(antaram).digest("hex");
 if (antaramHash !== "56a3f0d28fd5108fe3517b82acf4ca6e92c7d7ef8b0bd31cc499932d3557b707") throw new Error(`ANTARAM SHA mismatch: ${antaramHash}`);
 
-console.log(`PUBLIC_SITE_VERIFY=PASS files=${publicFiles.length} routes=7 language_shell=EN_UKR document_readers=4 antaram_sha=PASS private_markers=0 domains=13`);
+console.log(`PUBLIC_SITE_VERIFY=PASS files=${publicFiles.length} routes=7 language_shell=EN_UKR typography=SANS_ONLY wordmark=STRUCTURED blue_axis=PASS document_readers=4 antaram_sha=PASS private_markers=0 domains=13`);
