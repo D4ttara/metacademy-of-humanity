@@ -1,5 +1,5 @@
 schema: metacademy-publication-registry/v1
-updated: 2026-08-14
+updated: 2026-08-16
 documents:
   - number: "003"
     canonical_slug: life-as-organization
@@ -104,7 +104,7 @@ library_bodies:
     date: 2026-08-12
     local_paths:
       html: library/antaram/index.html
-      ru_html: library/antaram/ru/index.html
+      uk_html: library/antaram/uk/index.html
       markdown: library/antaram/ANTARAM_MIZH_1.61_FREE_SANSKRIT_ADAPTATION_L4_VOICE_REBODY_V3.md
     sha256: 56a3f0d28fd5108fe3517b82acf4ca6e92c7d7ef8b0bd31cc499932d3557b707
     review_status:
