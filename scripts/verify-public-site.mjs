@@ -55,7 +55,9 @@ if (!home.includes('href="uk/"')) throw new Error("Home UKR language switch miss
 if (!home.includes('<span class="wordmark-main">MET[Ȧ]CADEMY</span><span class="wordmark-sub"><span class="wordmark-of">of</span> HUMANITY</span>')) throw new Error("Canonical structured display wordmark missing");
 
 const css = readFileSync(join(root, "assets/css/site.css"), "utf8");
-if (/IBM Plex Serif|Georgia\s*,\s*serif|font-family\s*:[^;]*serif/i.test(css)) throw new Error("Serif typography residue in public site CSS");
+for (const badSerif of [/IBM Plex Serif/i, /Georgia\s*,\s*serif/i, /Times New Roman/i, /font-family\s*:\s*serif\b/i]) {
+  if (badSerif.test(css)) throw new Error(`Serif typography residue in public site CSS: ${badSerif}`);
+}
 if (!css.includes('--blue-stripe:') || !css.includes('.wordmark-main') || !css.includes('.wordmark-sub')) throw new Error("Document-led visual system guard missing");
 
 const readerPages = [
