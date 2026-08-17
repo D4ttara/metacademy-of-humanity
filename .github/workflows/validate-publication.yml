@@ -14,6 +14,8 @@ on:
       - 'research/**'
       - 'updates/**'
       - 'UPDATES.md'
+      - 'robots.txt'
+      - 'llms.txt'
       - 'sitemap.xml'
       - '.github/workflows/**'
 
@@ -31,6 +33,8 @@ jobs:
           sudo apt-get install -y --no-install-recommends pandoc texlive-xetex texlive-latex-extra texlive-fonts-extra texlive-fonts-recommended poppler-utils
       - name: Build and preflight Research Essay PDFs
         run: bash scripts/build-public-article-pdfs.sh
+      - name: Render canonical article bodies into static HTML
+        run: bash scripts/render-public-article-html.sh
       - name: Verify public site
         run: node scripts/verify-public-site.mjs
       - name: Upload verified publication artifacts
