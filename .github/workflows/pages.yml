@@ -25,7 +25,7 @@ jobs:
       - name: Install publication PDF toolchain
         run: |
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends pandoc texlive-xetex texlive-latex-extra texlive-fonts-extra poppler-utils
+          sudo apt-get install -y --no-install-recommends pandoc texlive-xetex texlive-latex-extra texlive-fonts-extra texlive-fonts-recommended poppler-utils
       - name: Build and preflight research essay PDFs
         run: bash scripts/build-public-article-pdfs.sh
       - name: Verify public site
