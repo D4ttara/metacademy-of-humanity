@@ -23,7 +23,18 @@ const required = [
   "documents/004-when-science-reaches-a-plateau/ua/index.html",
   "documents/004-when-science-reaches-a-plateau/METACADEMY_DOCUMENT_004_SCIENCE_ON_A_PLATEAU_EN_v1.1.pdf",
   "documents/004-when-science-reaches-a-plateau/METACADEMY_DOCUMENT_004_SCIENCE_ON_A_PLATEAU_UA_v1.1.pdf",
-  "publications/PUBLICATION_REGISTRY.yml", "governance/PUBLICATION_CANON.md",
+  "documents/007-after-vibe-coding/index.html", "documents/007-after-vibe-coding/en/index.html", "documents/007-after-vibe-coding/ua/index.html",
+  "documents/007-after-vibe-coding/METACADEMY_DOCUMENT_007_AFTER_VIBE_CODING_EN_v1.0RC.md",
+  "documents/007-after-vibe-coding/METACADEMY_DOCUMENT_007_AFTER_VIBE_CODING_UA_v1.0RC.md",
+  "documents/007-after-vibe-coding/METACADEMY_DOCUMENT_007_AFTER_VIBE_CODING_EN_v1.0RC.pdf",
+  "documents/007-after-vibe-coding/METACADEMY_DOCUMENT_007_AFTER_VIBE_CODING_UA_v1.0RC.pdf",
+  "documents/008-the-interface-that-knows-you/index.html", "documents/008-the-interface-that-knows-you/en/index.html", "documents/008-the-interface-that-knows-you/ua/index.html",
+  "documents/008-the-interface-that-knows-you/METACADEMY_DOCUMENT_008_INTERFACE_THAT_KNOWS_YOU_EN_v1.0RC.md",
+  "documents/008-the-interface-that-knows-you/METACADEMY_DOCUMENT_008_INTERFACE_THAT_KNOWS_YOU_UA_v1.0RC.md",
+  "documents/008-the-interface-that-knows-you/METACADEMY_DOCUMENT_008_INTERFACE_THAT_KNOWS_YOU_EN_v1.0RC.pdf",
+  "documents/008-the-interface-that-knows-you/METACADEMY_DOCUMENT_008_INTERFACE_THAT_KNOWS_YOU_UA_v1.0RC.pdf",
+  "assets/css/research-essays.css",
+  "publications/PUBLICATION_REGISTRY.yml", "publications/PUBLICATION_BUILD_RECEIPT_007_008_v1.0RC.json", "governance/PUBLICATION_CANON.md",
   "research/active-research/OPERATOR_PASSPORTS.yml", "research/active-research/sa001_sa002.test.mjs",
   "uk/index.html", "uk/manifesto/index.html", "uk/research/index.html", "uk/science-aperture/index.html", "uk/fields/index.html",
   "uk/documents/index.html", "uk/library/index.html", "uk/participate/index.html", "uk/updates/index.html",
@@ -64,17 +75,21 @@ const readerPages = [
   "documents/003-life-as-organization/index.html",
   "documents/003-life-as-organization/en/index.html",
   "documents/004-when-science-reaches-a-plateau/en/index.html",
-  "documents/004-when-science-reaches-a-plateau/ua/index.html"
+  "documents/004-when-science-reaches-a-plateau/ua/index.html",
+  "documents/007-after-vibe-coding/en/index.html",
+  "documents/007-after-vibe-coding/ua/index.html",
+  "documents/008-the-interface-that-knows-you/en/index.html",
+  "documents/008-the-interface-that-knows-you/ua/index.html"
 ];
 for (const page of readerPages) {
   if (!readFileSync(join(root, page), "utf8").includes('data-markdown-render="true"')) throw new Error(`Document reader missing: ${page}`);
 }
 
 const registry = readFileSync(join(root, "publications/PUBLICATION_REGISTRY.yml"), "utf8");
-for (const token of ["life-as-organization", "when-science-reaches-a-plateau", "ANTARAM", "uk_html:", "sha256:"]) if (!registry.includes(token)) throw new Error(`Publication registry missing ${token}`);
+for (const token of ["life-as-organization", "when-science-reaches-a-plateau", "after-vibe-coding", "the-interface-that-knows-you", "ANTARAM", "uk_html:", "sha256:"]) if (!registry.includes(token)) throw new Error(`Publication registry missing ${token}`);
 
 const antaram = readFileSync(join(root, "library/antaram/ANTARAM_MIZH_1.61_FREE_SANSKRIT_ADAPTATION_L4_VOICE_REBODY_V3.md"));
 const antaramHash = createHash("sha256").update(antaram).digest("hex");
 if (antaramHash !== "56a3f0d28fd5108fe3517b82acf4ca6e92c7d7ef8b0bd31cc499932d3557b707") throw new Error(`ANTARAM SHA mismatch: ${antaramHash}`);
 
-console.log(`PUBLIC_SITE_VERIFY=PASS files=${publicFiles.length} routes=7 language_shell=EN_UKR typography=SANS_ONLY wordmark=STRUCTURED blue_axis=PASS document_readers=4 antaram_sha=PASS private_markers=0 domains=13`);
+console.log(`PUBLIC_SITE_VERIFY=PASS files=${publicFiles.length} routes=7 language_shell=EN_UKR typography=SANS_ONLY wordmark=STRUCTURED blue_axis=PASS document_readers=8 research_essays=007,008 antaram_sha=PASS private_markers=0 domains=13`);
