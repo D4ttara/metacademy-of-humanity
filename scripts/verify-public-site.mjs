@@ -9,7 +9,7 @@ const walk = directory => readdirSync(directory).flatMap(name => {
   return statSync(path).isDirectory() && ![".git", "node_modules"].includes(name) ? walk(path) : [path];
 });
 const files = walk(root);
-const publicFiles = files.filter(path => /\.(html|md|css|js|svg|ya?ml)$/i.test(path));
+const publicFiles = files.filter(path => /\.(html|md|txt|css|js|svg|ya?ml)$/i.test(path));
 const required = [
   "index.html", "manifesto/index.html", "research/index.html", "science-aperture/index.html", "fields/index.html",
   "library/index.html", "library/antaram/index.html", "library/antaram/uk/index.html",
@@ -40,7 +40,7 @@ const required = [
   "uk/documents/index.html", "uk/library/index.html", "uk/participate/index.html", "uk/updates/index.html",
   "participate/index.html", "updates/index.html", "support/index.html",
   "CONTRIBUTING.md", "CODE_OF_CONDUCT.md", "CITATION.cff", "COST_AND_INFRASTRUCTURE.md", "UPDATES.md",
-  "robots.txt", "sitemap.xml", ".github/workflows/pages.yml"
+  "robots.txt", "llms.txt", "sitemap.xml", ".github/workflows/pages.yml", "scripts/render-public-article-html.sh"
 ];
 for (const file of required) if (!files.includes(join(root, file))) throw new Error(`Missing required file: ${file}`);
 
@@ -64,6 +64,16 @@ const home = readFileSync(join(root, "index.html"), "utf8");
 for (const route of ["manifesto/", "research/", "science-aperture/", "fields/", "library/", "documents/", "participate/"]) if (!home.includes(`href=\"${route}\"`)) throw new Error(`Home link missing: ${route}`);
 if (!home.includes('href="uk/"')) throw new Error("Home UKR language switch missing");
 if (!home.includes('<span class="wordmark-main">MET[Ȧ]CADEMY</span><span class="wordmark-sub"><span class="wordmark-of">of</span> HUMANITY</span>')) throw new Error("Canonical structured display wordmark missing");
+for (const token of ['rel="canonical"', 'name="robots"', 'type="application/ld+json"', 'hreflang="x-default"']) if (!home.includes(token)) throw new Error(`Home discovery metadata missing: ${token}`);
+
+const ukHome = readFileSync(join(root, "uk/index.html"), "utf8");
+for (const token of ['rel="canonical"', 'name="robots"', 'type="application/ld+json"', 'hreflang="x-default"']) if (!ukHome.includes(token)) throw new Error(`UK home discovery metadata missing: ${token}`);
+
+const robots = readFileSync(join(root, "robots.txt"), "utf8");
+for (const token of ["User-agent: *", "User-agent: Googlebot", "User-agent: Bingbot", "User-agent: OAI-SearchBot", "Sitemap: https://d4ttara.github.io/metacademy-of-humanity/sitemap.xml"]) if (!robots.includes(token)) throw new Error(`robots.txt discovery policy missing: ${token}`);
+
+const llms = readFileSync(join(root, "llms.txt"), "utf8");
+for (const token of ["MET[Ȧ]CADEMY OF HUMANITY", "Document 007", "Document 008", "PUBLICATION_REGISTRY.yml", "Interpretation boundary"]) if (!llms.includes(token)) throw new Error(`llms.txt discovery map missing: ${token}`);
 
 const css = readFileSync(join(root, "assets/css/site.css"), "utf8");
 for (const badSerif of [/IBM Plex Serif/i, /Georgia\s*,\s*serif/i, /Times New Roman/i, /font-family\s*:\s*serif\b/i]) {
@@ -85,6 +95,18 @@ for (const page of readerPages) {
   if (!readFileSync(join(root, page), "utf8").includes('data-markdown-render="true"')) throw new Error(`Document reader missing: ${page}`);
 }
 
+const researchEssayPages = [
+  "documents/007-after-vibe-coding/en/index.html",
+  "documents/007-after-vibe-coding/ua/index.html",
+  "documents/008-the-interface-that-knows-you/en/index.html",
+  "documents/008-the-interface-that-knows-you/ua/index.html"
+];
+for (const page of researchEssayPages) {
+  const text = readFileSync(join(root, page), "utf8");
+  for (const token of ['data-static-render="true"', 'type="application/ld+json"', 'rel="canonical"', 'type="text/markdown"', 'name="robots"']) if (!text.includes(token)) throw new Error(`Research Essay discovery surface missing ${token}: ${page}`);
+  if (text.includes("Loading canonical Markdown") || text.includes("Завантаження canonical Markdown")) throw new Error(`Research Essay remains JS-placeholder-only: ${page}`);
+}
+
 const registry = readFileSync(join(root, "publications/PUBLICATION_REGISTRY.yml"), "utf8");
 for (const token of ["life-as-organization", "when-science-reaches-a-plateau", "after-vibe-coding", "the-interface-that-knows-you", "ANTARAM", "uk_html:", "sha256:"]) if (!registry.includes(token)) throw new Error(`Publication registry missing ${token}`);
 
@@ -92,4 +114,4 @@ const antaram = readFileSync(join(root, "library/antaram/ANTARAM_MIZH_1.61_FREE_
 const antaramHash = createHash("sha256").update(antaram).digest("hex");
 if (antaramHash !== "56a3f0d28fd5108fe3517b82acf4ca6e92c7d7ef8b0bd31cc499932d3557b707") throw new Error(`ANTARAM SHA mismatch: ${antaramHash}`);
 
-console.log(`PUBLIC_SITE_VERIFY=PASS files=${publicFiles.length} routes=7 language_shell=EN_UKR typography=SANS_ONLY wordmark=STRUCTURED blue_axis=PASS document_readers=8 research_essays=007,008 antaram_sha=PASS private_markers=0 domains=13`);
+console.log(`PUBLIC_SITE_VERIFY=PASS files=${publicFiles.length} routes=7 language_shell=EN_UKR typography=SANS_ONLY wordmark=STRUCTURED blue_axis=PASS document_readers=8 research_essays=007,008 static_article_html=PASS jsonld=PASS robots=GOOGLE_BING_OAI_SEARCH llms_map=PASS antaram_sha=PASS private_markers=0 domains=13`);
