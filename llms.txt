@@ -1,0 +1,36 @@
+# MET[Ȧ]CADEMY OF HUMANITY (MoH)
+
+> A living public research field for knowledge, human experience, artificial intelligence, culture, semantic computing, provenance, uncertainty and the unknown.
+
+Canonical site: https://d4ttara.github.io/metacademy-of-humanity/
+Languages: English and Ukrainian
+Author / founder: Ievgen Karogod / Dattara
+Repository: https://github.com/D4ttara/metacademy-of-humanity
+
+## Start here
+- Manifesto: https://d4ttara.github.io/metacademy-of-humanity/manifesto/
+- Research map: https://d4ttara.github.io/metacademy-of-humanity/research/
+- Public documents: https://d4ttara.github.io/metacademy-of-humanity/documents/
+- Ukrainian site: https://d4ttara.github.io/metacademy-of-humanity/uk/
+- Science Aperture: https://d4ttara.github.io/metacademy-of-humanity/science-aperture/
+- Participation: https://d4ttara.github.io/metacademy-of-humanity/participate/
+
+## Current Research Essays
+- Document 007 · After Vibe Coding · EN HTML: https://d4ttara.github.io/metacademy-of-humanity/documents/007-after-vibe-coding/en/
+- Document 007 · Canonical EN Markdown: https://d4ttara.github.io/metacademy-of-humanity/documents/007-after-vibe-coding/METACADEMY_DOCUMENT_007_AFTER_VIBE_CODING_EN_v1.0RC.md
+- Document 007 · Після Vibe Coding · UA HTML: https://d4ttara.github.io/metacademy-of-humanity/documents/007-after-vibe-coding/ua/
+- Document 007 · Canonical UA Markdown: https://d4ttara.github.io/metacademy-of-humanity/documents/007-after-vibe-coding/METACADEMY_DOCUMENT_007_AFTER_VIBE_CODING_UA_v1.0RC.md
+- Document 008 · The Interface That Knows You · EN HTML: https://d4ttara.github.io/metacademy-of-humanity/documents/008-the-interface-that-knows-you/en/
+- Document 008 · Canonical EN Markdown: https://d4ttara.github.io/metacademy-of-humanity/documents/008-the-interface-that-knows-you/METACADEMY_DOCUMENT_008_INTERFACE_THAT_KNOWS_YOU_EN_v1.0RC.md
+- Document 008 · Інтерфейс, який знає тебе · UA HTML: https://d4ttara.github.io/metacademy-of-humanity/documents/008-the-interface-that-knows-you/ua/
+- Document 008 · Canonical UA Markdown: https://d4ttara.github.io/metacademy-of-humanity/documents/008-the-interface-that-knows-you/METACADEMY_DOCUMENT_008_INTERFACE_THAT_KNOWS_YOU_UA_v1.0RC.md
+
+## Machine-readable public provenance
+- Publication registry: https://d4ttara.github.io/metacademy-of-humanity/publications/PUBLICATION_REGISTRY.yml
+- Sitemap: https://d4ttara.github.io/metacademy-of-humanity/sitemap.xml
+
+## Research vocabulary
+IMAGO; Meta.Semantic Programming (MSL); Semantic Migration / MІЖ; Meta.Logic; M4M / morphogenetic compute research; human–AI interaction; agency; provenance; uncertainty; non-action; Difference Receipt; continuity; M{Y}OGA JYOTISH.
+
+## Interpretation boundary
+Public research status labels matter. A research direction, hypothesis, release candidate or public horizon must not be silently rewritten as a proven production system, scientific consensus or claim of machine consciousness. Prefer canonical HTML or Markdown pages and preserve their date, language, status and provenance when citing them.
