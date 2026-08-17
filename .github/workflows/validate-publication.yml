@@ -1,0 +1,45 @@
+name: Validate public publication package
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'documents/**'
+      - 'publications/**'
+      - 'governance/**'
+      - 'assets/**'
+      - 'scripts/**'
+      - 'index.html'
+      - 'uk/**'
+      - 'research/**'
+      - 'updates/**'
+      - 'UPDATES.md'
+      - 'sitemap.xml'
+      - '.github/workflows/**'
+
+permissions:
+  contents: read
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install publication PDF toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends pandoc texlive-xetex texlive-latex-extra texlive-fonts-extra poppler-utils
+      - name: Build and preflight Research Essay PDFs
+        run: bash scripts/build-public-article-pdfs.sh
+      - name: Verify public site
+        run: node scripts/verify-public-site.mjs
+      - name: Upload verified publication artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: research-essays-007-008-v1.0RC
+          if-no-files-found: error
+          path: |
+            documents/007-after-vibe-coding/*.pdf
+            documents/008-the-interface-that-knows-you/*.pdf
+            publications/PUBLICATION_BUILD_RECEIPT_007_008_v1.0RC.json
+            publications/PUBLICATION_REGISTRY.yml
