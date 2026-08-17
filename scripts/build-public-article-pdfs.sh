@@ -36,6 +36,26 @@ text = re.split(r'\n---\n\n\*\*(?:Status|Статус):\*\*', text, maxsplit=1)[
 dst.write_text(text, encoding='utf-8')
 PY
   pandoc "$tmpmd" --from=markdown+yaml_metadata_block --pdf-engine=xelatex --template="$TEMPLATE" --output="$pdf"
+  if [[ "$doc" == "009" ]]; then
+    # xdvipdfmx generates a fresh trailer ID on every run. Normalise only that
+    # fixed-length ID so the same Document 009 source produces the same PDF SHA.
+    # Cross-reference offsets and page content are untouched.
+    python3 - "$pdf" <<'PY'
+from pathlib import Path
+import hashlib, re, sys
+path = Path(sys.argv[1])
+data = path.read_bytes()
+pat = re.compile(rb'(/ID\s*\[\s*<)([0-9A-Fa-f]{32})(>\s*<)([0-9A-Fa-f]{32})(>\s*\])')
+matches = list(pat.finditer(data))
+if len(matches) != 1:
+    raise SystemExit(f'Expected one PDF trailer ID in {path}, found {len(matches)}')
+zeroed = pat.sub(lambda m: m.group(1)+b'0'*32+m.group(3)+b'0'*32+m.group(5), data, count=1)
+stable = hashlib.sha256(zeroed).hexdigest()[:32].encode('ascii')
+normal = pat.sub(lambda m: m.group(1)+stable+m.group(3)+stable+m.group(5), data, count=1)
+path.write_bytes(normal)
+print(f'PDF_TRAILER_ID=DETERMINISTIC file={path} id={stable.decode()}')
+PY
+  fi
   pages="$(pdfinfo "$pdf" | awk '/^Pages:/ {print $2}')"
   if (( pages < min_pages || pages > max_pages )); then
     echo "Unexpected page count for $pdf: $pages (expected range $min_pages-$max_pages)" >&2
@@ -82,17 +102,13 @@ def pages(p):
     raise RuntimeError(f'No page count for {p}')
 
 receipt_007_008 = {
-  'schema': 'metacademy-publication-build-receipt/v1',
-  'date': '2026-08-17',
-  'version': 'v1.0RC',
+  'schema': 'metacademy-publication-build-receipt/v1', 'date': '2026-08-17', 'version': 'v1.0RC',
   'documents': {doc: {lang: {'markdown_sha256': sha(all_mds[(doc,lang)]),'pdf_sha256': sha(all_items[(doc,lang)]),'page_count': pages(all_items[(doc,lang)]),'typography': 'IBM Plex Sans + IBM Plex Mono','paper': 'A4'} for lang in ('en','ua')} for doc in ('007','008')}
 }
 (root/'publications/PUBLICATION_BUILD_RECEIPT_007_008_v1.0RC.json').write_text(json.dumps(receipt_007_008, ensure_ascii=False, indent=2)+"\n", encoding='utf-8')
 
 receipt_009 = {
-  'schema': 'metacademy-publication-build-receipt/v1',
-  'date': '2026-08-17',
-  'version': 'v1.0RC',
+  'schema': 'metacademy-publication-build-receipt/v1', 'date': '2026-08-17', 'version': 'v1.0RC',
   'documents': {'009': {lang: {'markdown_sha256': sha(all_mds[('009',lang)]),'pdf_sha256': sha(all_items[('009',lang)]),'page_count': pages(all_items[('009',lang)]),'typography': 'IBM Plex Sans + IBM Plex Mono','paper': 'A4','file_only_support_block': True} for lang in ('en','ua')}}
 }
 (root/'publications/PUBLICATION_BUILD_RECEIPT_009_v1.0RC.json').write_text(json.dumps(receipt_009, ensure_ascii=False, indent=2)+"\n", encoding='utf-8')
@@ -115,7 +131,6 @@ for i, line in enumerate(lines):
         lines[i] = f"{indent}pdf: {sha(all_items[(current_doc,current_lang)])}"
         in_sha = False
 path.write_text("\n".join(lines)+"\n", encoding='utf-8')
-
 print(json.dumps(receipt_009, ensure_ascii=False, indent=2))
 PY
 
