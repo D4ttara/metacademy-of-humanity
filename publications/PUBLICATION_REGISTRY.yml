@@ -153,6 +153,46 @@ documents:
     supersedes: null
     external_links: []
     publication_boundary: "Public research essay; high-level concepts only. Private implementation internals excluded by Publication Firewall."
+  - number: "009"
+    canonical_slug: elon-musk-mark-zuckerberg-ai-control
+    title:
+      en: "A Response to Elon Musk and Mark Zuckerberg: Metanauts on AI Control"
+      ua: "Відповідь Ілону Маску й Марку Цукербергу: метанавти про контроль AI"
+    subtitle:
+      en: "An old debate around a new phenomenon of a new era"
+      ua: "Стара суперечка про нове явлення Нового часу"
+    class: Research Essay
+    status: published_release_candidate
+    date: 2026-08-17
+    research_relations: ["Manifesto", "IMAGO", "M4M", "Meta.Logic", "Human-AI relation"]
+    editions:
+      - language: en
+        version: v1.0RC
+        relation: English adaptive sibling; bidirectional semantic backflow
+        local_paths:
+          html: documents/009-elon-musk-mark-zuckerberg-ai-control/en/index.html
+          markdown: documents/009-elon-musk-mark-zuckerberg-ai-control/METACADEMY_DOCUMENT_009_AI_CONTROL_EN_v1.0RC.md
+          pdf: documents/009-elon-musk-mark-zuckerberg-ai-control/METACADEMY_DOCUMENT_009_AI_CONTROL_EN_v1.0RC.pdf
+        sha256:
+          markdown: pending_ci_build
+          pdf: pending_ci_build
+      - language: ua
+        version: v1.0RC
+        relation: primary Ukrainian reading edition; bidirectional semantic backflow
+        local_paths:
+          html: documents/009-elon-musk-mark-zuckerberg-ai-control/ua/index.html
+          markdown: documents/009-elon-musk-mark-zuckerberg-ai-control/METACADEMY_DOCUMENT_009_AI_CONTROL_UA_v1.0RC.md
+          pdf: documents/009-elon-musk-mark-zuckerberg-ai-control/METACADEMY_DOCUMENT_009_AI_CONTROL_UA_v1.0RC.pdf
+        sha256:
+          markdown: pending_ci_build
+          pdf: pending_ci_build
+    supersedes: null
+    external_links:
+      - https://ai.meta.com/
+      - https://elonmuskarchive.org/video/economist-elon-musk-2026-07-23
+      - https://www.whitehouse.gov/presidential-actions/2026/06/promoting-advanced-artificial-intelligence-innovation-and-security/
+      - https://digital-strategy.ec.europa.eu/en/faqs/navigating-ai-act
+    publication_boundary: "Public research essay. M4M/MFS appears only as high-level working hypotheses and bounded pre-alpha findings; no claim of machine subjectivity, AGI, or a new physical law. File editions include a voluntary support block that is intentionally excluded from the online HTML reader."
 external_large_artifacts:
   - name: Science Aperture 2021–2026 public index
     version: v1.1
