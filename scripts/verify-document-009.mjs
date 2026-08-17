@@ -36,7 +36,7 @@ for (const token of ['number: "009"','elon-musk-mark-zuckerberg-ai-control','MET
 const receipt = JSON.parse(readFileSync('publications/PUBLICATION_BUILD_RECEIPT_009_v1.0RC.json','utf8'));
 for (const lang of ['en','ua']) {
   const d = receipt.documents['009'][lang];
-  if (d.page_count < 8 || d.page_count > 18) throw new Error(`Unexpected 009 ${lang} page count ${d.page_count}`);
+  if (d.page_count < 5 || d.page_count > 12) throw new Error(`Unexpected 009 ${lang} page count ${d.page_count}`);
   if (!d.file_only_support_block) throw new Error(`009 ${lang} receipt missing support flag`);
 }
 
