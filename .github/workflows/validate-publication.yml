@@ -9,6 +9,7 @@ on:
       - 'governance/**'
       - 'assets/**'
       - 'scripts/**'
+      - 'legal/**'
       - 'index.html'
       - 'uk/**'
       - 'research/**'
@@ -35,10 +36,14 @@ jobs:
         run: bash scripts/build-public-article-pdfs.sh
       - name: Render canonical article bodies into static HTML
         run: bash scripts/render-public-article-html.sh
+      - name: Inject legal / privacy footer link
+        run: bash scripts/inject-legal-footer.sh
       - name: Verify public site
         run: node scripts/verify-public-site.mjs
       - name: Verify Document 009
         run: node scripts/verify-document-009.mjs
+      - name: Verify legal / privacy discovery
+        run: node scripts/verify-legal-footer.mjs
       - name: Upload verified publication artifacts
         uses: actions/upload-artifact@v4
         with:
