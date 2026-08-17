@@ -1,5 +1,5 @@
 schema: metacademy-publication-registry/v1
-updated: 2026-08-16
+updated: 2026-08-17
 documents:
   - number: "003"
     canonical_slug: life-as-organization
@@ -87,6 +87,72 @@ documents:
     supersedes: null
     external_links: []
     note: "Number 005 is reserved by an existing Academy document lineage outside this repository snapshot. A verified local PDF publication specimen exists but is not declared as a repository path in this registry entry."
+  - number: "007"
+    canonical_slug: after-vibe-coding
+    title:
+      en: After Vibe Coding
+      ua: Після Vibe Coding
+    class: Research Essay
+    status: published_release_candidate
+    date: 2026-08-17
+    research_relations: ["MSL", "M4M", "IMAGO"]
+    editions:
+      - language: en
+        version: v1.0RC
+        relation: English adaptive sibling; bidirectional MSL backflow
+        local_paths:
+          html: documents/007-after-vibe-coding/en/index.html
+          markdown: documents/007-after-vibe-coding/METACADEMY_DOCUMENT_007_AFTER_VIBE_CODING_EN_v1.0RC.md
+          pdf: documents/007-after-vibe-coding/METACADEMY_DOCUMENT_007_AFTER_VIBE_CODING_EN_v1.0RC.pdf
+        sha256:
+          markdown: 7579ada704139ff4ffeb7772192150e3c6bd8deb15fdda8a080a087cd9a3da26
+          pdf: ec3630261ed1241836f7213c32666e9d2bda5a4ff42ffb341683bb3c9bd86166
+      - language: ua
+        version: v1.0RC
+        relation: primary Ukrainian reading edition; bidirectional MSL backflow
+        local_paths:
+          html: documents/007-after-vibe-coding/ua/index.html
+          markdown: documents/007-after-vibe-coding/METACADEMY_DOCUMENT_007_AFTER_VIBE_CODING_UA_v1.0RC.md
+          pdf: documents/007-after-vibe-coding/METACADEMY_DOCUMENT_007_AFTER_VIBE_CODING_UA_v1.0RC.pdf
+        sha256:
+          markdown: 8f835be446d334c8dda941b4f5577c05f709d3b0db28e3824955bcd4a7f1a71a
+          pdf: 02c068b61487ed6ecaca0d7dc21b9a5cc9dd1d938d6443a477f2aaee63864c2a
+    supersedes: null
+    external_links: []
+    publication_boundary: "Public research essay; high-level concepts only. Private implementation internals excluded by Publication Firewall."
+  - number: "008"
+    canonical_slug: the-interface-that-knows-you
+    title:
+      en: The Interface That Knows You
+      ua: Інтерфейс, який знає тебе
+    class: Research Essay
+    status: published_release_candidate
+    date: 2026-08-17
+    research_relations: ["MSL", "M4M", "IMAGO"]
+    editions:
+      - language: en
+        version: v1.0RC
+        relation: English adaptive sibling; bidirectional MSL backflow
+        local_paths:
+          html: documents/008-the-interface-that-knows-you/en/index.html
+          markdown: documents/008-the-interface-that-knows-you/METACADEMY_DOCUMENT_008_INTERFACE_THAT_KNOWS_YOU_EN_v1.0RC.md
+          pdf: documents/008-the-interface-that-knows-you/METACADEMY_DOCUMENT_008_INTERFACE_THAT_KNOWS_YOU_EN_v1.0RC.pdf
+        sha256:
+          markdown: 09303d3f6219887c181497e33cb51c30d4584115288a5b1de4c5b8a08f08f0d6
+          pdf: a0f7dc6a3e82902af5e931347921bc235a085099b834823e01ca250785f5e96d
+      - language: ua
+        version: v1.0RC
+        relation: primary Ukrainian reading edition; bidirectional MSL backflow
+        local_paths:
+          html: documents/008-the-interface-that-knows-you/ua/index.html
+          markdown: documents/008-the-interface-that-knows-you/METACADEMY_DOCUMENT_008_INTERFACE_THAT_KNOWS_YOU_UA_v1.0RC.md
+          pdf: documents/008-the-interface-that-knows-you/METACADEMY_DOCUMENT_008_INTERFACE_THAT_KNOWS_YOU_UA_v1.0RC.pdf
+        sha256:
+          markdown: b2a6dd95f541b80824f2ebf5ce27959b0ce74bb944e6b52de144013e69cd50df
+          pdf: e99bd06d79d14df7667485ee48b972da06c6fbe2426d3d0d8501cc763d173ddb
+    supersedes: null
+    external_links: []
+    publication_boundary: "Public research essay; high-level concepts only. Private implementation internals excluded by Publication Firewall."
 external_large_artifacts:
   - name: Science Aperture 2021–2026 public index
     version: v1.1
