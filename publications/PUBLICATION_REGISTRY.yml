@@ -175,7 +175,7 @@ documents:
           pdf: documents/009-elon-musk-mark-zuckerberg-ai-control/METACADEMY_DOCUMENT_009_AI_CONTROL_EN_v1.0RC.pdf
         sha256:
           markdown: ef416fc320f9335943d60a3c30a207ff8d64d37a5db71a9bec19288b578fc8e5
-          pdf: 5410bca65c39f04de8c47ee1e7b3129456174d16d52aa4b25aac3f055e14c1d1
+          pdf: 79ac508252d2cb2fb43139e2ac0e0937f215317716fd641427dcb7c3feac74fc
       - language: ua
         version: v1.0RC
         relation: primary Ukrainian reading edition; bidirectional semantic backflow
@@ -185,7 +185,7 @@ documents:
           pdf: documents/009-elon-musk-mark-zuckerberg-ai-control/METACADEMY_DOCUMENT_009_AI_CONTROL_UA_v1.0RC.pdf
         sha256:
           markdown: e5ea8627cd0f10971e47266fb5ed2f01f4fcf0cfe75da50f05f7f1982042141c
-          pdf: ee892e09dae4c8a52d4f84390d8d4463d2fe60a43f7dbd85803a9b57abe13607
+          pdf: 75a2782048f877b416f2feb375a4227949f75dc10c37e0a052b8e4a155478395
     supersedes: null
     external_links:
       - https://ai.meta.com/
