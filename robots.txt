@@ -1,4 +1,16 @@
+# MET[Ȧ]CADEMY OF HUMANITY public discovery policy.
+# Public pages are crawlable; Publication Firewall controls what is published at all.
 User-agent: *
+Allow: /
+
+# Explicit search-discovery crawlers.
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+User-agent: OAI-SearchBot
 Allow: /
 
 Sitemap: https://d4ttara.github.io/metacademy-of-humanity/sitemap.xml
