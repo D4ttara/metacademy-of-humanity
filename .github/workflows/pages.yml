@@ -22,6 +22,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Install publication PDF toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends pandoc texlive-xetex texlive-latex-extra texlive-fonts-extra poppler-utils
+      - name: Build and preflight research essay PDFs
+        run: bash scripts/build-public-article-pdfs.sh
       - name: Verify public site
         run: node scripts/verify-public-site.mjs
       - uses: actions/configure-pages@v5
