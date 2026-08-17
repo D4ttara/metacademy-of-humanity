@@ -28,6 +28,8 @@ jobs:
           sudo apt-get install -y --no-install-recommends pandoc texlive-xetex texlive-latex-extra texlive-fonts-extra texlive-fonts-recommended poppler-utils
       - name: Build and preflight research essay PDFs
         run: bash scripts/build-public-article-pdfs.sh
+      - name: Render canonical article bodies into static HTML
+        run: bash scripts/render-public-article-html.sh
       - name: Verify public site
         run: node scripts/verify-public-site.mjs
       - uses: actions/configure-pages@v5
