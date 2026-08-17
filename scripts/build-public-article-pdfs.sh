@@ -18,8 +18,8 @@ declare -a ITEMS=(
   "007 ua documents/007-after-vibe-coding/METACADEMY_DOCUMENT_007_AFTER_VIBE_CODING_UA_v1.0RC.md documents/007-after-vibe-coding/METACADEMY_DOCUMENT_007_AFTER_VIBE_CODING_UA_v1.0RC.pdf 3 3"
   "008 en documents/008-the-interface-that-knows-you/METACADEMY_DOCUMENT_008_INTERFACE_THAT_KNOWS_YOU_EN_v1.0RC.md documents/008-the-interface-that-knows-you/METACADEMY_DOCUMENT_008_INTERFACE_THAT_KNOWS_YOU_EN_v1.0RC.pdf 3 3"
   "008 ua documents/008-the-interface-that-knows-you/METACADEMY_DOCUMENT_008_INTERFACE_THAT_KNOWS_YOU_UA_v1.0RC.md documents/008-the-interface-that-knows-you/METACADEMY_DOCUMENT_008_INTERFACE_THAT_KNOWS_YOU_UA_v1.0RC.pdf 3 3"
-  "009 en documents/009-elon-musk-mark-zuckerberg-ai-control/METACADEMY_DOCUMENT_009_AI_CONTROL_EN_v1.0RC.md documents/009-elon-musk-mark-zuckerberg-ai-control/METACADEMY_DOCUMENT_009_AI_CONTROL_EN_v1.0RC.pdf 8 18"
-  "009 ua documents/009-elon-musk-mark-zuckerberg-ai-control/METACADEMY_DOCUMENT_009_AI_CONTROL_UA_v1.0RC.md documents/009-elon-musk-mark-zuckerberg-ai-control/METACADEMY_DOCUMENT_009_AI_CONTROL_UA_v1.0RC.pdf 8 18"
+  "009 en documents/009-elon-musk-mark-zuckerberg-ai-control/METACADEMY_DOCUMENT_009_AI_CONTROL_EN_v1.0RC.md documents/009-elon-musk-mark-zuckerberg-ai-control/METACADEMY_DOCUMENT_009_AI_CONTROL_EN_v1.0RC.pdf 5 12"
+  "009 ua documents/009-elon-musk-mark-zuckerberg-ai-control/METACADEMY_DOCUMENT_009_AI_CONTROL_UA_v1.0RC.md documents/009-elon-musk-mark-zuckerberg-ai-control/METACADEMY_DOCUMENT_009_AI_CONTROL_UA_v1.0RC.pdf 5 12"
 )
 
 for item in "${ITEMS[@]}"; do
@@ -31,9 +31,7 @@ from pathlib import Path
 import re, sys
 src, dst = map(Path, sys.argv[1:])
 text = src.read_text(encoding='utf-8')
-# IBM Plex in TeX Live renders the canonical dotted A reliably in decomposed form.
 text = text.replace('\u0226', 'A\u0307')
-# Status/copyright already live in PDF furniture. Suppress the duplicated tail in print.
 text = re.split(r'\n---\n\n\*\*(?:Status|Статус):\*\*', text, maxsplit=1)[0].rstrip() + '\n'
 dst.write_text(text, encoding='utf-8')
 PY
@@ -87,16 +85,7 @@ receipt_007_008 = {
   'schema': 'metacademy-publication-build-receipt/v1',
   'date': '2026-08-17',
   'version': 'v1.0RC',
-  'documents': {
-    doc: {lang: {
-        'markdown_sha256': sha(all_mds[(doc,lang)]),
-        'pdf_sha256': sha(all_items[(doc,lang)]),
-        'page_count': pages(all_items[(doc,lang)]),
-        'typography': 'IBM Plex Sans + IBM Plex Mono',
-        'paper': 'A4'
-      } for lang in ('en','ua')}
-    for doc in ('007','008')
-  }
+  'documents': {doc: {lang: {'markdown_sha256': sha(all_mds[(doc,lang)]),'pdf_sha256': sha(all_items[(doc,lang)]),'page_count': pages(all_items[(doc,lang)]),'typography': 'IBM Plex Sans + IBM Plex Mono','paper': 'A4'} for lang in ('en','ua')} for doc in ('007','008')}
 }
 (root/'publications/PUBLICATION_BUILD_RECEIPT_007_008_v1.0RC.json').write_text(json.dumps(receipt_007_008, ensure_ascii=False, indent=2)+"\n", encoding='utf-8')
 
@@ -104,20 +93,10 @@ receipt_009 = {
   'schema': 'metacademy-publication-build-receipt/v1',
   'date': '2026-08-17',
   'version': 'v1.0RC',
-  'documents': {
-    '009': {lang: {
-        'markdown_sha256': sha(all_mds[('009',lang)]),
-        'pdf_sha256': sha(all_items[('009',lang)]),
-        'page_count': pages(all_items[('009',lang)]),
-        'typography': 'IBM Plex Sans + IBM Plex Mono',
-        'paper': 'A4',
-        'file_only_support_block': True
-      } for lang in ('en','ua')}
-  }
+  'documents': {'009': {lang: {'markdown_sha256': sha(all_mds[('009',lang)]),'pdf_sha256': sha(all_items[('009',lang)]),'page_count': pages(all_items[('009',lang)]),'typography': 'IBM Plex Sans + IBM Plex Mono','paper': 'A4','file_only_support_block': True} for lang in ('en','ua')}}
 }
 (root/'publications/PUBLICATION_BUILD_RECEIPT_009_v1.0RC.json').write_text(json.dumps(receipt_009, ensure_ascii=False, indent=2)+"\n", encoding='utf-8')
 
-# Update generated PDF hashes in the public registry for all current RC essays.
 path = root/'publications/PUBLICATION_REGISTRY.yml'
 lines = path.read_text(encoding='utf-8').splitlines()
 current_doc = current_lang = None
@@ -125,18 +104,12 @@ in_sha = False
 for i, line in enumerate(lines):
     m = re.match(r'\s*- number: "(\d+)"', line)
     if m:
-        current_doc = m.group(1)
-        current_lang = None
-        in_sha = False
-        continue
+        current_doc = m.group(1); current_lang = None; in_sha = False; continue
     m = re.match(r'\s*- language: (en|ua)\s*$', line)
     if m and current_doc in {'007','008','009'}:
-        current_lang = m.group(1)
-        in_sha = False
-        continue
+        current_lang = m.group(1); in_sha = False; continue
     if current_doc in {'007','008','009'} and current_lang and re.match(r'\s*sha256:\s*$', line):
-        in_sha = True
-        continue
+        in_sha = True; continue
     if in_sha and re.match(r'\s*pdf:\s*', line):
         indent = line[:len(line)-len(line.lstrip())]
         lines[i] = f"{indent}pdf: {sha(all_items[(current_doc,current_lang)])}"
