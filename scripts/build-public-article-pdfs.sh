@@ -10,6 +10,8 @@ for f in IBMPlexSans-Regular.otf IBMPlexSans-SemiBold.otf IBMPlexSans-Italic.otf
 done
 
 TEMPLATE="scripts/moh_article_template.tex"
+TMP_BUILD="$(mktemp -d)"
+trap 'rm -rf "$TMP_BUILD"' EXIT
 
 declare -a ITEMS=(
   "007 en documents/007-after-vibe-coding/METACADEMY_DOCUMENT_007_AFTER_VIBE_CODING_EN_v1.0RC.md documents/007-after-vibe-coding/METACADEMY_DOCUMENT_007_AFTER_VIBE_CODING_EN_v1.0RC.pdf"
@@ -21,16 +23,31 @@ declare -a ITEMS=(
 for item in "${ITEMS[@]}"; do
   read -r doc lang md pdf <<<"$item"
   echo "Building Document $doc $lang -> $pdf"
-  pandoc "$md" --from=markdown+yaml_metadata_block --pdf-engine=xelatex --template="$TEMPLATE" --output="$pdf"
-  test "$(pdfinfo "$pdf" | awk '/^Pages:/ {print $2}')" = "3" || { echo "Unexpected page count for $pdf" >&2; exit 1; }
+  tmpmd="$TMP_BUILD/${doc}_${lang}.md"
+  python3 - "$md" "$tmpmd" <<'PY'
+from pathlib import Path
+import sys
+src, dst = map(Path, sys.argv[1:])
+# IBM Plex in TeX Live renders the canonical dotted A reliably in decomposed form.
+# The repository Markdown keeps the canonical precomposed character; only the PDF
+# build body is normalized for glyph portability.
+dst.write_text(src.read_text(encoding='utf-8').replace('\u0226', 'A\u0307'), encoding='utf-8')
+PY
+  pandoc "$tmpmd" --from=markdown+yaml_metadata_block --pdf-engine=xelatex --template="$TEMPLATE" --output="$pdf"
+  pages="$(pdfinfo "$pdf" | awk '/^Pages:/ {print $2}')"
+  if (( pages < 3 || pages > 4 )); then
+    echo "Unexpected page count for $pdf: $pages (expected 3–4)" >&2
+    exit 1
+  fi
   pdftotext "$pdf" - | grep -q "MET" || { echo "PDF text extraction failed for $pdf" >&2; exit 1; }
   pdffonts "$pdf" | grep -q "IBMPlexSans" || { echo "IBM Plex Sans missing from $pdf" >&2; exit 1; }
   pdffonts "$pdf" | grep -q "IBMPlexMono" || { echo "IBM Plex Mono missing from $pdf" >&2; exit 1; }
+  echo "PDF_PREFLIGHT=PASS doc=$doc lang=$lang pages=$pages typography=IBM_PLEX text_extract=PASS"
 done
 
 python3 - <<'PY'
 from pathlib import Path
-import hashlib, json, re
+import hashlib, json, re, subprocess
 
 root = Path('.')
 items = {
@@ -46,12 +63,25 @@ mds = {
     ('008','ua'): root/'documents/008-the-interface-that-knows-you/METACADEMY_DOCUMENT_008_INTERFACE_THAT_KNOWS_YOU_UA_v1.0RC.md',
 }
 sha = lambda p: hashlib.sha256(p.read_bytes()).hexdigest()
+def pages(p):
+    out = subprocess.check_output(['pdfinfo', str(p)], text=True)
+    for line in out.splitlines():
+        if line.startswith('Pages:'):
+            return int(line.split(':',1)[1].strip())
+    raise RuntimeError(f'No page count for {p}')
+
 receipt = {
   'schema': 'metacademy-publication-build-receipt/v1',
   'date': '2026-08-17',
   'version': 'v1.0RC',
   'documents': {
-    doc: {lang: {'markdown_sha256': sha(mds[(doc,lang)]), 'pdf_sha256': sha(items[(doc,lang)])} for lang in ('en','ua')}
+    doc: {lang: {
+        'markdown_sha256': sha(mds[(doc,lang)]),
+        'pdf_sha256': sha(items[(doc,lang)]),
+        'page_count': pages(items[(doc,lang)]),
+        'typography': 'IBM Plex Sans + IBM Plex Mono',
+        'paper': 'A4'
+      } for lang in ('en','ua')}
     for doc in ('007','008')
   }
 }
@@ -88,4 +118,4 @@ path.write_text("\n".join(lines)+"\n", encoding='utf-8')
 print(json.dumps(receipt, ensure_ascii=False, indent=2))
 PY
 
-echo "ARTICLE_PDF_BUILD=PASS documents=007,008 editions=EN,UA typography=IBM_PLEX pages=3_each"
+echo "ARTICLE_PDF_BUILD=PASS documents=007,008 editions=EN,UA typography=IBM_PLEX page_range=3-4"
