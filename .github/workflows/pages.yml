@@ -32,6 +32,8 @@ jobs:
         run: bash scripts/render-public-article-html.sh
       - name: Verify public site
         run: node scripts/verify-public-site.mjs
+      - name: Verify Document 009
+        run: node scripts/verify-document-009.mjs
       - uses: actions/configure-pages@v5
       - uses: actions/upload-pages-artifact@v3
         with:

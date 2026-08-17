@@ -1,0 +1,25 @@
+{
+  "schema": "metacademy-publication-build-receipt/v1",
+  "date": "2026-08-17",
+  "version": "v1.0RC",
+  "documents": {
+    "009": {
+      "en": {
+        "markdown_sha256": "ef416fc320f9335943d60a3c30a207ff8d64d37a5db71a9bec19288b578fc8e5",
+        "pdf_sha256": "79ac508252d2cb2fb43139e2ac0e0937f215317716fd641427dcb7c3feac74fc",
+        "page_count": 6,
+        "typography": "IBM Plex Sans + IBM Plex Mono",
+        "paper": "A4",
+        "file_only_support_block": true
+      },
+      "ua": {
+        "markdown_sha256": "e5ea8627cd0f10971e47266fb5ed2f01f4fcf0cfe75da50f05f7f1982042141c",
+        "pdf_sha256": "75a2782048f877b416f2feb375a4227949f75dc10c37e0a052b8e4a155478395",
+        "page_count": 6,
+        "typography": "IBM Plex Sans + IBM Plex Mono",
+        "paper": "A4",
+        "file_only_support_block": true
+      }
+    }
+  }
+}

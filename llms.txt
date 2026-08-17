@@ -16,6 +16,10 @@ Repository: https://github.com/D4ttara/metacademy-of-humanity
 - Participation: https://d4ttara.github.io/metacademy-of-humanity/participate/
 
 ## Current Research Essays
+- Document 009 · A Response to Elon Musk and Mark Zuckerberg: Metanauts on AI Control · EN HTML: https://d4ttara.github.io/metacademy-of-humanity/documents/009-elon-musk-mark-zuckerberg-ai-control/en/
+- Document 009 · Canonical EN Markdown: https://d4ttara.github.io/metacademy-of-humanity/documents/009-elon-musk-mark-zuckerberg-ai-control/METACADEMY_DOCUMENT_009_AI_CONTROL_EN_v1.0RC.md
+- Document 009 · Відповідь Ілону Маску й Марку Цукербергу: метанавти про контроль AI · UA HTML: https://d4ttara.github.io/metacademy-of-humanity/documents/009-elon-musk-mark-zuckerberg-ai-control/ua/
+- Document 009 · Canonical UA Markdown: https://d4ttara.github.io/metacademy-of-humanity/documents/009-elon-musk-mark-zuckerberg-ai-control/METACADEMY_DOCUMENT_009_AI_CONTROL_UA_v1.0RC.md
 - Document 007 · After Vibe Coding · EN HTML: https://d4ttara.github.io/metacademy-of-humanity/documents/007-after-vibe-coding/en/
 - Document 007 · Canonical EN Markdown: https://d4ttara.github.io/metacademy-of-humanity/documents/007-after-vibe-coding/METACADEMY_DOCUMENT_007_AFTER_VIBE_CODING_EN_v1.0RC.md
 - Document 007 · Після Vibe Coding · UA HTML: https://d4ttara.github.io/metacademy-of-humanity/documents/007-after-vibe-coding/ua/
@@ -30,7 +34,7 @@ Repository: https://github.com/D4ttara/metacademy-of-humanity
 - Sitemap: https://d4ttara.github.io/metacademy-of-humanity/sitemap.xml
 
 ## Research vocabulary
-IMAGO; Meta.Semantic Programming (MSL); Semantic Migration / MІЖ; Meta.Logic; M4M / morphogenetic compute research; human–AI interaction; agency; provenance; uncertainty; non-action; Difference Receipt; continuity; M{Y}OGA JYOTISH.
+IMAGO; Meta.Semantic Programming (MSL); Semantic Migration / MІЖ; Meta.Logic; M4M / morphogenetic compute research; Human ↔ AI relation; AI control; agency; provenance; uncertainty; non-action; Difference Receipt; continuity; M{Y}OGA JYOTISH.
 
 ## Interpretation boundary
 Public research status labels matter. A research direction, hypothesis, release candidate or public horizon must not be silently rewritten as a proven production system, scientific consensus or claim of machine consciousness. Prefer canonical HTML or Markdown pages and preserve their date, language, status and provenance when citing them.

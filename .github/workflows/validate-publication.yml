@@ -37,13 +37,18 @@ jobs:
         run: bash scripts/render-public-article-html.sh
       - name: Verify public site
         run: node scripts/verify-public-site.mjs
+      - name: Verify Document 009
+        run: node scripts/verify-document-009.mjs
       - name: Upload verified publication artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: research-essays-007-008-v1.0RC
+          name: research-essays-007-008-009-v1.0RC
           if-no-files-found: error
           path: |
             documents/007-after-vibe-coding/*.pdf
             documents/008-the-interface-that-knows-you/*.pdf
+            documents/009-elon-musk-mark-zuckerberg-ai-control/*.pdf
+            documents/009-elon-musk-mark-zuckerberg-ai-control/*.md
             publications/PUBLICATION_BUILD_RECEIPT_007_008_v1.0RC.json
+            publications/PUBLICATION_BUILD_RECEIPT_009_v1.0RC.json
             publications/PUBLICATION_REGISTRY.yml
