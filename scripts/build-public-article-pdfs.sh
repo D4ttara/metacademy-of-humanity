@@ -26,19 +26,22 @@ for item in "${ITEMS[@]}"; do
   tmpmd="$TMP_BUILD/${doc}_${lang}.md"
   python3 - "$md" "$tmpmd" <<'PY'
 from pathlib import Path
-import sys
+import re, sys
 src, dst = map(Path, sys.argv[1:])
+text = src.read_text(encoding='utf-8')
 # IBM Plex in TeX Live renders the canonical dotted A reliably in decomposed form.
 # The repository Markdown keeps the canonical precomposed character; only the PDF
 # build body is normalized for glyph portability.
-dst.write_text(src.read_text(encoding='utf-8').replace('\u0226', 'A\u0307'), encoding='utf-8')
+text = text.replace('\u0226', 'A\u0307')
+# Status/copyright already live in PDF furniture (title metadata, running footer).
+# Keep them in canonical Markdown/HTML, but suppress the duplicated tail in print so
+# a one-line colophon never creates an otherwise blank extra page.
+text = re.split(r'\n---\n\n\*\*(?:Status|Статус):\*\*', text, maxsplit=1)[0].rstrip() + '\n'
+dst.write_text(text, encoding='utf-8')
 PY
   pandoc "$tmpmd" --from=markdown+yaml_metadata_block --pdf-engine=xelatex --template="$TEMPLATE" --output="$pdf"
   pages="$(pdfinfo "$pdf" | awk '/^Pages:/ {print $2}')"
-  if (( pages < 3 || pages > 4 )); then
-    echo "Unexpected page count for $pdf: $pages (expected 3–4)" >&2
-    exit 1
-  fi
+  test "$pages" = "3" || { echo "Unexpected page count for $pdf: $pages (expected 3 after print-tail suppression)" >&2; exit 1; }
   pdftotext "$pdf" - | grep -q "MET" || { echo "PDF text extraction failed for $pdf" >&2; exit 1; }
   pdffonts "$pdf" | grep -q "IBMPlexSans" || { echo "IBM Plex Sans missing from $pdf" >&2; exit 1; }
   pdffonts "$pdf" | grep -q "IBMPlexMono" || { echo "IBM Plex Mono missing from $pdf" >&2; exit 1; }
@@ -118,4 +121,4 @@ path.write_text("\n".join(lines)+"\n", encoding='utf-8')
 print(json.dumps(receipt, ensure_ascii=False, indent=2))
 PY
 
-echo "ARTICLE_PDF_BUILD=PASS documents=007,008 editions=EN,UA typography=IBM_PLEX page_range=3-4"
+echo "ARTICLE_PDF_BUILD=PASS documents=007,008 editions=EN,UA typography=IBM_PLEX pages=3_each"
