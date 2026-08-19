@@ -34,6 +34,7 @@ for (const path of pages) {
     ? 'MET[Ȧ]CADEMY OF HUMANITY — публічне дослідницьке поле про знання, людський досвід, ШІ, культуру, provenance та невідоме.'
     : 'MET[Ȧ]CADEMY OF HUMANITY — a public research field for knowledge, human experience, AI, culture, provenance and the unknown.';
   const description = decode(existingDescription || lede || fallback);
+  const hasReader = /<article[^>]+id="read-online"/i.test(html);
   const additions = [];
 
   if (!/name="description"/i.test(html)) additions.push(`<meta name="description" content="${attr(description)}">`);
@@ -41,7 +42,7 @@ for (const path of pages) {
   if (!/rel="canonical"/i.test(html)) additions.push(`<link rel="canonical" href="${canonical}">`);
   if (!/type="application\/rss\+xml"/i.test(html)) additions.push(`<link rel="alternate" type="application/rss+xml" title="MET[Ȧ]CADEMY OF HUMANITY · Publications" href="${rss}">`);
 
-  if (!/property="og:type"/i.test(html)) additions.push(`<meta property="og:type" content="${/\/documents\/\d{3}[^/]*\/(?:en|ua)\/index\.html$/.test('/' + rel) ? 'article' : 'website'}">`);
+  if (!/property="og:type"/i.test(html)) additions.push(`<meta property="og:type" content="${hasReader ? 'article' : 'website'}">`);
   if (!/property="og:site_name"/i.test(html)) additions.push('<meta property="og:site_name" content="MET[Ȧ]CADEMY OF HUMANITY">');
   if (!/property="og:title"/i.test(html)) additions.push(`<meta property="og:title" content="${attr(title)}">`);
   if (!/property="og:description"/i.test(html)) additions.push(`<meta property="og:description" content="${attr(description)}">`);
@@ -50,8 +51,7 @@ for (const path of pages) {
   if (!/name="twitter:title"/i.test(html)) additions.push(`<meta name="twitter:title" content="${attr(title)}">`);
   if (!/name="twitter:description"/i.test(html)) additions.push(`<meta name="twitter:description" content="${attr(description)}">`);
 
-  const isArticle = /\/documents\/\d{3}[^/]*\/(?:en|ua)\/index\.html$/.test('/' + rel) && /<article[^>]+id="read-online"/i.test(html);
-  if (isArticle && !/type="application\/ld\+json"/i.test(html)) {
+  if (hasReader && !/type="application\/ld\+json"/i.test(html)) {
     const published = html.match(/property="article:published_time"\s+content="([^"]+)"/i)?.[1];
     const modified = html.match(/property="article:modified_time"\s+content="([^"]+)"/i)?.[1] || published;
     const data = {
