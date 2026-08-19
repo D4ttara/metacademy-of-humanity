@@ -1,5 +1,5 @@
 schema: metacademy-publication-registry/v1
-updated: 2026-08-17
+updated: 2026-08-19
 documents:
   - number: "003"
     canonical_slug: life-as-organization
@@ -193,6 +193,117 @@ documents:
       - https://www.whitehouse.gov/presidential-actions/2026/06/promoting-advanced-artificial-intelligence-innovation-and-security/
       - https://digital-strategy.ec.europa.eu/en/faqs/navigating-ai-act
     publication_boundary: "Public research essay. M4M/MFS appears only as high-level working hypotheses and bounded pre-alpha findings; no claim of machine subjectivity, AGI, or a new physical law. File editions include a voluntary support block that is intentionally excluded from the online HTML reader."
+  - number: "010"
+    canonical_slug: manifestation-time-genesis-time
+    title:
+      en: "Manifestation Time ≠ Genesis Time"
+      ua: "Час прояву ≠ час зародження"
+    subtitle:
+      en: "When an event begins before it becomes visible"
+      ua: "Коли подія починається раніше, ніж стає видимою"
+    class: Research Essay
+    status: published
+    date: 2026-08-19
+    research_relations: ["Meta.Logic", "M{Y}OGA JYOTISH", "temporal causality", "relational sensitivity"]
+    editions:
+      - language: en
+        version: v1.0
+        relation: English adaptive sibling
+        local_paths:
+          html: documents/010-manifestation-time-genesis-time/en/index.html
+          markdown: documents/010-manifestation-time-genesis-time/METACADEMY_DOCUMENT_010_MANIFESTATION_TIME_GENESIS_TIME_EN_v1.0.md
+          pdf: documents/010-manifestation-time-genesis-time/METACADEMY_DOCUMENT_010_MANIFESTATION_TIME_GENESIS_TIME_EN_v1.0.pdf
+        sha256:
+          markdown: f56197ccd2d0e10f245938095ffcc404622b2acff0b4cf5cf75225ed3515bc19
+          pdf: b2754d70c108c729116b97188dbbf950f7d7277c1cfe77f9bba0b4222c89bdcd
+      - language: ua
+        version: v1.0
+        relation: primary Ukrainian reading edition
+        local_paths:
+          html: documents/010-manifestation-time-genesis-time/ua/index.html
+          markdown: documents/010-manifestation-time-genesis-time/METACADEMY_DOCUMENT_010_MANIFESTATION_TIME_GENESIS_TIME_UA_v1.0.md
+          pdf: documents/010-manifestation-time-genesis-time/METACADEMY_DOCUMENT_010_MANIFESTATION_TIME_GENESIS_TIME_UA_v1.0.pdf
+        sha256:
+          markdown: 3770e3c97f4f269a0f0353cbf8dd8a3a302ff0d1a5720893905a020a422b772a
+          pdf: d5e6ea16f693bcbdc38e03fcc93e05c4ef2d2ecae0f30396beac50c9eb8e66a5
+    supersedes: null
+    external_links:
+      - https://doi.org/10.1038/s41598-018-19307-z
+      - https://doi.org/10.1126/science.abg6037
+  - number: "011"
+    canonical_slug: the-third-body
+    title:
+      en: "The Third Body"
+      ua: "Третє тіло"
+    subtitle:
+      en: "What never gets born between people when they rescue themselves from each other too quickly"
+      ua: "Чого не народжується між людьми, якщо вони занадто швидко рятують себе одне від одного"
+    class: Research Essay
+    status: published
+    date: 2026-08-19
+    research_relations: ["Meta.Logic", "relational ontology", "psychology", "shared reality", "transactive memory"]
+    editions:
+      - language: en
+        version: v1.0
+        relation: English adaptive sibling
+        local_paths:
+          html: documents/011-the-third-body/en/index.html
+          markdown: documents/011-the-third-body/METACADEMY_DOCUMENT_011_THIRD_BODY_EN_v1.0.md
+          pdf: documents/011-the-third-body/METACADEMY_DOCUMENT_011_THIRD_BODY_EN_v1.0.pdf
+        sha256:
+          markdown: 8c47381af163d1de1faf9f81ffa0009e6535fa8a819287faa9600d741381591f
+          pdf: 2ca162e9a4438b3a205ee244bb778e01c86fb34c25deeaf0310d63c43251230a
+      - language: ua
+        version: v1.0
+        relation: primary Ukrainian reading edition
+        local_paths:
+          html: documents/011-the-third-body/ua/index.html
+          markdown: documents/011-the-third-body/METACADEMY_DOCUMENT_011_THIRD_BODY_UA_v1.0.md
+          pdf: documents/011-the-third-body/METACADEMY_DOCUMENT_011_THIRD_BODY_UA_v1.0.pdf
+        sha256:
+          markdown: 17d12c195e69747cc33b1656534a9e916b68659ac5b6cbd7ced3240039bffdc0
+          pdf: 593ab464dd7d6e84ce49ed75ed6255b87da54eb196c25e079086bd54321a66c0
+    supersedes: null
+    external_links:
+      - https://doi.org/10.1016/j.copsyc.2018.01.001
+      - https://doi.org/10.1037/0022-3514.61.6.923
+      - https://doi.org/10.3389/fpsyg.2014.00452
+  - number: "012"
+    canonical_slug: myoga-astrology-overview
+    title:
+      en: "M{Y}OGA: What Happens If We Don't Laugh at Astrology for the First Five Minutes"
+      ua: "M{Y}OGA: що буде, якщо не сміятися з астрології перші п’ять хвилин"
+    subtitle:
+      en: "A short overview of the research field"
+      ua: "Короткий огляд дослідницького поля"
+    class: Field Overview
+    status: published
+    date: 2026-08-19
+    research_relations: ["M{Y}OGA JYOTISH", "Jyotiṣa", "Western astrology", "astronomy", "psychology", "Cosmic M{Y}OGA"]
+    editions:
+      - language: en
+        version: v1.0
+        relation: English adaptive sibling
+        local_paths:
+          html: documents/012-myoga-astrology-overview/en/index.html
+          markdown: documents/012-myoga-astrology-overview/METACADEMY_DOCUMENT_012_MYOGA_ASTROLOGY_OVERVIEW_EN_v1.0.md
+          pdf: documents/012-myoga-astrology-overview/METACADEMY_DOCUMENT_012_MYOGA_ASTROLOGY_OVERVIEW_EN_v1.0.pdf
+        sha256:
+          markdown: 5564e3acc3744824328ae0f05be5349271dc1a1ea0ab493beeb98249813b1825
+          pdf: dbd52903bed77dbeff4cadb5c410dfdb4c3ce4214b78f12c0e1f4d5db1995237
+      - language: ua
+        version: v1.0
+        relation: primary Ukrainian reading edition
+        local_paths:
+          html: documents/012-myoga-astrology-overview/ua/index.html
+          markdown: documents/012-myoga-astrology-overview/METACADEMY_DOCUMENT_012_MYOGA_ASTROLOGY_OVERVIEW_UA_v1.0.md
+          pdf: documents/012-myoga-astrology-overview/METACADEMY_DOCUMENT_012_MYOGA_ASTROLOGY_OVERVIEW_UA_v1.0.pdf
+        sha256:
+          markdown: b103d54277e5edf0ca2af7b706ea1f0dd6bc7b341064386b30a8e7ccf981f1fc
+          pdf: 211a779fb336bc4936ec0dd92dff0453fc3fe8aa7f64eeeb0ac4db98fba041cc
+    supersedes: null
+    external_links:
+      - https://d4ttara.github.io/metacademy-of-humanity/documents/006-myoga-jyotish/
 external_large_artifacts:
   - name: Science Aperture 2021–2026 public index
     version: v1.1
