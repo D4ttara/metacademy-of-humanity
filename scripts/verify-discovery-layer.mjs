@@ -31,11 +31,13 @@ for (const [slug] of docs) {
 }
 
 const sitemap = read('sitemap.xml');
-for (const slug of ['010-manifestation-time-genesis-time', '011-the-third-body', '012-myoga-astrology-overview']) {
-  for (const suffix of ['', 'en/', 'ua/']) {
-    const url = `${base}documents/${slug}/${suffix}`;
-    if (!sitemap.includes(`<loc>${url}</loc>`)) fail(`sitemap.xml missing ${url}`);
+for (const [slug] of docs) {
+  for (const lang of ['en', 'ua']) {
+    const url = `${base}documents/${slug}/${lang}/`;
+    if (!sitemap.includes(`<loc>${url}</loc>`)) fail(`sitemap.xml missing canonical language edition ${url}`);
   }
+  const redirectShell = `${base}documents/${slug}/`;
+  if (sitemap.includes(`<loc>${redirectShell}</loc>`)) fail(`sitemap.xml must not publish redirect shell ${redirectShell}`);
 }
 for (const url of sitemap.match(/<loc>([^<]+)<\/loc>/g) ?? []) {
   const absolute = url.slice(5, -6);
@@ -86,4 +88,4 @@ if (read(indexNowKeys[0]).trim() !== key) fail('IndexNow key file content does n
 const indexNowScript = read('scripts/notify-indexnow.sh');
 for (const token of ['api.indexnow.org/indexnow', 'keyLocation', 'urlList']) if (!indexNowScript.includes(token)) fail(`IndexNow notifier missing ${token}`);
 
-console.log('DISCOVERY_LAYER_VERIFY=PASS articles=007-012 static_html=PASS links=CLICKABLE sitemap=PASS page_meta=PASS jsonld=PASS llms=PASS rss=PASS rss_autodiscovery=PASS latest_home_updates=010_011_012 share=COPY_NATIVE indexnow=PUBLIC_KEY_READY');
+console.log('DISCOVERY_LAYER_VERIFY=PASS articles=007-012 static_html=PASS links=CLICKABLE sitemap=CANONICAL_ONLY page_meta=PASS jsonld=PASS llms=PASS rss=PASS rss_autodiscovery=PASS latest_home_updates=010_011_012 share=COPY_NATIVE indexnow=PUBLIC_KEY_READY');
