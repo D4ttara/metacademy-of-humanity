@@ -11,6 +11,12 @@ items=(
   "documents/008-the-interface-that-knows-you/ua/index.html|documents/008-the-interface-that-knows-you/METACADEMY_DOCUMENT_008_INTERFACE_THAT_KNOWS_YOU_UA_v1.0RC.md"
   "documents/009-elon-musk-mark-zuckerberg-ai-control/en/index.html|documents/009-elon-musk-mark-zuckerberg-ai-control/METACADEMY_DOCUMENT_009_AI_CONTROL_EN_v1.0RC.md"
   "documents/009-elon-musk-mark-zuckerberg-ai-control/ua/index.html|documents/009-elon-musk-mark-zuckerberg-ai-control/METACADEMY_DOCUMENT_009_AI_CONTROL_UA_v1.0RC.md"
+  "documents/010-manifestation-time-genesis-time/en/index.html|documents/010-manifestation-time-genesis-time/METACADEMY_DOCUMENT_010_MANIFESTATION_TIME_GENESIS_TIME_EN_v1.0.md"
+  "documents/010-manifestation-time-genesis-time/ua/index.html|documents/010-manifestation-time-genesis-time/METACADEMY_DOCUMENT_010_MANIFESTATION_TIME_GENESIS_TIME_UA_v1.0.md"
+  "documents/011-the-third-body/en/index.html|documents/011-the-third-body/METACADEMY_DOCUMENT_011_THIRD_BODY_EN_v1.0.md"
+  "documents/011-the-third-body/ua/index.html|documents/011-the-third-body/METACADEMY_DOCUMENT_011_THIRD_BODY_UA_v1.0.md"
+  "documents/012-myoga-astrology-overview/en/index.html|documents/012-myoga-astrology-overview/METACADEMY_DOCUMENT_012_MYOGA_ASTROLOGY_OVERVIEW_EN_v1.0.md"
+  "documents/012-myoga-astrology-overview/ua/index.html|documents/012-myoga-astrology-overview/METACADEMY_DOCUMENT_012_MYOGA_ASTROLOGY_OVERVIEW_UA_v1.0.md"
 )
 
 for item in "${items[@]}"; do
@@ -26,7 +32,9 @@ text = src.read_text(encoding='utf-8')
 text = re.sub(r'\n?<!-- FILE_ONLY_SUPPORT_START -->.*?<!-- FILE_ONLY_SUPPORT_END -->\n?', '\n', text, flags=re.S)
 dst.write_text(text, encoding='utf-8')
 PY
-  pandoc "$filtered" --from=markdown+yaml_metadata_block --to=html5 --wrap=none --output="$fragment"
+  # autolink_bare_uris makes explicit https://... references clickable in the HTML reader
+  # without forcing every canonical Markdown source to duplicate link syntax.
+  pandoc "$filtered" --from=markdown+yaml_metadata_block+autolink_bare_uris --to=html5 --wrap=none --output="$fragment"
   python3 - "$html" "$fragment" <<'PY'
 from pathlib import Path
 import re, sys
@@ -45,7 +53,12 @@ if 'Loading canonical Markdown' in rendered or 'Завантаження canonic
     raise SystemExit(f"Static article render placeholder survived in {html_path}")
 if 'FILE_ONLY_SUPPORT' in rendered or 'SUPPORT THIS WORK' in rendered or 'ПІДТРИМАТИ ЦЮ РОБОТУ' in rendered:
     raise SystemExit(f"File-only support block leaked into HTML reader: {html_path}")
+# Publication pages must not leave explicit http(s) references as dead text.
+for url in re.findall(r'https?://[^\s<]+', fragment):
+    clean = url.rstrip('.,);]')
+    if clean and f'href="{clean}"' not in fragment:
+        raise SystemExit(f"Bare non-clickable URL survived in {html_path}: {clean}")
 html_path.write_text(rendered, encoding='utf-8')
 PY
-  echo "STATIC_ARTICLE_RENDER=PASS html=$html md=$md support_block=EXCLUDED"
+  echo "STATIC_ARTICLE_RENDER=PASS html=$html md=$md bare_urls=AUTOLINKED support_block=EXCLUDED"
 done
