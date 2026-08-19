@@ -39,8 +39,12 @@ jobs:
         run: bash scripts/build-public-article-pdfs-010-012.sh
       - name: Render canonical article bodies into static HTML
         run: bash scripts/render-public-article-html.sh
+      - name: Inject latest publications into home and updates
+        run: node scripts/inject-latest-publications.mjs
       - name: Inject legal / privacy footer link
         run: bash scripts/inject-legal-footer.sh
+      - name: Enrich discovery metadata and RSS autodiscovery
+        run: node scripts/enrich-discovery-meta.mjs
       - name: Verify public site
         run: node scripts/verify-public-site.mjs
       - name: Verify discovery, static links and zero-account sharing
