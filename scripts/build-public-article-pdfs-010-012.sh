@@ -1,0 +1,90 @@
+#!/usr/bin/env bash
+set -euo pipefail
+export SOURCE_DATE_EPOCH=1787097600
+export TZ=UTC
+FONT_ROOT="/usr/share/texlive/texmf-dist/fonts/opentype/ibm/plex"
+for f in IBMPlexSans-Regular.otf IBMPlexSans-SemiBold.otf IBMPlexSans-Italic.otf IBMPlexSans-SemiBoldItalic.otf IBMPlexMono-Regular.otf IBMPlexMono-SemiBold.otf; do
+  test -f "$FONT_ROOT/$f" || { echo "Missing required IBM Plex font: $FONT_ROOT/$f" >&2; exit 1; }
+done
+TEMPLATE="scripts/moh_article_template_support.tex"
+TMP_BUILD="$(mktemp -d)"
+trap 'rm -rf "$TMP_BUILD"' EXIT
+
+declare -a ITEMS=(
+  "010 en documents/010-manifestation-time-genesis-time/METACADEMY_DOCUMENT_010_MANIFESTATION_TIME_GENESIS_TIME_EN_v1.0.md documents/010-manifestation-time-genesis-time/METACADEMY_DOCUMENT_010_MANIFESTATION_TIME_GENESIS_TIME_EN_v1.0.pdf 3 4"
+  "010 ua documents/010-manifestation-time-genesis-time/METACADEMY_DOCUMENT_010_MANIFESTATION_TIME_GENESIS_TIME_UA_v1.0.md documents/010-manifestation-time-genesis-time/METACADEMY_DOCUMENT_010_MANIFESTATION_TIME_GENESIS_TIME_UA_v1.0.pdf 3 4"
+  "011 en documents/011-the-third-body/METACADEMY_DOCUMENT_011_THIRD_BODY_EN_v1.0.md documents/011-the-third-body/METACADEMY_DOCUMENT_011_THIRD_BODY_EN_v1.0.pdf 3 4"
+  "011 ua documents/011-the-third-body/METACADEMY_DOCUMENT_011_THIRD_BODY_UA_v1.0.md documents/011-the-third-body/METACADEMY_DOCUMENT_011_THIRD_BODY_UA_v1.0.pdf 3 4"
+  "012 en documents/012-myoga-astrology-overview/METACADEMY_DOCUMENT_012_MYOGA_ASTROLOGY_OVERVIEW_EN_v1.0.md documents/012-myoga-astrology-overview/METACADEMY_DOCUMENT_012_MYOGA_ASTROLOGY_OVERVIEW_EN_v1.0.pdf 3 4"
+  "012 ua documents/012-myoga-astrology-overview/METACADEMY_DOCUMENT_012_MYOGA_ASTROLOGY_OVERVIEW_UA_v1.0.md documents/012-myoga-astrology-overview/METACADEMY_DOCUMENT_012_MYOGA_ASTROLOGY_OVERVIEW_UA_v1.0.pdf 3 4"
+)
+
+for item in "${ITEMS[@]}"; do
+  read -r doc lang md pdf min_pages max_pages <<<"$item"
+  echo "Building Document $doc $lang -> $pdf"
+  mkdir -p "$(dirname "$pdf")"
+  tmpmd="$TMP_BUILD/${doc}_${lang}.md"
+  python3 - "$md" "$tmpmd" <<'PY'
+from pathlib import Path
+import re, sys
+src, dst = map(Path, sys.argv[1:])
+text = src.read_text(encoding='utf-8').replace('\u0226','A\u0307').replace('\u1e63','s\u0323')
+text = re.sub(r'\n# [^\n]+\n\n## [^\n]+\n', '\n', text, count=1)
+dst.write_text(text, encoding='utf-8')
+PY
+  pandoc "$tmpmd" --from=markdown+yaml_metadata_block --pdf-engine=xelatex --template="$TEMPLATE" --output="$pdf"
+  python3 - "$pdf" <<'PY'
+from pathlib import Path
+import hashlib, re, sys
+path = Path(sys.argv[1]); data = path.read_bytes()
+pat = re.compile(rb'(/ID\s*\[\s*<)([0-9A-Fa-f]{32})(>\s*<)([0-9A-Fa-f]{32})(>\s*\])')
+matches=list(pat.finditer(data))
+if len(matches)!=1: raise SystemExit(f'Expected one PDF trailer ID in {path}, found {len(matches)}')
+zeroed=pat.sub(lambda m:m.group(1)+b'0'*32+m.group(3)+b'0'*32+m.group(5),data,count=1)
+stable=hashlib.sha256(zeroed).hexdigest()[:32].encode('ascii')
+normal=pat.sub(lambda m:m.group(1)+stable+m.group(3)+stable+m.group(5),data,count=1)
+path.write_bytes(normal)
+PY
+  pages="$(pdfinfo "$pdf" | awk '/^Pages:/ {print $2}')"
+  if (( pages < min_pages || pages > max_pages )); then echo "Unexpected page count for $pdf: $pages" >&2; exit 1; fi
+  txt="$TMP_BUILD/${doc}_${lang}.txt"; fonts="$TMP_BUILD/${doc}_${lang}.fonts"
+  pdftotext "$pdf" "$txt"; pdffonts "$pdf" > "$fonts"
+  grep -qi "SUPPORT THE FIELD" "$txt" || { echo "Support page missing from $pdf" >&2; exit 1; }
+  grep -q "IBMPlexSans" "$fonts" || { echo "IBM Plex Sans missing from $pdf" >&2; exit 1; }
+  grep -q "IBMPlexMono" "$fonts" || { echo "IBM Plex Mono missing from $pdf" >&2; exit 1; }
+  echo "PDF_PREFLIGHT=PASS doc=$doc lang=$lang pages=$pages typography=IBM_PLEX support=PASS"
+done
+
+python3 - <<'PY'
+from pathlib import Path
+import hashlib, json, re, subprocess
+root=Path('.')
+items={
+('010','en'): root/'documents/010-manifestation-time-genesis-time/METACADEMY_DOCUMENT_010_MANIFESTATION_TIME_GENESIS_TIME_EN_v1.0.pdf',
+('010','ua'): root/'documents/010-manifestation-time-genesis-time/METACADEMY_DOCUMENT_010_MANIFESTATION_TIME_GENESIS_TIME_UA_v1.0.pdf',
+('011','en'): root/'documents/011-the-third-body/METACADEMY_DOCUMENT_011_THIRD_BODY_EN_v1.0.pdf',
+('011','ua'): root/'documents/011-the-third-body/METACADEMY_DOCUMENT_011_THIRD_BODY_UA_v1.0.pdf',
+('012','en'): root/'documents/012-myoga-astrology-overview/METACADEMY_DOCUMENT_012_MYOGA_ASTROLOGY_OVERVIEW_EN_v1.0.pdf',
+('012','ua'): root/'documents/012-myoga-astrology-overview/METACADEMY_DOCUMENT_012_MYOGA_ASTROLOGY_OVERVIEW_UA_v1.0.pdf',
+}
+mds={k:Path(str(v).replace('.pdf','.md')) for k,v in items.items()}
+sha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()
+def pages(p):
+    out=subprocess.check_output(['pdfinfo',str(p)],text=True)
+    return int(next(line.split(':',1)[1].strip() for line in out.splitlines() if line.startswith('Pages:')))
+receipt={'schema':'metacademy-publication-build-receipt/v1','date':'2026-08-19','version':'v1.0','documents':{doc:{lang:{'markdown_sha256':sha(mds[(doc,lang)]),'pdf_sha256':sha(items[(doc,lang)]),'page_count':pages(items[(doc,lang)]),'typography':'IBM Plex Sans + IBM Plex Mono','paper':'A4','support_page':True} for lang in ('en','ua')} for doc in ('010','011','012')}}
+(root/'publications/PUBLICATION_BUILD_RECEIPT_010_012_v1.0.json').write_text(json.dumps(receipt,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
+path=root/'publications/PUBLICATION_REGISTRY.yml'; lines=path.read_text(encoding='utf-8').splitlines(); current_doc=current_lang=None; in_sha=False
+for i,line in enumerate(lines):
+    m=re.match(r'\s*- number: "(\d+)"',line)
+    if m: current_doc=m.group(1); current_lang=None; in_sha=False; continue
+    m=re.match(r'\s*- language: (en|ua)\s*$',line)
+    if m and current_doc in {'010','011','012'}: current_lang=m.group(1); in_sha=False; continue
+    if current_doc in {'010','011','012'} and current_lang and re.match(r'\s*sha256:\s*$',line): in_sha=True; continue
+    if in_sha and re.match(r'\s*pdf:\s*',line):
+        indent=line[:len(line)-len(line.lstrip())]; lines[i]=f"{indent}pdf: {sha(items[(current_doc,current_lang)])}"; in_sha=False
+path.write_text('\n'.join(lines)+'\n',encoding='utf-8')
+print(json.dumps(receipt,ensure_ascii=False,indent=2))
+PY
+
+echo "ARTICLE_PDF_BUILD=PASS documents=010,011,012 editions=EN,UA typography=IBM_PLEX support=QR"
