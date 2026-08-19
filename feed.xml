@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MET[Ȧ]CADEMY OF HUMANITY · Publications</title>
+    <link>https://d4ttara.github.io/metacademy-of-humanity/documents/</link>
+    <description>Public research essays, field overviews and publications from MET[Ȧ]CADEMY OF HUMANITY (MoH).</description>
+    <language>en</language>
+    <atom:link href="https://d4ttara.github.io/metacademy-of-humanity/feed.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>M{Y}OGA: What Happens If We Don't Laugh at Astrology for the First Five Minutes</title>
+      <link>https://d4ttara.github.io/metacademy-of-humanity/documents/012-myoga-astrology-overview/en/</link>
+      <guid isPermaLink="true">https://d4ttara.github.io/metacademy-of-humanity/documents/012-myoga-astrology-overview/en/</guid>
+      <pubDate>Wed, 19 Aug 2026 00:00:00 GMT</pubDate>
+      <description>A short overview of the M{Y}OGA research field.</description>
+    </item>
+    <item>
+      <title>The Third Body</title>
+      <link>https://d4ttara.github.io/metacademy-of-humanity/documents/011-the-third-body/en/</link>
+      <guid isPermaLink="true">https://d4ttara.github.io/metacademy-of-humanity/documents/011-the-third-body/en/</guid>
+      <pubDate>Wed, 19 Aug 2026 00:00:00 GMT</pubDate>
+      <description>What never gets born between people when they rescue themselves from each other too quickly.</description>
+    </item>
+    <item>
+      <title>Manifestation Time ≠ Genesis Time</title>
+      <link>https://d4ttara.github.io/metacademy-of-humanity/documents/010-manifestation-time-genesis-time/en/</link>
+      <guid isPermaLink="true">https://d4ttara.github.io/metacademy-of-humanity/documents/010-manifestation-time-genesis-time/en/</guid>
+      <pubDate>Wed, 19 Aug 2026 00:00:00 GMT</pubDate>
+      <description>When an event begins before it becomes visible.</description>
+    </item>
+    <item>
+      <title>A Response to Elon Musk and Mark Zuckerberg: Metanauts on AI Control</title>
+      <link>https://d4ttara.github.io/metacademy-of-humanity/documents/009-elon-musk-mark-zuckerberg-ai-control/en/</link>
+      <guid isPermaLink="true">https://d4ttara.github.io/metacademy-of-humanity/documents/009-elon-musk-mark-zuckerberg-ai-control/en/</guid>
+      <pubDate>Mon, 17 Aug 2026 00:00:00 GMT</pubDate>
+      <description>AI control, personal superintelligence, regulation and the Human ↔ AI relation.</description>
+    </item>
+    <item>
+      <title>The Interface That Knows You</title>
+      <link>https://d4ttara.github.io/metacademy-of-humanity/documents/008-the-interface-that-knows-you/en/</link>
+      <guid isPermaLink="true">https://d4ttara.github.io/metacademy-of-humanity/documents/008-the-interface-that-knows-you/en/</guid>
+      <pubDate>Mon, 17 Aug 2026 00:00:00 GMT</pubDate>
+      <description>Research essay on personal AI, memory, incentives, identity and care.</description>
+    </item>
+    <item>
+      <title>After Vibe Coding</title>
+      <link>https://d4ttara.github.io/metacademy-of-humanity/documents/007-after-vibe-coding/en/</link>
+      <guid isPermaLink="true">https://d4ttara.github.io/metacademy-of-humanity/documents/007-after-vibe-coding/en/</guid>
+      <pubDate>Mon, 17 Aug 2026 00:00:00 GMT</pubDate>
+      <description>Research essay on what comes after prompt-first software creation.</description>
+    </item>
+  </channel>
+</rss>
