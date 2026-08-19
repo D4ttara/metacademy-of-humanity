@@ -186,8 +186,12 @@ h3 { font-size:1.36rem; font-weight:600; line-height:1.15; letter-spacing:-.006e
   background:transparent;
   color:var(--ink);
   text-decoration:none;
+  font-family:inherit;
   font-weight:600;
   font-size:.9rem;
+  line-height:1.2;
+  cursor:pointer;
+  border-radius:0;
 }
 .button.primary { background:var(--ink); color:#fff; }
 .button:hover { border-color:var(--accent-strong); color:var(--accent-strong); }

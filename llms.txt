@@ -15,23 +15,37 @@ Repository: https://github.com/D4ttara/metacademy-of-humanity
 - Science Aperture: https://d4ttara.github.io/metacademy-of-humanity/science-aperture/
 - Participation: https://d4ttara.github.io/metacademy-of-humanity/participate/
 
-## Current Research Essays
+## Current Research Essays and Field Overviews
+- Document 012 · M{Y}OGA: What Happens If We Don't Laugh at Astrology for the First Five Minutes · EN HTML: https://d4ttara.github.io/metacademy-of-humanity/documents/012-myoga-astrology-overview/en/
+- Document 012 · Canonical EN Markdown: https://d4ttara.github.io/metacademy-of-humanity/documents/012-myoga-astrology-overview/METACADEMY_DOCUMENT_012_MYOGA_ASTROLOGY_OVERVIEW_EN_v1.0.md
+- Document 012 · M{Y}OGA · Ukrainian HTML: https://d4ttara.github.io/metacademy-of-humanity/documents/012-myoga-astrology-overview/ua/
+- Document 012 · Canonical UA Markdown: https://d4ttara.github.io/metacademy-of-humanity/documents/012-myoga-astrology-overview/METACADEMY_DOCUMENT_012_MYOGA_ASTROLOGY_OVERVIEW_UA_v1.0.md
+- Document 011 · The Third Body · EN HTML: https://d4ttara.github.io/metacademy-of-humanity/documents/011-the-third-body/en/
+- Document 011 · Canonical EN Markdown: https://d4ttara.github.io/metacademy-of-humanity/documents/011-the-third-body/METACADEMY_DOCUMENT_011_THIRD_BODY_EN_v1.0.md
+- Document 011 · Третє тіло · UA HTML: https://d4ttara.github.io/metacademy-of-humanity/documents/011-the-third-body/ua/
+- Document 011 · Canonical UA Markdown: https://d4ttara.github.io/metacademy-of-humanity/documents/011-the-third-body/METACADEMY_DOCUMENT_011_THIRD_BODY_UA_v1.0.md
+- Document 010 · Manifestation Time ≠ Genesis Time · EN HTML: https://d4ttara.github.io/metacademy-of-humanity/documents/010-manifestation-time-genesis-time/en/
+- Document 010 · Canonical EN Markdown: https://d4ttara.github.io/metacademy-of-humanity/documents/010-manifestation-time-genesis-time/METACADEMY_DOCUMENT_010_MANIFESTATION_TIME_GENESIS_TIME_EN_v1.0.md
+- Document 010 · Час проявлення ≠ час генезису · UA HTML: https://d4ttara.github.io/metacademy-of-humanity/documents/010-manifestation-time-genesis-time/ua/
+- Document 010 · Canonical UA Markdown: https://d4ttara.github.io/metacademy-of-humanity/documents/010-manifestation-time-genesis-time/METACADEMY_DOCUMENT_010_MANIFESTATION_TIME_GENESIS_TIME_UA_v1.0.md
 - Document 009 · A Response to Elon Musk and Mark Zuckerberg: Metanauts on AI Control · EN HTML: https://d4ttara.github.io/metacademy-of-humanity/documents/009-elon-musk-mark-zuckerberg-ai-control/en/
 - Document 009 · Canonical EN Markdown: https://d4ttara.github.io/metacademy-of-humanity/documents/009-elon-musk-mark-zuckerberg-ai-control/METACADEMY_DOCUMENT_009_AI_CONTROL_EN_v1.0RC.md
 - Document 009 · Відповідь Ілону Маску й Марку Цукербергу: метанавти про контроль AI · UA HTML: https://d4ttara.github.io/metacademy-of-humanity/documents/009-elon-musk-mark-zuckerberg-ai-control/ua/
 - Document 009 · Canonical UA Markdown: https://d4ttara.github.io/metacademy-of-humanity/documents/009-elon-musk-mark-zuckerberg-ai-control/METACADEMY_DOCUMENT_009_AI_CONTROL_UA_v1.0RC.md
-- Document 007 · After Vibe Coding · EN HTML: https://d4ttara.github.io/metacademy-of-humanity/documents/007-after-vibe-coding/en/
-- Document 007 · Canonical EN Markdown: https://d4ttara.github.io/metacademy-of-humanity/documents/007-after-vibe-coding/METACADEMY_DOCUMENT_007_AFTER_VIBE_CODING_EN_v1.0RC.md
-- Document 007 · Після Vibe Coding · UA HTML: https://d4ttara.github.io/metacademy-of-humanity/documents/007-after-vibe-coding/ua/
-- Document 007 · Canonical UA Markdown: https://d4ttara.github.io/metacademy-of-humanity/documents/007-after-vibe-coding/METACADEMY_DOCUMENT_007_AFTER_VIBE_CODING_UA_v1.0RC.md
 - Document 008 · The Interface That Knows You · EN HTML: https://d4ttara.github.io/metacademy-of-humanity/documents/008-the-interface-that-knows-you/en/
 - Document 008 · Canonical EN Markdown: https://d4ttara.github.io/metacademy-of-humanity/documents/008-the-interface-that-knows-you/METACADEMY_DOCUMENT_008_INTERFACE_THAT_KNOWS_YOU_EN_v1.0RC.md
 - Document 008 · Інтерфейс, який знає тебе · UA HTML: https://d4ttara.github.io/metacademy-of-humanity/documents/008-the-interface-that-knows-you/ua/
 - Document 008 · Canonical UA Markdown: https://d4ttara.github.io/metacademy-of-humanity/documents/008-the-interface-that-knows-you/METACADEMY_DOCUMENT_008_INTERFACE_THAT_KNOWS_YOU_UA_v1.0RC.md
+- Document 007 · After Vibe Coding · EN HTML: https://d4ttara.github.io/metacademy-of-humanity/documents/007-after-vibe-coding/en/
+- Document 007 · Canonical EN Markdown: https://d4ttara.github.io/metacademy-of-humanity/documents/007-after-vibe-coding/METACADEMY_DOCUMENT_007_AFTER_VIBE_CODING_EN_v1.0RC.md
+- Document 007 · Після Vibe Coding · UA HTML: https://d4ttara.github.io/metacademy-of-humanity/documents/007-after-vibe-coding/ua/
+- Document 007 · Canonical UA Markdown: https://d4ttara.github.io/metacademy-of-humanity/documents/007-after-vibe-coding/METACADEMY_DOCUMENT_007_AFTER_VIBE_CODING_UA_v1.0RC.md
 
-## Machine-readable public provenance
+## Machine-readable public provenance and discovery
 - Publication registry: https://d4ttara.github.io/metacademy-of-humanity/publications/PUBLICATION_REGISTRY.yml
 - Sitemap: https://d4ttara.github.io/metacademy-of-humanity/sitemap.xml
+- RSS publications feed: https://d4ttara.github.io/metacademy-of-humanity/feed.xml
+- Robots policy: https://d4ttara.github.io/metacademy-of-humanity/robots.txt
 
 ## Research vocabulary
 IMAGO; Meta.Semantic Programming (MSL); Semantic Migration / MІЖ; Meta.Logic; M4M / morphogenetic compute research; Human ↔ AI relation; AI control; agency; provenance; uncertainty; non-action; Difference Receipt; continuity; M{Y}OGA JYOTISH.

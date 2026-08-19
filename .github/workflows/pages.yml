@@ -36,6 +36,8 @@ jobs:
         run: bash scripts/inject-legal-footer.sh
       - name: Verify public site
         run: node scripts/verify-public-site.mjs
+      - name: Verify discovery, static links and zero-account sharing
+        run: node scripts/verify-discovery-layer.mjs
       - name: Verify Document 009
         run: node scripts/verify-document-009.mjs
       - name: Verify legal / privacy discovery
