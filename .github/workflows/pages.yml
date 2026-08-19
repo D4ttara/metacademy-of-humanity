@@ -36,6 +36,8 @@ jobs:
         run: node scripts/verify-public-site.mjs
       - name: Verify Document 009
         run: node scripts/verify-document-009.mjs
+      - name: Verify Documents 010-012
+        run: node scripts/verify-documents-010-012.mjs
       - name: Verify legal / privacy discovery
         run: node scripts/verify-legal-footer.mjs
       - uses: actions/configure-pages@v5
