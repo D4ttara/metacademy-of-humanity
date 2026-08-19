@@ -36,8 +36,10 @@ PY
   # without forcing every canonical Markdown source to duplicate link syntax.
   pandoc "$filtered" --from=markdown+yaml_metadata_block+autolink_bare_uris --to=html5 --wrap=none --output="$fragment"
   python3 - "$html" "$fragment" <<'PY'
+from html.parser import HTMLParser
 from pathlib import Path
 import re, sys
+
 html_path, fragment_path = map(Path, sys.argv[1:])
 html = html_path.read_text(encoding='utf-8')
 fragment = fragment_path.read_text(encoding='utf-8').strip()
@@ -53,11 +55,37 @@ if 'Loading canonical Markdown' in rendered or 'Завантаження canonic
     raise SystemExit(f"Static article render placeholder survived in {html_path}")
 if 'FILE_ONLY_SUPPORT' in rendered or 'SUPPORT THIS WORK' in rendered or 'ПІДТРИМАТИ ЦЮ РОБОТУ' in rendered:
     raise SystemExit(f"File-only support block leaked into HTML reader: {html_path}")
+
 # Publication pages must not leave explicit http(s) references as dead text.
-for url in re.findall(r'https?://[^\s<]+', fragment):
-    clean = url.rstrip('.,);]')
-    if clean and f'href="{clean}"' not in fragment:
-        raise SystemExit(f"Bare non-clickable URL survived in {html_path}: {clean}")
+# Inspect only visible text nodes outside <a>; URLs inside href attributes or linked
+# anchor text are valid and must not be mistaken for dead references.
+class DeadUrlAudit(HTMLParser):
+    def __init__(self):
+        super().__init__(convert_charrefs=True)
+        self.anchor_depth = 0
+        self.dead = []
+
+    def handle_starttag(self, tag, attrs):
+        if tag.lower() == 'a':
+            self.anchor_depth += 1
+
+    def handle_endtag(self, tag):
+        if tag.lower() == 'a' and self.anchor_depth:
+            self.anchor_depth -= 1
+
+    def handle_data(self, data):
+        if self.anchor_depth:
+            return
+        for url in re.findall(r'https?://[^\s<>"\']+', data):
+            clean = url.rstrip('.,);]')
+            if clean:
+                self.dead.append(clean)
+
+audit = DeadUrlAudit()
+audit.feed(fragment)
+if audit.dead:
+    raise SystemExit(f"Bare non-clickable URL survived in {html_path}: {audit.dead[0]}")
+
 html_path.write_text(rendered, encoding='utf-8')
 PY
   echo "STATIC_ARTICLE_RENDER=PASS html=$html md=$md bare_urls=AUTOLINKED support_block=EXCLUDED"
