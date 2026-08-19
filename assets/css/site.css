@@ -242,3 +242,48 @@ section { padding:clamp(3.4rem,6.5vw,5.9rem) 0; border-bottom:1px solid var(--li
 
 .language-switch { display:flex; gap:.38rem; align-items:center; font:500 .74rem/1.2 "IBM Plex Mono","IBM Plex Sans",monospace; letter-spacing:.04em; }
 .language-switch a { text-decoration:none; border:1px solid var(--line); padding:.28rem .48rem; }
+.language-switch a[aria-current="page"] { background:var(--ink); color:#fff; border-color:var(--ink); }
+
+.literary-body { width:min(calc(100% - 2.5rem), 70rem); }
+.literary-body pre { white-space:pre-wrap; overflow-wrap:anywhere; color:var(--text); font:400 1rem/1.8 "Noto Sans Devanagari","IBM Plex Sans","Segoe UI",sans-serif; }
+.document-reading { margin-top:0; }
+.document-reading h1 { display:none; }
+.document-reading h2 { font-size:clamp(1.65rem,3vw,2.15rem); margin-top:3rem; }
+.document-reading h3 { margin-top:2rem; }
+.document-reading ul { padding-left:1.25rem; }
+.document-reading hr { border:0; border-top:1px solid var(--line); margin:2.5rem 0; }
+
+footer { padding:2.7rem 0; border-top:0; font-size:.84rem; color:var(--muted); }
+footer .author-link { color:var(--ink); text-decoration:none; font-weight:500; }
+footer .author-link:hover { color:var(--accent-strong); }
+
+@media (max-width:900px) {
+  .top .wrap { align-items:flex-start; flex-direction:column; }
+  .nav { justify-content:flex-start; }
+  .cards { grid-template-columns:repeat(2,1fr); }
+  .display-wordmark { font-size:clamp(2.7rem,8.5vw,5rem); }
+}
+@media (max-width:760px) {
+  .wrap { width:min(calc(100% - 1.5rem), var(--max)); }
+  .brand { white-space:normal; }
+  .brand::before { min-width:4.7rem; padding:.5rem .7rem; }
+  .copy,.aside { grid-column:1/-1; }
+  .cards { grid-template-columns:1fr; }
+  .domain-grid { grid-template-columns:1fr 1fr; }
+  .hero { padding:2.2rem 0 2rem; }
+  .hero + section { padding-top:2.6rem; }
+  .hero-lockup { display:block; width:100%; }
+  .hero-lockup .mark { width:100%; text-align:left; }
+  .display-wordmark { display:grid; grid-template-columns:minmax(0,1fr); width:100%; font-size:clamp(2.35rem,10.8vw,4.1rem); letter-spacing:.006em; }
+  .wordmark-main { white-space:normal; }
+  .wordmark-sub { white-space:nowrap; justify-self:stretch; }
+  .lede { max-width:34rem; }
+  .lede-line { white-space:normal; }
+  .document-sign { white-space:normal; }
+}
+@media (max-width:430px) {
+  .display-wordmark { font-size:clamp(2.05rem,11.2vw,3.1rem); }
+  .wordmark-sub { font-size:.68em; }
+  .wordmark-of { font-size:1.04em; }
+}
+@media (prefers-reduced-motion:reduce) { html { scroll-behavior:auto; } }
