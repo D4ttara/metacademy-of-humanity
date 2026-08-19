@@ -107,6 +107,14 @@ const addShareControls = () => {
       });
       group.append(share);
     }
+
+    const discuss = document.createElement('a');
+    discuss.className = 'button';
+    discuss.dataset.discussLink = 'true';
+    discuss.href = 'https://github.com/D4ttara/metacademy-of-humanity/discussions';
+    discuss.rel = 'external noopener noreferrer';
+    discuss.textContent = uk ? 'Обговорити' : 'Discuss';
+    group.append(discuss);
   });
 };
 
