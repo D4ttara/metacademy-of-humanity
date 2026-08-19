@@ -44,6 +44,7 @@ Repository: https://github.com/D4ttara/metacademy-of-humanity
 ## Machine-readable public provenance and discovery
 - Publication registry: https://d4ttara.github.io/metacademy-of-humanity/publications/PUBLICATION_REGISTRY.yml
 - Sitemap: https://d4ttara.github.io/metacademy-of-humanity/sitemap.xml
+- RSS publications feed: https://d4ttara.github.io/metacademy-of-humanity/feed.xml
 - Robots policy: https://d4ttara.github.io/metacademy-of-humanity/robots.txt
 
 ## Research vocabulary
