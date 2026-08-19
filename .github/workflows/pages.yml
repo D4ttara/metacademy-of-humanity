@@ -25,7 +25,7 @@ jobs:
       - name: Install publication PDF toolchain
         run: |
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends pandoc texlive-xetex texlive-latex-extra texlive-fonts-extra texlive-fonts-recommended poppler-utils
+          sudo apt-get install -y --no-install-recommends pandoc texlive-xetex texlive-latex-extra texlive-fonts-extra texlive-fonts-recommended poppler-utils librsvg2-bin
       - name: Build and preflight research essay PDFs
         run: bash scripts/build-public-article-pdfs.sh
       - name: Render canonical article bodies into static HTML
@@ -36,6 +36,8 @@ jobs:
         run: node scripts/verify-public-site.mjs
       - name: Verify Document 009
         run: node scripts/verify-document-009.mjs
+      - name: Verify Documents 010-012
+        run: node scripts/verify-documents-010-012.mjs
       - name: Verify legal / privacy discovery
         run: node scripts/verify-legal-footer.mjs
       - uses: actions/configure-pages@v5
