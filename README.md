@@ -6,7 +6,15 @@ Public alpha · August 2026. This repository is a small, public doorway into an 
 
 ## Visit
 
-GitHub Pages: enabled from the `main` branch through GitHub Actions after the first public push.
+**Public site:** https://d4ttara.github.io/metacademy-of-humanity/
+
+**Documents:** https://d4ttara.github.io/metacademy-of-humanity/documents/
+
+**Manifesto:** https://d4ttara.github.io/metacademy-of-humanity/manifesto/
+
+**RSS:** https://d4ttara.github.io/metacademy-of-humanity/feed.xml
+
+GitHub Pages deploys the verified public build from `main` through GitHub Actions.
 
 ## What is here
 
@@ -15,8 +23,13 @@ GitHub Pages: enabled from the `main` branch through GitHub Actions after the fi
 - a 13-domain map preview that preserves undecided labels as open;
 - the Science Aperture v1.1 public index and editorial reading guide;
 - a small library of public-facing entry points;
-- Document 003, *Життя як організація* — a Ukrainian Research Brief with public PDF and Markdown forms;
-- Document 006, *M{Y}OGA JYOTISH* — a Ukrainian Field Manifesto plus a 108-point public discipline protocol;
+- Document 003, *Життя як організація / Life as Organization* — Research Brief;
+- Document 004, *Коли наука виходить на плато / When Science Reaches a Plateau* — Research Brief;
+- Document 006, *M{Y}OGA JYOTISH* — Field Manifesto plus a 108-point public discipline protocol;
+- Documents 007–009 — bilingual Research Essays on vibe coding, personal AI interfaces and AI control;
+- Document 010, *Manifestation Time ≠ Genesis Time / Час прояву ≠ час зародження*;
+- Document 011, *The Third Body / Третє тіло*;
+- Document 012, *M{Y}OGA: What Happens If We Don't Laugh at Astrology for the First Five Minutes* — bilingual field overview;
 - participation routes for discussions, source-aware corrections, questions and focused pull requests.
 
 ## M{Y}OGA JYOTISH
