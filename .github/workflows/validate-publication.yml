@@ -31,7 +31,7 @@ jobs:
       - name: Install publication PDF toolchain
         run: |
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends pandoc texlive-xetex texlive-latex-extra texlive-fonts-extra texlive-fonts-recommended poppler-utils
+          sudo apt-get install -y --no-install-recommends pandoc texlive-xetex texlive-latex-extra texlive-fonts-extra texlive-fonts-recommended poppler-utils librsvg2-bin
       - name: Build and preflight Research Essay PDFs
         run: bash scripts/build-public-article-pdfs.sh
       - name: Render canonical article bodies into static HTML
@@ -47,13 +47,19 @@ jobs:
       - name: Upload verified publication artifacts
         uses: actions/upload-artifact@v4
         with:
-          name: research-essays-007-008-009-v1.0RC
+          name: research-publications-007-012
           if-no-files-found: error
           path: |
             documents/007-after-vibe-coding/*.pdf
             documents/008-the-interface-that-knows-you/*.pdf
             documents/009-elon-musk-mark-zuckerberg-ai-control/*.pdf
-            documents/009-elon-musk-mark-zuckerberg-ai-control/*.md
+            documents/010-manifestation-time-genesis-time/*.pdf
+            documents/011-the-third-body/*.pdf
+            documents/012-myoga-astrology-overview/*.pdf
+            documents/010-manifestation-time-genesis-time/*.md
+            documents/011-the-third-body/*.md
+            documents/012-myoga-astrology-overview/*.md
             publications/PUBLICATION_BUILD_RECEIPT_007_008_v1.0RC.json
             publications/PUBLICATION_BUILD_RECEIPT_009_v1.0RC.json
+            publications/PUBLICATION_BUILD_RECEIPT_010_012_v1.0.json
             publications/PUBLICATION_REGISTRY.yml
