@@ -42,6 +42,8 @@ jobs:
         run: node scripts/verify-public-site.mjs
       - name: Verify discovery, static links and zero-account sharing
         run: node scripts/verify-discovery-layer.mjs
+      - name: Verify internal links and fragments
+        run: node scripts/verify-internal-links.mjs
       - name: Verify Document 009
         run: node scripts/verify-document-009.mjs
       - name: Verify legal / privacy discovery
