@@ -17,6 +17,8 @@ urls=(
   "${BASE}documents/011-the-third-body/ua/"
   "${BASE}documents/012-myoga-astrology-overview/en/"
   "${BASE}documents/012-myoga-astrology-overview/ua/"
+  "${BASE}documents/013-room-that-answers/en/"
+  "${BASE}documents/013-room-that-answers/ua/"
   "${BASE}uk/"
 )
 
