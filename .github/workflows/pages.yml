@@ -26,14 +26,24 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends pandoc texlive-xetex texlive-latex-extra texlive-fonts-extra texlive-fonts-recommended poppler-utils
+      - name: Inject Document 013 registry entry
+        run: node scripts/inject-document-013-registry.mjs
       - name: Build and preflight research essay PDFs
         run: bash scripts/build-public-article-pdfs.sh
       - name: Build and preflight Documents 010-012
         run: bash scripts/build-public-article-pdfs-010-012.sh
+      - name: Build and preflight Document 013
+        run: bash scripts/build-public-article-pdfs-013.sh
       - name: Render canonical article bodies into static HTML
         run: bash scripts/render-public-article-html.sh
+      - name: Render Document 013 canonical bodies into static HTML
+        run: bash scripts/render-public-article-html-013.sh
       - name: Inject latest publications into home and updates
         run: node scripts/inject-latest-publications.mjs
+      - name: Inject Document 013 into public discovery surfaces
+        run: node scripts/inject-document-013-publication.mjs
+      - name: Inject Document 013 into sitemap, llms and RSS
+        run: node scripts/inject-document-013-machine-discovery.mjs
       - name: Inject legal / privacy footer link
         run: bash scripts/inject-legal-footer.sh
       - name: Enrich discovery metadata and RSS autodiscovery
@@ -46,6 +56,8 @@ jobs:
         run: node scripts/verify-internal-links.mjs
       - name: Verify Document 009
         run: node scripts/verify-document-009.mjs
+      - name: Verify Document 013
+        run: node scripts/verify-document-013.mjs
       - name: Verify legal / privacy discovery
         run: node scripts/verify-legal-footer.mjs
       - uses: actions/configure-pages@v5
