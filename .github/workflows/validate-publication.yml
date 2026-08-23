@@ -33,24 +33,36 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends pandoc texlive-xetex texlive-latex-extra texlive-fonts-extra texlive-fonts-recommended poppler-utils
+      - name: Assemble Document 014 canonical Markdown
+        run: bash scripts/assemble-document-014-source.sh
       - name: Inject Document 013 registry entry
         run: node scripts/inject-document-013-registry.mjs
+      - name: Inject Document 014 registry entry
+        run: node scripts/inject-document-014-registry.mjs
       - name: Build and preflight Research Essay PDFs
         run: bash scripts/build-public-article-pdfs.sh
       - name: Build and preflight Documents 010-012
         run: bash scripts/build-public-article-pdfs-010-012.sh
       - name: Build and preflight Document 013
         run: bash scripts/build-public-article-pdfs-013.sh
+      - name: Build and preflight Document 014
+        run: bash scripts/build-public-article-pdfs-014.sh
       - name: Render canonical article bodies into static HTML
         run: bash scripts/render-public-article-html.sh
       - name: Render Document 013 canonical bodies into static HTML
         run: bash scripts/render-public-article-html-013.sh
+      - name: Verify Document 014 static article bodies
+        run: bash scripts/render-public-article-html-014.sh
       - name: Inject latest publications into home and updates
         run: node scripts/inject-latest-publications.mjs
       - name: Inject Document 013 into public discovery surfaces
         run: node scripts/inject-document-013-publication.mjs
       - name: Inject Document 013 into sitemap, llms and RSS
         run: node scripts/inject-document-013-machine-discovery.mjs
+      - name: Inject Document 014 into public discovery surfaces
+        run: node scripts/inject-document-014-publication.mjs
+      - name: Inject Document 014 into sitemap, llms and RSS
+        run: node scripts/inject-document-014-machine-discovery.mjs
       - name: Inject legal / privacy footer link
         run: bash scripts/inject-legal-footer.sh
       - name: Enrich discovery metadata and RSS autodiscovery
@@ -65,6 +77,8 @@ jobs:
         run: node scripts/verify-document-009.mjs
       - name: Verify Document 013
         run: node scripts/verify-document-013.mjs
+      - name: Verify Document 014
+        run: node scripts/verify-document-014.mjs
       - name: Verify legal / privacy discovery
         run: node scripts/verify-legal-footer.mjs
       - name: Upload verified publication artifacts
@@ -82,9 +96,12 @@ jobs:
             documents/012-myoga-astrology-overview/*.pdf
             documents/013-room-that-answers/*.pdf
             documents/013-room-that-answers/*.md
+            documents/014-right-to-see-the-consequence/*.pdf
+            documents/014-right-to-see-the-consequence/*.md
             publications/PUBLICATION_BUILD_RECEIPT_007_008_v1.0RC.json
             publications/PUBLICATION_BUILD_RECEIPT_009_v1.0RC.json
             publications/PUBLICATION_BUILD_RECEIPT_013_v1.0.json
+            publications/PUBLICATION_BUILD_RECEIPT_014_v1.0.json
             publications/PUBLICATION_REGISTRY.yml
             sitemap.xml
             llms.txt
