@@ -88,18 +88,19 @@ const copyText = async text => {
 const addShareControls = () => {
   const uk = document.documentElement.lang === 'uk';
   document.querySelectorAll('.edition-links').forEach(group => {
-    if (group.querySelector('[data-copy-link]')) return;
-    const copy = document.createElement('button');
-    copy.type = 'button'; copy.className = 'button'; copy.dataset.copyLink = 'true'; copy.textContent = uk ? 'Копіювати посилання' : 'Copy link';
-    copy.addEventListener('click', async () => {
-      const original = copy.textContent;
-      try { await copyText(canonicalShareUrl()); copy.textContent = uk ? 'Скопійовано ✓' : 'Copied ✓'; }
-      catch { copy.textContent = uk ? 'Не вдалося скопіювати' : 'Copy failed'; }
-      setTimeout(() => { copy.textContent = original; }, 1800);
-    });
-    group.append(copy);
+    if (!group.querySelector('[data-copy-link]')) {
+      const copy = document.createElement('button');
+      copy.type = 'button'; copy.className = 'button'; copy.dataset.copyLink = 'true'; copy.textContent = uk ? 'Копіювати посилання' : 'Copy link';
+      copy.addEventListener('click', async () => {
+        const original = copy.textContent;
+        try { await copyText(canonicalShareUrl()); copy.textContent = uk ? 'Скопійовано ✓' : 'Copied ✓'; }
+        catch { copy.textContent = uk ? 'Не вдалося скопіювати' : 'Copy failed'; }
+        setTimeout(() => { copy.textContent = original; }, 1800);
+      });
+      group.append(copy);
+    }
 
-    if (navigator.share) {
+    if (navigator.share && !group.querySelector('[data-share-page]')) {
       const share = document.createElement('button');
       share.type = 'button'; share.className = 'button'; share.dataset.sharePage = 'true'; share.textContent = uk ? 'Поділитися' : 'Share';
       share.addEventListener('click', async () => {
@@ -108,14 +109,65 @@ const addShareControls = () => {
       group.append(share);
     }
 
-    const discuss = document.createElement('a');
-    discuss.className = 'button';
-    discuss.dataset.discussLink = 'true';
-    discuss.href = 'https://github.com/D4ttara/metacademy-of-humanity/discussions';
-    discuss.rel = 'external noopener noreferrer';
-    discuss.textContent = uk ? 'Обговорити' : 'Discuss';
-    group.append(discuss);
+    if (!group.querySelector('[data-discuss-link]')) {
+      const discuss = document.createElement('a');
+      discuss.className = 'button';
+      discuss.dataset.discussLink = 'true';
+      discuss.href = 'https://github.com/D4ttara/metacademy-of-humanity/discussions';
+      discuss.rel = 'external noopener noreferrer';
+      discuss.textContent = uk ? 'Обговорити' : 'Discuss';
+      group.append(discuss);
+    }
   });
 };
 
+const addPlainTextCommentBody = (container, body) => {
+  const chunks = String(body || '').split(/\n\s*\n/).map(part => part.trim()).filter(Boolean);
+  (chunks.length ? chunks : ['']).forEach(chunk => {
+    const p = document.createElement('p');
+    p.textContent = chunk;
+    container.append(p);
+  });
+};
+
+const hydrateIssueComments = async () => {
+  const uk = document.documentElement.lang === 'uk';
+  for (const panel of document.querySelectorAll('[data-github-issue-comments]')) {
+    const repo = panel.dataset.repo;
+    const issue = panel.dataset.issue;
+    const status = panel.querySelector('[data-comment-status]');
+    const stream = panel.querySelector('[data-comment-stream]');
+    if (!repo || !issue || !stream) continue;
+    try {
+      const response = await fetch(`https://api.github.com/repos/${repo}/issues/${issue}/comments?per_page=10`, { headers: { Accept: 'application/vnd.github+json' } });
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const comments = await response.json();
+      stream.textContent = '';
+      if (status) status.textContent = comments.length
+        ? (uk ? `Публічних відповідей у гілці: ${comments.length}.` : `Public replies in the thread: ${comments.length}.`)
+        : (uk ? 'Публічних відповідей поки немає. Можна бути першим.' : 'No public replies yet. You can be the first.');
+      comments.slice(0, 6).forEach(comment => {
+        const card = document.createElement('article');
+        card.className = 'reader-comment';
+        const meta = document.createElement('p');
+        meta.className = 'reader-comment-meta';
+        const author = document.createElement('a');
+        author.href = comment.user?.html_url || `https://github.com/${comment.user?.login || ''}`;
+        author.rel = 'external noopener noreferrer';
+        author.textContent = comment.user?.login || 'GitHub reader';
+        const time = document.createTextNode(` · ${new Date(comment.created_at).toLocaleDateString(uk ? 'uk-UA' : 'en-GB')}`);
+        meta.append(author, time);
+        const body = document.createElement('div');
+        body.className = 'reader-comment-body';
+        addPlainTextCommentBody(body, comment.body);
+        card.append(meta, body);
+        stream.append(card);
+      });
+    } catch (error) {
+      if (status) status.textContent = uk ? 'Не вдалося підвантажити відповіді з GitHub. Гілка все одно відкрита за кнопкою нижче.' : 'Could not load GitHub replies here. The public thread is still available from the button below.';
+    }
+  }
+};
+
 addShareControls();
+hydrateIssueComments();
