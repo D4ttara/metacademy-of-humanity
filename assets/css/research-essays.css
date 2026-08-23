@@ -14,7 +14,32 @@
   font:500 .9em/1.4 "IBM Plex Mono","IBM Plex Sans",monospace;
 }
 .essay-cards { grid-template-columns:repeat(2,1fr); }
+.reader-response {
+  margin-top:3.5rem;
+  border-top:1px solid var(--line);
+  background:rgba(120,196,239,.055);
+}
+.reader-response-inner {
+  width:min(calc(100% - 2.5rem),55rem);
+  padding-top:2.8rem;
+  padding-bottom:3rem;
+}
+.reader-response h2 { max-width:46rem; margin:.35rem 0 1rem; }
+.reader-response .response-question { font-size:1.16rem; line-height:1.62; }
+.reader-response .response-note { opacity:.82; }
+.reader-comments { margin-top:2rem; }
+.reader-comments-status { font-size:.92rem; opacity:.78; }
+.reader-comment {
+  margin:1rem 0;
+  padding:1rem 1.1rem;
+  border:1px solid var(--line);
+  border-radius:.35rem;
+  background:var(--paper);
+}
+.reader-comment-meta { margin:0 0 .55rem; font-size:.86rem; opacity:.76; }
+.reader-comment-body p { margin:.65rem 0 0; line-height:1.62; white-space:pre-wrap; }
 @media (max-width:760px) {
-  .research-essay-reading { width:min(calc(100% - 1.5rem),55rem); }
+  .research-essay-reading,
+  .reader-response-inner { width:min(calc(100% - 1.5rem),55rem); }
   .essay-cards { grid-template-columns:1fr; }
 }
