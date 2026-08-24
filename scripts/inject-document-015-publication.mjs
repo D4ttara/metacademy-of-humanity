@@ -27,7 +27,7 @@ const jobs=[
   },
   {
     path:'uk/index.html',
-    block:`<section id="featured-015" data-document-feature="015"><div class="wrap grid"><div class="copy"><p class="eyebrow">НОВЕ · DOCUMENT 015 · RESEARCH ESSAY · 25 СЕРПНЯ 2026</p><h2>Що, якщо AI правильно впізнав твій тип, але саме тип є частиною помилки?</h2><p>«Політипічне мислення» питає, де класифікація перестає пояснювати й починає закривати майбутнє. Тип може бути корисною проєкцією, не будучи сутністю, а іноді об’єктом дослідження має стати сама типологія.</p><div class="actions"><a class="button primary" href="../documents/${slug}/ua/">Читати Document 015</a><a class="button" href="${repo}">Питання до тексту →</a></div></div><aside class="aside"><strong>Головне питання</strong><br>Якщо AI правильно впізнав знайомий тип, як відрізнити момент, коли він справді побачив явище, від моменту, коли лише повернув нам добре відполіроване минуле?</aside></div></section>`
+    block:`<section id="featured-015" data-document-feature="015"><div class="wrap grid"><div class="copy"><p class="eyebrow">НОВЕ · DOCUMENT 015 · ДОСЛІДНИЦЬКЕ ЕСЕ · 25 СЕРПНЯ 2026</p><h2>Що, якщо ШІ правильно впізнав твій тип, але саме тип є частиною помилки?</h2><p>«Політипічне мислення» питає, де класифікація перестає пояснювати й починає закривати майбутнє. Тип може бути корисною проєкцією, не будучи сутністю, а іноді об’єктом дослідження має стати сама типологія.</p><div class="actions"><a class="button primary" href="../documents/${slug}/ua/">Читати Document 015</a><a class="button" href="${repo}">Питання до тексту →</a></div></div><aside class="aside"><strong>Головне питання</strong><br>Якщо ШІ правильно впізнав знайомий тип, як відрізнити момент, коли він справді побачив явище, від моменту, коли лише повернув нам добре відполіроване минуле?</aside></div></section>`
   },
   {
     path:'documents/index.html',
@@ -35,7 +35,7 @@ const jobs=[
   },
   {
     path:'uk/documents/index.html',
-    block:`<section id="featured-015" data-document-feature="015"><div class="wrap"><p class="eyebrow">НОВЕ · 25 СЕРПНЯ 2026 · v1.0</p><div class="cards essay-cards"><article class="card document-card"><div><p class="eyebrow">015 · Research Essay · v1.0</p><h3>Політипічне мислення</h3><p>Коли одна правильна відповідь стає помилкою рамки: стереотипи, категоризація, людсько-AI петлі, культурне різноманіття, новизна й момент, коли об’єктом дослідження має стати сама система типів.</p></div><a href="../../documents/${slug}/ua/">Читати українською →</a><a href="../../documents/${slug}/en/">English edition →</a><a data-reader-discussion="015" href="${repo}">Питання до тексту →</a></article></div></div></section>`
+    block:`<section id="featured-015" data-document-feature="015"><div class="wrap"><p class="eyebrow">НОВЕ · 25 СЕРПНЯ 2026 · v1.0</p><div class="cards essay-cards"><article class="card document-card"><div><p class="eyebrow">015 · Дослідницьке есе · v1.0</p><h3>Політипічне мислення</h3><p>Коли одна правильна відповідь стає помилкою рамки: стереотипи, категоризація, людсько-ШІ петлі, культурне різноманіття, новизна й момент, коли об’єктом дослідження має стати сама система типів.</p></div><a href="../../documents/${slug}/ua/">Читати українською →</a><a href="../../documents/${slug}/en/">English edition →</a><a data-reader-discussion="015" href="${repo}">Питання до тексту →</a></article></div></div></section>`
   },
   {
     path:'research/index.html',
@@ -43,7 +43,7 @@ const jobs=[
   },
   {
     path:'uk/research/index.html',
-    block:`<section id="featured-015" data-document-feature="015"><div class="wrap grid"><div class="copy"><p class="eyebrow">НОВЕ RESEARCH ESSAY · DOCUMENT 015</p><h2>Коли тип перестає пояснювати?</h2><p>«Політипічне мислення» з’єднує дослідження категоризації, стереотипи, людсько-AI петлі, культурне різноманіття й проблему новизни. Теза не в тому, що «більше ярликів краще». Сильніша думка: час, масштаб, спостерігач і відношення можуть змінювати закономірний тип, а іноді перегляду потребує сама граматика типів.</p><div class="actions"><a class="button primary" href="../../documents/${slug}/ua/">Читати Document 015</a><a class="button" href="${repo}">Заперечити тезу</a></div></div><aside class="aside">ТИП Є ПРОЄКЦІЄЮ, А НЕ СУТНІСТЮ. Корисно як guard, небезпечно як новий лозунг: стаття прямо питає, де цей принцип ламається.</aside></div></section>`
+    block:`<section id="featured-015" data-document-feature="015"><div class="wrap grid"><div class="copy"><p class="eyebrow">НОВЕ ДОСЛІДНИЦЬКЕ ЕСЕ · DOCUMENT 015</p><h2>Коли тип перестає пояснювати?</h2><p>«Політипічне мислення» з’єднує дослідження категоризації, стереотипи, людсько-ШІ петлі, культурне різноманіття й проблему новизни. Теза не в тому, що «більше ярликів краще». Сильніша думка: час, масштаб, спостерігач і відношення можуть змінювати закономірний тип, а іноді перегляду потребує сама граматика типів.</p><div class="actions"><a class="button primary" href="../../documents/${slug}/ua/">Читати Document 015</a><a class="button" href="${repo}">Заперечити тезу</a></div></div><aside class="aside">ТИП Є ПРОЄКЦІЄЮ, А НЕ СУТНІСТЮ. Корисно як запобіжник, небезпечно як новий лозунг: стаття прямо питає, де цей принцип ламається.</aside></div></section>`
   },
   {
     path:'updates/index.html',
@@ -51,7 +51,7 @@ const jobs=[
   },
   {
     path:'uk/updates/index.html',
-    block:`<section id="featured-015" data-document-feature="015"><div class="wrap"><h2>2026-08-25 · Document 015</h2><p>«Політипічне мислення» опубліковане українською й англійською. Есе починає зі звичайної категоризації, проходить через стереотипи, людсько-AI зворотні петлі й культурну уніфікацію та приходить до дослідницького питання: коли система повинна перестати насильно проводити світ через наявні категорії й дослідити саму систему категорій?</p><div class="actions"><a class="button primary" href="../../documents/${slug}/ua/">Читати Document 015</a><a class="button" href="${repo}">Питання до тексту</a></div></div></section>`
+    block:`<section id="featured-015" data-document-feature="015"><div class="wrap"><h2>2026-08-25 · Document 015</h2><p>«Політипічне мислення» опубліковане українською й англійською. Есе починає зі звичайної категоризації, проходить через стереотипи, людсько-ШІ зворотні петлі й культурну уніфікацію та приходить до дослідницького питання: коли система повинна перестати насильно проводити світ через наявні категорії й дослідити саму систему категорій?</p><div class="actions"><a class="button primary" href="../../documents/${slug}/ua/">Читати Document 015</a><a class="button" href="${repo}">Питання до тексту</a></div></div></section>`
   }
 ];
 
