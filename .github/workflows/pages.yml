@@ -64,6 +64,8 @@ jobs:
         run: node scripts/build-newspaper-frontpage.mjs
       - name: Build search and AI topic taxonomy
         run: node scripts/build-search-taxonomy.mjs
+      - name: Fix generated topic index navigation
+        run: node scripts/fix-search-taxonomy-links.mjs
       - name: Inject legal / privacy footer link
         run: bash scripts/inject-legal-footer.sh
       - name: Enrich discovery metadata and RSS autodiscovery
