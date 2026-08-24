@@ -30,6 +30,8 @@ jobs:
         run: bash scripts/assemble-document-014-source.sh
       - name: Assemble Document 015 canonical Markdown
         run: bash scripts/assemble-document-015-source.sh
+      - name: Finish Ukrainian language polish for Document 015
+        run: node scripts/polish-document-015-ua-final.mjs
       - name: Inject Document 013 registry entry
         run: node scripts/inject-document-013-registry.mjs
       - name: Inject Document 014 registry entry
