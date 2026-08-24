@@ -63,6 +63,8 @@ jobs:
         run: node scripts/inject-document-014-publication.mjs
       - name: Inject Document 014 into sitemap, llms and RSS
         run: node scripts/inject-document-014-machine-discovery.mjs
+      - name: Inject reader questions and public comment threads
+        run: node scripts/inject-reader-response-all.mjs
       - name: Inject legal / privacy footer link
         run: bash scripts/inject-legal-footer.sh
       - name: Enrich discovery metadata and RSS autodiscovery
@@ -79,6 +81,8 @@ jobs:
         run: node scripts/verify-document-013.mjs
       - name: Verify Document 014
         run: node scripts/verify-document-014.mjs
+      - name: Verify reader questions and public comment threads
+        run: node scripts/verify-reader-response-all.mjs
       - name: Verify legal / privacy discovery
         run: node scripts/verify-legal-footer.mjs
       - name: Upload verified publication artifacts
