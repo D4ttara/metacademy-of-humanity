@@ -1,0 +1,136 @@
+@import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Serif:ital,wght@0,400;0,500;0,600;1,400&display=swap');
+
+.research-frontpage {
+  padding:clamp(2.4rem,4.8vw,4.6rem) 0 clamp(3rem,6vw,5.4rem);
+  background:var(--paper);
+}
+.newspaper-masthead {
+  display:grid;
+  grid-template-columns:1fr auto;
+  gap:1rem;
+  align-items:end;
+  padding-bottom:.85rem;
+  margin-bottom:1.3rem;
+  border-bottom:4px double var(--ink);
+}
+.newspaper-masthead h2 {
+  max-width:none;
+  margin:0;
+  font:600 clamp(2.1rem,4.7vw,4.7rem)/.94 "IBM Plex Serif",Georgia,serif;
+  letter-spacing:-.035em;
+}
+.newspaper-masthead p {
+  margin:0;
+  color:var(--muted);
+  text-align:right;
+  font:500 .72rem/1.35 "IBM Plex Mono","IBM Plex Sans",monospace;
+  letter-spacing:.08em;
+  text-transform:uppercase;
+}
+.newspaper-deck {
+  max-width:58rem;
+  margin:0 0 1.7rem;
+  color:var(--muted);
+  font-size:1.02rem;
+}
+.newspaper-top {
+  display:grid;
+  grid-template-columns:minmax(0,2fr) minmax(16rem,1fr);
+  gap:1.5rem;
+  padding-bottom:1.5rem;
+  border-bottom:2px solid var(--ink);
+}
+.newspaper-lead {
+  padding-right:1.5rem;
+  border-right:1px solid var(--line);
+}
+.newspaper-label {
+  margin:0 0 .65rem;
+  color:var(--accent-strong);
+  font:500 .72rem/1.3 "IBM Plex Mono","IBM Plex Sans",monospace;
+  letter-spacing:.09em;
+  text-transform:uppercase;
+}
+.newspaper-lead h3,
+.newspaper-secondary h3,
+.newspaper-story h3 {
+  font-family:"IBM Plex Serif",Georgia,serif;
+  color:var(--ink);
+}
+.newspaper-lead h3 {
+  max-width:18ch;
+  margin:.1rem 0 .8rem;
+  font-size:clamp(2.25rem,4.7vw,4.25rem);
+  line-height:.98;
+  letter-spacing:-.035em;
+}
+.newspaper-secondary h3 {
+  margin:.1rem 0 .55rem;
+  font-size:1.55rem;
+  line-height:1.05;
+}
+.newspaper-summary {
+  margin:.55rem 0 .9rem;
+  color:var(--text);
+  font:400 1rem/1.58 "IBM Plex Serif",Georgia,serif;
+}
+.newspaper-lead .newspaper-summary {
+  max-width:52rem;
+  font-size:1.12rem;
+  line-height:1.62;
+}
+.newspaper-secondary + .newspaper-secondary {
+  margin-top:1.4rem;
+  padding-top:1.4rem;
+  border-top:1px solid var(--ink);
+}
+.newspaper-actions {
+  display:flex;
+  flex-wrap:wrap;
+  gap:.55rem 1rem;
+  align-items:center;
+  margin-top:.85rem;
+  font-size:.88rem;
+  font-weight:600;
+}
+.newspaper-actions a { text-decoration-thickness:1px; }
+.newspaper-grid {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:0;
+  margin-top:1.5rem;
+  border-top:1px solid var(--ink);
+  border-left:1px solid var(--line);
+}
+.newspaper-story {
+  min-height:18rem;
+  padding:1.25rem 1.15rem 1.35rem;
+  border-right:1px solid var(--line);
+  border-bottom:1px solid var(--line);
+  background:rgba(255,253,250,.35);
+}
+.newspaper-story h3 {
+  margin:.1rem 0 .55rem;
+  font-size:1.35rem;
+  line-height:1.08;
+}
+.newspaper-story .newspaper-summary {
+  font-size:.94rem;
+  line-height:1.56;
+}
+.newspaper-footer-note {
+  margin:1.35rem 0 0;
+  color:var(--muted);
+  font-size:.86rem;
+}
+@media (max-width:980px) {
+  .newspaper-grid { grid-template-columns:repeat(2,minmax(0,1fr)); }
+}
+@media (max-width:760px) {
+  .newspaper-masthead { grid-template-columns:1fr; }
+  .newspaper-masthead p { text-align:left; }
+  .newspaper-top { grid-template-columns:1fr; }
+  .newspaper-lead { padding-right:0; padding-bottom:1.4rem; border-right:0; border-bottom:1px solid var(--ink); }
+  .newspaper-grid { grid-template-columns:1fr; border-left:0; }
+  .newspaper-story { min-height:0; border-left:0; }
+}
