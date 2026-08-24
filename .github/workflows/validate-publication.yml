@@ -12,9 +12,11 @@ on:
       - 'legal/**'
       - 'index.html'
       - 'uk/**'
+      - 'topics/**'
       - 'research/**'
       - 'updates/**'
       - 'UPDATES.md'
+      - 'README.md'
       - 'robots.txt'
       - 'llms.txt'
       - 'sitemap.xml'
@@ -69,6 +71,10 @@ jobs:
         run: node scripts/inject-reader-response-legacy.mjs
       - name: Build newspaper-style research front page
         run: node scripts/build-newspaper-frontpage.mjs
+      - name: Build search and AI topic taxonomy
+        run: node scripts/build-search-taxonomy.mjs
+      - name: Fix generated topic index navigation
+        run: node scripts/fix-search-taxonomy-links.mjs
       - name: Inject legal / privacy footer link
         run: bash scripts/inject-legal-footer.sh
       - name: Enrich discovery metadata and RSS autodiscovery
@@ -89,6 +95,8 @@ jobs:
         run: node scripts/verify-reader-response-all.mjs
       - name: Verify newspaper front page and early reader questions
         run: node scripts/verify-newspaper-frontpage.mjs
+      - name: Verify search and AI discovery taxonomy
+        run: node scripts/verify-search-discovery.mjs
       - name: Verify legal / privacy discovery
         run: node scripts/verify-legal-footer.mjs
       - name: Upload verified publication artifacts
@@ -113,6 +121,8 @@ jobs:
             publications/PUBLICATION_BUILD_RECEIPT_013_v1.0.json
             publications/PUBLICATION_BUILD_RECEIPT_014_v1.0.json
             publications/PUBLICATION_REGISTRY.yml
+            topics/**
+            uk/topics/**
             sitemap.xml
             llms.txt
             feed.xml

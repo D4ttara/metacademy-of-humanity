@@ -1,12 +1,16 @@
 # MET[Ȧ]CADEMY OF HUMANITY
 
-**A living field for knowledge, human experience, AI, culture and the unknown.**
+**A living field for knowledge, human experience, artificial intelligence, human-AI relations, semantic computing, epistemology, culture and the unknown.**
 
-Public alpha · August 2026. This repository is a small, public doorway into an evolving research and cultural field — not a finished university, product, or claim to own the whole.
+Public alpha · August 2026. This repository is a public doorway into an evolving interdisciplinary research and cultural field, not a finished university, product, or claim to own the whole.
+
+MET[Ȧ]CADEMY OF HUMANITY (MoH) publishes bilingual English/Ukrainian research essays and working documents on artificial intelligence, AI ethics and governance, human-AI interaction, LLM personalization, semantic computing, epistemology, provenance, uncertainty, complex systems, human agency, behavioral science, science communication, M{Y}OGA JYOTISH and cross-tradition research methodology.
 
 ## Visit
 
 **Public site:** https://d4ttara.github.io/metacademy-of-humanity/
+
+**Research topics:** https://d4ttara.github.io/metacademy-of-humanity/topics/
 
 **Documents:** https://d4ttara.github.io/metacademy-of-humanity/documents/
 
@@ -21,16 +25,24 @@ GitHub Pages deploys the verified public build from `main` through GitHub Action
 - a public working manifesto;
 - concise research-track introductions;
 - a 13-domain map preview that preserves undecided labels as open;
-- the Science Aperture v1.1 public index and editorial reading guide;
-- a small library of public-facing entry points;
+- the Science Aperture public index and editorial reading guide;
+- a public topic taxonomy for AI, Human↔AI, semantic computing, epistemology, agency, complex systems, M{Y}OGA JYOTISH, time and causality;
 - Document 003, *Життя як організація / Life as Organization* — Research Brief;
 - Document 004, *Коли наука виходить на плато / When Science Reaches a Plateau* — Research Brief;
-- Document 006, *M{Y}OGA JYOTISH* — Field Manifesto plus a 108-point public discipline protocol;
+- Document 006, *M{Y}OGA JYOTISH* — Field Manifesto plus public discipline protocol;
 - Documents 007–009 — bilingual Research Essays on vibe coding, personal AI interfaces and AI control;
 - Document 010, *Manifestation Time ≠ Genesis Time / Час прояву ≠ час зародження*;
 - Document 011, *The Third Body / Третє тіло*;
-- Document 012, *M{Y}OGA: What Happens If We Don't Laugh at Astrology for the First Five Minutes* — bilingual field overview;
-- participation routes for discussions, source-aware corrections, questions and focused pull requests.
+- Document 012, *M{Y}OGA: What Happens If We Don't Laugh at Astrology for the First Five Minutes*;
+- Document 013, *The Human in a Room That Answers / Людина в кімнаті, яка відповідає* — generative AI, filter bubbles, personalization and the right not to be frozen by a user model;
+- Document 014, *The Right to See the Consequence / Право бачити наслідок* — punitive humanism, graphic warnings, stigma, self-models, alternatives and agency;
+- public reader questions, comment threads and participation routes for source-aware corrections, objections and focused pull requests.
+
+## Discover by research question
+
+The public site now groups the corpus by topic rather than relying only on document numbers. AI-related work is collected under **Artificial Intelligence** and **Human ↔ AI**; meaning-preservation work under **Semantic Computing**; method and evidence under **Epistemology & Research Method**; behavioral and political interface questions under **Agency, Behavior & Care**; emergence under **Complex Systems**; Jyotiṣa-related work under **M{Y}OGA JYOTISH**; and causal-history work under **Time, Causality & Hidden Preparation**.
+
+Search vocabulary used intentionally across the public corpus includes: `artificial intelligence`, `human-ai interaction`, `ai ethics`, `ai governance`, `large language models`, `llm personalization`, `semantic computing`, `semantic migration`, `epistemology`, `provenance`, `uncertainty`, `research methodology`, `complex systems`, `emergence`, `human agency`, `behavioral science`, `science communication`, `public-interest technology`, `jyotish`, `astrology research`, `time and causality`.
 
 ## M{Y}OGA JYOTISH
 
@@ -49,6 +61,10 @@ The Atlas preserves source-language provenance and keeps MetaAcademy editorial r
 ## Research posture
 
 Different ways of knowing may enter the same graph without pretending to be the same kind of evidence. Hypotheses, lived experience, cultural images, engineering results, and physical claims retain their distinct scope and provenance.
+
+## Search and AI discovery
+
+The public site exposes canonical URLs, bilingual `hreflang`, crawlable static text, sitemap, RSS, schema.org structured data, topic hubs and a machine-readable `llms.txt`. `robots.txt` explicitly permits Googlebot, Bingbot, OpenAI's OAI-SearchBot and PerplexityBot. Search discovery is treated separately from model-training permission; visibility in a search engine or AI answer system is not the same thing as consenting to every training use.
 
 ## Status and rights
 
