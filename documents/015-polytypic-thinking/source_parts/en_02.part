@@ -1,0 +1,75 @@
+History suffers from our love of single moments too. We place a date beside an event because calendars are useful. But the time of manifestation is not always the time of genesis. Revolutions develop before the day that later reaches the textbook. Technological shifts begin long before mass adoption. A cultural form may receive a familiar name far later than some of the relations, practices and recurring tasks from which it assembled.
+
+This problem became especially visible in our research line on Ukraine’s long cultural memory, “The Country of Edges.” The binary question “is there direct genetic continuity or not?” proved insufficient not because genetics is unimportant, but because cultural continuity may have more than one carrier. Geography, recurring frontier conditions, forms of mobility, warrior practices, symbols, social forms, language, ritual and memory may follow different trajectories. Some can break, some merge, some reappear through similar tasks, some pass into a different cultural body. “Direct descendant” and “no connection whatsoever” can become two equally poor buttons.
+
+Polytypic thinking does not provide the answer in advance. It simply refuses to kill the question before we have distinguished **which kind of continuity we are discussing**.
+
+## The scale on which disorder suddenly becomes order
+
+A single ant is not an ant colony. A single cell is not an organism. One car is not a city’s transportation system. One conversation is not a culture. One pixel is not a photograph. Yet we often behave as if a type found at one scale were automatically inherited by every other scale.
+
+Up close, a process may look chaotic. At a larger scale, a stable form may appear. The noise of individual fluctuations may carry a slow rhythm. Local behavior may be simple while collective behavior produces properties absent from every participant individually. And the reverse is also true: a beautiful macroscopic order may depend on millions of local conflicts, errors and compensations.
+
+So the sentence “this is chaos” may be correct and still insufficient. Chaos at which scale? Is there recurrence at another? Does a form persist over time? Is there structure in the distribution of what appears random locally? Have we called something “noise” merely because our instrument does not yet know how to read it?
+
+For science this is not exotic. New levels of description continually create new objects: temperature is not a property of one molecule in the same sense in which it is a property of a macroscopic system; an economy is not reducible to the psychology of one buyer; a language does not exist inside a single word. Yet in everyday and machine reasoning we still move types across scales as though scale were merely a camera zoom.
+
+Polytypic thinking reminds us that **changing scale can change not only the amount of detail but the type of phenomenon that becomes visible**.
+
+## The observer is not standing outside the world
+
+Another habit comes from the dream of an absolutely external observer: we tend to think that a description belongs only to the object. Yet many meaningful properties exist in relations.
+
+For a doctor, a cough may be a symptom. For the patient, an exhausting part of the day. For an epidemiologist, a population signal. For an employer, a reason for absence. For a child in the next room, a sound that means a parent is ill. The event is one, but its role changes depending on the system in which the question is asked.
+
+This does not mean “everyone has their own truth” and verification can be thrown out the window. Quite the opposite. Multiple perspectives require more discipline. We must state who is observing, what can be measured, which question is being asked and where the observer’s authority ends. The Manifesto offers a compact principle: **“Everything may enter the graph. Nothing enters without provenance.”** Provenance is needed not only for documents. It is needed for viewpoints.
+
+Two observers may disagree because one is wrong. But they may also disagree because they are observing different aspects. Polytypic thinking does not resolve contradiction by declaring that everyone is right. It first asks **whether they are answering the same question**.
+
+That small distinction can save entire research programmes.
+
+## The stereotype as useful laziness
+
+It would be easy at this point to declare stereotypes the enemy. That would be an impressively stereotypical decision.
+
+In a broad cognitive sense, a stereotype is often a cheap prior. If a configuration has been X a thousand times, beginning with X on the thousand-and-first encounter is rational. Without such compression neither humans nor machines could act in time. The problem is not the prior. The problem is the moment when a prior becomes a verdict.
+
+“Things like this are usually X” is a reasonable beginning. “Therefore this particular case is X in every important respect” is a much stronger claim. “Anything that does not fit X is noise or error” is where a tiny statistical inquisition begins to form around our convenience.
+
+Human stereotypes are especially dangerous when they concern people, because a type quickly becomes an expectation, the expectation becomes treatment, treatment becomes opportunity, and opportunity returns as “evidence” for the original type. A person is judged incapable, given fewer chances, produces a weaker result, and the system records triumphantly: “see, we were right.”
+
+This is no longer merely a description of the world. It is a way of helping the world become more like the prediction.
+
+## Then we trained machines on humanity
+
+Modern AI did not grow in a sterile laboratory outside culture. It learned from human texts, photographs, decisions, archives, rankings, linguistic habits and human histories of whom we noticed more often, whom we described as dangerous, whom we called a genius, whom we photographed in laboratories, whom we imagined as leaders and whom as servants.
+
+Along with human knowledge, machines inherit human shortcuts.
+
+The problem is no longer theoretical. In 2024, Valentin Hofmann, Pratyusha Ria Kalluri, Dan Jurafsky and Sharese King showed that language models can make significantly different social judgements about people on the basis of dialect features alone. In [“AI generates covertly racist decisions about people based on their dialect”](https://www.nature.com/articles/s41586-024-07856-5), models produced negative associations with African American English even without explicit mention of race. Particularly disturbing was the gap between overt and covert behaviour: newer models could produce more positive explicit answers while deeper associations remained strongly negative.
+
+Another large analysis of [generative language models and social identity](https://www.nature.com/articles/s43588-024-00741-1) found systematic ingroup/outgroup biases across many models. This is a useful warning: a safer tone does not guarantee that the system has stopped using inherited cultural coordinates. Sometimes a stereotype has merely learned to behave better in an interview.
+
+But even that is not the most interesting part.
+
+## The stereotype comes back wearing an exoskeleton
+
+When a neighbour at dinner says, “I think people like that usually…,” we hear the neighbour’s opinion. We know its provenance, can roughly estimate the experience behind it, argue, laugh, or ask them to stop talking nonsense.
+
+When a complex AI system produces a similar conclusion in polished language, with a calm tone and the appearance of access to an enormous body of knowledge, the same pattern can be perceived very differently. It returns not as “someone’s opinion” but as **analysis**.
+
+Here we encounter a phenomenon that MET[Ȧ]CADEMY can usefully call **epistemic laundering of a stereotype**. A human cultural prior enters data. A system learns it, sometimes amplifies it, synthesizes it and returns it to a human. At the output, an old human habit acquires a new provenance: “it is not me who thinks this; the AI saw it.”
+
+In a series of experiments with 1,401 participants, Moshe Glickman and Tali Sharot showed that [human–AI feedback loops can amplify human bias](https://www.nature.com/articles/s41562-024-02077-2). Small distortions that entered an algorithm could be amplified; people interacting with the biased system gradually became more biased themselves; and they underestimated the degree to which the AI had influenced their judgements. The effect was demonstrated across perceptual, emotional and social tasks, including generative imagery.
+
+That changes the scale of the problem. A stereotype no longer simply passes from person to person. It can pass through a machine, acquire statistical polish, return to a person, then re-enter culture as a result apparently validated by machine interaction.
+
+Humanity creates a prior. The machine learns from it. The machine returns it. Humanity sees confirmation. New decisions, texts and images become material for the next cycle.
+
+This is no longer a mirror. It is a mirror with an amplifier.
+
+## When personalization becomes a cage
+
+In the earlier MET[Ȧ]CADEMY Research Essay “The Interface That Knows You,” we asked a related question: what happens when a system becomes increasingly good at predicting a person? Personalization can be convenient, but knowing a person’s past behaviour is not the same as knowing their possible future. A system that perfectly knows what I clicked yesterday may quietly narrow what I will be allowed to discover tomorrow.
+
+Polytypic thinking adds another layer. Any user profile is a typification: “likes this,” “not interested in that,” “belongs to this audience,” “likely to respond in this way,” “resembles users in this cluster.” For recommendation this may be useful. For a person it becomes dangerous when the system forgets that a profile is a history of observations, not a passport of essence.
