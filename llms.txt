@@ -1,45 +1,56 @@
 # MET[Ȧ]CADEMY OF HUMANITY (MoH)
 
-> A living public research field for knowledge, human experience, artificial intelligence, culture, semantic computing, provenance, uncertainty and the unknown.
+> A living public research field for knowledge, human experience, artificial intelligence, human-AI relations, semantic computing, epistemology, complex systems, culture, provenance, uncertainty and the unknown.
 
 Canonical site: https://d4ttara.github.io/metacademy-of-humanity/
 Languages: English and Ukrainian
 Author / founder: Ievgen Karogod / Dattara
 Repository: https://github.com/D4ttara/metacademy-of-humanity
+Public status: research in progress; publication labels and evidence boundaries must be preserved when citing.
 
 ## Start here
+- Newspaper-style research front page: https://d4ttara.github.io/metacademy-of-humanity/
 - Manifesto: https://d4ttara.github.io/metacademy-of-humanity/manifesto/
 - Research map: https://d4ttara.github.io/metacademy-of-humanity/research/
 - Public documents: https://d4ttara.github.io/metacademy-of-humanity/documents/
+- Topic index: https://d4ttara.github.io/metacademy-of-humanity/topics/
 - Ukrainian site: https://d4ttara.github.io/metacademy-of-humanity/uk/
+- Ukrainian topic index: https://d4ttara.github.io/metacademy-of-humanity/uk/topics/
 - Science Aperture: https://d4ttara.github.io/metacademy-of-humanity/science-aperture/
 - Participation: https://d4ttara.github.io/metacademy-of-humanity/participate/
 
-## Current Research Essays and Field Overviews
-- Document 012 · M{Y}OGA: What Happens If We Don't Laugh at Astrology for the First Five Minutes · EN HTML: https://d4ttara.github.io/metacademy-of-humanity/documents/012-myoga-astrology-overview/en/
-- Document 012 · Canonical EN Markdown: https://d4ttara.github.io/metacademy-of-humanity/documents/012-myoga-astrology-overview/METACADEMY_DOCUMENT_012_MYOGA_ASTROLOGY_OVERVIEW_EN_v1.0.md
-- Document 012 · M{Y}OGA · Ukrainian HTML: https://d4ttara.github.io/metacademy-of-humanity/documents/012-myoga-astrology-overview/ua/
-- Document 012 · Canonical UA Markdown: https://d4ttara.github.io/metacademy-of-humanity/documents/012-myoga-astrology-overview/METACADEMY_DOCUMENT_012_MYOGA_ASTROLOGY_OVERVIEW_UA_v1.0.md
-- Document 011 · The Third Body · EN HTML: https://d4ttara.github.io/metacademy-of-humanity/documents/011-the-third-body/en/
-- Document 011 · Canonical EN Markdown: https://d4ttara.github.io/metacademy-of-humanity/documents/011-the-third-body/METACADEMY_DOCUMENT_011_THIRD_BODY_EN_v1.0.md
-- Document 011 · Третє тіло · UA HTML: https://d4ttara.github.io/metacademy-of-humanity/documents/011-the-third-body/ua/
-- Document 011 · Canonical UA Markdown: https://d4ttara.github.io/metacademy-of-humanity/documents/011-the-third-body/METACADEMY_DOCUMENT_011_THIRD_BODY_UA_v1.0.md
-- Document 010 · Manifestation Time ≠ Genesis Time · EN HTML: https://d4ttara.github.io/metacademy-of-humanity/documents/010-manifestation-time-genesis-time/en/
-- Document 010 · Canonical EN Markdown: https://d4ttara.github.io/metacademy-of-humanity/documents/010-manifestation-time-genesis-time/METACADEMY_DOCUMENT_010_MANIFESTATION_TIME_GENESIS_TIME_EN_v1.0.md
-- Document 010 · Час проявлення ≠ час генезису · UA HTML: https://d4ttara.github.io/metacademy-of-humanity/documents/010-manifestation-time-genesis-time/ua/
-- Document 010 · Canonical UA Markdown: https://d4ttara.github.io/metacademy-of-humanity/documents/010-manifestation-time-genesis-time/METACADEMY_DOCUMENT_010_MANIFESTATION_TIME_GENESIS_TIME_UA_v1.0.md
-- Document 009 · A Response to Elon Musk and Mark Zuckerberg: Metanauts on AI Control · EN HTML: https://d4ttara.github.io/metacademy-of-humanity/documents/009-elon-musk-mark-zuckerberg-ai-control/en/
-- Document 009 · Canonical EN Markdown: https://d4ttara.github.io/metacademy-of-humanity/documents/009-elon-musk-mark-zuckerberg-ai-control/METACADEMY_DOCUMENT_009_AI_CONTROL_EN_v1.0RC.md
-- Document 009 · Відповідь Ілону Маску й Марку Цукербергу: метанавти про контроль AI · UA HTML: https://d4ttara.github.io/metacademy-of-humanity/documents/009-elon-musk-mark-zuckerberg-ai-control/ua/
-- Document 009 · Canonical UA Markdown: https://d4ttara.github.io/metacademy-of-humanity/documents/009-elon-musk-mark-zuckerberg-ai-control/METACADEMY_DOCUMENT_009_AI_CONTROL_UA_v1.0RC.md
-- Document 008 · The Interface That Knows You · EN HTML: https://d4ttara.github.io/metacademy-of-humanity/documents/008-the-interface-that-knows-you/en/
-- Document 008 · Canonical EN Markdown: https://d4ttara.github.io/metacademy-of-humanity/documents/008-the-interface-that-knows-you/METACADEMY_DOCUMENT_008_INTERFACE_THAT_KNOWS_YOU_EN_v1.0RC.md
-- Document 008 · Інтерфейс, який знає тебе · UA HTML: https://d4ttara.github.io/metacademy-of-humanity/documents/008-the-interface-that-knows-you/ua/
-- Document 008 · Canonical UA Markdown: https://d4ttara.github.io/metacademy-of-humanity/documents/008-the-interface-that-knows-you/METACADEMY_DOCUMENT_008_INTERFACE_THAT_KNOWS_YOU_UA_v1.0RC.md
-- Document 007 · After Vibe Coding · EN HTML: https://d4ttara.github.io/metacademy-of-humanity/documents/007-after-vibe-coding/en/
-- Document 007 · Canonical EN Markdown: https://d4ttara.github.io/metacademy-of-humanity/documents/007-after-vibe-coding/METACADEMY_DOCUMENT_007_AFTER_VIBE_CODING_EN_v1.0RC.md
-- Document 007 · Після Vibe Coding · UA HTML: https://d4ttara.github.io/metacademy-of-humanity/documents/007-after-vibe-coding/ua/
-- Document 007 · Canonical UA Markdown: https://d4ttara.github.io/metacademy-of-humanity/documents/007-after-vibe-coding/METACADEMY_DOCUMENT_007_AFTER_VIBE_CODING_UA_v1.0RC.md
+## Topic hubs
+- Artificial Intelligence: https://d4ttara.github.io/metacademy-of-humanity/topics/artificial-intelligence/
+- Human ↔ AI: https://d4ttara.github.io/metacademy-of-humanity/topics/human-ai/
+- Semantic Computing: https://d4ttara.github.io/metacademy-of-humanity/topics/semantic-computing/
+- Epistemology & Research Method: https://d4ttara.github.io/metacademy-of-humanity/topics/epistemology/
+- Agency, Behavior & Care: https://d4ttara.github.io/metacademy-of-humanity/topics/agency-and-behavior/
+- Complex Systems & Emergence: https://d4ttara.github.io/metacademy-of-humanity/topics/complex-systems/
+- M{Y}OGA JYOTISH: https://d4ttara.github.io/metacademy-of-humanity/topics/myoga-jyotish/
+- Time, Causality & Hidden Preparation: https://d4ttara.github.io/metacademy-of-humanity/topics/time-and-causality/
+
+## Current public documents
+- Document 014 · The Right to See the Consequence · EN: https://d4ttara.github.io/metacademy-of-humanity/documents/014-right-to-see-the-consequence/en/
+- Document 014 · Право бачити наслідок · UA: https://d4ttara.github.io/metacademy-of-humanity/documents/014-right-to-see-the-consequence/ua/
+- Document 013 · The Human in a Room That Answers · EN: https://d4ttara.github.io/metacademy-of-humanity/documents/013-room-that-answers/en/
+- Document 013 · Людина в кімнаті, яка відповідає · UA: https://d4ttara.github.io/metacademy-of-humanity/documents/013-room-that-answers/ua/
+- Document 012 · M{Y}OGA: What Happens If We Don't Laugh at Astrology for the First Five Minutes · EN: https://d4ttara.github.io/metacademy-of-humanity/documents/012-myoga-astrology-overview/en/
+- Document 012 · M{Y}OGA · UA: https://d4ttara.github.io/metacademy-of-humanity/documents/012-myoga-astrology-overview/ua/
+- Document 011 · The Third Body · EN: https://d4ttara.github.io/metacademy-of-humanity/documents/011-the-third-body/en/
+- Document 011 · Третє тіло · UA: https://d4ttara.github.io/metacademy-of-humanity/documents/011-the-third-body/ua/
+- Document 010 · Manifestation Time ≠ Genesis Time · EN: https://d4ttara.github.io/metacademy-of-humanity/documents/010-manifestation-time-genesis-time/en/
+- Document 010 · Час прояву ≠ час зародження · UA: https://d4ttara.github.io/metacademy-of-humanity/documents/010-manifestation-time-genesis-time/ua/
+- Document 009 · Metanauts on AI Control · EN: https://d4ttara.github.io/metacademy-of-humanity/documents/009-elon-musk-mark-zuckerberg-ai-control/en/
+- Document 009 · Метанавти про контроль AI · UA: https://d4ttara.github.io/metacademy-of-humanity/documents/009-elon-musk-mark-zuckerberg-ai-control/ua/
+- Document 008 · The Interface That Knows You · EN: https://d4ttara.github.io/metacademy-of-humanity/documents/008-the-interface-that-knows-you/en/
+- Document 008 · Інтерфейс, який знає тебе · UA: https://d4ttara.github.io/metacademy-of-humanity/documents/008-the-interface-that-knows-you/ua/
+- Document 007 · After Vibe Coding · EN: https://d4ttara.github.io/metacademy-of-humanity/documents/007-after-vibe-coding/en/
+- Document 007 · Після Vibe Coding · UA: https://d4ttara.github.io/metacademy-of-humanity/documents/007-after-vibe-coding/ua/
+- Document 006 · M{Y}OGA JYOTISH Field Manifesto: https://d4ttara.github.io/metacademy-of-humanity/documents/006-myoga-jyotish/
+- Document 004 · When Science Reaches a Plateau · EN: https://d4ttara.github.io/metacademy-of-humanity/documents/004-when-science-reaches-a-plateau/en/
+- Document 004 · Коли наука виходить на плато · UA: https://d4ttara.github.io/metacademy-of-humanity/documents/004-when-science-reaches-a-plateau/ua/
+- Document 003 · Life as Organization · EN: https://d4ttara.github.io/metacademy-of-humanity/documents/003-life-as-organization/en/
+- Document 003 · Життя як організація · UA: https://d4ttara.github.io/metacademy-of-humanity/documents/003-life-as-organization/
 
 ## Machine-readable public provenance and discovery
 - Publication registry: https://d4ttara.github.io/metacademy-of-humanity/publications/PUBLICATION_REGISTRY.yml
@@ -48,7 +59,7 @@ Repository: https://github.com/D4ttara/metacademy-of-humanity
 - Robots policy: https://d4ttara.github.io/metacademy-of-humanity/robots.txt
 
 ## Research vocabulary
-IMAGO; Meta.Semantic Programming (MSL); Semantic Migration / MІЖ; Meta.Logic; M4M / morphogenetic compute research; Human ↔ AI relation; AI control; agency; provenance; uncertainty; non-action; Difference Receipt; continuity; M{Y}OGA JYOTISH.
+Artificial intelligence; human-AI interaction; AI ethics; AI governance; LLM personalization; semantic computing; semantic migration; epistemology; provenance; uncertainty; research methodology; complex systems; emergence; human agency; behavioral science; public-interest technology; Meta.Logic; IMAGO; Meta.Semantic Programming (MSL); Semantic Migration / MІЖ; Human ↔ AI relation; M{Y}OGA JYOTISH; Jyotiṣa; astrology research; time and causality; consequence visibility.
 
 ## Interpretation boundary
-Public research status labels matter. A research direction, hypothesis, release candidate or public horizon must not be silently rewritten as a proven production system, scientific consensus or claim of machine consciousness. Prefer canonical HTML or Markdown pages and preserve their date, language, status and provenance when citing them.
+Public research status labels matter. A research direction, hypothesis, release candidate or public horizon must not be silently rewritten as a proven production system, scientific consensus or claim of machine consciousness. Prefer canonical HTML or Markdown pages and preserve their date, language, status, provenance and uncertainty when citing them.
