@@ -65,6 +65,10 @@ jobs:
         run: node scripts/inject-document-014-machine-discovery.mjs
       - name: Inject reader questions and public comment threads
         run: node scripts/inject-reader-response-all.mjs
+      - name: Inject reader questions into Documents 003, 004 and 006
+        run: node scripts/inject-reader-response-legacy.mjs
+      - name: Build newspaper-style research front page
+        run: node scripts/build-newspaper-frontpage.mjs
       - name: Inject legal / privacy footer link
         run: bash scripts/inject-legal-footer.sh
       - name: Enrich discovery metadata and RSS autodiscovery
@@ -83,6 +87,8 @@ jobs:
         run: node scripts/verify-document-014.mjs
       - name: Verify reader questions and public comment threads
         run: node scripts/verify-reader-response-all.mjs
+      - name: Verify newspaper front page and early reader questions
+        run: node scripts/verify-newspaper-frontpage.mjs
       - name: Verify legal / privacy discovery
         run: node scripts/verify-legal-footer.mjs
       - name: Upload verified publication artifacts
