@@ -17,8 +17,29 @@ const decode = text => text
   .replace(/&lt;/g, '<').replace(/&gt;/g, '>').replace(/\s+/g, ' ').trim();
 const attr = text => text.replace(/&/g, '&amp;').replace(/"/g, '&quot;').replace(/</g, '&lt;').replace(/>/g, '&gt;');
 
+const topicNames = html => {
+  const raw = html.match(/<nav[^>]*data-search-taxonomy="true"[^>]*>([\s\S]*?)<\/nav>/i)?.[1];
+  if (!raw) return [];
+  return decode(raw).replace(/^(Topics|Теми)\s*:\s*/i, '').split('·').map(x => x.trim()).filter(Boolean);
+};
+
+const breadcrumbData = (route, title, lang) => {
+  const parts = route.split('/').filter(Boolean);
+  const crumbs = [{ '@type':'ListItem', position:1, name: lang === 'uk' ? 'Головна' : 'Home', item: base }];
+  if (!parts.length) return null;
+  let acc = '';
+  for (let i = 0; i < parts.length; i++) {
+    acc += `${parts[i]}/`;
+    const isLast = i === parts.length - 1;
+    const pretty = isLast ? title : parts[i].replace(/[-_]/g,' ').replace(/\b\w/g, c => c.toUpperCase());
+    crumbs.push({ '@type':'ListItem', position:crumbs.length + 1, name:pretty, item:`${base}${acc}` });
+  }
+  return { '@context':'https://schema.org', '@type':'BreadcrumbList', itemListElement:crumbs };
+};
+
 let changed = 0;
 let articleJsonLd = 0;
+let breadcrumbJsonLd = 0;
 const pages = walk(root).filter(path => path.endsWith('index.html'));
 
 for (const path of pages) {
@@ -35,6 +56,7 @@ for (const path of pages) {
     : 'MET[Ȧ]CADEMY OF HUMANITY — a public research field for knowledge, human experience, AI, culture, provenance and the unknown.';
   const description = decode(existingDescription || lede || fallback);
   const hasReader = /<article[^>]+id="read-online"/i.test(html);
+  const topics = topicNames(html);
   const additions = [];
 
   if (!/name="description"/i.test(html)) additions.push(`<meta name="description" content="${attr(description)}">`);
@@ -51,7 +73,8 @@ for (const path of pages) {
   if (!/name="twitter:title"/i.test(html)) additions.push(`<meta name="twitter:title" content="${attr(title)}">`);
   if (!/name="twitter:description"/i.test(html)) additions.push(`<meta name="twitter:description" content="${attr(description)}">`);
 
-  if (hasReader && !/type="application\/ld\+json"/i.test(html)) {
+  const hasArticleJsonLd = /"@type"\s*:\s*"(?:Article|ScholarlyArticle|NewsArticle|BlogPosting)"/i.test(html);
+  if (hasReader && !hasArticleJsonLd) {
     const published = html.match(/property="article:published_time"\s+content="([^"]+)"/i)?.[1];
     const modified = html.match(/property="article:modified_time"\s+content="([^"]+)"/i)?.[1] || published;
     const data = {
@@ -68,8 +91,21 @@ for (const path of pages) {
     };
     if (published) data.datePublished = published;
     if (modified) data.dateModified = modified;
+    if (topics.length) {
+      data.keywords = topics;
+      data.articleSection = topics[0];
+      data.about = topics.map(name => ({ '@type':'DefinedTerm', name }));
+    }
     additions.push(`<script type="application/ld+json">${JSON.stringify(data)}</script>`);
     articleJsonLd += 1;
+  }
+
+  if (route && !/"@type"\s*:\s*"BreadcrumbList"/i.test(html)) {
+    const bread = breadcrumbData(route, title, lang);
+    if (bread) {
+      additions.push(`<script type="application/ld+json">${JSON.stringify(bread)}</script>`);
+      breadcrumbJsonLd += 1;
+    }
   }
 
   if (additions.length) {
@@ -80,4 +116,4 @@ for (const path of pages) {
   }
 }
 
-console.log(`DISCOVERY_META_ENRICH=PASS pages=${pages.length} changed=${changed} article_jsonld_added=${articleJsonLd} rss_autodiscovery=PASS canonical_fallback=PASS social_meta_fallback=PASS`);
+console.log(`DISCOVERY_META_ENRICH=PASS pages=${pages.length} changed=${changed} article_jsonld_added=${articleJsonLd} breadcrumb_jsonld_added=${breadcrumbJsonLd} rss_autodiscovery=PASS canonical_fallback=PASS social_meta_fallback=PASS topic_semantics=PASS`);
