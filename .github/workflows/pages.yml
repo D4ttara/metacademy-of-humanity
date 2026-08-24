@@ -28,10 +28,14 @@ jobs:
           sudo apt-get install -y --no-install-recommends pandoc texlive-xetex texlive-latex-extra texlive-fonts-extra texlive-fonts-recommended poppler-utils
       - name: Assemble Document 014 canonical Markdown
         run: bash scripts/assemble-document-014-source.sh
+      - name: Assemble Document 015 canonical Markdown
+        run: bash scripts/assemble-document-015-source.sh
       - name: Inject Document 013 registry entry
         run: node scripts/inject-document-013-registry.mjs
       - name: Inject Document 014 registry entry
         run: node scripts/inject-document-014-registry.mjs
+      - name: Inject Document 015 registry entry
+        run: node scripts/inject-document-015-registry.mjs
       - name: Build and preflight research essay PDFs
         run: bash scripts/build-public-article-pdfs.sh
       - name: Build and preflight Documents 010-012
@@ -40,12 +44,16 @@ jobs:
         run: bash scripts/build-public-article-pdfs-013.sh
       - name: Build and preflight Document 014
         run: bash scripts/build-public-article-pdfs-014.sh
+      - name: Build and preflight Document 015
+        run: bash scripts/build-public-article-pdfs-015.sh
       - name: Render canonical article bodies into static HTML
         run: bash scripts/render-public-article-html.sh
       - name: Render Document 013 canonical bodies into static HTML
         run: bash scripts/render-public-article-html-013.sh
       - name: Verify Document 014 static article bodies
         run: bash scripts/render-public-article-html-014.sh
+      - name: Render Document 015 canonical bodies into static HTML
+        run: bash scripts/render-public-article-html-015.sh
       - name: Inject latest publications into home and updates
         run: node scripts/inject-latest-publications.mjs
       - name: Inject Document 013 into public discovery surfaces
@@ -56,12 +64,18 @@ jobs:
         run: node scripts/inject-document-014-publication.mjs
       - name: Inject Document 014 into sitemap, llms and RSS
         run: node scripts/inject-document-014-machine-discovery.mjs
+      - name: Inject Document 015 into public discovery surfaces
+        run: node scripts/inject-document-015-publication.mjs
+      - name: Inject Document 015 into sitemap, llms and RSS
+        run: node scripts/inject-document-015-machine-discovery.mjs
       - name: Inject reader questions and public comment threads
         run: node scripts/inject-reader-response-all.mjs
       - name: Inject reader questions into Documents 003, 004 and 006
         run: node scripts/inject-reader-response-legacy.mjs
       - name: Build newspaper-style research front page
         run: node scripts/build-newspaper-frontpage.mjs
+      - name: Re-inject Document 015 after newspaper front page build
+        run: node scripts/inject-document-015-publication.mjs
       - name: Build search and AI topic taxonomy
         run: node scripts/build-search-taxonomy.mjs
       - name: Fix generated topic index navigation
@@ -82,6 +96,8 @@ jobs:
         run: node scripts/verify-document-013.mjs
       - name: Verify Document 014
         run: node scripts/verify-document-014.mjs
+      - name: Verify Document 015
+        run: node scripts/verify-document-015.mjs
       - name: Verify reader questions and public comment threads
         run: node scripts/verify-reader-response-all.mjs
       - name: Verify newspaper front page and early reader questions
