@@ -1,16 +1,24 @@
 # MET[Ȧ]CADEMY OF HUMANITY public discovery policy.
 # Public pages are crawlable; Publication Firewall controls what is published at all.
+# Search visibility is distinct from model training. This file explicitly names search/answer crawlers that benefit from a clear allow rule; all other public crawlers remain covered by User-agent: *.
+
 User-agent: *
 Allow: /
 
-# Explicit search-discovery crawlers.
+# Google Search and Google AI search features use Googlebot.
 User-agent: Googlebot
 Allow: /
 
+# Bing / Microsoft search discovery and IndexNow follow-up crawling.
 User-agent: Bingbot
 Allow: /
 
+# ChatGPT Search discovery. This is not the GPTBot training crawler.
 User-agent: OAI-SearchBot
+Allow: /
+
+# Perplexity search discovery. This is not a foundation-model training crawler.
+User-agent: PerplexityBot
 Allow: /
 
 Sitemap: https://d4ttara.github.io/metacademy-of-humanity/sitemap.xml
