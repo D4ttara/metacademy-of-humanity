@@ -3,6 +3,7 @@ import { readFileSync, writeFileSync } from 'node:fs';
 const issue015='https://github.com/D4ttara/metacademy-of-humanity/issues/58';
 const issue016='https://github.com/D4ttara/metacademy-of-humanity/issues/59';
 const esc=s=>String(s).replaceAll('&','&amp;').replaceAll('<','&lt;').replaceAll('>','&gt;');
+const client='<script src="../../../assets/js/ai-reader-lab.js" defer></script>';
 
 const jobs=[
   {
@@ -38,13 +39,20 @@ const jobs=[
 let changed=0;
 for(const job of jobs){
   let html=readFileSync(job.path,'utf8');
-  if(html.includes(`data-ai-reader-lab="${job.number}"`)) continue;
-  const block=`\n<section class="ai-reader-lab" data-ai-reader-lab="${job.number}"><div class="wrap ai-reader-lab-inner"><p class="eyebrow">${esc(job.eyebrow)}</p><h2>${esc(job.title)}</h2><p class="ai-reader-note">${esc(job.note)}</p><pre class="ai-reader-prompt" data-ai-prompt>${esc(job.prompt)}</pre><div class="ai-reader-actions"><button class="button primary" type="button" data-copy-ai-prompt>${esc(job.copy)}</button><button class="button" type="button" data-share-reader>${esc(job.share)}</button><a class="button" href="${job.relatedHref}">${esc(job.related)}</a><a class="button" href="${job.issue}" rel="external noopener noreferrer">${esc(job.returnLabel)}</a></div></div></section>`;
-  const marker='<section class="reader-response"';
-  const at=html.indexOf(marker);
-  if(at<0){ if(!html.includes('</main>')) throw new Error(`reader response and </main> missing: ${job.path}`); html=html.replace('</main>',block+'\n</main>'); }
-  else html=html.slice(0,at)+block+'\n'+html.slice(at);
-  writeFileSync(job.path,html,'utf8');
-  changed++;
+  let touched=false;
+  if(!html.includes('ai-reader-lab.js')){
+    if(!html.includes('</head>')) throw new Error(`</head> missing: ${job.path}`);
+    html=html.replace('</head>',client+'</head>');
+    touched=true;
+  }
+  if(!html.includes(`data-ai-reader-lab="${job.number}"`)){
+    const block=`\n<section class="ai-reader-lab" data-ai-reader-lab="${job.number}"><div class="wrap ai-reader-lab-inner"><p class="eyebrow">${esc(job.eyebrow)}</p><h2>${esc(job.title)}</h2><p class="ai-reader-note">${esc(job.note)}</p><pre class="ai-reader-prompt" data-ai-prompt>${esc(job.prompt)}</pre><div class="ai-reader-actions"><button class="button primary" type="button" data-copy-ai-prompt>${esc(job.copy)}</button><button class="button" type="button" data-share-reader>${esc(job.share)}</button><a class="button" href="${job.relatedHref}">${esc(job.related)}</a><a class="button" href="${job.issue}" rel="external noopener noreferrer">${esc(job.returnLabel)}</a></div></div></section>`;
+    const marker='<section class="reader-response"';
+    const at=html.indexOf(marker);
+    if(at<0){ if(!html.includes('</main>')) throw new Error(`reader response and </main> missing: ${job.path}`); html=html.replace('</main>',block+'\n</main>'); }
+    else html=html.slice(0,at)+block+'\n'+html.slice(at);
+    touched=true;
+  }
+  if(touched){ writeFileSync(job.path,html,'utf8'); changed++; }
 }
-console.log(`AI_READER_LAB_INJECT=PASS changed=${changed} documents=015,016 editions=EN_UA backend=ZERO`);
+console.log(`AI_READER_LAB_INJECT=PASS changed=${changed} documents=015,016 editions=EN_UA backend=ZERO client=LOCAL`);
