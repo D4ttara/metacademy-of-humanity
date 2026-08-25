@@ -2,13 +2,14 @@ import { readFileSync, writeFileSync } from 'node:fs';
 const base='https://d4ttara.github.io/metacademy-of-humanity/';
 const en=`${base}documents/015-polytypic-thinking/en/`;
 const ua=`${base}documents/015-polytypic-thinking/ua/`;
+const lastmod='2026-08-25';
 
 {
   const path='sitemap.xml'; let s=readFileSync(path,'utf8');
   if(!s.includes(en)){
     const anchor='</urlset>';
     if(!s.includes(anchor)) throw new Error('sitemap closing tag missing');
-    const block=`  <url><loc>${en}</loc></url>\n  <url><loc>${ua}</loc></url>\n`;
+    const block=`  <url><loc>${en}</loc><lastmod>${lastmod}</lastmod></url>\n  <url><loc>${ua}</loc><lastmod>${lastmod}</lastmod></url>\n`;
     s=s.replace(anchor,block+anchor); writeFileSync(path,s,'utf8');
   }
 }
@@ -39,4 +40,4 @@ const ua=`${base}documents/015-polytypic-thinking/ua/`;
     s=s.replace(anchor,item+anchor); writeFileSync(path,s,'utf8');
   }
 }
-console.log('DOCUMENT_015_MACHINE_DISCOVERY_INJECT=PASS sitemap=EN_UA llms=HTML_MD_PDF_DISCUSSION rss=PASS');
+console.log('DOCUMENT_015_MACHINE_DISCOVERY_INJECT=PASS sitemap=EN_UA lastmod=2026-08-25 llms=HTML_MD_PDF_DISCUSSION rss=PASS');
