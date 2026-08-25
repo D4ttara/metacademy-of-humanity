@@ -102,6 +102,8 @@ jobs:
         run: node scripts/extend-search-taxonomy-015-016.mjs
       - name: Inject zero-service AI Reader Lab across all public publications
         run: node scripts/inject-ai-reader-lab.mjs
+      - name: Inject Scholar citation passports into research publications
+        run: node scripts/inject-scholar-citation-passport.mjs
       - name: Inject legal / privacy footer link
         run: bash scripts/inject-legal-footer.sh
       - name: Enrich discovery metadata and RSS autodiscovery
@@ -124,6 +126,8 @@ jobs:
         run: node scripts/verify-document-016.mjs
       - name: Verify corpus-wide zero-service AI Reader Lab
         run: node scripts/verify-ai-reader-lab.mjs
+      - name: Verify Scholar citation passports
+        run: node scripts/verify-scholar-citation-passport.mjs
       - name: Verify reader questions and public comment threads
         run: node scripts/verify-reader-response-all.mjs
       - name: Verify newspaper front page and early reader questions
