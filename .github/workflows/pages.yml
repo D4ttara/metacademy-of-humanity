@@ -98,6 +98,8 @@ jobs:
         run: node scripts/build-search-taxonomy.mjs
       - name: Fix generated topic index navigation
         run: node scripts/fix-search-taxonomy-links.mjs
+      - name: Extend topic taxonomy through Documents 015 and 016
+        run: node scripts/extend-search-taxonomy-015-016.mjs
       - name: Inject zero-service AI Reader Lab across all public publications
         run: node scripts/inject-ai-reader-lab.mjs
       - name: Inject legal / privacy footer link
