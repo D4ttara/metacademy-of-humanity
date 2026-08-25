@@ -104,6 +104,8 @@ jobs:
         run: node scripts/inject-ai-reader-lab.mjs
       - name: Inject Scholar citation passports into research publications
         run: node scripts/inject-scholar-citation-passport.mjs
+      - name: Add citation and ARIA actions to AI Reader Lab
+        run: node scripts/enhance-ai-reader-lab-actions.mjs
       - name: Inject legal / privacy footer link
         run: bash scripts/inject-legal-footer.sh
       - name: Enrich discovery metadata and RSS autodiscovery
