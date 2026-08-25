@@ -1,0 +1,28 @@
+\documentclass[10pt,a4paper]{article}
+\usepackage{fontspec}\usepackage{geometry}\usepackage{xcolor}\usepackage{fancyhdr}\usepackage{eso-pic}\usepackage{microtype}\usepackage{hyperref}\usepackage{xurl}\usepackage{titlesec}\usepackage{graphicx}\usepackage{setspace}\usepackage{parskip}\usepackage{ragged2e}\usepackage{qrcode}\usepackage{multicol}\usepackage{tikz}\usepackage{fvextra}\usepackage{upquote}
+\defaultfontfeatures{Ligatures=TeX,Scale=MatchLowercase}
+\setmainfont{IBMPlexSans-Regular.otf}[Path=/usr/share/texlive/texmf-dist/fonts/opentype/ibm/plex/,BoldFont=IBMPlexSans-SemiBold.otf,ItalicFont=IBMPlexSans-Italic.otf,BoldItalicFont=IBMPlexSans-SemiBoldItalic.otf]
+\setmonofont{IBMPlexMono-Regular.otf}[Path=/usr/share/texlive/texmf-dist/fonts/opentype/ibm/plex/,BoldFont=IBMPlexMono-SemiBold.otf]
+\geometry{a4paper,left=25mm,right=21mm,top=21mm,bottom=23mm,headheight=15pt,headsep=7mm,footskip=11mm}
+\definecolor{MoHInk}{HTML}{103451}\definecolor{MoHText}{HTML}{1B2C3B}\definecolor{MoHMuted}{HTML}{66798A}\definecolor{MoHBlue}{HTML}{78C4EF}\definecolor{MoHLine}{HTML}{D6DFE5}\definecolor{MoHPaper}{HTML}{F7F3EB}
+\hypersetup{colorlinks=true,linkcolor=MoHInk,urlcolor=MoHInk,pdftitle={$title$},pdfauthor={Ievgen Karogod / Dattara},pdfsubject={MET[Ȧ]CADEMY OF HUMANITY - Document $document$ - $class$ - $version$}}
+\pagecolor{MoHPaper}\color{MoHText}\AddToShipoutPictureBG{\AtPageLowerLeft{\color{MoHBlue}\rule{5.2pt}{\paperheight}}}
+\setlength{\parindent}{0pt}\setlength{\parskip}{0.55em plus 0.10em minus 0.05em}\linespread{1.045}\widowpenalty=10000\clubpenalty=10000\displaywidowpenalty=10000\brokenpenalty=10000\emergencystretch=2em\pretolerance=1200\tolerance=2600\frenchspacing
+\pagestyle{fancy}\fancyhf{}\fancyhead[L]{\footnotesize\color{MoHMuted}MET[Ȧ]CADEMY OF HUMANITY}\fancyhead[R]{\footnotesize\color{MoHMuted}DOC $document$ · $edition$ · $version$}\fancyfoot[L]{\fontsize{7.1}{9}\selectfont\color{MoHMuted}© 2026 Ievgen Karogod / Dattara · MET[Ȧ]CADEMY OF HUMANITY (MoH)}\fancyfoot[R]{\footnotesize\color{MoHMuted}\thepage}\renewcommand{\headrulewidth}{0.35pt}\renewcommand{\headrule}{\hbox to\headwidth{\color{MoHLine}\leaders\hrule height \headrulewidth\hfill}}\renewcommand{\footrulewidth}{0pt}
+\titleformat{\section}{\Large\bfseries\color{MoHInk}}{}{0pt}{}\titlespacing*{\section}{0pt}{1.45em}{0.48em}\titleformat{\subsection}{\large\bfseries\color{MoHInk}}{}{0pt}{}\DefineVerbatimEnvironment{Highlighting}{Verbatim}{breaklines,breakanywhere,commandchars=\\\{\}}\newcommand{\tightlist}{}
+\begin{document}\justifying
+\thispagestyle{empty}
+{\fontsize{8}{10}\selectfont\ttfamily\color{MoHMuted}THE MET[Ȧ]CADEMY REVIEW · DOCUMENT $document$ · $date$\par}\vspace{3mm}{\color{MoHLine}\rule{\linewidth}{0.7pt}}\vspace{7mm}
+{\fontsize{28}{31}\selectfont\bfseries\color{MoHInk}$title$\par}\vspace{3mm}{\fontsize{13.2}{17}\selectfont\color{MoHMuted}$subtitle$\par}\vspace{8mm}
+\begin{multicols}{2}\small\textbf{$standfirst$}\columnbreak\color{MoHMuted}$coverquestion$\end{multicols}
+\vspace{5mm}{\color{MoHBlue}\rule{\linewidth}{1.1pt}}\vfill
+{\fontsize{8}{10}\selectfont\bfseries\color{MoHMuted}MET[Ȧ]CADEMY OF HUMANITY · $class$ · $version$\par}\vspace{2mm}{\fontsize{7.5}{9}\selectfont\color{MoHMuted}Ievgen Karogod / Dattara · (MoH)\par}\newpage
+$body$
+\clearpage\thispagestyle{fancy}
+{\fontsize{8}{10}\selectfont\bfseries\color{MoHMuted}(MoH) · SUPPORT · $date$\par}\vspace{5mm}
+{\fontsize{25}{28}\selectfont\bfseries\color{MoHInk}SUPPORT THE RESEARCH · ПІДТРИМАТИ ДОСЛІДЖЕННЯ\par}\vspace{4mm}
+{\fontsize{11}{15}\selectfont\color{MoHMuted}Independent research, books, translations and public materials continue through voluntary support.\\Незалежні дослідження, книги, переклади й відкриті матеріали продовжуються завдяки добровільній підтримці.\par}\vspace{9mm}
+\noindent\begin{minipage}[t]{0.30\linewidth}\centering{\bfseries Monobank}\par\vspace{4mm}\color{black}\qrcode[height=27mm]{https://send.monobank.ua/jar/2TMaAhchSZ}\par\vspace{4mm}{\fontsize{7.6}{10}\selectfont UAH · Monobank Jar\par}{\fontsize{7.3}{9}\selectfont\href{https://send.monobank.ua/jar/2TMaAhchSZ}{send.monobank.ua/jar/2TMaAhchSZ}\par}\end{minipage}\hfill
+\begin{minipage}[t]{0.30\linewidth}\centering{\bfseries PayPal}\par\vspace{4mm}\color{black}\qrcode[height=27mm]{https://www.paypal.me/4IevgenKarogod}\par\vspace{4mm}{\fontsize{7.6}{10}\selectfont International support\par}{\fontsize{7.3}{9}\selectfont\href{https://www.paypal.me/4IevgenKarogod}{paypal.me/4IevgenKarogod}\par}\end{minipage}\hfill
+\begin{minipage}[t]{0.30\linewidth}\centering{\bfseries USDT · TRC20}\par\vspace{4mm}\color{black}\qrcode[height=27mm]{TDaCBB3T94CtMPRHN9pP8Uvdy8CTtWE5SV}\par\vspace{4mm}{\fontsize{7.6}{10}\selectfont TRON / TRC20 only\par}{\fontsize{6.8}{8.5}\selectfont\texttt{TDaCBB3T94CtMPRHN9pP8Uvdy8CTtWE5SV}\par}\end{minipage}
+\vfill{\fontsize{8}{11}\selectfont\color{MoHMuted}\href{https://d4ttara.github.io/metacademy-of-humanity/support/}{d4ttara.github.io/metacademy-of-humanity/support/}\par}\vspace{3mm}{\fontsize{7.5}{10}\selectfont\color{MoHMuted}Voluntary support creates no ownership, investment, membership or governance rights and does not present MoH as a registered charity. · Добровільна підтримка не створює прав власності, інвестиційних, членських або управлінських прав і не представляє MoH як зареєстровану благодійну організацію.\par}\end{document}
