@@ -66,6 +66,8 @@ jobs:
         run: bash scripts/render-public-article-html-015.sh
       - name: Render Document 016 canonical bodies into static HTML
         run: bash scripts/render-public-article-html-016.sh
+      - name: Inject zero-service AI reader labs into Documents 015 and 016
+        run: node scripts/inject-ai-reader-lab.mjs
       - name: Inject latest publications into home and updates
         run: node scripts/inject-latest-publications.mjs
       - name: Inject Document 013 into public discovery surfaces
@@ -90,7 +92,7 @@ jobs:
         run: node scripts/inject-reader-response-legacy.mjs
       - name: Build newspaper-style research front page
         run: node scripts/build-newspaper-frontpage.mjs
-      - name: Promote Document 016 to newspaper lead
+      - name: Promote Document 016 to newspaper lead and retain Document 015
         run: node scripts/promote-document-016-newspaper.mjs
       - name: Re-inject Document 016 after newspaper front page build
         run: node scripts/inject-document-016-publication.mjs
@@ -118,6 +120,8 @@ jobs:
         run: node scripts/verify-document-015.mjs
       - name: Verify Document 016
         run: node scripts/verify-document-016.mjs
+      - name: Verify zero-service AI reader labs
+        run: node scripts/verify-ai-reader-lab.mjs
       - name: Verify reader questions and public comment threads
         run: node scripts/verify-reader-response-all.mjs
       - name: Verify newspaper front page and early reader questions
