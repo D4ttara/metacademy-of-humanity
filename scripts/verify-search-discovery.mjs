@@ -1,7 +1,7 @@
 import { readFileSync, existsSync } from 'node:fs';
 
 const topics = ['artificial-intelligence','human-ai','semantic-computing','epistemology','agency-and-behavior','complex-systems','myoga-jyotish','time-and-causality'];
-const requiredDocs = ['003','004','006','007','008','009','010','011','012','013','014'];
+const requiredDocs = ['003','004','006','007','008','009','010','011','012','013','014','015','016'];
 const fail = message => { throw new Error(message); };
 
 for (const slug of topics) {
@@ -32,7 +32,9 @@ const articleFiles = [
   'documents/011-the-third-body/en/index.html','documents/011-the-third-body/ua/index.html',
   'documents/012-myoga-astrology-overview/en/index.html','documents/012-myoga-astrology-overview/ua/index.html',
   'documents/013-room-that-answers/en/index.html','documents/013-room-that-answers/ua/index.html',
-  'documents/014-right-to-see-the-consequence/en/index.html','documents/014-right-to-see-the-consequence/ua/index.html'
+  'documents/014-right-to-see-the-consequence/en/index.html','documents/014-right-to-see-the-consequence/ua/index.html',
+  'documents/015-polytypic-thinking/en/index.html','documents/015-polytypic-thinking/ua/index.html',
+  'documents/016-right-to-a-first-chance/en/index.html','documents/016-right-to-a-first-chance/ua/index.html'
 ];
 for (const path of articleFiles) {
   const html = readFileSync(path,'utf8');
@@ -40,18 +42,28 @@ for (const path of articleFiles) {
   if (!html.includes('article:tag')) fail(`Missing article tags ${path}`);
 }
 
+const extended = {
+  '015':['artificial-intelligence','human-ai','epistemology','agency-and-behavior'],
+  '016':['epistemology','agency-and-behavior']
+};
+for (const [n,slugs] of Object.entries(extended)) for (const slug of slugs) for (const prefix of ['topics','uk/topics']) {
+  const html=readFileSync(`${prefix}/${slug}/index.html`,'utf8');
+  if(!html.includes(`data-taxonomy-document="${n}"`)) fail(`${prefix}/${slug} missing Document ${n}`);
+  if(!html.includes(`ai-reader-lab-${n}`)) fail(`${prefix}/${slug} missing AI critique route for Document ${n}`);
+}
+
 const sitemap = readFileSync('sitemap.xml','utf8');
 for (const slug of topics) {
   if (!sitemap.includes(`/topics/${slug}/`)) fail(`Sitemap missing EN ${slug}`);
   if (!sitemap.includes(`/uk/topics/${slug}/`)) fail(`Sitemap missing UA ${slug}`);
 }
+for(const n of ['015-polytypic-thinking','016-right-to-a-first-chance']) if(!sitemap.includes(`/documents/${n}/`)) fail(`Sitemap missing ${n}`);
 const llms = readFileSync('llms.txt','utf8');
-if (!llms.includes('Topic hubs')) fail('llms.txt missing topic hubs');
-if (!llms.includes('Document 014')) fail('llms.txt missing Document 014');
+for(const n of ['Document 014','Document 015','Document 016']) if (!llms.includes(n)) fail(`llms.txt missing ${n}`);
 const robots = readFileSync('robots.txt','utf8');
 if (!robots.includes('OAI-SearchBot')) fail('robots missing OAI-SearchBot');
 if (!robots.includes('PerplexityBot')) fail('robots missing PerplexityBot');
 const indexnow = readFileSync('scripts/notify-indexnow.sh','utf8');
 if (!indexnow.includes('sitemap.xml')) fail('IndexNow is not sitemap-driven');
 
-console.log(`SEARCH_DISCOVERY_VERIFY=PASS topics=${topics.length} topic_pages=${topics.length*2+2} tagged_article_editions=${articleFiles.length} docs=${requiredDocs.join(',')} google=CRAWLABLE bing_indexnow=WIRED chatgpt_search=OAI_SEARCHBOT perplexity=PERPLEXITYBOT`);
+console.log(`SEARCH_DISCOVERY_VERIFY=PASS topics=${topics.length} topic_pages=${topics.length*2+2} tagged_article_editions=${articleFiles.length} docs=${requiredDocs.join(',')} taxonomy_015_016=PASS google=CRAWLABLE bing_indexnow=WIRED chatgpt_search=OAI_SEARCHBOT perplexity=PERPLEXITYBOT`);
