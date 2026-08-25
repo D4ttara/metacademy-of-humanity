@@ -8,8 +8,15 @@ const jobs=[
 ];
 for(const [path,n,sibling,issue,challenge] of jobs){
  const h=readFileSync(path,'utf8');
- for(const token of [`data-ai-reader-lab="${n}"`,'data-copy-ai-prompt','data-share-reader','data-ai-prompt','ai-reader-lab.js',sibling,`issues/${issue}`,challenge]) assert(h.includes(token),`${path} missing ${token}`);
+ for(const token of [`id="ai-reader-lab-${n}"`,`data-ai-reader-lab="${n}"`,'data-ai-reader-jump',`href="#ai-reader-lab-${n}"`,'data-copy-ai-prompt','data-share-reader','data-ai-prompt','ai-reader-lab.js',sibling,`issues/${issue}`,challenge]) assert(h.includes(token),`${path} missing ${token}`);
+}
+for(const path of ['index.html','uk/index.html']){
+ const h=readFileSync(path,'utf8');
+ for(const n of ['015','016']){
+  assert(h.includes(`data-ai-reader-frontpage="${n}"`),`${path} missing AI reader entry for ${n}`);
+  assert(h.includes(`#ai-reader-lab-${n}`),`${path} missing AI reader anchor for ${n}`);
+ }
 }
 const js=readFileSync('assets/js/ai-reader-lab.js','utf8');
 for(const token of ['navigator.share','navigator.clipboard','replaceAll','{URL}']) assert(js.includes(token),`ai-reader-lab.js missing ${token}`);
-console.log('AI_READER_LAB_VERIFY=PASS documents=015,016 editions=EN_UA copy=PASS share=PASS critical_prompts=PASS crosslinks=PASS backend=ZERO');
+console.log('AI_READER_LAB_VERIFY=PASS documents=015,016 editions=EN_UA header_jump=PASS frontpage_entry=PASS copy=PASS share=PASS critical_prompts=PASS crosslinks=PASS backend=ZERO');
