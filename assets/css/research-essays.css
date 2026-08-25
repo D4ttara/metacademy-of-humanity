@@ -14,6 +14,38 @@
   font:500 .9em/1.4 "IBM Plex Mono","IBM Plex Sans",monospace;
 }
 .essay-cards { grid-template-columns:repeat(2,1fr); }
+.ai-reader-lab {
+  margin-top:3.4rem;
+  border-top:2px solid var(--ink);
+  border-bottom:1px solid var(--line);
+  background:rgba(255,253,250,.58);
+}
+.ai-reader-lab-inner {
+  width:min(calc(100% - 2.5rem),55rem);
+  padding-top:2.45rem;
+  padding-bottom:2.65rem;
+}
+.ai-reader-lab h2 { max-width:44rem; margin:.35rem 0 .8rem; }
+.ai-reader-note { max-width:48rem; font-size:1rem; line-height:1.65; color:var(--muted); }
+.ai-reader-prompt {
+  margin:1.35rem 0 1rem;
+  padding:1.1rem 1.2rem;
+  border:1px solid var(--line);
+  border-left:4px solid var(--accent-strong);
+  border-radius:.3rem;
+  background:var(--paper);
+  color:var(--ink);
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+  font:500 .9rem/1.58 "IBM Plex Mono","IBM Plex Sans",monospace;
+}
+.ai-reader-actions {
+  display:flex;
+  flex-wrap:wrap;
+  gap:.65rem;
+  align-items:center;
+  margin-top:1rem;
+}
 .reader-response {
   margin-top:3.5rem;
   border-top:1px solid var(--line);
@@ -40,6 +72,8 @@
 .reader-comment-body p { margin:.65rem 0 0; line-height:1.62; white-space:pre-wrap; }
 @media (max-width:760px) {
   .research-essay-reading,
+  .ai-reader-lab-inner,
   .reader-response-inner { width:min(calc(100% - 1.5rem),55rem); }
   .essay-cards { grid-template-columns:1fr; }
+  .ai-reader-actions .button { width:100%; text-align:center; }
 }
