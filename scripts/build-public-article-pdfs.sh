@@ -37,9 +37,9 @@ dst.write_text(text, encoding='utf-8')
 PY
   pandoc "$tmpmd" --from=markdown+yaml_metadata_block --pdf-engine=xelatex --template="$TEMPLATE" --output="$pdf"
   if [[ "$doc" == "009" ]]; then
-    # xdvipdfmx generates a fresh trailer ID on every run. Normalise only that
-    # fixed-length ID so the same Document 009 source produces the same PDF SHA.
-    # Cross-reference offsets and page content are untouched.
+    # Some xdvipdfmx builds emit one trailer /ID, while current Ubuntu/TeX Live
+    # can legally emit none. Preserve the no-ID output; deterministically
+    # normalise the single-ID form; fail only on an ambiguous multi-ID form.
     python3 - "$pdf" <<'PY'
 from pathlib import Path
 import hashlib, re, sys
@@ -47,13 +47,16 @@ path = Path(sys.argv[1])
 data = path.read_bytes()
 pat = re.compile(rb'(/ID\s*\[\s*<)([0-9A-Fa-f]{32})(>\s*<)([0-9A-Fa-f]{32})(>\s*\])')
 matches = list(pat.finditer(data))
-if len(matches) != 1:
-    raise SystemExit(f'Expected one PDF trailer ID in {path}, found {len(matches)}')
-zeroed = pat.sub(lambda m: m.group(1)+b'0'*32+m.group(3)+b'0'*32+m.group(5), data, count=1)
-stable = hashlib.sha256(zeroed).hexdigest()[:32].encode('ascii')
-normal = pat.sub(lambda m: m.group(1)+stable+m.group(3)+stable+m.group(5), data, count=1)
-path.write_bytes(normal)
-print(f'PDF_TRAILER_ID=DETERMINISTIC file={path} id={stable.decode()}')
+if len(matches) == 0:
+    print(f'PDF_TRAILER_ID=ABSENT file={path} action=PRESERVE')
+elif len(matches) == 1:
+    zeroed = pat.sub(lambda m: m.group(1)+b'0'*32+m.group(3)+b'0'*32+m.group(5), data, count=1)
+    stable = hashlib.sha256(zeroed).hexdigest()[:32].encode('ascii')
+    normal = pat.sub(lambda m: m.group(1)+stable+m.group(3)+stable+m.group(5), data, count=1)
+    path.write_bytes(normal)
+    print(f'PDF_TRAILER_ID=DETERMINISTIC file={path} id={stable.decode()}')
+else:
+    raise SystemExit(f'Ambiguous PDF trailer IDs in {path}: found {len(matches)}')
 PY
   fi
   pages="$(pdfinfo "$pdf" | awk '/^Pages:/ {print $2}')"
