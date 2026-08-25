@@ -36,13 +36,15 @@ GitHub Pages deploys the verified public build from `main` through GitHub Action
 - Document 012, *M{Y}OGA: What Happens If We Don't Laugh at Astrology for the First Five Minutes*;
 - Document 013, *The Human in a Room That Answers / Людина в кімнаті, яка відповідає* — generative AI, filter bubbles, personalization and the right not to be frozen by a user model;
 - Document 014, *The Right to See the Consequence / Право бачити наслідок* — punitive humanism, graphic warnings, stigma, self-models, alternatives and agency;
+- [Document 015, *Polytypic Thinking / Політипічне мислення*](documents/015-polytypic-thinking/) — categorization, stereotypes, human-AI feedback, cultural diversity and the right of a type system to be revised by the phenomenon;
+- [Document 016, *The Right to a First Chance / Право на перший шанс*](documents/016-right-to-a-first-chance/) — art funding, entry-level work, administrative burden, digitalisation, cumulative advantage and the architecture of opportunity;
 - public reader questions, comment threads and participation routes for source-aware corrections, objections and focused pull requests.
 
 ## Discover by research question
 
 The public site now groups the corpus by topic rather than relying only on document numbers. AI-related work is collected under **Artificial Intelligence** and **Human ↔ AI**; meaning-preservation work under **Semantic Computing**; method and evidence under **Epistemology & Research Method**; behavioral and political interface questions under **Agency, Behavior & Care**; emergence under **Complex Systems**; Jyotiṣa-related work under **M{Y}OGA JYOTISH**; and causal-history work under **Time, Causality & Hidden Preparation**.
 
-Search vocabulary used intentionally across the public corpus includes: `artificial intelligence`, `human-ai interaction`, `ai ethics`, `ai governance`, `large language models`, `llm personalization`, `semantic computing`, `semantic migration`, `epistemology`, `provenance`, `uncertainty`, `research methodology`, `complex systems`, `emergence`, `human agency`, `behavioral science`, `science communication`, `public-interest technology`, `jyotish`, `astrology research`, `time and causality`.
+Search vocabulary used intentionally across the public corpus includes: `artificial intelligence`, `human-ai interaction`, `ai ethics`, `ai governance`, `large language models`, `llm personalization`, `semantic computing`, `semantic migration`, `epistemology`, `provenance`, `uncertainty`, `research methodology`, `complex systems`, `emergence`, `human agency`, `behavioral science`, `science communication`, `public-interest technology`, `categorization`, `stereotypes`, `polytypic thinking`, `administrative burden`, `first chance`, `entry-level work`, `art funding`, `digital access`, `cumulative advantage`, `jyotish`, `astrology research`, `time and causality`.
 
 ## M{Y}OGA JYOTISH
 
