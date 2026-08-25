@@ -66,8 +66,6 @@ jobs:
         run: bash scripts/render-public-article-html-015.sh
       - name: Render Document 016 canonical bodies into static HTML
         run: bash scripts/render-public-article-html-016.sh
-      - name: Inject zero-service AI reader labs into Documents 015 and 016
-        run: node scripts/inject-ai-reader-lab.mjs
       - name: Inject latest publications into home and updates
         run: node scripts/inject-latest-publications.mjs
       - name: Inject Document 013 into public discovery surfaces
@@ -100,6 +98,8 @@ jobs:
         run: node scripts/build-search-taxonomy.mjs
       - name: Fix generated topic index navigation
         run: node scripts/fix-search-taxonomy-links.mjs
+      - name: Inject zero-service AI Reader Lab across all public publications
+        run: node scripts/inject-ai-reader-lab.mjs
       - name: Inject legal / privacy footer link
         run: bash scripts/inject-legal-footer.sh
       - name: Enrich discovery metadata and RSS autodiscovery
@@ -120,7 +120,7 @@ jobs:
         run: node scripts/verify-document-015.mjs
       - name: Verify Document 016
         run: node scripts/verify-document-016.mjs
-      - name: Verify zero-service AI reader labs
+      - name: Verify corpus-wide zero-service AI Reader Lab
         run: node scripts/verify-ai-reader-lab.mjs
       - name: Verify reader questions and public comment threads
         run: node scripts/verify-reader-response-all.mjs
