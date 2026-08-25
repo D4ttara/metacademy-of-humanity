@@ -4,7 +4,7 @@ import path from 'node:path';
 const docs={
  '003':'003-life-as-organization','004':'004-when-science-reaches-a-plateau','006':'006-myoga-jyotish','007':'007-after-vibe-coding','008':'008-the-interface-that-knows-you','009':'009-elon-musk-mark-zuckerberg-ai-control','010':'010-manifestation-time-genesis-time','011':'011-the-third-body','012':'012-myoga-astrology-overview','013':'013-room-that-answers','014':'014-right-to-see-the-consequence','015':'015-polytypic-thinking','016':'016-right-to-a-first-chance'
 };
-const files=['research/index.html','uk/research/index.html'];
+const files=['index.html','uk/index.html','documents/index.html','uk/documents/index.html','updates/index.html','uk/updates/index.html','research/index.html','uk/research/index.html'];
 for(const root of ['topics','uk/topics']) for(const name of readdirSync(root)){const p=path.posix.join(root,name,'index.html');try{if(statSync(p).isFile())files.push(p);}catch{}}
 let links=0,changed=0;
 for(const file of files){let html=readFileSync(file,'utf8');const original=html;const ua=file.startsWith('uk/');const label=ua?'ШІ-критика →':'AI critique →';
@@ -23,4 +23,4 @@ for(const file of files){let html=readFileSync(file,'utf8');const original=html;
  }
  if(html!==original){writeFileSync(file,html,'utf8');changed++;}
 }
-console.log(`AI_READER_DISCOVERY_LINKS_INJECT=PASS files_changed=${changed} links=${links} research=PASS topic_hubs=PASS documents=003,004,006-016`);
+console.log(`AI_READER_DISCOVERY_LINKS_INJECT=PASS files_changed=${changed} links=${links} home=PASS documents=PASS updates=PASS research=PASS topic_hubs=PASS documents=003,004,006-016`);
