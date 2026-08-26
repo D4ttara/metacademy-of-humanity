@@ -108,6 +108,8 @@ jobs:
         run: node scripts/enhance-ai-reader-lab-actions.mjs
       - name: Expose AI critique from research and topic hubs
         run: node scripts/inject-ai-reader-discovery-links.mjs
+      - name: Build research memory protocol and open questions board
+        run: node scripts/build-research-memory-and-questions.mjs
       - name: Inject legal / privacy footer link
         run: bash scripts/inject-legal-footer.sh
       - name: Enrich discovery metadata and RSS autodiscovery
@@ -138,6 +140,8 @@ jobs:
         run: node scripts/verify-newspaper-frontpage.mjs
       - name: Verify search and AI discovery taxonomy
         run: node scripts/verify-search-discovery.mjs
+      - name: Verify research memory protocol and open questions board
+        run: node scripts/verify-research-memory-and-questions.mjs
       - name: Verify legal / privacy discovery
         run: node scripts/verify-legal-footer.mjs
       - uses: actions/configure-pages@v5
