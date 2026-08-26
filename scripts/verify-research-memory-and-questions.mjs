@@ -1,0 +1,9 @@
+import { readFileSync, existsSync } from 'node:fs';
+const assert=(ok,msg)=>{if(!ok)throw new Error(msg)};
+for(const file of ['questions/index.html','uk/questions/index.html','memory/index.html','uk/memory/index.html'])assert(existsSync(file),`Missing ${file}`);
+for(const file of ['questions/index.html','uk/questions/index.html']){const h=readFileSync(file,'utf8');for(const n of ['003','004','006','007','008','009','010','011','012','013','014','015','016']){assert(h.includes(`Document ${n}`),`${file} missing Document ${n}`);assert(h.includes(`#ai-reader-lab-${n}`),`${file} missing AI critique ${n}`);}for(const issue of [53,54,55,45,46,47,48,49,50,51,39,58,59])assert(h.includes(`issues/${issue}`),`${file} missing issue ${issue}`);}
+for(const file of ['memory/index.html','uk/memory/index.html']){const h=readFileSync(file,'utf8');for(const token of ['CHAT ARCHIVE ≠ CANON','CONVERSATION ≠ VERIFIED DECISION','REPEATED IDEA ≠ PROMOTED METHOD','ARCHIVED ≠ PUBLIC'])assert(h.includes(token),`${file} missing ${token}`);}
+for(const file of ['research/index.html','uk/research/index.html']){const h=readFileSync(file,'utf8');assert(h.includes('data-research-memory-entry="true"'),`${file} missing memory entry`);assert(h.includes('questions/'),`${file} missing questions link`);assert(h.includes('memory/'),`${file} missing memory link`);}
+const sitemap=readFileSync('sitemap.xml','utf8');for(const route of ['/questions/','/uk/questions/','/memory/','/uk/memory/'])assert(sitemap.includes(route),`sitemap missing ${route}`);
+const llms=readFileSync('llms.txt','utf8');assert(llms.includes('Open Questions / Challenge Board'),'llms missing questions');assert(llms.includes('Research Memory Protocol'),'llms missing memory');
+console.log('RESEARCH_MEMORY_QUESTIONS_VERIFY=PASS question_nodes=13 issues=13 bilingual=PASS memory_boundaries=4 sitemap=PASS llms=PASS research_links=PASS');
