@@ -110,6 +110,8 @@ jobs:
         run: node scripts/inject-ai-reader-discovery-links.mjs
       - name: Build research memory protocol and open questions board
         run: node scripts/build-research-memory-and-questions.mjs
+      - name: Build canonical brand identity and citation surfaces
+        run: node scripts/build-brand-identity.mjs
       - name: Inject legal / privacy footer link
         run: bash scripts/inject-legal-footer.sh
       - name: Enrich discovery metadata and RSS autodiscovery
@@ -142,6 +144,8 @@ jobs:
         run: node scripts/verify-search-discovery.mjs
       - name: Verify research memory protocol and open questions board
         run: node scripts/verify-research-memory-and-questions.mjs
+      - name: Verify canonical brand identity and citation surfaces
+        run: node scripts/verify-brand-identity.mjs
       - name: Verify legal / privacy discovery
         run: node scripts/verify-legal-footer.mjs
       - uses: actions/configure-pages@v5
