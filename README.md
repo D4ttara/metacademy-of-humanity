@@ -6,9 +6,24 @@ Public alpha · August 2026. This repository is a public doorway into an evolvin
 
 MET[Ȧ]CADEMY OF HUMANITY (MoH) publishes bilingual English/Ukrainian research essays and working documents on artificial intelligence, AI ethics and governance, human-AI interaction, LLM personalization, semantic computing, epistemology, provenance, uncertainty, complex systems, human agency, behavioral science, science communication, M{Y}OGA JYOTISH and cross-tradition research methodology.
 
+## Canonical identity
+
+**Display name:** `MET[Ȧ]CADEMY OF HUMANITY`  
+**Machine-safe name:** `METACADEMY OF HUMANITY`  
+**Short name:** `MoH`  
+**Search aliases:** `MetaAcademy of Humanity`, `Metacademy of Humanity`, `METACADEMY`
+
+The accented display mark is canonical; the plain-text forms exist for search, citation, accessibility and entity matching. The public identity passport is published at https://d4ttara.github.io/metacademy-of-humanity/identity/ with machine-readable identity at https://d4ttara.github.io/metacademy-of-humanity/identity.json. Repository-level citation metadata lives in [`CITATION.cff`](CITATION.cff).
+
 ## Visit
 
 **Public site:** https://d4ttara.github.io/metacademy-of-humanity/
+
+**Identity & citation:** https://d4ttara.github.io/metacademy-of-humanity/identity/
+
+**Open questions:** https://d4ttara.github.io/metacademy-of-humanity/questions/
+
+**Research memory:** https://d4ttara.github.io/metacademy-of-humanity/memory/
 
 **Research topics:** https://d4ttara.github.io/metacademy-of-humanity/topics/
 
@@ -27,6 +42,8 @@ GitHub Pages deploys the verified public build from `main` through GitHub Action
 - a 13-domain map preview that preserves undecided labels as open;
 - the Science Aperture public index and editorial reading guide;
 - a public topic taxonomy for AI, Human↔AI, semantic computing, epistemology, agency, complex systems, M{Y}OGA JYOTISH, time and causality;
+- a 13-node Open Questions / Challenge Board connecting each public document to reading, AI critique and public disagreement;
+- a Research Memory protocol that keeps chat archives and working conversations as provenance rather than automatic canon;
 - Document 003, *Життя як організація / Life as Organization* — Research Brief;
 - Document 004, *Коли наука виходить на плато / When Science Reaches a Plateau* — Research Brief;
 - Document 006, *M{Y}OGA JYOTISH* — Field Manifesto plus public discipline protocol;
@@ -42,7 +59,7 @@ GitHub Pages deploys the verified public build from `main` through GitHub Action
 
 ## Discover by research question
 
-The public site now groups the corpus by topic rather than relying only on document numbers. AI-related work is collected under **Artificial Intelligence** and **Human ↔ AI**; meaning-preservation work under **Semantic Computing**; method and evidence under **Epistemology & Research Method**; behavioral and political interface questions under **Agency, Behavior & Care**; emergence under **Complex Systems**; Jyotiṣa-related work under **M{Y}OGA JYOTISH**; and causal-history work under **Time, Causality & Hidden Preparation**.
+The public site groups the corpus by topic rather than relying only on document numbers. AI-related work is collected under **Artificial Intelligence** and **Human ↔ AI**; meaning-preservation work under **Semantic Computing**; method and evidence under **Epistemology & Research Method**; behavioral and political interface questions under **Agency, Behavior & Care**; emergence under **Complex Systems**; Jyotiṣa-related work under **M{Y}OGA JYOTISH**; and causal-history work under **Time, Causality & Hidden Preparation**.
 
 Search vocabulary used intentionally across the public corpus includes: `artificial intelligence`, `human-ai interaction`, `ai ethics`, `ai governance`, `large language models`, `llm personalization`, `semantic computing`, `semantic migration`, `epistemology`, `provenance`, `uncertainty`, `research methodology`, `complex systems`, `emergence`, `human agency`, `behavioral science`, `science communication`, `public-interest technology`, `categorization`, `stereotypes`, `polytypic thinking`, `administrative burden`, `first chance`, `entry-level work`, `art funding`, `digital access`, `cumulative advantage`, `jyotish`, `astrology research`, `time and causality`.
 
@@ -66,7 +83,7 @@ Different ways of knowing may enter the same graph without pretending to be the 
 
 ## Search and AI discovery
 
-The public site exposes canonical URLs, bilingual `hreflang`, crawlable static text, sitemap, RSS, schema.org structured data, topic hubs and a machine-readable `llms.txt`. `robots.txt` explicitly permits Googlebot, Bingbot, OpenAI's OAI-SearchBot and PerplexityBot. Search discovery is treated separately from model-training permission; visibility in a search engine or AI answer system is not the same thing as consenting to every training use.
+The public site exposes canonical URLs, bilingual `hreflang`, crawlable static text, sitemap, RSS, schema.org structured data, topic hubs, a canonical identity passport and a machine-readable `llms.txt`. `robots.txt` explicitly permits Googlebot, Bingbot, OpenAI's OAI-SearchBot and PerplexityBot. Search discovery is treated separately from model-training permission; visibility in a search engine or AI answer system is not the same thing as consenting to every training use.
 
 ## Status and rights
 
