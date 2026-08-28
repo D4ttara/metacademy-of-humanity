@@ -1,6 +1,6 @@
 cff-version: 1.2.0
-message: "If you use this public research material, please cite it as below."
-title: "MET[Ȧ]CADEMY OF HUMANITY"
+message: "If you cite the MET[Ȧ]CADEMY OF HUMANITY public research corpus or this repository, please use the canonical project name and the specific Document number or publication URL where applicable."
+title: "MET[Ȧ]CADEMY OF HUMANITY: Public Research Corpus"
 version: "Public alpha · Phase 3 review"
 date-released: 2026-08-12
 authors:
@@ -9,3 +9,14 @@ authors:
     alias: "Dattara"
 repository-code: "https://github.com/D4ttara/metacademy-of-humanity"
 url: "https://d4ttara.github.io/metacademy-of-humanity/"
+keywords:
+  - artificial intelligence
+  - human-AI interaction
+  - semantic computing
+  - epistemology
+  - provenance
+  - uncertainty
+  - complex systems
+  - human agency
+  - culture
+  - research methodology
