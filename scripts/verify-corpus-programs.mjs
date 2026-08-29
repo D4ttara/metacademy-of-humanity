@@ -31,6 +31,13 @@ for(const token of ['human-ai','semantic','epistemology','agency-access','life-r
 for(const guard of ['PUBLIC DESCRIPTION != EXECUTABLE MATURITY','RESEARCH CANDIDATE != DEPLOYED SYSTEM','ARCHIVE != CANON']){assert(pEn.includes(guard),`EN programs missing guard ${guard}`);assert(pUa.includes(guard),`UA programs missing guard ${guard}`)}
 assert(pEn.includes('MOR}4{MER')&&pEn.includes('RESEARCH CANDIDATE'),'experimental compute status lost');
 assert(pEn.includes('IMAGO')&&pEn.includes('MSL + МІЖ')&&pEn.includes('M{Y}OGA JYOTISH'),'public program identities missing');
+const branchIndexes=[
+ ['research/msl/index.html',['MSL · Semantic Research Layer','ACTIVE PUBLIC RESEARCH','SEMANTIC AGREEMENT != EXECUTABLE EQUIVALENCE']],
+ ['research/lineage/index.html',['Research Lineage','PUBLIC RESEARCH INFRASTRUCTURE','ARCHIVE != CANON']],
+ ['research/system/index.html',['Experimental Systems Research','RESEARCH CANDIDATE FIELD','RESEARCH CANDIDATE != DEPLOYED SYSTEM','MOR}4{MER / M4M']]
+];
+for(const [path,tokens] of branchIndexes){assert(existsSync(path),`missing research doorway ${path}`);const h=readFileSync(path,'utf8');for(const token of tokens)assert(h.includes(token),`${path} missing ${token}`);assert(h.includes('PUBLIC INDEX != INTERNAL CORPUS'),`${path} missing public boundary`);assert(h.includes('application/ld+json'),`${path} missing JSON-LD`)}
+for(const h of [pEn,pUa])for(const route of ['/research/msl/','/research/lineage/','/research/system/'])assert(h.includes(route),`Programs missing research doorway ${route}`);
 let prevHeads=0,nextHeads=0;
 for(const [n,path] of editions){
  assert(existsSync(path),`missing edition ${path}`);const h=readFileSync(path,'utf8');
@@ -58,4 +65,4 @@ for(const [path] of [['index.html'],['uk/index.html'],['research/index.html'],['
 const ukHome=readFileSync('uk/index.html','utf8');const ukEntry=ukHome.match(/<section data-corpus-programs-entry="true">[\s\S]*?<\/section>/)?.[0]||'';assert(ukEntry.includes('href="corpus/"')&&ukEntry.includes('href="programs/"'),'UA home corpus/program routes escape /uk/');assert(!ukEntry.includes('href="../corpus/"')&&!ukEntry.includes('href="../programs/"'),'UA home still contains EN-root corpus/program route');
 const sitemap=readFileSync('sitemap.xml','utf8');for(const route of ['corpus/','uk/corpus/','programs/','uk/programs/'])assert(sitemap.includes(base+route),`sitemap missing ${route}`);
 const llms=readFileSync('llms.txt','utf8');assert(llms.includes('## Public Corpus & Research Programs'),'llms missing corpus/program section');assert(llms.includes('discovery/public-corpus.json')&&llms.includes('discovery/public-programs.json'),'llms missing machine passports');
-console.log(`CORPUS_PROGRAMS_VERIFY=PASS documents=${numbers.length} editions=${editions.length} programs=${programMachine.programs.length} corpus_rails=PASS breadcrumbs=PASS head_prev=${prevHeads} head_next=${nextHeads} start_here=13x6 ua_routes=PASS sitemap=PASS llms=PASS`);
+console.log(`CORPUS_PROGRAMS_VERIFY=PASS documents=${numbers.length} editions=${editions.length} programs=${programMachine.programs.length} research_doorways=3 corpus_rails=PASS breadcrumbs=PASS head_prev=${prevHeads} head_next=${nextHeads} start_here=13x6 ua_routes=PASS sitemap=PASS llms=PASS`);
