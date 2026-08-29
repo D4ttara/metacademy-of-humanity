@@ -19,6 +19,12 @@ The accented display mark is canonical; the plain-text forms exist for search, c
 
 **Public site:** https://d4ttara.github.io/metacademy-of-humanity/
 
+**Start here · guided research trails:** https://d4ttara.github.io/metacademy-of-humanity/start/
+
+**Full 13-Document corpus:** https://d4ttara.github.io/metacademy-of-humanity/corpus/
+
+**Public research programs:** https://d4ttara.github.io/metacademy-of-humanity/programs/
+
 **Identity & citation:** https://d4ttara.github.io/metacademy-of-humanity/identity/
 
 **Open questions:** https://d4ttara.github.io/metacademy-of-humanity/questions/
@@ -38,6 +44,9 @@ GitHub Pages deploys the verified public build from `main` through GitHub Action
 ## What is here
 
 - a public working manifesto;
+- six guided Start Here research trails that cover all 13 public Documents;
+- a full bilingual Corpus Atlas that keeps older Documents first-class rather than burying them under the latest releases;
+- a public Research Programs map separating active research, public infrastructure and explicit research candidates;
 - concise research-track introductions;
 - a 13-domain map preview that preserves undecided labels as open;
 - the Science Aperture public index and editorial reading guide;
@@ -61,7 +70,21 @@ GitHub Pages deploys the verified public build from `main` through GitHub Action
 
 The public site groups the corpus by topic rather than relying only on document numbers. AI-related work is collected under **Artificial Intelligence** and **Human ↔ AI**; meaning-preservation work under **Semantic Computing**; method and evidence under **Epistemology & Research Method**; behavioral and political interface questions under **Agency, Behavior & Care**; emergence under **Complex Systems**; Jyotiṣa-related work under **M{Y}OGA JYOTISH**; and causal-history work under **Time, Causality & Hidden Preparation**.
 
+If the numbered corpus is the wrong doorway, use **Start Here** instead. The six guided trails cover Human↔AI, knowledge and uncertainty, semantic systems, life and relation, M{Y}OGA, and power / agency / access. Each trail connects reading to a tailored AI critique and a public challenge route.
+
 Search vocabulary used intentionally across the public corpus includes: `artificial intelligence`, `human-ai interaction`, `ai ethics`, `ai governance`, `large language models`, `llm personalization`, `semantic computing`, `semantic migration`, `epistemology`, `provenance`, `uncertainty`, `research methodology`, `complex systems`, `emergence`, `human agency`, `behavioral science`, `science communication`, `public-interest technology`, `categorization`, `stereotypes`, `polytypic thinking`, `administrative burden`, `first chance`, `entry-level work`, `art funding`, `digital access`, `cumulative advantage`, `jyotish`, `astrology research`, `time and causality`.
+
+## Public research programs
+
+The public Programs surface currently distinguishes nine working areas rather than presenting the Academy as a pile of disconnected pages: **Human ↔ AI / IMAGO**, **Semantic Computing / MSL + МІЖ**, **Epistemology & Research Method**, **Agency, Access & Public Systems**, **Life & Relational Systems**, **M{Y}OGA JYOTISH**, **Research Memory & Lineage**, **Experimental Compute / MOR}4{MER · M4M lineage**, and **Culture & Multilingual Works**.
+
+Status labels are part of the claim. Experimental Compute is a `RESEARCH CANDIDATE`, not a deployed replacement for established architectures. Research Memory is public research infrastructure, not a declaration that archived conversations are canon. The public interface may be consistent while the evidence passport stays specific.
+
+`PUBLIC DESCRIPTION != EXECUTABLE MATURITY`  
+`RESEARCH CANDIDATE != DEPLOYED SYSTEM`  
+`ARCHIVE != CANON`
+
+See [`governance/PUBLICATION_CANON.md`](governance/PUBLICATION_CANON.md) and [`governance/PUBLICATION_FIREWALL.md`](governance/PUBLICATION_FIREWALL.md).
 
 ## M{Y}OGA JYOTISH
 
@@ -83,7 +106,7 @@ Different ways of knowing may enter the same graph without pretending to be the 
 
 ## Search and AI discovery
 
-The public site exposes canonical URLs, bilingual `hreflang`, crawlable static text, sitemap, RSS, schema.org structured data, topic hubs, a canonical identity passport and a machine-readable `llms.txt`. `robots.txt` explicitly permits Googlebot, Bingbot, OpenAI's OAI-SearchBot and PerplexityBot. Search discovery is treated separately from model-training permission; visibility in a search engine or AI answer system is not the same thing as consenting to every training use.
+The public site exposes canonical URLs, bilingual `hreflang`, crawlable static text, sitemap, RSS, schema.org structured data, topic hubs, a canonical identity passport, machine-readable research trails, public corpus/program passports and a machine-readable `llms.txt`. `robots.txt` explicitly permits Googlebot, Bingbot, OpenAI's OAI-SearchBot and PerplexityBot. Search discovery is treated separately from model-training permission; visibility in a search engine or AI answer system is not the same thing as consenting to every training use.
 
 ## Status and rights
 
