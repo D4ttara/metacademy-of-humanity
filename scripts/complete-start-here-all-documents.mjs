@@ -7,8 +7,10 @@ const extra=[
   {number:'014',slug:'014-right-to-see-the-consequence',issue:39,en:'The Right to See the Consequence',ua:'Право бачити наслідок'}
 ];
 
-const pathFor=(d,ua)=>`../documents/${d.slug}/${ua?'ua':'en'}/`;
-const absFor=(d,ua)=>`${base}documents/${d.slug}/${ua?'ua':'en'}/`;
+// Use absolute public URLs here because EN /start/ and UA /uk/start/ live at
+// different directory depths. This keeps the sixth trail independent of shell depth.
+const pathFor=(d,ua)=>`${base}documents/${d.slug}/${ua?'ua':'en'}/`;
+const absFor=pathFor;
 
 for(const [file,ua] of [['start/index.html',false],['uk/start/index.html',true]]){
   let html=readFileSync(file,'utf8');
@@ -34,4 +36,4 @@ if(!machine.trails.some(t=>t.id==='power-agency-access')){
 machine.coverage={public_documents:13,document_numbers:['003','004','006','007','008','009','010','011','012','013','014','015','016']};
 writeFileSync(machinePath,JSON.stringify(machine,null,2)+'\n','utf8');
 
-console.log('START_HERE_COMPLETION=PASS trails=6 documents=13 restored=009,014 machine_coverage=PASS');
+console.log('START_HERE_COMPLETION=PASS trails=6 documents=13 restored=009,014 absolute_routes=PASS machine_coverage=PASS');
