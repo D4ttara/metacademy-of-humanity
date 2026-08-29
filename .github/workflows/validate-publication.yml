@@ -10,6 +10,13 @@ on:
       - 'assets/**'
       - 'scripts/**'
       - 'legal/**'
+      - 'discovery/**'
+      - 'corpus/**'
+      - 'programs/**'
+      - 'start/**'
+      - 'questions/**'
+      - 'memory/**'
+      - 'identity/**'
       - 'index.html'
       - 'uk/**'
       - 'topics/**'
@@ -37,10 +44,22 @@ jobs:
           sudo apt-get install -y --no-install-recommends pandoc texlive-xetex texlive-latex-extra texlive-fonts-extra texlive-fonts-recommended poppler-utils
       - name: Assemble Document 014 canonical Markdown
         run: bash scripts/assemble-document-014-source.sh
+      - name: Assemble Document 015 canonical Markdown
+        run: bash scripts/assemble-document-015-source.sh
+      - name: Assemble Document 016 canonical Markdown
+        run: bash scripts/assemble-document-016-source.sh
+      - name: Finish Ukrainian language polish for Document 015
+        run: node scripts/polish-document-015-ua-final.mjs
+      - name: Finish English adaptation for Document 015
+        run: node scripts/polish-document-015-en-final.mjs
       - name: Inject Document 013 registry entry
         run: node scripts/inject-document-013-registry.mjs
       - name: Inject Document 014 registry entry
         run: node scripts/inject-document-014-registry.mjs
+      - name: Inject Document 015 registry entry
+        run: node scripts/inject-document-015-registry.mjs
+      - name: Inject Document 016 registry entry
+        run: node scripts/inject-document-016-registry.mjs
       - name: Build and preflight Research Essay PDFs
         run: bash scripts/build-public-article-pdfs.sh
       - name: Build and preflight Documents 010-012
@@ -49,12 +68,20 @@ jobs:
         run: bash scripts/build-public-article-pdfs-013.sh
       - name: Build and preflight Document 014
         run: bash scripts/build-public-article-pdfs-014.sh
+      - name: Build and preflight Document 015
+        run: bash scripts/build-public-article-pdfs-015.sh
+      - name: Build and preflight Document 016
+        run: bash scripts/build-public-article-pdfs-016.sh
       - name: Render canonical article bodies into static HTML
         run: bash scripts/render-public-article-html.sh
       - name: Render Document 013 canonical bodies into static HTML
         run: bash scripts/render-public-article-html-013.sh
       - name: Verify Document 014 static article bodies
         run: bash scripts/render-public-article-html-014.sh
+      - name: Render Document 015 canonical bodies into static HTML
+        run: bash scripts/render-public-article-html-015.sh
+      - name: Render Document 016 canonical bodies into static HTML
+        run: bash scripts/render-public-article-html-016.sh
       - name: Inject latest publications into home and updates
         run: node scripts/inject-latest-publications.mjs
       - name: Inject Document 013 into public discovery surfaces
@@ -65,16 +92,50 @@ jobs:
         run: node scripts/inject-document-014-publication.mjs
       - name: Inject Document 014 into sitemap, llms and RSS
         run: node scripts/inject-document-014-machine-discovery.mjs
+      - name: Inject Document 015 into public discovery surfaces
+        run: node scripts/inject-document-015-publication.mjs
+      - name: Inject Document 015 into sitemap, llms and RSS
+        run: node scripts/inject-document-015-machine-discovery.mjs
+      - name: Inject Document 016 into public discovery surfaces
+        run: node scripts/inject-document-016-publication.mjs
+      - name: Inject Document 016 into sitemap, llms and RSS
+        run: node scripts/inject-document-016-machine-discovery.mjs
       - name: Inject reader questions and public comment threads
         run: node scripts/inject-reader-response-all.mjs
       - name: Inject reader questions into Documents 003, 004 and 006
         run: node scripts/inject-reader-response-legacy.mjs
       - name: Build newspaper-style research front page
         run: node scripts/build-newspaper-frontpage.mjs
+      - name: Promote Document 016 to newspaper lead and retain Document 015
+        run: node scripts/promote-document-016-newspaper.mjs
+      - name: Re-inject Document 016 after newspaper front page build
+        run: node scripts/inject-document-016-publication.mjs
       - name: Build search and AI topic taxonomy
         run: node scripts/build-search-taxonomy.mjs
       - name: Fix generated topic index navigation
         run: node scripts/fix-search-taxonomy-links.mjs
+      - name: Extend topic taxonomy through Documents 015 and 016
+        run: node scripts/extend-search-taxonomy-015-016.mjs
+      - name: Inject zero-service AI Reader Lab across all public publications
+        run: node scripts/inject-ai-reader-lab.mjs
+      - name: Inject Scholar citation passports into research publications
+        run: node scripts/inject-scholar-citation-passport.mjs
+      - name: Add citation and ARIA actions to AI Reader Lab
+        run: node scripts/enhance-ai-reader-lab-actions.mjs
+      - name: Expose AI critique from research and topic hubs
+        run: node scripts/inject-ai-reader-discovery-links.mjs
+      - name: Build research memory protocol and open questions board
+        run: node scripts/build-research-memory-and-questions.mjs
+      - name: Build canonical brand identity and citation surfaces
+        run: node scripts/build-brand-identity.mjs
+      - name: Build guided Start Here research trails
+        run: node scripts/build-start-here-v2.mjs
+      - name: Complete Start Here across all public Documents
+        run: node scripts/complete-start-here-all-documents.mjs
+      - name: Build full corpus atlas and public research programs
+        run: node scripts/build-corpus-programs.mjs
+      - name: Harden corpus navigation and machine-readable trails
+        run: node scripts/harden-corpus-programs.mjs
       - name: Inject legal / privacy footer link
         run: bash scripts/inject-legal-footer.sh
       - name: Enrich discovery metadata and RSS autodiscovery
@@ -91,12 +152,28 @@ jobs:
         run: node scripts/verify-document-013.mjs
       - name: Verify Document 014
         run: node scripts/verify-document-014.mjs
+      - name: Verify Document 015
+        run: node scripts/verify-document-015.mjs
+      - name: Verify Document 016
+        run: node scripts/verify-document-016.mjs
+      - name: Verify corpus-wide zero-service AI Reader Lab
+        run: node scripts/verify-ai-reader-lab.mjs
+      - name: Verify Scholar citation passports
+        run: node scripts/verify-scholar-citation-passport.mjs
       - name: Verify reader questions and public comment threads
         run: node scripts/verify-reader-response-all.mjs
       - name: Verify newspaper front page and early reader questions
         run: node scripts/verify-newspaper-frontpage.mjs
       - name: Verify search and AI discovery taxonomy
         run: node scripts/verify-search-discovery.mjs
+      - name: Verify research memory protocol and open questions board
+        run: node scripts/verify-research-memory-and-questions.mjs
+      - name: Verify canonical brand identity and citation surfaces
+        run: node scripts/verify-brand-identity.mjs
+      - name: Verify guided Start Here research trails
+        run: node scripts/verify-start-here.mjs
+      - name: Verify full public corpus and research programs
+        run: node scripts/verify-corpus-programs.mjs
       - name: Verify legal / privacy discovery
         run: node scripts/verify-legal-footer.mjs
       - name: Upload verified publication artifacts
@@ -116,11 +193,16 @@ jobs:
             documents/013-room-that-answers/*.md
             documents/014-right-to-see-the-consequence/*.pdf
             documents/014-right-to-see-the-consequence/*.md
-            publications/PUBLICATION_BUILD_RECEIPT_007_008_v1.0RC.json
-            publications/PUBLICATION_BUILD_RECEIPT_009_v1.0RC.json
-            publications/PUBLICATION_BUILD_RECEIPT_013_v1.0.json
-            publications/PUBLICATION_BUILD_RECEIPT_014_v1.0.json
+            documents/015-polytypic-thinking/*.pdf
+            documents/015-polytypic-thinking/*.md
+            documents/016-right-to-a-first-chance/*.pdf
+            documents/016-right-to-a-first-chance/*.md
+            publications/*.json
             publications/PUBLICATION_REGISTRY.yml
+            discovery/**
+            corpus/**
+            programs/**
+            start/**
             topics/**
             uk/topics/**
             sitemap.xml
