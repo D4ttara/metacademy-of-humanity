@@ -19,6 +19,13 @@ Public status: research in progress; publication labels and evidence boundaries 
 - Science Aperture: https://d4ttara.github.io/metacademy-of-humanity/science-aperture/
 - Participation: https://d4ttara.github.io/metacademy-of-humanity/participate/
 
+## Public research branch indexes
+- MSL · Semantic Research Layer: https://d4ttara.github.io/metacademy-of-humanity/research/msl/
+- Research Lineage: https://d4ttara.github.io/metacademy-of-humanity/research/lineage/
+- Experimental Systems Research · MOR}4{MER / M4M lineage: https://d4ttara.github.io/metacademy-of-humanity/research/system/
+
+These are guarded public entry points. `PUBLIC INDEX != INTERNAL CORPUS`, `RESEARCH CANDIDATE != DEPLOYED SYSTEM`, and `ARCHIVE != CANON`.
+
 ## Topic hubs
 - Artificial Intelligence: https://d4ttara.github.io/metacademy-of-humanity/topics/artificial-intelligence/
 - Human ↔ AI: https://d4ttara.github.io/metacademy-of-humanity/topics/human-ai/
