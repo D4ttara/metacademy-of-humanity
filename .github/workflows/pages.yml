@@ -114,6 +114,12 @@ jobs:
         run: node scripts/build-brand-identity.mjs
       - name: Build guided Start Here research trails
         run: node scripts/build-start-here-v2.mjs
+      - name: Complete Start Here across all public Documents
+        run: node scripts/complete-start-here-all-documents.mjs
+      - name: Build full corpus atlas and public research programs
+        run: node scripts/build-corpus-programs.mjs
+      - name: Harden corpus navigation and machine-readable trails
+        run: node scripts/harden-corpus-programs.mjs
       - name: Inject legal / privacy footer link
         run: bash scripts/inject-legal-footer.sh
       - name: Enrich discovery metadata and RSS autodiscovery
@@ -150,6 +156,8 @@ jobs:
         run: node scripts/verify-brand-identity.mjs
       - name: Verify guided Start Here research trails
         run: node scripts/verify-start-here.mjs
+      - name: Verify full public corpus and research programs
+        run: node scripts/verify-corpus-programs.mjs
       - name: Verify legal / privacy discovery
         run: node scripts/verify-legal-footer.mjs
       - uses: actions/configure-pages@v5
