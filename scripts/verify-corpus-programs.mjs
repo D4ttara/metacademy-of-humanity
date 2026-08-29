@@ -31,13 +31,31 @@ for(const token of ['human-ai','semantic','epistemology','agency-access','life-r
 for(const guard of ['PUBLIC DESCRIPTION != EXECUTABLE MATURITY','RESEARCH CANDIDATE != DEPLOYED SYSTEM','ARCHIVE != CANON']){assert(pEn.includes(guard),`EN programs missing guard ${guard}`);assert(pUa.includes(guard),`UA programs missing guard ${guard}`)}
 assert(pEn.includes('MOR}4{MER')&&pEn.includes('RESEARCH CANDIDATE'),'experimental compute status lost');
 assert(pEn.includes('IMAGO')&&pEn.includes('MSL + МІЖ')&&pEn.includes('M{Y}OGA JYOTISH'),'public program identities missing');
-for(const [n,path] of editions){assert(existsSync(path),`missing edition ${path}`);const h=readFileSync(path,'utf8');assert(h.includes(`data-corpus-rail="${n}"`),`${path} missing corpus rail`);assert(h.includes(`data-breadcrumb-document="${n}"`),`${path} missing breadcrumb passport`);assert(h.includes(`#ai-reader-lab-${n}`),`${path} missing AI critique route`);assert(h.includes('/corpus/')&&h.includes('/programs/'),`${path} missing corpus/program routes`)}
+let prevHeads=0,nextHeads=0;
+for(const [n,path] of editions){
+ assert(existsSync(path),`missing edition ${path}`);const h=readFileSync(path,'utf8');
+ assert(h.includes(`data-corpus-rail="${n}"`),`${path} missing corpus rail`);
+ assert(h.includes(`data-breadcrumb-document="${n}"`),`${path} missing breadcrumb passport`);
+ assert(h.includes(`#ai-reader-lab-${n}`),`${path} missing AI critique route`);
+ assert(h.includes('/corpus/')&&h.includes('/programs/'),`${path} missing corpus/program routes`);
+ const rail=h.match(/<section class="corpus-rail"[\s\S]*?<\/section>/)?.[0]||'';
+ if(rail.includes('<a rel="prev"')){assert(h.includes('<link rel="prev"'),`${path} visible prev lacks head prev`);prevHeads++}
+ if(rail.includes('<a rel="next"')){assert(h.includes('<link rel="next"'),`${path} visible next lacks head next`);nextHeads++}
+}
 assert(editions.length===25,'expected 25 canonical public editions');
+assert(prevHeads>0&&nextHeads>0,'head prev/next verification did not execute');
 const corpusMachine=JSON.parse(readFileSync('discovery/public-corpus.json','utf8'));assert(corpusMachine.schema==='metacademy-public-corpus/v1','bad corpus schema');assert(corpusMachine.count===13&&corpusMachine.documents.length===13,'bad corpus count');
 const programMachine=JSON.parse(readFileSync('discovery/public-programs.json','utf8'));assert(programMachine.schema==='metacademy-public-programs/v1','bad programs schema');assert(programMachine.programs.length===9,'expected nine public programs');assert(programMachine.guards.length===3,'program guards missing');
 const startEn=readFileSync('start/index.html','utf8'),startUa=readFileSync('uk/start/index.html','utf8');for(const n of numbers){assert(startEn.includes(`Document ${n}`),`Start EN missing ${n}`);assert(startUa.includes(`Document ${n}`),`Start UA missing ${n}`)}
+for(const [h,label] of [[startEn,'Start EN'],[startUa,'Start UA']]){
+ const jsonScripts=[...h.matchAll(/<script type="application\/ld\+json">([\s\S]*?)<\/script>/g)].map(m=>{try{return JSON.parse(m[1])}catch{return null}}).filter(Boolean);
+ const page=jsonScripts.find(x=>x?.['@type']==='CollectionPage'&&x?.mainEntity?.['@type']==='ItemList');
+ assert(page?.mainEntity?.numberOfItems===6,`${label} JSON-LD does not report six trails`);
+ assert(page.mainEntity.itemListElement?.some(x=>String(x?.url||'').includes('#power-agency-access')),`${label} JSON-LD missing power-agency-access`);
+}
 const trails=JSON.parse(readFileSync('discovery/research-trails.json','utf8'));assert(trails.coverage?.public_documents===13,'Start Here machine coverage not thirteen');assert(trails.trails.length===6,'Start Here should have six trails');
-for(const [path,ua] of [['index.html',false],['uk/index.html',true],['research/index.html',false],['uk/research/index.html',true],['documents/index.html',false],['uk/documents/index.html',true]]){const h=readFileSync(path,'utf8');assert(h.includes('data-corpus-programs-entry'),`${path} missing corpus/program entry`)}
+for(const [path] of [['index.html'],['uk/index.html'],['research/index.html'],['uk/research/index.html'],['documents/index.html'],['uk/documents/index.html']]){const h=readFileSync(path,'utf8');assert(h.includes('data-corpus-programs-entry'),`${path} missing corpus/program entry`)}
+const ukHome=readFileSync('uk/index.html','utf8');const ukEntry=ukHome.match(/<section data-corpus-programs-entry="true">[\s\S]*?<\/section>/)?.[0]||'';assert(ukEntry.includes('href="corpus/"')&&ukEntry.includes('href="programs/"'),'UA home corpus/program routes escape /uk/');assert(!ukEntry.includes('href="../corpus/"')&&!ukEntry.includes('href="../programs/"'),'UA home still contains EN-root corpus/program route');
 const sitemap=readFileSync('sitemap.xml','utf8');for(const route of ['corpus/','uk/corpus/','programs/','uk/programs/'])assert(sitemap.includes(base+route),`sitemap missing ${route}`);
 const llms=readFileSync('llms.txt','utf8');assert(llms.includes('## Public Corpus & Research Programs'),'llms missing corpus/program section');assert(llms.includes('discovery/public-corpus.json')&&llms.includes('discovery/public-programs.json'),'llms missing machine passports');
-console.log(`CORPUS_PROGRAMS_VERIFY=PASS documents=${numbers.length} editions=${editions.length} programs=${programMachine.programs.length} corpus_rails=PASS breadcrumbs=PASS start_here=13 sitemap=PASS llms=PASS`);
+console.log(`CORPUS_PROGRAMS_VERIFY=PASS documents=${numbers.length} editions=${editions.length} programs=${programMachine.programs.length} corpus_rails=PASS breadcrumbs=PASS head_prev=${prevHeads} head_next=${nextHeads} start_here=13x6 ua_routes=PASS sitemap=PASS llms=PASS`);
