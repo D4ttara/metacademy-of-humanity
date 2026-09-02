@@ -1,4 +1,5 @@
 import { google } from "googleapis";
+import { createHash } from "node:crypto";
 
 export type Status = "new" | "applied" | "documents" | "viewing" | "offer" | "rejected" | "closed";
 export type Apartment = {
@@ -34,30 +35,74 @@ export function googleConfigured() {
 }
 
 const headers = [
-  "id", "title", "address", "portal", "kaltmiete", "rooms", "sqm", "score",
-  "status", "nextAction", "note", "updatedAt"
+  "Objekt / Titel", "Adresse / Ort", "Portal / Anbieter", "Kaltmiete €", "Zimmer",
+  "ÖPNV / Lage", "Status", "Letztes Update", "Nächste Aktion", "Dokumente", "Kontakt",
+  "Notizen", "Score", "m²", "ID"
 ] as const;
 
+function derivedId(title: string, address: string) {
+  return `sheet:${createHash("sha1").update(`${title}|${address}`).digest("hex").slice(0, 12)}`;
+}
+
+function normalizeStatus(value: string): Status {
+  const t = value.toLowerCase();
+  if (/abgelehnt|zurückgezogen|geschlossen/.test(t)) return t.includes("abgelehnt") ? "rejected" : "closed";
+  if (/mietangebot|zusage|vertrag/.test(t)) return "offer";
+  if (/besichtigung/.test(t)) return "viewing";
+  if (/unterlagen|zusatzangaben|dokument/.test(t)) return "documents";
+  if (/warten|aktiv|prüfung|eingereicht/.test(t)) return "applied";
+  return "new";
+}
+
+function humanStatus(status: Status) {
+  return ({
+    new: "Neu",
+    applied: "Warten auf Prüfung",
+    documents: "Aktiv – Unterlagen angefordert",
+    viewing: "Besichtigung",
+    offer: "Mietangebot / Zusage",
+    rejected: "Abgelehnt",
+    closed: "Geschlossen",
+  } as const)[status];
+}
+
 function rowToApartment(row: string[]): Apartment | null {
-  if (!row[0]) return null;
+  const title = row[0] || "";
+  if (!title) return null;
+  const address = row[1] || "";
   return {
-    id: row[0], title: row[1] || row[0], address: row[2] || "",
-    portal: row[3] || undefined,
-    kaltmiete: row[4] ? Number(row[4]) : undefined,
-    rooms: row[5] ? Number(row[5]) : undefined,
-    sqm: row[6] ? Number(row[6]) : undefined,
-    score: row[7] ? Number(row[7]) : undefined,
-    status: (row[8] as Status) || "new",
-    nextAction: row[9] || undefined,
-    note: row[10] || undefined,
-    updatedAt: row[11] || new Date(0).toISOString(),
+    id: row[14] || derivedId(title, address),
+    title,
+    address,
+    portal: row[2] || undefined,
+    kaltmiete: row[3] ? Number(String(row[3]).replace(",", ".")) : undefined,
+    rooms: row[4] ? Number(String(row[4]).replace(",", ".")) : undefined,
+    status: normalizeStatus(row[6] || ""),
+    updatedAt: row[7] || new Date(0).toISOString(),
+    nextAction: row[8] || undefined,
+    note: row[11] || undefined,
+    score: row[12] ? Number(row[12]) : undefined,
+    sqm: row[13] ? Number(String(row[13]).replace(",", ".")) : undefined,
   };
 }
 
-function apartmentToRow(a: Apartment) {
+function apartmentToRow(a: Apartment, existing?: string[]) {
   return [
-    a.id, a.title, a.address, a.portal || "", a.kaltmiete ?? "", a.rooms ?? "",
-    a.sqm ?? "", a.score ?? "", a.status, a.nextAction || "", a.note || "", a.updatedAt,
+    a.title,
+    a.address,
+    a.portal || existing?.[2] || "",
+    a.kaltmiete ?? existing?.[3] ?? "",
+    a.rooms ?? existing?.[4] ?? "",
+    existing?.[5] || "zu prüfen",
+    humanStatus(a.status),
+    a.updatedAt.slice(0, 10),
+    a.nextAction || "",
+    existing?.[9] || "offen",
+    existing?.[10] || "",
+    a.note || existing?.[11] || "",
+    a.score ?? existing?.[12] ?? "",
+    a.sqm ?? existing?.[13] ?? "",
+    a.id,
   ];
 }
 
@@ -67,7 +112,7 @@ export async function listApartmentsFromSheet(): Promise<Apartment[]> {
   const sheets = google.sheets({ version: "v4", auth });
   const res = await sheets.spreadsheets.values.get({
     spreadsheetId: SPREADSHEET_ID,
-    range: `${SHEET_NAME}!A:L`,
+    range: `${SHEET_NAME}!A:O`,
   });
   const rows = (res.data.values || []) as string[][];
   return rows.slice(1).map(rowToApartment).filter((x): x is Apartment => Boolean(x));
@@ -79,30 +124,35 @@ export async function upsertApartmentToSheet(apartment: Apartment) {
   const sheets = google.sheets({ version: "v4", auth });
   const current = await sheets.spreadsheets.values.get({
     spreadsheetId: SPREADSHEET_ID,
-    range: `${SHEET_NAME}!A:A`,
+    range: `${SHEET_NAME}!A:O`,
   });
-  const ids = (current.data.values || []).map((r) => String(r[0] || ""));
-  if (ids.length === 0) {
+  const rows = (current.data.values || []) as string[][];
+  if (rows.length === 0) {
     await sheets.spreadsheets.values.update({
       spreadsheetId: SPREADSHEET_ID,
-      range: `${SHEET_NAME}!A1:L1`,
+      range: `${SHEET_NAME}!A1:O1`,
       valueInputOption: "RAW",
       requestBody: { values: [[...headers]] },
     });
   }
-  const index = ids.indexOf(apartment.id);
+
+  let index = rows.findIndex((row, i) => i > 0 && row[14] === apartment.id);
+  if (index < 0) {
+    index = rows.findIndex((row, i) => i > 0 && derivedId(row[0] || "", row[1] || "") === apartment.id);
+  }
+
   if (index >= 1) {
-    const row = index + 1;
+    const rowNumber = index + 1;
     await sheets.spreadsheets.values.update({
       spreadsheetId: SPREADSHEET_ID,
-      range: `${SHEET_NAME}!A${row}:L${row}`,
+      range: `${SHEET_NAME}!A${rowNumber}:O${rowNumber}`,
       valueInputOption: "USER_ENTERED",
-      requestBody: { values: [apartmentToRow(apartment)] },
+      requestBody: { values: [apartmentToRow(apartment, rows[index])] },
     });
   } else {
     await sheets.spreadsheets.values.append({
       spreadsheetId: SPREADSHEET_ID,
-      range: `${SHEET_NAME}!A:L`,
+      range: `${SHEET_NAME}!A:O`,
       valueInputOption: "USER_ENTERED",
       insertDataOption: "INSERT_ROWS",
       requestBody: { values: [apartmentToRow(apartment)] },
