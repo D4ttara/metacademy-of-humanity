@@ -1,72 +1,40 @@
-# München Wohnung Hunter — ChatGPT App
+# München Wohnung Hunter — production architecture
 
-Private-use ChatGPT/MCP App for apartment hunting in and around Munich.
+Wohnung Hunter is now intentionally built around ChatGPT's connected Gmail + Google Drive tools and ChatGPT Automations. The external Google OAuth/Supabase path is **not** the production dependency.
 
-## What v0.2 does
+## Production source of truth
 
-- Renders an inline Wohnung Hunter dashboard in ChatGPT.
-- Reads/writes the existing Google Sheet `München Wohnung Hunter – Bewerbungen & Status` when private Google OAuth is configured.
-- Falls back to an in-memory store if Google is not configured.
-- Can scan recent rental-related Gmail messages, classify them as `applied`, `documents`, `viewing`, `offer`, `rejected`, etc., and persist the resulting update.
-- Lets the widget change application status via buttons.
-- Keeps personal applicant data and OAuth secrets out of the public repository.
+- Gmail account: rental correspondence is read through the user's connected Gmail in ChatGPT.
+- Google Sheet: `München Wohnung Hunter – Bewerbungen & Status` is the durable application/status database.
+- ChatGPT Automation: checks rental mail hourly, matches messages to apartments, updates the Sheet, and only surfaces actionable changes.
+- The separate listing-finder automation continues to search for strong Munich listings.
 
-## Tools
+This architecture has no Supabase inactivity sleep, no Google OAuth Testing refresh-token expiry, and no external refresh token that the user must periodically renew.
 
-- `wohnung_dashboard` — dashboard + widget.
-- `wohnung_sync_gmail` — scan recent rental Gmail and store detected updates.
-- `wohnung_upsert` — add/update an apartment record.
-- `wohnung_set_status` — update status / next action / note.
-
-## Local run
-
-```bash
-cd apps/wohnung-hunter-chatgpt
-cp .env.example .env
-npm install
-npm run dev
-```
-
-MCP endpoint: `http://localhost:8787/mcp`
-Health endpoint: `http://localhost:8787/health`
-
-For ChatGPT testing, expose `/mcp` through HTTPS and add that HTTPS MCP URL to the private app/connector.
-
-## Google setup
-
-The app uses a normal Google OAuth refresh token with Gmail + Sheets scopes. Put the credentials only in deployment environment variables, never in GitHub:
-
-```env
-GOOGLE_CLIENT_ID=...
-GOOGLE_CLIENT_SECRET=...
-GOOGLE_REFRESH_TOKEN=...
-GOOGLE_SHEETS_SPREADSHEET_ID=...
-GOOGLE_SHEETS_SHEET_NAME=Wohnungen
-```
-
-Recommended scopes for the private account:
-
-- `https://www.googleapis.com/auth/gmail.readonly`
-- `https://www.googleapis.com/auth/spreadsheets`
-
-The existing operator sheet schema is preserved. The app uses columns A:O and adds `Score`, `m²`, and `ID` after the original columns so older rows remain readable.
-
-## Gmail ingestion
-
-Default query:
+## Current production workflow
 
 ```text
-(Wohnung OR Miete OR Besichtigung OR ImmoScout OR Immowelt OR Immomio OR Dawonia OR Everreal OR Vermieter OR Makler) -in:spam -in:trash
+Rental portals / agents
+        ↓
+connected Gmail
+        ↓
+ChatGPT Wohnung Hunter automation
+        ↓
+Google Sheet (source of truth)
+        ↓
+ChatGPT dashboard / actions
 ```
 
-The parser is deliberately conservative. It recognizes common German phrases for rejection, requested documents, viewing invitations, application receipts, and rental offers. It does not send messages or documents automatically.
+The user can ask `Hunter`, `що по квартирах?`, `перевір відповіді`, etc. ChatGPT reads the same Sheet and Gmail directly. No copy/paste of application data is required.
 
-## Safety / privacy
+## MCP widget
 
-Do not commit applicant address, phone number, identity-document data, benefit decisions, SCHUFA files, API keys, OAuth tokens, or landlord correspondence into this repository. The widget receives only apartment/application metadata needed for the dashboard.
+The MCP code in this directory remains an **optional UI prototype**, not the authentication/data-ingestion layer. It must not require Supabase or a seven-day Google Testing refresh token for production operation.
 
-Any future action that actually sends an email, uploads documents, confirms a viewing, or accepts a rental offer must be implemented as a separate mutating tool with explicit user approval.
+Future widget deployment should consume a durable bridge only after there is a connector-native or long-lived authenticated server integration. Until then, Gmail ingestion and Sheet persistence stay inside ChatGPT's connected-tool environment.
 
-## Architecture
+## Privacy
 
-This follows the current MCP Apps pattern: the MCP server registers tools plus a `ui://` resource, data tools return `structuredContent`, ChatGPT renders the widget, and the widget can call MCP tools back through the host bridge.
+Do not commit applicant address, phone, identity-document data, SCHUFA, Jobcenter decisions, landlord correspondence, API keys, OAuth client secrets, authorization codes, access tokens, or refresh tokens to the repository.
+
+Any action that sends email, uploads documents, confirms a viewing, or accepts a rental offer must remain an explicit user-approved action.
