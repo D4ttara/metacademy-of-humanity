@@ -1,6 +1,6 @@
 {
   "name": "wohnung-hunter-chatgpt",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "private": true,
   "type": "module",
   "scripts": {
@@ -13,6 +13,7 @@
     "@modelcontextprotocol/sdk": "^1.18.1",
     "cors": "^2.8.5",
     "express": "^5.1.0",
+    "googleapis": "^144.0.0",
     "zod": "^3.25.76"
   },
   "devDependencies": {
