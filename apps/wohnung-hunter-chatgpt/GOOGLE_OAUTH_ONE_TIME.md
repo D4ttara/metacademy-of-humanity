@@ -1,16 +1,19 @@
-# One-time Google OAuth setup
+# DEPRECATED — external Google OAuth bootstrap
 
-This private app needs its own Google OAuth credentials at runtime. The ChatGPT Gmail/Drive connectors used in the conversation cannot be exported into the app.
+This flow is **not used by the production Wohnung Hunter**.
 
-1. In Google Cloud Console, create/select a project for Wohnung Hunter.
-2. Enable **Gmail API** and **Google Sheets API**.
-3. Configure OAuth consent for the private Google account.
-4. Create an OAuth client (Web application or Desktop app for the initial token bootstrap).
-5. Authorize only these scopes:
-   - `https://www.googleapis.com/auth/gmail.readonly`
-   - `https://www.googleapis.com/auth/spreadsheets`
-6. Obtain a refresh token and save the client ID, client secret, and refresh token only as deployment secrets.
-7. Set `GOOGLE_SHEETS_SPREADSHEET_ID` to the private Wohnung Hunter sheet ID and `GOOGLE_SHEETS_SHEET_NAME=Wohnungen`.
-8. Verify `/health` reports `googleConfigured: true`, then call the MCP tool `wohnung_sync_gmail`.
+The production architecture is:
 
-Never paste these secrets into source files, issues, pull requests, screenshots, or chat messages intended for publication.
+```text
+ievgenkarogod@gmail.com
+        ↓
+Bound Google Apps Script
+        ↓
+München Wohnung Hunter Google Sheet
+```
+
+The Apps Script is authorized once inside Google and runs from the user's Google account. It does not require OAuth Playground, a client secret, or a consumer refresh token with a seven-day Testing lifetime.
+
+Do not create or store `GOOGLE_CLIENT_SECRET` or `GOOGLE_REFRESH_TOKEN` for the production Hunter.
+
+If the MCP/server later needs direct read access to the Sheet, use a narrowly scoped service account or a private Apps Script bridge. Gmail ingestion must remain single-source through Apps Script unless the architecture is intentionally changed.
