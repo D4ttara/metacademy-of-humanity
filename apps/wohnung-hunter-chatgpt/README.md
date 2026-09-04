@@ -1,99 +1,43 @@
-# München Wohnung Hunter — permanent architecture
+# Wohnung Hunter v0.5
 
-Wohnung Hunter uses a Google Apps Script bound to the private application-status Sheet as its durable Gmail + Sheets engine. It does **not** depend on Supabase, OAuth Playground, external Google refresh tokens, or a seven-day Google Testing token.
+The bound Google Apps Script reads Gmail and maintains the `Wohnungen` Sheet. The complete installer and runtime is `apps-script/WohnungHunter.gs`. It uses Apps Script V8 and built-in Google services only. It does not send email, follow links, upload application documents, or require a web deployment. The bound script has no Dashboard, sidebar, `doGet`, or HTML UI. HTML email parsing is retained because some Immomio messages contain no plain-text part.
 
-## Production source of truth
+## Install or update
 
-- Gmail account: `ievgenkarogod@gmail.com`.
-- Google Sheet: `München Wohnung Hunter – Bewerbungen & Status`.
-- Bound Apps Script: scans rental mail every 5 minutes and updates the Sheet directly while running as the user's Google account.
-- ChatGPT connected Gmail/Drive tools remain available for ad-hoc review, drafting, sending approved replies, document handling, and verification.
-- ChatGPT Automation notifies about actionable changes but is not the ingestion engine.
+Open the existing application's Google Sheet, then Extensions → Apps Script. Replace the entire previous Hunter script with `apps-script/WohnungHunter.gs`, save, and run `setupWohnungHunter` once. Allow the requested Gmail, Sheets and trigger permissions. Refresh the Sheet to load its menu. Do not leave a second copy of the previous Hunter code in another `.gs` tab. No Deploy step is needed.
 
-## Workflow
+Setup installs exactly one `scanRentalMail` trigger for the installing account using `everyMinutes(5)`, then runs the first block. Google schedules installable triggers; execution is subject to its service quotas and scheduling. Other users' triggers are outside the installing account's trigger visibility.
 
-```text
-Rental portals / agents
-        ↓
-Gmail
-        ↓
-Google Apps Script (5-minute trigger)
-        ↓
-Google Sheet (source of truth)
-        ├── Apps Script status/dashboard
-        ├── ChatGPT verification + approvals
-        └── future Portal Runner
-                 ↓
-        ImmoScout / Immowelt / Kleinanzeigen / Immomio / EverReal
-```
+Use `Wohnung Hunter → Reparatur: nächster 20er-Block` for historical repair. Repeat until the dialog says `fertig`. The repair includes known source message IDs regardless of age and discovers rental mail from the last 30 days. `Reparatur neu beginnen` starts a new fixed-window discovery. `Offensichtlichen Mail-Müll entfernen` backs up the active sheet and removes rows identified by explicit noise subjects or senders, reporting the actual count. It never deletes Gmail messages.
 
-## Parser v0.3
+## Identity and status
 
-The Apps Script parser now deliberately distinguishes:
+Canonical keys are `is24:<Scout-ID>`, `immowelt:<Online-ID>`, `everreal:<listing UUID from the apply path>`, and `immomio:<application ID>`. Case is normalized. IDs from unrelated URLs, privacy-policy UUIDs and Immomio expose IDs are not substituted for application IDs. Exactly one recognized canonical key is required to group messages. Conflicting keys or a missing ID produce a separate `gmail-message:<message ID>` record with a visible review instruction. Two messages cannot be joined by Gmail thread, subject, title, address, substring or score. This deliberately leaves some related messages separate when the source does not provide enough identity evidence.
 
-- application/contact confirmation → `Warten auf Prüfung`;
-- missing fields / forms / SCHUFA / documents → `Aktiv – Zusatzangaben / Unterlagen`;
-- actual viewing invitation with a concrete invitation/booking signal → `Besichtigung`;
-- offer / contract / acceptance → `Mietangebot / Zusage`;
-- rejection / already rented → `Abgelehnt`;
-- ordinary landlord reply → `Neu / Antwort prüfen`.
+Column G contains only `applied`, `documents`, `viewing`, `offer`, or `rejected`. German action instructions remain in column I. An ordinary reply retains the last known actionable state and asks the user to read the response. An isolated ordinary reply uses `applied` with an explicit review note; it does not assert that an offer or viewing exists. Events are replayed in timestamp order, independent of discovery or repair order. Older application confirmations cannot erase later document requests, invitations, offers or rejections. Later concrete non-application events can change the state.
 
-This avoids the previous false positive where the applicant's own sentence such as “Über einen Besichtigungstermin würde ich mich freuen” was interpreted as an invitation.
+Quoted applicant text, reply history, account upsells and footer text are excluded from status evidence where recognized. Conditional viewing language and optional booking boilerplate are not invitations. Search alerts, recommendations, registration, account-security notices, drafts and the installing user's own addresses/aliases are filtered. Cold rent is populated only from an explicit cold-rent label; a generic price or total rent is left unclassified. Missing fields remain empty or marked for review.
 
-The parser also prefers listing-specific data sections before provider/footer data, so addresses such as ImmoScout's Invalidenstraße 65 or Immowelt/AVIV's Ostendstraße 113 are not treated as apartment addresses. It extracts Scout-ID / Immowelt Online-ID where available and uses those IDs plus Gmail message/thread IDs for stronger deduplication.
+## Preservation and recovery
 
-After a parser upgrade use the Sheet menu:
+The first v0.5 setup copies the old Sheet into `WH_Backup_v04` before removing previously imported rows from the active Sheet. Source message IDs from the backup are queued for reconstruction. Rows without import provenance remain in place. Previously mixed addresses, rents, statuses and notes are not trusted as reconstruction input. Old user annotations remain in the backup for manual review rather than being assigned to a possibly wrong apartment. The setup does not repeatedly recreate or replace that backup.
 
-`🏠 Wohnung Hunter → Letzte 7 Tage neu auswerten`
+The original columns A:R keep their positions. S adds `Prüfhinweis`; T records `Parser-Version`. During subsequent v0.5 updates, user-maintained transit, documents, notes and score cells (including formulas) are preserved. A manual row that conflicts with an exact canonical ID causes an explicit processing error instead of being overwritten.
 
-This reparses recent messages even if they were already seen and repairs existing Gmail-backed rows by message ID, Gmail thread ID, and portal object ID.
+`WH_Events_v05` is a hidden per-message event journal. `WH_Queue_v05` is a hidden durable queue. They contain private mail-derived data inside the bound spreadsheet; hiding is a usability feature, not an access boundary. Keep the spreadsheet's sharing appropriate to that data. The parser never stores private portal URL tokens in its evidence note and never requests email links.
 
-## Apps Script
+Each run parses at most 20 messages, including noise and failures. Discovery enumerates up to 40 Gmail threads per page, separately from that message limit. The code uses fixed time windows, explicit message-date checks, durable message IDs, and a one-day overlap between completed automatic scans. Initial discovery covers seven days; after downtime it continues from its previous successful scan window. Gmail search is thread-paginated rather than a transactional mailbox snapshot; for a mailbox changing during a historical crawl, starting another repair pass is the recovery route. There is no fixed 80/150-thread result cap. A script lock serializes setup, scans, cleanup and repair.
 
-The complete single-file installer/runtime is:
+Event and row writes are flushed before queue completion is recorded. Interrupted work can be replayed. Three failures place an item in `failed`; errors are counted in the status dialog and retained in the queue. `Fehlgeschlagene Mails erneut versuchen` routes failed items back into the automatic queue, including failures from an older repair run. Script properties hold only compact cursors and status, not the old oversized seen-message JSON.
 
-`apps-script/WohnungHunter.gs`
+Rollback: disable this script's scan trigger, keep the current v0.5 tabs for diagnosis, and restore the old data from `WH_Backup_v04` alongside the previous committed script if needed. Do not delete the backup until the reconstructed data and any manual annotations have been reviewed.
 
-It includes:
+## Validation
 
-- `setupWohnungHunter()` — stores the bound Sheet ID in Script Properties and creates the recurring 5-minute trigger;
-- `scanRentalMail()` — scans Gmail and updates the Sheet;
-- `reprocessRecentRentalMailManual()` — repairs/reclassifies the last seven days;
-- parser/status detection for application confirmations, Zusatzangaben, Besichtigung, Mietangebot and Absage;
-- duplicate-message protection and portal-ID matching;
-- Sheet menu `🏠 Wohnung Hunter`;
-- a deliberately simple one-file dashboard that is safe to paste into Apps Script;
-- `doGet()` so it can optionally be deployed later as a private Apps Script web app.
+Run `node apps/wohnung-hunter-chatgpt/apps-script/WohnungHunter.test.cjs` from the repository root. The harness compiles the entire `.gs` file, then exercises the parser and simulated Gmail/Sheets/Properties/trigger/lock behavior with synthetic fixtures. An optional `WH_PRIVATE_FIXTURES` path enables local checks of private email templates; those inputs must stay outside Git.
 
-The Sheet uses technical columns P:R for last Gmail message ID, Gmail thread ID, and last subject. Existing A:O data remains intact.
+Local syntax and simulation tests do not prove that the installed Google trigger has run. Live acceptance consists of saving the full file in Apps Script, completing setup authorization, and observing a successful scheduled execution and the corresponding Sheet changes. This release was not deployed or activated by the repository edit.
 
-## Portal Runner — next layer
+Google references: [V8 runtime](https://developers.google.com/apps-script/guides/v8-runtime), [five-minute trigger API](https://developers.google.com/apps-script/reference/script/clock-trigger-builder#everyMinutes(Integer)), [Gmail service](https://developers.google.com/apps-script/reference/gmail/gmail-app), [locking](https://developers.google.com/apps-script/reference/lock/lock-service), [service quotas](https://developers.google.com/apps-script/guides/services/quotas).
 
-The next layer is a browser automation worker with separate adapters for:
-
-- ImmoScout24;
-- Immowelt;
-- Kleinanzeigen;
-- Immomio / EverReal / Dawonia.
-
-It should reuse authenticated browser sessions and write results back to the central Sheet. It must not bypass CAPTCHA or 2FA. Those states become `Needs human`.
-
-Recommended approval policy:
-
-- `AUTO`: ordinary first-contact applications with already approved profile data;
-- `ASK`: SCHUFA, passport/ID, Jobcenter decisions, financial documents, unusual questions;
-- `NEVER AUTO`: rental contract, paid services, binding financial commitment, final acceptance of a rental offer.
-
-The runner and server may authenticate to each other with a private shared secret/HMAC stored only in deployment secret storage. Portal APIs can be used opportunistically when officially available, but browser adapters are the baseline because private-user messaging APIs are inconsistent across portals.
-
-## ChatGPT App / MCP
-
-The MCP widget remains a UI and approval layer. It must not authenticate directly to Gmail with a Testing refresh token. The older external Google OAuth bootstrap document is retained only as a deprecation notice.
-
-Any future server-side Sheet reader should use a narrowly scoped service account or a private Apps Script bridge. It must not become a second Gmail ingestion engine.
-
-## Privacy
-
-Do not commit applicant address, phone, identity-document data, SCHUFA, Jobcenter decisions, landlord correspondence, API keys, OAuth client secrets, authorization codes, access tokens, refresh tokens, browser cookies, or portal session storage to the repository.
-
-Any action that uploads sensitive documents, confirms a viewing, accepts a rental offer, or creates a binding financial commitment remains user-approved.
+The separate `src/` and `assets/` MCP prototype is legacy application code, not part of the single-file bound-script installation. Its Dashboard does not run or ship with the v0.5 installer. It must not be run as a second Gmail ingestion engine.
