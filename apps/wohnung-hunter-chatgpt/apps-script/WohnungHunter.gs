@@ -1,12 +1,13 @@
 const WH = {
   sheetName: 'Wohnungen',
   scanMinutes: 5,
-  query: '(Wohnung OR Miete OR Mietanfrage OR Besichtigung OR ImmoScout OR Immowelt OR Immomio OR Dawonia OR Everreal OR Vermieter OR Makler OR Selbstauskunft OR Mietangebot OR Bewerbung) -in:spam -in:trash newer_than:7d',
+  query: '(Wohnung OR Miete OR Mietanfrage OR Besichtigung OR ImmoScout OR Immowelt OR Immomio OR Dawonia OR Everreal OR Vermieter OR Makler OR Selbstauskunft OR Mietangebot OR Bewerbung OR Kontaktanfrage) -in:spam -in:trash newer_than:7d',
   headers: [
     'Objekt / Titel', 'Adresse / Ort', 'Portal / Anbieter', 'Kaltmiete €', 'Zimmer',
     'ÖPNV / Lage', 'Status', 'Letztes Update', 'Nächste Aktion', 'Dokumente', 'Kontakt',
     'Notizen', 'Score', 'm²', 'ID', 'Letzte Gmail-ID', 'Gmail Thread-ID', 'Letzter Betreff'
-  ]
+  ],
+  repairBatchSize: 20
 };
 
 function onOpen() {
@@ -14,9 +15,12 @@ function onOpen() {
     .createMenu('🏠 Wohnung Hunter')
     .addItem('Setup / Trigger aktivieren', 'setupWohnungHunter')
     .addItem('Jetzt Gmail prüfen', 'scanRentalMailManual')
-    .addItem('Letzte 7 Tage neu auswerten', 'reprocessRecentRentalMailManual')
-    .addItem('Dashboard öffnen', 'showWohnungHunterDashboard')
     .addSeparator()
+    .addItem('Reparatur: nächster 20er-Block', 'repairRecentBatchManual')
+    .addItem('Reparatur-Cursor zurücksetzen', 'resetRepairCursorManual')
+    .addItem('Offensichtlichen Mail-Müll entfernen', 'cleanupNoiseRowsManual')
+    .addSeparator()
+    .addItem('Dashboard öffnen', 'showWohnungHunterDashboard')
     .addItem('Status anzeigen', 'showWohnungHunterStatus')
     .addToUi();
 }
@@ -43,18 +47,13 @@ function showWohnungHunterStatus() {
     'Trigger: ' + (triggers.length ? 'AKTIV ✅' : 'NICHT AKTIV ❌') + '\n' +
     'Letzter Scan: ' + (props.getProperty('WH_LAST_SCAN') || 'noch nie') + '\n' +
     'Letzte neue Mails: ' + (props.getProperty('WH_LAST_NEW_COUNT') || '0') + '\n' +
-    'Letzte Updates: ' + (props.getProperty('WH_LAST_UPDATED_COUNT') || '0')
+    'Repair-Cursor: ' + (props.getProperty('WH_REPAIR_CURSOR') || '0')
   );
 }
 
 function scanRentalMailManual() {
   const result = scanRentalMail();
-  SpreadsheetApp.getUi().alert('Scan fertig: ' + result.scanned + ' geprüft, ' + result.updated + ' aktualisiert, ' + result.actionable + ' mit Aktion.');
-}
-
-function reprocessRecentRentalMailManual() {
-  const result = scanRentalMail_({ ignoreSeen: true, maxThreads: 150 });
-  SpreadsheetApp.getUi().alert('Neu-Auswertung fertig: ' + result.scanned + ' relevante Mails geprüft, ' + result.updated + ' Zeilen aktualisiert.');
+  SpreadsheetApp.getUi().alert('Scan fertig: ' + result.scanned + ' relevante neue Mails, ' + result.updated + ' Zeilen aktualisiert, ' + result.actionable + ' mit Aktion.');
 }
 
 function scanRentalMail() {
@@ -66,26 +65,10 @@ function scanRentalMail_(options) {
   const opts = options || {};
   const props = PropertiesService.getScriptProperties();
   const seen = loadSeen_();
-  const threads = GmailApp.search(WH.query, 0, opts.maxThreads || 80);
-  const messages = [];
-
-  threads.forEach(function(thread) {
-    thread.getMessages().forEach(function(message) {
-      const id = message.getId();
-      if (!opts.ignoreSeen && seen[id]) return;
-      const item = normalizeMessage_(thread, message);
-      if (!isRelevantRentalMail_(item)) {
-        seen[id] = Date.now();
-        return;
-      }
-      messages.push(item);
-    });
-  });
-
-  messages.sort(function(a, b) { return a.date.getTime() - b.date.getTime(); });
-
+  const messages = collectRelevantMessages_(opts.maxThreads || 80, seen, Boolean(opts.ignoreSeen));
   let updated = 0;
   let actionable = 0;
+
   messages.forEach(function(item) {
     const parsed = parseRentalMessage_(item);
     const row = matchExistingRow_(parsed, item);
@@ -97,10 +80,66 @@ function scanRentalMail_(options) {
 
   saveSeen_(seen);
   props.setProperty('WH_LAST_SCAN', new Date().toISOString());
-  props.setProperty('WH_LAST_NEW_COUNT', String(opts.ignoreSeen ? 0 : updated));
-  props.setProperty('WH_LAST_UPDATED_COUNT', String(updated));
+  props.setProperty('WH_LAST_NEW_COUNT', String(updated));
   SpreadsheetApp.flush();
   return { scanned: messages.length, updated: updated, actionable: actionable };
+}
+
+function collectRelevantMessages_(maxThreads, seen, ignoreSeen) {
+  const threads = GmailApp.search(WH.query, 0, maxThreads || 80);
+  const messages = [];
+
+  threads.forEach(function(thread) {
+    thread.getMessages().forEach(function(message) {
+      const id = message.getId();
+      if (!ignoreSeen && seen[id]) return;
+      const item = normalizeMessage_(thread, message);
+      if (!isRelevantRentalMail_(item)) {
+        if (!ignoreSeen) seen[id] = Date.now();
+        return;
+      }
+      messages.push(item);
+    });
+  });
+
+  messages.sort(function(a, b) { return a.date.getTime() - b.date.getTime(); });
+  return messages;
+}
+
+function repairRecentBatchManual() {
+  ensureSheet_();
+  const props = PropertiesService.getScriptProperties();
+  const seen = loadSeen_();
+  const all = collectRelevantMessages_(160, seen, true);
+  let cursor = Number(props.getProperty('WH_REPAIR_CURSOR') || '0');
+  if (!isFinite(cursor) || cursor < 0 || cursor >= all.length) cursor = 0;
+
+  const batch = all.slice(cursor, cursor + WH.repairBatchSize);
+  let updated = 0;
+  batch.forEach(function(item) {
+    const parsed = parseRentalMessage_(item);
+    const row = matchExistingRow_(parsed, item);
+    upsertRentalRow_(row, parsed, item);
+    seen[item.messageId] = Date.now();
+    updated++;
+  });
+  saveSeen_(seen);
+
+  const next = cursor + batch.length;
+  const finished = next >= all.length;
+  props.setProperty('WH_REPAIR_CURSOR', finished ? '0' : String(next));
+  props.setProperty('WH_LAST_SCAN', new Date().toISOString());
+  SpreadsheetApp.flush();
+
+  SpreadsheetApp.getUi().alert(
+    'Repair fertig: ' + updated + ' Mails verarbeitet.\n' +
+    (finished ? 'Alle ' + all.length + ' relevanten Mails sind durch. Cursor wieder 0.' : 'Fortschritt: ' + next + ' / ' + all.length + '. Menü erneut klicken für den nächsten Block.')
+  );
+}
+
+function resetRepairCursorManual() {
+  PropertiesService.getScriptProperties().setProperty('WH_REPAIR_CURSOR', '0');
+  SpreadsheetApp.getUi().alert('Repair-Cursor auf 0 gesetzt.');
 }
 
 function normalizeMessage_(thread, message) {
@@ -116,12 +155,32 @@ function normalizeMessage_(thread, message) {
 }
 
 function isRelevantRentalMail_(m) {
-  const text = (m.subject + ' ' + m.from + ' ' + m.body).toLowerCase();
-  const positive = /(wohnung|miete|mietanfrage|besichtigung|selbstauskunft|schufa|immoscout|immowelt|immomio|dawonia|everreal|vermieter|makler|mietangebot|mietvertrag|unterlagen|bewerbung|kontaktanfrage)/.test(text);
-  if (!positive) return false;
-  const actionSignal = /(ihre anfrage|deine anfrage|kontaktanfrage|bewerbung|besichtigung|selbstauskunft|unterlagen|dokument|mietangebot|mietvertrag|abgelehnt|absage|anderweitig vergeben|wird geprüft|anfrage abschließen|angaben vervollständigen|weitere angaben|aktion erforderlich|neue nachricht)/.test(text);
-  const genericAlert = /(suchauftrag|neues angebot|alternative[s]? angebot|neue treffer|neue immobilien|empfehlungen für dich|ähnliche angebote für dich)/.test(text);
-  return actionSignal || !genericAlert;
+  const from = String(m.from || '').toLowerCase();
+  const subject = String(m.subject || '').toLowerCase();
+  const body = String(m.body || '').toLowerCase();
+  const all = subject + ' ' + from + ' ' + body;
+
+  if (from.indexOf('ievgenkarogod@gmail.com') >= 0) return false;
+  if (isNoiseMail_(subject, from, body)) return false;
+
+  const rentalContext = /(wohnung|miete|mietanfrage|besichtigung|selbstauskunft|schufa|immoscout|immowelt|immomio|dawonia|everreal|vermieter|makler|mietangebot|mietvertrag|bewerbung|kontaktanfrage|exposé|expose)/.test(all);
+  if (!rentalContext) return false;
+
+  const applicationSignal = /(ihre anfrage|deine anfrage|kontaktanfrage|bewerbung|besichtigung|selbstauskunft|unterlagen|dokument|mietangebot|mietvertrag|abgelehnt|absage|anderweitig vergeben|objekt nicht mehr verfügbar|anfrage abschließen|angaben vervollständigen|weitere angaben|aktion erforderlich|neue nachricht|hat ihnen geantwortet|hat dir geantwortet|kontaktaufnahme wurde erfolgreich|anbieter hat .*anfrage erhalten|inquiry)/.test(all);
+  return applicationSignal;
+}
+
+function isNoiseMail_(subject, from, body) {
+  const s = String(subject || '').toLowerCase();
+  const f = String(from || '').toLowerCase();
+  const b = String(body || '').toLowerCase();
+
+  if (/neue suche gespeichert|14-tage-überblick|neue ergebnisse sofort aufs smartphone|alternative angebote?: gezeichneter suchbereich|alternatives angebot: gezeichneter suchbereich|neues angebot: gezeichneter suchbereich|neue angebote für dich|empfehlungen für dich/.test(s)) return true;
+  if (/wie du ähnliche immobilien .* finden kannst/.test(s)) return true;
+  if (/you shared some google account data/.test(s)) return true;
+  if (/e-mail-adresse bestätigen|email-adresse bestätigen|registrierung erfolgreich/.test(s) && /immomio|dawonia/.test(f + ' ' + b)) return true;
+  if (/all-in-one immobilien app|push-benachrichtigungen|du hast deine suche erfolgreich gespeichert/.test(b)) return true;
+  return false;
 }
 
 function parseRentalMessage_(m) {
@@ -131,6 +190,7 @@ function parseRentalMessage_(m) {
   const portal = portalFrom_(flat, m.from);
   const objectId = extractObjectId_(raw, portal);
   const title = extractListingTitle_(m.subject, m.body, portal);
+
   return {
     status: detected.status,
     nextAction: detected.nextAction,
@@ -151,28 +211,32 @@ function detectStatus_(subject, body) {
   const b = String(body || '').toLowerCase();
   const all = s + ' ' + b;
 
-  if (/anderweitig vergeben|objekt.{0,80}vergeben|leider.{0,120}(absage|nicht berücksichtigen|nicht ausgewählt)|nicht in die engere auswahl|abgelehnt|absage/.test(all)) {
+  if (/objekt nicht mehr verfügbar|anderen mietinteressenten entschieden|anderweitig vergeben|objekt.{0,80}vergeben|leider.{0,140}(absage|nicht berücksichtigen|nicht ausgewählt)|nicht in die engere auswahl|abgelehnt|absage/.test(all)) {
     return { status: 'rejected', nextAction: 'Keine Aktion' };
   }
+
   if (/mietangebot|mietvertrag|zusage|angebot zur anmietung|wir freuen uns.{0,120}(ihnen|dir).{0,80}vermieten/.test(all)) {
     return { status: 'offer', nextAction: 'Mietangebot prüfen und Jobcenter-Zusicherung klären' };
   }
 
-  // Must run before viewing detection. Everreal/Immomio often say
-  // "before we can arrange a viewing, please provide more information".
-  if (/\[aktion erforderlich\]|aktion erforderlich|weitere angaben benötigt|weitere informationen über sie|angaben vervollständigen|anfrage abschließen|formular ausfüllen|selbstauskunft|schufa|einkommensnachweis|gehaltsnachweis|unterlagen (?:hochladen|einreichen|senden)|dokumente (?:hochladen|einreichen|senden)|fragebogen/.test(all)) {
+  if (/\[aktion erforderlich\]|aktion erforderlich|weitere angaben benötigt|weitere informationen über sie|angaben vervollständigen|anfrage abschließen|formular ausfüllen|selbstauskunft ausfüllen|schufa.{0,80}(hochladen|einreichen|senden)|unterlagen.{0,80}(hochladen|einreichen|senden)|dokumente.{0,80}(hochladen|einreichen|senden)|fragebogen ausfüllen/.test(all)) {
     return { status: 'documents', nextAction: 'Geforderte Angaben/Dokumente vervollständigen' };
   }
 
-  const viewingInvite = /einladung.{0,80}besichtigung|zur besichtigung eingeladen|wir möchten sie.{0,100}besichtigung|wir laden sie.{0,100}besichtigung|besichtigungstermin (?:am|ist|findet|wurde|bestätigen|auswählen|buchen)|termin zur besichtigung|besichtigung.{0,60}(bestätigen|auswählen|buchen)|termin auswählen/.test(all);
-  if (viewingInvite) return { status: 'viewing', nextAction: 'Besichtigungstermin prüfen / bestätigen' };
+  const viewingInvite = /möglichkeit.{0,100}besichtigungstermin.{0,40}buchen|besichtigungstermin.{0,50}(buchen|auswählen|bestätigen)|zur besichtigung eingeladen|einladung.{0,80}besichtigung|termin zur besichtigung.{0,50}(buchen|auswählen|bestätigen)|besichtigung.{0,50}(buchen|auswählen|bestätigen)/.test(all);
+  if (viewingInvite) {
+    return { status: 'viewing', nextAction: 'Besichtigungstermin prüfen / bestätigen' };
+  }
 
-  const applicationConfirmation = /kontaktaufnahme wurde erfolgreich verschickt|kontaktanfrage wurde erfolgreich versendet|der anbieter hat deine anfrage erhalten|anbieter hat ihre anfrage erhalten|vielen dank für (?:ihre|deine) anfrage|bewerbungseingang|anfrage erhalten|wird geprüft|prüfung ihrer anfrage|anfrage erfolgreich (?:versendet|übermittelt|eingereicht)/.test(all);
-  if (applicationConfirmation) return { status: 'applied', nextAction: 'Auf Antwort warten' };
+  const applicationConfirmation = /kontaktaufnahme wurde erfolgreich verschickt|kontaktanfrage wurde erfolgreich versendet|anbieter hat deine anfrage erhalten|anbieter hat ihre anfrage erhalten|vielen dank für (?:ihre|deine) anfrage|bewerbungseingang|anfrage erhalten|anfrage erfolgreich (?:versendet|übermittelt|eingereicht)|thank you for your inquiry|we will review your inquiry|we will review your application/.test(all);
+  if (applicationConfirmation) {
+    return { status: 'applied', nextAction: 'Auf Antwort warten' };
+  }
 
-  if (/neue nachricht|hat ihnen geantwortet|hat dir geantwortet|nachricht von/.test(s + ' ' + b.slice(0, 500))) {
+  if (/neue nachricht|hat ihnen geantwortet|hat dir geantwortet|nachricht von/.test(s + ' ' + b.slice(0, 700))) {
     return { status: 'new', nextAction: 'Antwort des Anbieters prüfen' };
   }
+
   return { status: 'new', nextAction: 'Nachricht prüfen' };
 }
 
@@ -199,22 +263,27 @@ function portalId_(portal, objectId) {
 function extractObjectId_(text, portal) {
   const t = String(text || '');
   let m;
+
   if (/immoscout/i.test(portal)) {
     m = t.match(/Scout-ID\s*:?\s*(\d{7,12})/i) || t.match(/\/expose\/(\d{7,12})/i) || t.match(/\(Objekt\s+(\d{7,12})\)/i);
     return m ? m[1] : '';
   }
+
   if (/immowelt/i.test(portal)) {
     m = t.match(/Online-ID\s*:?\s*\[?([a-z0-9-]{5,20})\]?/i) || t.match(/\/expose\/([a-z0-9-]{5,20})/i);
     return m ? m[1] : '';
   }
-  if (/immomio|dawonia/i.test(portal)) {
-    m = t.match(/applicationId["':\s]+(\d{6,15})/i) || t.match(/applicationid%22%3a(\d{6,15})/i);
-    return m ? m[1] : '';
-  }
+
   if (/everreal/i.test(portal)) {
     m = t.match(/\/apply\/([0-9a-f-]{20,})\/applications\//i);
     return m ? m[1] : '';
   }
+
+  if (/immomio|dawonia/i.test(portal)) {
+    m = t.match(/applicationId["':\s]+(\d{6,15})/i) || t.match(/applicationid%22%3a(\d{6,15})/i);
+    return m ? m[1] : '';
+  }
+
   return '';
 }
 
@@ -224,7 +293,11 @@ function extractListingTitle_(subject, body, portal) {
   let m;
 
   if (/immoscout/i.test(portal)) {
-    m = b.match(/Daten zur Immobilie\s*\n+\s*\[([^\]\n]{5,180})\]\(/i) || b.match(/Informationen zur Immobilie[\s\S]{0,250}?\n\s*([^\n]{5,180})\n\s*Scout-ID/i);
+    m = b.match(/Daten zur Immobilie[\s\S]{0,500}?\n\s*([^\n]{5,180})\n\s*Scout-ID/i) || b.match(/Informationen zur Immobilie[\s\S]{0,500}?\n\s*([^\n]{5,180})\n\s*Scout-ID/i);
+    if (m) return cleanInline_(m[1]);
+    m = b.match(/Die Immobilie\s*\n+\s*([^\n]{5,180})\s*\n+\s*Adresse:/i);
+    if (m) return cleanInline_(m[1]);
+    m = b.match(/Interesse an dem Objekt[^„"]*[„"]([^”"]{5,180})[”"]/i);
     if (m) return cleanInline_(m[1]);
   }
 
@@ -233,18 +306,17 @@ function extractListingTitle_(subject, body, portal) {
     if (m) return cleanInline_(m[1]);
     m = b.match(/Objektbezeichnung\s*-+\s*\n+\s*([^\n]{5,180})/i);
     if (m) return cleanInline_(m[1]);
-    const roomLine = b.match(/\[([0-9.,]+\s*Zimmer\s*·\s*[0-9.,]+\s*m²)\]/i);
-    const locLine = b.match(/\[([^\]\n]{2,80}),\s*\n*\s*([^\]\n]{2,80})\s*\n*\s*\((\d{5})\)\]/i);
-    if (/kontaktanfrage wurde erfolgreich versendet/i.test(s) && roomLine && locLine) return cleanInline_(roomLine[1] + ' in ' + locLine[2] + ' (' + locLine[3] + ')');
   }
 
   if (/everreal/i.test(portal)) {
-    m = b.match(/Interesse am Objekt\s+"([^"]{5,180})"/i);
+    m = b.match(/Interesse am Objekt\s+["“]([^"”]{5,180})["”]/i) || b.match(/interest in our listing\s+["“]([^"”]{5,180})["”]/i);
     if (m) return cleanInline_(m[1]);
   }
 
   if (/immomio|dawonia/i.test(portal)) {
-    m = s.match(/Ihre Anfrage zu\s+(.+?)(?:!|$)/i);
+    m = s.match(/Ihre Anfrage zu\s+(.+?)(?:!|$)/i) || s.match(/Objekt nicht mehr verfügbar\s*<(.+?)>/i);
+    if (m) return cleanInline_(m[1]);
+    m = b.match(/\n([^\n]{4,140})\n[^\n]*(?:Gesamtmiete|Zimmer|Größe):/i);
     if (m) return cleanInline_(m[1]);
   }
 
@@ -268,9 +340,17 @@ function cleanInline_(value) {
 
 function listingSection_(body, portal) {
   const b = String(body || '');
-  if (/immoscout/i.test(portal)) return b.split(/Sehr geehrte|Kontaktdaten des Anbieters/i)[0];
-  if (/immowelt/i.test(portal)) return b.split(/\nFirma:\s*\n|\nAngaben an den Anbieter:|\nDeine Angaben/i)[0];
-  return b.slice(0, 3000);
+  if (/immoscout/i.test(portal)) {
+    const start = b.search(/Daten zur Immobilie|Informationen zur Immobilie|Die Immobilie/i);
+    if (start >= 0) return b.slice(start, start + 2200);
+    return b.slice(0, 2200);
+  }
+  if (/immowelt/i.test(portal)) {
+    const start = b.search(/Der Anbieter hat deine Anfrage erhalten|Angefragte Immobilie|Objektbezeichnung/i);
+    const piece = start >= 0 ? b.slice(start) : b;
+    return piece.split(/\nFirma:\s*\n|\nAngaben an den Anbieter:|\nDeine Angaben|Ähnliche Angebote für dich/i)[0];
+  }
+  return b.slice(0, 3500);
 }
 
 function extractAddress_(body, title, portal) {
@@ -279,8 +359,15 @@ function extractAddress_(body, title, portal) {
   let m;
 
   if (/immoscout/i.test(portal)) {
-    m = section.match(/Adresse:\s*\n*\s*([^\n,]{2,100})\s*,?\s*\n*\s*(\d{5})\s+([^\n]{2,80})/i);
-    if (m) return cleanInline_(m[1].replace(/,$/, '')) + ', ' + m[2] + ' ' + cleanInline_(m[3]);
+    m = section.match(/Adresse:\s*\n*\s*([^\n,]{2,100})\s*,\s*\n*\s*(\d{5})\s+([^\n]{2,80})/i);
+    if (m) return cleanInline_(m[1]) + ', ' + m[2] + ' ' + cleanInline_(m[3]);
+    m = section.match(/Adresse:\s*\n*\s*(\d{5})\s+([^,\n]{2,80}),?\s*\n*\s*([^\n]{2,100}(?:str\.|straße|strasse|weg|allee|ring|platz|gasse)\s+\d+[a-zA-Z]?)/i);
+    if (m) return cleanInline_(m[3]) + ', ' + m[1] + ' ' + cleanInline_(m[2]);
+    m = section.match(/Adresse:\s*([^\n]{2,140})/i);
+    if (m && !/vollständige adresse/i.test(m[1])) {
+      const oneLine = cleanInline_(m[1]);
+      if (/\d{5}/.test(oneLine)) return oneLine;
+    }
   }
 
   if (/immowelt/i.test(portal)) {
@@ -288,6 +375,8 @@ function extractAddress_(body, title, portal) {
     if (m) return cleanInline_(m[3]) + ', ' + m[1] + ' ' + cleanInline_(m[2]);
     m = section.match(/\[([^\]\n]{2,80}),\s*\n*\s*([^\]\n]{2,80})\s*\n*\s*\((\d{5})\)\]/i);
     if (m) return cleanInline_(m[1]) + ', ' + m[3] + ' ' + cleanInline_(m[2]);
+    m = section.match(/\n(\d{5})\s+([^\n]{2,70})\s*\n+\s*([^\n]{3,100})\s*\n/i);
+    if (m && /(?:str\.|straße|strasse|weg|allee|ring|platz|gasse)\s+\d+/i.test(m[3])) return cleanInline_(m[3]) + ', ' + m[1] + ' ' + cleanInline_(m[2]);
   }
 
   if (/everreal/i.test(portal)) {
@@ -295,7 +384,12 @@ function extractAddress_(body, title, portal) {
     if (m) return cleanInline_(m[2]) + ', ' + cleanInline_(m[1]);
   }
 
-  const banned = /(Invalidenstraße 65|Ostendstraße 113|Otto-Wagner-Str\. 30)/i;
+  if (/immomio|dawonia/i.test(portal)) {
+    m = b.match(/([A-ZÄÖÜ][A-Za-zÄÖÜäöüß.\- ]{2,60}(?:straße|str\.|strasse|weg|allee|ring|platz|gasse)\s+\d+[a-zA-Z]?),\s*(\d{5})\s+([A-ZÄÖÜ][A-Za-zÄÖÜäöüß.\- ]{2,50})/i);
+    if (m) return cleanInline_(m[1]) + ', ' + m[2] + ' ' + cleanInline_(m[3]);
+  }
+
+  const banned = /(Invalidenstraße 65|Ostendstraße 113|Otto-Wagner-Str\. 30|Hansastr\. 27f|Max-Joseph-Str\. 2)/i;
   const re = /([A-ZÄÖÜ][A-Za-zÄÖÜäöüß.\- ]{2,55}(?:straße|str\.|strasse|weg|allee|ring|platz|gasse)\s+\d+[a-zA-Z]?)\s*,?\s*\n?\s*(\d{5})\s+([A-ZÄÖÜ][A-Za-zÄÖÜäöüß.\- ]{2,45})/gi;
   while ((m = re.exec(section)) !== null) {
     const candidate = cleanInline_(m[1]) + ', ' + m[2] + ' ' + cleanInline_(m[3]);
@@ -306,22 +400,23 @@ function extractAddress_(body, title, portal) {
 
 function extractEuro_(body, portal) {
   const section = listingSection_(body, portal);
-  let m;
-  if (/immoscout/i.test(portal)) m = section.match(/Kaltmiete:\s*\n*\s*([\d.]+(?:,\d{1,2})?)\s*€/i);
+  let m = null;
+  if (/immoscout/i.test(portal)) m = section.match(/Kaltmiete\s*:?\s*\n*\s*([\d.]+(?:,\d{1,2})?)\s*€/i);
   if (!m && /immowelt/i.test(portal)) m = section.match(/\n([\d.]+(?:,\d{1,2})?)\s*(?:Euro|€)\s*\n/i) || section.match(/\[([\d.]+(?:,\d{1,2})?)\s*€\]/i);
+  if (!m && /immomio|dawonia/i.test(portal)) m = section.match(/Gesamtmiete:\s*\*?\s*([\d.]+(?:,\d{1,2})?)\s*€/i);
   if (!m) m = section.match(/(?:kaltmiete|nettokaltmiete)\s*:?\s*\n*\s*([\d.]+(?:,\d{1,2})?)\s*€/i);
   return m ? parseGermanNumber_(m[1]) : '';
 }
 
 function extractSqm_(body, portal) {
   const section = listingSection_(body, portal);
-  let m = section.match(/Wohnfläche:\s*\n*\s*([\d.,]+)\s*m(?:²|2)/i) || section.match(/ca\.\s*([\d.,]+)\s*m(?:²|2)/i) || section.match(/([1-9]\d{1,2}(?:[.,]\d+)?)\s*m(?:²|2)/i);
+  const m = section.match(/Wohnfläche\s*:?\s*\n*\s*([\d.,]+)\s*m(?:²|2)/i) || section.match(/Größe:\s*\*?\s*([\d.,]+)\s*m(?:²|2)/i) || section.match(/ca\.\s*([\d.,]+)\s*m(?:²|2)/i) || section.match(/([1-9]\d{1,2}(?:[.,]\d+)?)\s*m(?:²|2)/i);
   return m ? parseGermanNumber_(m[1]) : '';
 }
 
 function extractRooms_(body, portal) {
   const section = listingSection_(body, portal);
-  let m = section.match(/Zimmer:\s*\n*\s*([\d.,]+)/i) || section.match(/([1-9](?:[.,]\d)?)\s*Zimmer\b/i);
+  const m = section.match(/Zimmer\s*:?\s*\n*\s*([1-9](?:[.,]\d)?)/i) || section.match(/([1-9](?:[.,]\d)?)\s*Zimmer\b/i);
   return m ? parseGermanNumber_(m[1]) : '';
 }
 
@@ -333,10 +428,15 @@ function normalizeKey_(value) {
   return String(value || '').toLowerCase().replace(/ä/g, 'ae').replace(/ö/g, 'oe').replace(/ü/g, 'ue').replace(/ß/g, 'ss').replace(/[^a-z0-9]+/g, ' ').replace(/\s+/g, ' ').trim();
 }
 
+function isGenericTitle_(value) {
+  return /^(wohnungsanfrage|ihre persönliche vorstellung beim anbieter|deine kontaktanfrage wurde erfolgreich versendet|vielen dank für deine anfrage|vielen dank für ihre anfrage|unser team hat ihnen geantwortet)/i.test(String(value || '').trim());
+}
+
 function matchExistingRow_(parsed, message) {
   const sheet = getSheet_();
   const last = Math.max(sheet.getLastRow(), 1);
   if (last < 2) return -1;
+
   const rows = sheet.getRange(2, 1, last - 1, WH.headers.length).getDisplayValues();
   const subject = normalizeKey_(message.subject);
   const address = normalizeKey_(parsed.address);
@@ -353,12 +453,12 @@ function matchExistingRow_(parsed, message) {
     const threadId = r[16] || '';
     const lastSubject = normalizeKey_(r[17]);
 
-    if (lastMessageId && lastMessageId === message.messageId) score += 150;
-    if (threadId && threadId === message.threadId) score += 140;
-    if (canonicalId && rowId === canonicalId) score += 130;
-    if (parsed.objectId && (rowId.indexOf(parsed.objectId) >= 0 || String(r[11] || '').indexOf(parsed.objectId) >= 0 || String(r[17] || '').indexOf(parsed.objectId) >= 0)) score += 110;
-    if (address && rowAddress && (address === rowAddress || address.indexOf(rowAddress) >= 0 || rowAddress.indexOf(address) >= 0)) score += 65;
-    if (title.length > 10 && rowTitle.length > 10 && (title.indexOf(rowTitle) >= 0 || rowTitle.indexOf(title) >= 0)) score += 50;
+    if (lastMessageId && lastMessageId === message.messageId) score += 160;
+    if (threadId && threadId === message.threadId) score += 150;
+    if (canonicalId && rowId === canonicalId) score += 140;
+    if (parsed.objectId && (rowId.indexOf(parsed.objectId) >= 0 || String(r[11] || '').indexOf(parsed.objectId) >= 0 || String(r[17] || '').indexOf(parsed.objectId) >= 0)) score += 120;
+    if (address && rowAddress && (address === rowAddress || address.indexOf(rowAddress) >= 0 || rowAddress.indexOf(address) >= 0)) score += 70;
+    if (title.length > 10 && rowTitle.length > 10 && (title.indexOf(rowTitle) >= 0 || rowTitle.indexOf(title) >= 0)) score += 55;
     if (subject && lastSubject && subject === lastSubject) score += 45;
 
     const postcodeA = address.match(/\b\d{5}\b/);
@@ -366,6 +466,7 @@ function matchExistingRow_(parsed, message) {
     if (postcodeA && postcodeB && postcodeA[0] === postcodeB[0]) score += 15;
     if (score > best.score) best = { row: i + 2, score: score };
   });
+
   return best.score >= 45 ? best.row : -1;
 }
 
@@ -384,25 +485,53 @@ function upsertRentalRow_(rowNumber, parsed, m) {
   }
 
   const current = sheet.getRange(rowNumber, 1, 1, WH.headers.length).getValues()[0];
-  const isGmailBacked = /^gmail:/.test(String(current[14] || '')) || current[16] === m.threadId || current[15] === m.messageId;
+  const isGmailBacked = /^gmail:/.test(String(current[14] || '')) || current[16] === m.threadId || current[15] === m.messageId || (parsed.canonicalId && current[14] === parsed.canonicalId);
 
-  if (parsed.title && (isGmailBacked || !current[0] || /wohnungsanfrage|persönliche vorstellung/i.test(String(current[0])))) current[0] = parsed.title;
-  if (parsed.address && (isGmailBacked || !current[1] || /prüfen|invalidenstraße|ostendstraße/i.test(String(current[1])))) current[1] = parsed.address;
+  if (parsed.title && !isGenericTitle_(parsed.title) && (isGmailBacked || !current[0] || isGenericTitle_(current[0]))) current[0] = parsed.title;
+  if (parsed.address && (isGmailBacked || !current[1] || /prüfen|invalidenstraße|ostendstraße|hansastr\. 27f|max-joseph-str\. 2/i.test(String(current[1])))) current[1] = parsed.address;
   if (parsed.portal) current[2] = parsed.portal;
-  if (parsed.kaltmiete !== '' && parsed.kaltmiete != null && (isGmailBacked || !current[3])) current[3] = parsed.kaltmiete;
-  if (parsed.rooms !== '' && parsed.rooms != null && (isGmailBacked || !current[4])) current[4] = parsed.rooms;
+  if (parsed.kaltmiete !== '' && parsed.kaltmiete != null && (isGmailBacked || !current[3] || Number(current[3]) === 0)) current[3] = parsed.kaltmiete;
+  if (parsed.rooms !== '' && parsed.rooms != null && (isGmailBacked || !current[4] || Number(current[4]) > 5)) current[4] = parsed.rooms;
   current[6] = humanStatus_(parsed.status);
   current[7] = now;
   current[8] = parsed.nextAction;
   current[10] = current[10] || extractContact_(m.from);
   current[11] = parsed.note + ' | Gmail: https://mail.google.com/mail/u/0/#all/' + m.threadId;
   if (parsed.sqm !== '' && parsed.sqm != null && (isGmailBacked || !current[13])) current[13] = parsed.sqm;
-  if (parsed.canonicalId && (isGmailBacked || !current[14])) current[14] = parsed.canonicalId;
+  if (parsed.canonicalId && (isGmailBacked || !current[14] || /^gmail:/.test(String(current[14])))) current[14] = parsed.canonicalId;
   current[14] = current[14] || ('gmail:' + m.threadId);
   current[15] = m.messageId;
   current[16] = m.threadId;
   current[17] = m.subject;
   sheet.getRange(rowNumber, 1, 1, WH.headers.length).setValues([current]);
+}
+
+function cleanupNoiseRowsManual() {
+  const sheet = getSheet_();
+  const last = sheet.getLastRow();
+  if (last < 2) {
+    SpreadsheetApp.getUi().alert('Nichts zu bereinigen.');
+    return;
+  }
+
+  const rows = sheet.getRange(2, 1, last - 1, WH.headers.length).getDisplayValues();
+  const toDelete = [];
+
+  rows.forEach(function(r, i) {
+    const title = String(r[0] || '').toLowerCase();
+    const subject = String(r[17] || '').toLowerCase();
+    const portal = String(r[2] || '').toLowerCase();
+    const combined = title + ' ' + subject;
+
+    const obviousNoise = /neue suche gespeichert|14-tage-überblick|neue ergebnisse sofort aufs smartphone|alternative angebote?: gezeichneter suchbereich|alternatives angebot: gezeichneter suchbereich|neues angebot: gezeichneter suchbereich|you shared some google account data|e-mail-adresse bestätigen|email-adresse bestätigen|registrierung erfolgreich|wie du ähnliche immobilien .* finden kannst/.test(combined);
+    if (obviousNoise && /immowelt|immoscout|immomio|dawonia|google|e-mail/.test(portal + ' ' + combined)) toDelete.push(i + 2);
+  });
+
+  toDelete.sort(function(a, b) { return b - a; }).forEach(function(rowNumber) {
+    sheet.deleteRow(rowNumber);
+  });
+
+  SpreadsheetApp.getUi().alert('Bereinigung fertig: ' + toDelete.length + ' offensichtliche Nicht-Bewerbungs-Mails entfernt.');
 }
 
 function extractContact_(from) {
@@ -491,12 +620,16 @@ function ensureSheet_() {
   if (!sheet) sheet = ss.insertSheet(WH.sheetName);
   const width = Math.max(sheet.getLastColumn(), WH.headers.length);
   const existing = width ? sheet.getRange(1, 1, 1, width).getDisplayValues()[0] : [];
-  WH.headers.forEach(function(h, i) { if (existing[i] !== h) sheet.getRange(1, i + 1).setValue(h); });
+  WH.headers.forEach(function(h, i) {
+    if (existing[i] !== h) sheet.getRange(1, i + 1).setValue(h);
+  });
   sheet.setFrozenRows(1);
   return sheet;
 }
 
-function getSheet_() { return ensureSheet_(); }
+function getSheet_() {
+  return ensureSheet_();
+}
 
 function removeTriggers_(handler) {
   ScriptApp.getProjectTriggers().forEach(function(t) {
@@ -505,17 +638,20 @@ function removeTriggers_(handler) {
 }
 
 function loadSeen_() {
-  try { return JSON.parse(PropertiesService.getScriptProperties().getProperty('WH_SEEN') || '{}'); }
-  catch (e) { return {}; }
+  try {
+    return JSON.parse(PropertiesService.getScriptProperties().getProperty('WH_SEEN') || '{}');
+  } catch (e) {
+    return {};
+  }
 }
 
 function saveSeen_(seen) {
   const entries = Object.keys(seen).map(function(key) { return [key, seen[key]]; })
-    .sort(function(a, b) { return Number(b[1]) - Number(a[1]); }).slice(0, 1200);
+    .sort(function(a, b) { return Number(b[1]) - Number(a[1]); })
+    .slice(0, 1200);
   const out = {};
   entries.forEach(function(entry) { out[entry[0]] = entry[1]; });
   PropertiesService.getScriptProperties().setProperty('WH_SEEN', JSON.stringify(out));
 }
 
-// Intentionally simple one-file dashboard. No nested template literals, so copy/paste into Apps Script is safe.
-const INDEX_HTML_ = '<!doctype html><html><head><base target="_top"><meta name="viewport" content="width=device-width,initial-scale=1"><style>body{font-family:Arial,sans-serif;margin:16px;color:#202124}.card{border:1px solid #ddd;border-radius:10px;padding:10px;margin:8px 0}.muted{color:#666;font-size:12px}</style></head><body><h2>🏠 Wohnung Hunter</h2><div id="state" class="muted">Dashboard verbunden. Daten kommen aus der zentralen Tabelle.</div><p>Gmail-Scan und 7-Tage-Reparatur laufen über das Menü 🏠 Wohnung Hunter in Google Sheets.</p></body></html>';
+const INDEX_HTML_ = '<html><body style="font-family:Arial,sans-serif;padding:16px"><h2>🏠 Wohnung Hunter</h2><p>Gmail-Scan läuft automatisch. Reparatur und Bereinigung findest du im Menü <b>🏠 Wohnung Hunter</b> der Tabelle.</p></body></html>';
