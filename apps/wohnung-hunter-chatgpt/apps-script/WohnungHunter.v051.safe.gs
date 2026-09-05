@@ -1,20 +1,26 @@
 /**
- * Wohnung Hunter v0.5.1 timeout hotfix.
+ * Wohnung Hunter v0.5.1-safe2 — no blocking UI calls.
  *
  * Add this file next to WohnungHunter.gs and WohnungHunter.v051.gs.
- * Run setupWohnungHunter051Safe() once.
+ * Run setupWohnungHunter051Safe() once from the Apps Script editor.
  *
- * Why: the first v0.5.1 setup can exceed Apps Script's execution limit because
- * it performs a Gmail scan and a deep alias rebuild in the same invocation.
- * This hotfix installs the trigger without an immediate scan and keeps the
- * automatic 5-minute pass conservative: Gmail ingest first, then only the
- * cheap safety layers when enough execution budget remains.
+ * Important: SpreadsheetApp.getUi().alert() blocks the server-side execution
+ * until a dialog is dismissed in the bound Sheet. When a function is launched
+ * from the Apps Script editor that dialog can be invisible, which makes an
+ * otherwise finished setup hit Google's 6-minute execution limit. Therefore
+ * every editor-facing function in this file logs/returns status instead of
+ * opening a modal alert.
  */
 var WH051SAFE = {
-  version: '0.5.1-safe',
+  version: '0.5.1-safe2',
   scanHandler: 'scanRentalMail051Safe',
   maxBaseMsBeforePatch: 150000
 };
+
+function log051Safe_(message) {
+  console.log(message);
+  return message;
+}
 
 function setupWohnungHunter051Safe() {
   var result = withLock_(function() {
@@ -33,12 +39,15 @@ function setupWohnungHunter051Safe() {
       }
     });
     props_().setProperty('WH_PATCH_VERSION', WH051SAFE.version);
-    return { ready: true };
+    return { ready: true, version: WH051SAFE.version, trigger: 1 };
   });
 
-  if (result.busy) return alert_('Hunter arbeitet gerade. Safe-Setup gleich erneut starten.');
-  alert_('Wohnung Hunter v0.5.1-safe aktiv.\n' +
-    'Der 5-Minuten-Trigger ist installiert. Kein Sofort-Scan, damit das Setup nicht mehr in das 6-Minuten-Limit läuft.');
+  if (result.busy) {
+    log051Safe_('Hunter arbeitet gerade. Safe-Setup gleich erneut starten.');
+    return { busy: true };
+  }
+  log051Safe_('Wohnung Hunter ' + WH051SAFE.version + ' aktiv. 5-Minuten-Trigger installiert. Kein Sofort-Scan.');
+  return result;
 }
 
 function scanRentalMail051Safe() {
@@ -60,9 +69,6 @@ function scanRentalMail051Safe() {
 function postProcess051Safe_() {
   var sheets = ensureSheets_();
   var result = { noise: 0, aliased: 0, terminal: 0 };
-  // Cheap and critical only. Deep alias normalization stays manual because it
-  // can touch many historical rows and is the part most likely to exceed the
-  // Apps Script wall-clock limit.
   result.noise = suppressNoise051_(sheets);
   result.terminal = applyTerminalOverrides051_(sheets);
   SpreadsheetApp.flush();
@@ -71,16 +77,24 @@ function postProcess051Safe_() {
 
 function runWohnungHunter051SafeManual() {
   var result = withLock_(function() { return postProcess051Safe_(); });
-  if (result.busy) return alert_('Hunter arbeitet gerade.');
-  alert_('v0.5.1-safe: ' + (result.noise || 0) + ' Noise, ' +
+  if (result.busy) {
+    log051Safe_('Hunter arbeitet gerade.');
+    return result;
+  }
+  log051Safe_('v0.5.1-safe2: ' + (result.noise || 0) + ' Noise, ' +
     (result.terminal || 0) + ' Terminal-Overrides.');
+  return result;
 }
 
 function showWohnungHunter051SafeStatus() {
   var triggers = ScriptApp.getProjectTriggers().filter(function(t) {
     return t.getHandlerFunction() === WH051SAFE.scanHandler;
   }).length;
-  alert_('Wohnung Hunter ' + (props_().getProperty('WH_PATCH_VERSION') || '?') +
-    '\nSafe-Trigger: ' + triggers +
-    '\nBasisparser: v' + (props_().getProperty('WH_VERSION') || '?'));
+  var status = {
+    patch: props_().getProperty('WH_PATCH_VERSION') || '?',
+    safeTriggers: triggers,
+    baseParser: props_().getProperty('WH_VERSION') || '?'
+  };
+  log051Safe_('Wohnung Hunter ' + status.patch + '; Safe-Trigger: ' + status.safeTriggers + '; Basisparser: v' + status.baseParser);
+  return status;
 }
