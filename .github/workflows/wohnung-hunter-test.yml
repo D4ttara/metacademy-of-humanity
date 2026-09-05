@@ -25,3 +25,5 @@ jobs:
         run: node apps/wohnung-hunter-chatgpt/apps-script/WohnungHunter.test.cjs
       - name: Test v0.5.1 safety normalizer
         run: node apps/wohnung-hunter-chatgpt/apps-script/WohnungHunter.v051.test.cjs
+      - name: Test v0.5.1 timeout hotfix
+        run: node apps/wohnung-hunter-chatgpt/apps-script/WohnungHunter.v051.safe.test.cjs
