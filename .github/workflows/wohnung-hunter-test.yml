@@ -1,0 +1,27 @@
+name: Wohnung Hunter tests
+
+on:
+  push:
+    branches:
+      - wohnung-hunter-app
+    paths:
+      - 'apps/wohnung-hunter-chatgpt/**'
+      - '.github/workflows/wohnung-hunter-test.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - name: Test v0.5 base engine
+        run: node apps/wohnung-hunter-chatgpt/apps-script/WohnungHunter.test.cjs
+      - name: Test v0.5.1 safety normalizer
+        run: node apps/wohnung-hunter-chatgpt/apps-script/WohnungHunter.v051.test.cjs
