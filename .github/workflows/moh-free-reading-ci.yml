@@ -1,0 +1,61 @@
+name: MoH v76 free reading CI
+
+on:
+  pull_request:
+    branches: [main, publish-document-017-human-ai]
+    paths:
+      - 'uk/books/memories-of-humanity/**'
+      - 'uk/books/index.html'
+      - 'uk/updates/index.html'
+      - 'uk/index.html'
+      - 'assets/css/literary-reading.css'
+      - 'publications/MOH_FREE_READING_UA_v76.json'
+      - 'scripts/build-moh-v76-free-reading-ua.mjs'
+      - 'scripts/build-moh-v76-free-reading-formats.sh'
+      - 'scripts/verify-moh-v76-free-reading-ua.mjs'
+      - '.github/workflows/moh-free-reading-ci.yml'
+      - '.github/workflows/pages.yml'
+      - '.github/workflows/validate-publication.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install publication toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends pandoc texlive-xetex texlive-latex-extra texlive-fonts-extra texlive-fonts-recommended poppler-utils
+      - name: Build Ukrainian literary publication surfaces
+        run: node scripts/build-moh-v76-free-reading-ua.mjs
+      - name: Build six PDF and EPUB reading editions
+        run: bash scripts/build-moh-v76-free-reading-formats.sh
+      - name: Verify source provenance and public routes
+        run: node scripts/verify-moh-v76-free-reading-ua.mjs
+      - name: PDF preflight
+        shell: bash
+        run: |
+          mapfile -t files < <(find uk/books/memories-of-humanity/book-1/free-reading/formats -type f -name '*.pdf' -print | sort)
+          [[ "${#files[@]}" -eq 6 ]] || { printf 'Expected 6 PDFs, got %s\n' "${#files[@]}"; exit 1; }
+          for f in "${files[@]}"; do
+            pdfinfo "$f" >/dev/null
+            pdffonts "$f" | grep -q 'IBMPlexSans'
+            pdftotext "$f" - | grep -Fqi 'Згадки про Людство'
+          done
+          echo 'MOH_FREE_READING_PDF_PREFLIGHT=PASS files=6'
+      - name: Upload literary QA package
+        uses: actions/upload-artifact@v4
+        with:
+          name: moh-v76-free-reading-ua
+          if-no-files-found: error
+          retention-days: 7
+          path: |
+            uk/books/memories-of-humanity/book-1/free-reading/**
+            publications/MOH_FREE_READING_UA_v76*.json
+            sitemap.xml
+            llms.txt
+            feed.xml
