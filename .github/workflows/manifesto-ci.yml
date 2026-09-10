@@ -24,6 +24,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Export Document 017 source parts for byte-diff QA
+        uses: actions/upload-artifact@v4
+        with:
+          name: document-017-source-parts
+          if-no-files-found: error
+          retention-days: 1
+          path: documents/017-human-ai-what-or-we/source_parts/*.part
       - name: Install publication toolchain
         run: |
           sudo apt-get update
