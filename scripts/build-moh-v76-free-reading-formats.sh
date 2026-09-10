@@ -9,6 +9,13 @@ TMP="$(mktemp -d)"
 trap 'rm -rf "$TMP"' EXIT
 mkdir -p "$OUT"
 
+# GitHub Pages historically installed TeX without lmodern; Pandoc/XeLaTeX may still request it.
+# Repair the runner only in CI, never silently mutate a normal local machine.
+if ! kpsewhich lmodern.sty >/dev/null 2>&1 && [[ "${CI:-}" == "true" ]] && command -v sudo >/dev/null 2>&1; then
+  sudo apt-get update
+  sudo apt-get install -y --no-install-recommends lmodern
+fi
+
 node -e 'const c=require("./publications/MOH_FREE_READING_UA_v76.json"); for(const p of c.pieces) console.log([p.id,p.kind,p.title,p.sha256].join("\t"))' |
 while IFS=$'\t' read -r id kind title expected; do
   src="$ROOT/source/$(node -e 'const c=require("./publications/MOH_FREE_READING_UA_v76.json"); const p=c.pieces.find(x=>x.id===process.argv[1]); process.stdout.write(require("node:path").basename(p.source_path))' "$id")"
@@ -29,6 +36,8 @@ while IFS=$'\t' read -r id kind title expected; do
 **«Згадки про Людство» · Книга I · «Алекс Штольман і Скрижалі Реваншу» · українська редакція v76 · 10 вересня 2026.**
 
 Цей файл є безкоштовним читацьким виданням окремого художнього фрагмента. Літературний текст походить із source v76 і не переписаний під дослідницький стиль Академії. `FICTION != RESEARCH EVIDENCE`.
+
+**Критична рамка:** LIT-000 «Скуф проти майбутнього» → шість художніх публікацій → LIT-007 «Естет після фіналу».
 
 **Повна книга:** https://payhip.com/b/9GnpH
 
@@ -62,3 +71,9 @@ const files=cfg.pieces.map(p=>{const stem=`MOH_FREE_READING_UA_v76_${p.id}`;cons
 fs.writeFileSync('publications/MOH_FREE_READING_UA_v76_FORMAT_RECEIPT.json',JSON.stringify({schema:'metacademy-literary-format-receipt/v1',series_id:cfg.series_id,source_master_sha256:cfg.source.sha256,language:'uk',formats:['pdf','epub'],typography:'IBM Plex Sans + IBM Plex Mono',page_format:'6x9in',files},null,2)+'\n');
 console.log(`MOH_FREE_READING_FORMATS=PASS pieces=${files.length} pdf=${files.length} epub=${files.length}`);
 NODE
+
+# The two critical bookends are part of the publication frame, not optional decorations.
+bash scripts/build-moh-lit-000-skuf-formats.sh
+bash scripts/build-moh-lit-007-esthete-formats.sh
+
+echo 'MOH_FREE_READING_FRAME_FORMATS=PASS lit000=PDF_EPUB book_units=6xPDF_EPUB lit007=PDF_EPUB total_pdf=8 total_epub=8'
