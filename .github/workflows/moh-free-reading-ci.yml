@@ -37,15 +37,15 @@ jobs:
           bash -n scripts/build-moh-v76-free-reading-formats.sh
       - name: Verify exact sources and build Ukrainian web surfaces
         run: node scripts/build-moh-v76-free-reading-ua.mjs
-      - name: Check six generated readers and seven public routes
+      - name: Check six generated readers and eight public routes including LIT-000
         shell: bash
         run: |
           test "$(find uk/books/memories-of-humanity/book-1/free-reading/readers -type f -name 'LIT-*.md' | wc -l)" -eq 6
-          test "$(find uk/books/memories-of-humanity/book-1/free-reading -mindepth 2 -maxdepth 2 -type f -name index.html | wc -l)" -eq 6
+          test "$(find uk/books/memories-of-humanity/book-1/free-reading -mindepth 2 -maxdepth 2 -type f -name index.html | wc -l)" -eq 7
           test -s uk/books/memories-of-humanity/book-1/free-reading/index.html
           grep -Fq 'FICTION != RESEARCH EVIDENCE' uk/books/memories-of-humanity/book-1/free-reading/index.html
           ! grep -R -Fq 'hreflang="en"' uk/books/memories-of-humanity/book-1/free-reading
-          echo 'MOH_FREE_READING_SOURCE_QA=PASS sources=6 routes=7 english=ZERO'
+          echo 'MOH_FREE_READING_SOURCE_QA=PASS sources=6 routes=8 including=LIT-000 english=ZERO'
       - name: Upload fast web-surface QA
         uses: actions/upload-artifact@v4
         with:
@@ -65,7 +65,7 @@ jobs:
       - name: Install publication toolchain
         run: |
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends pandoc texlive-xetex texlive-latex-extra texlive-fonts-extra texlive-fonts-recommended poppler-utils
+          sudo apt-get install -y --no-install-recommends pandoc texlive-xetex texlive-latex-extra texlive-fonts-extra texlive-fonts-recommended lmodern poppler-utils
       - name: Rebuild Ukrainian literary publication surfaces
         run: node scripts/build-moh-v76-free-reading-ua.mjs
       - name: Build six PDF and EPUB reading editions
