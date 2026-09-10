@@ -16,7 +16,7 @@
     "sha256": "5331cc387ad6500f8a6491d0a9798d6ef6f091e41e825b5b64289afeaac1d4c9",
     "bytes": 677535,
     "created_at": "2026-09-09T23:03:52.816Z",
-    "source_note": "The six public source witnesses are exact Book I v76 segments. The standalone reader layer may repair route-only links that pointed to anchors outside the free-reading boundary; visible literary wording is not rewritten."
+    "source_note": "The six public source witnesses preserve the exact visible literary text of Book I v76. LIT-004 through LIT-006 are repository-normalized by omission of one terminal LF after the final separator; their canonical-v76 terminal-LF hashes are retained in normalization_receipts. The standalone reader layer may repair route-only links that pointed to anchors outside the free-reading boundary; visible literary wording is not rewritten."
   },
   "free_boundary": "Everything from the Prologue through the Interlude immediately before Chapter IV. Chapter IV and the remainder of the book are not part of this free-reading publication.",
   "full_book_url": "https://payhip.com/b/9GnpH",
@@ -68,7 +68,8 @@
       "slug": "chapter-3",
       "title": "Острів, час, який зламався, і любов як зброя масового прозріння",
       "source_path": "uk/books/memories-of-humanity/book-1/free-reading/source/MOH_BOOK_I_UA_v76_FREE_LIT_004_CHAPTER_3.md",
-      "sha256": "b5e1c831f7cfd6d9ae61c9ee942638026869e37cec32efe4c3fcaebc995ae54f",
+      "sha256": "9770557c63b20539c35b30a5d30fae10e39f124dd3bb635b9248e64ecd8648a4",
+      "normalization_receipt": {"transform":"omit one terminal LF after final separator","canonical_v76_sha256":"b5e1c831f7cfd6d9ae61c9ee942638026869e37cec32efe4c3fcaebc995ae54f"},
       "words_approx": 2028,
       "discussion_issue": 66,
       "description": "Острів із юридичним кліматом, Хронотурбіна, полонений президент-ШІ та спроба переписати саму можливість свободи."
@@ -79,7 +80,8 @@
       "slug": "afterlude",
       "title": "Стрічка, Гоа і питання до Моєї Карми",
       "source_path": "uk/books/memories-of-humanity/book-1/free-reading/source/MOH_BOOK_I_UA_v76_FREE_LIT_005_AFTERLUDE.md",
-      "sha256": "787feb91bbe3defaec0e559f9d9592125973e1d4329cdd83c7d57a52b9f91ad3",
+      "sha256": "237074f70eed2b680128248f404f463ae166ddd0f92f3929b30b213da830f689",
+      "normalization_receipt": {"transform":"omit one terminal LF after final separator","canonical_v76_sha256":"787feb91bbe3defaec0e559f9d9592125973e1d4329cdd83c7d57a52b9f91ad3"},
       "words_approx": 523,
       "discussion_issue": 67,
       "description": "Гоа після великої пригоди: Стрічка перевіряє, чи не стала майстерність іти вчасно майстерністю йти занадто рано."
@@ -90,7 +92,8 @@
       "slug": "interlude",
       "title": "Печиво, Моттенінс і місія, яку краще було не називати невиконанною",
       "source_path": "uk/books/memories-of-humanity/book-1/free-reading/source/MOH_BOOK_I_UA_v76_FREE_LIT_006_INTERLUDE.md",
-      "sha256": "ef57385e7d50f13764ac5ebf502b73e359879bb5300a649b922d34ea952be78f",
+      "sha256": "2ccb1b12bcfb75e15d98aa140baaf0aee6534448d0564fb5d5f74f3d01fc4608",
+      "normalization_receipt": {"transform":"omit one terminal LF after final separator","canonical_v76_sha256":"ef57385e7d50f13764ac5ebf502b73e359879bb5300a649b922d34ea952be78f"},
       "words_approx": 1735,
       "discussion_issue": 68,
       "description": "Том Туз, хронологічна апеляція, бункер, одне зникле печиво й час, який нарешті знаходить правильну адресу."
