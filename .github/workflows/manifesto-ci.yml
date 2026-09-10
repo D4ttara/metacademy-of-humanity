@@ -39,10 +39,32 @@ jobs:
       - name: Verify manifesto lineage
         run: node scripts/verify-manifesto-lineage.mjs
       - name: PDF preflight
+        shell: bash
         run: |
-          for f in manifestos/archive/metacademy-continuity/v1.*/**/*_PUBLIC.pdf documents/017-human-ai-what-or-we/*_PUBLIC.pdf; do
+          mapfile -t files < <(find manifestos/archive/metacademy-continuity -type f -name '*_PUBLIC.pdf' -print | sort)
+          files+=("documents/017-human-ai-what-or-we/METACADEMY_DOCUMENT_017_HUMAN_AI_WHAT_OR_WE_UA_v1.0_PUBLIC.pdf")
+          if [[ "${#files[@]}" -ne 6 ]]; then
+            printf 'Expected 6 public PDFs, found %s\n' "${#files[@]}"
+            printf '%s\n' "${files[@]}"
+            exit 1
+          fi
+          for f in "${files[@]}"; do
             test -s "$f"
             pdfinfo "$f" >/dev/null
             pdffonts "$f" | grep -q 'IBMPlexSans'
           done
-          echo 'MANIFESTO_PDF_PREFLIGHT=PASS'
+          echo 'MANIFESTO_PDF_PREFLIGHT=PASS files=6'
+      - name: Upload manifesto QA artifacts
+        uses: actions/upload-artifact@v4
+        with:
+          name: manifesto-public-formats
+          if-no-files-found: error
+          retention-days: 7
+          path: |
+            manifestos/archive/metacademy-continuity/**/*_PUBLIC.pdf
+            manifestos/archive/metacademy-continuity/**/*_PUBLIC.epub
+            manifestos/archive/metacademy-continuity/**/*_PUBLIC.docx
+            documents/017-human-ai-what-or-we/*_PUBLIC.pdf
+            documents/017-human-ai-what-or-we/*_PUBLIC.epub
+            documents/017-human-ai-what-or-we/*_PUBLIC.docx
+            publications/PUBLICATION_BUILD_RECEIPT_017_v1.0.json
