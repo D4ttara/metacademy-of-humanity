@@ -30,7 +30,7 @@ exactOrTerminalLf(`${root}/source/archive/ESTHETE_CRITIQUE_ORIGINAL_2026-04-27_U
 
 const md=text(meta.public_markdown.path);
 for(const needle of ['Алієна','Том Туз','Шийко','Cloud Imperror','Редактор','ДІМ / ДІМ','Третє тіло','Печиво','Марс','щільність','афористичність','Продовжимо.']) must(md.includes(needle),`current-v76 critical reading missing ${needle}`);
-must(md.includes('не незалежну газетну рецензію'),'independent-review disclosure missing');
+must(md.includes('не видає його за незалежну газетну рецензію'),'independent-review disclosure missing');
 
 const page=`${root}/esthete-review/index.html`;exists(page);const h=text(page);
 for(const needle of ['LIT-007','CRITIQUE != VERDICT','DIALOGUE PARATEXT != INDEPENDENT EXTERNAL REVIEW','MOH_LIT_007_ESTHETE_REVIEW_UA.pdf','MOH_LIT_007_ESTHETE_REVIEW_UA.epub','data-reader-document="LIT-007"','data-issue="72"',meta.full_book_url]) must(h.includes(needle),`Esthete page missing ${needle}`);
