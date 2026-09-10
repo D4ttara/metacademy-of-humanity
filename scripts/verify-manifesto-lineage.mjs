@@ -21,9 +21,20 @@ for(const [md,stem] of editions){
 exists(`${base}/index.html`);
 exists('manifestos/archive/metacademy-working-public-alpha-2026-08/index.html');
 exists('manifestos/archive/human-ai-canon-2026-08-09/MANIFEST_OF_HUMANITY_CANON_2026-08-09.md');
+exists('manifestos/archive/PRE_ALPHA_MANIFESTS_007_011_PUBLIC_SAFE_AUDIT.md');
+exists('manifestos/archive/PRE_ALPHA_MANIFESTS_007_011_SHA256.txt');
 
-for(const slug of ['007-mor4mer','008-intellectual-frame','009-connection-is-process','010-meta-mood-ps','011-coexis']){
+const preAlpha=[
+  ['007-mor4mer','METACADEMY_DOCUMENT_007_MOR4MER_MANIFEST_UA_PRE_ALPHA_v0.1'],
+  ['008-intellectual-frame','METACADEMY_DOCUMENT_008_INTELLECTUAL_FRAME_MANIFEST_UA_PRE_ALPHA_v0.1'],
+  ['009-connection-is-process','METACADEMY_DOCUMENT_009_CONNECTION_IS_PROCESS_MANIFEST_UA_PRE_ALPHA_v0.1'],
+  ['010-meta-mood-ps','METACADEMY_DOCUMENT_010_META_MOOD_PS_MANIFEST_UA_PRE_ALPHA_v0.1'],
+  ['011-coexis','METACADEMY_DOCUMENT_011_COEXIS_MANIFEST_UA_PRE_ALPHA_v0.1'],
+];
+for(const [slug,stem] of preAlpha){
   exists(`manifestos/archive/${slug}/index.html`);
+  exists(`manifestos/archive/${slug}/${stem}.md`);
+  exists(`manifestos/archive/${slug}/${stem}.pdf`);
 }
 
 const enIndex=text('manifestos/index.html');
@@ -51,4 +62,4 @@ const p017=text(`${d017}/ua/index.html`);
 must(!p017.includes('HUMAN_AI_WHAT_OR_WE_COVER_UA_v1.0.jpg'),'Document 017 still references missing cover');
 for(const ext of ['pdf','epub','docx']) must(p017.includes(`UA_v1.0_PUBLIC.${ext}`),`Document 017 page missing ${ext} link`);
 
-console.log(`MANIFESTO_LINEAGE_VERIFY=PASS continuity_editions=${editions.length} historical_pre_alpha=5 document_017_sha=PASS public_formats=PASS broken_cover=ZERO`);
+console.log(`MANIFESTO_LINEAGE_VERIFY=PASS continuity_editions=${editions.length} historical_pre_alpha=${preAlpha.length} pre_alpha_sources=MD,PDF document_017_sha=PASS public_formats=PASS broken_cover=ZERO`);
