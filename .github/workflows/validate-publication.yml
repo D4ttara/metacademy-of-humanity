@@ -17,6 +17,8 @@ on:
       - 'questions/**'
       - 'memory/**'
       - 'identity/**'
+      - 'manifesto/**'
+      - 'manifestos/**'
       - 'index.html'
       - 'uk/**'
       - 'topics/**'
@@ -48,6 +50,8 @@ jobs:
         run: bash scripts/assemble-document-015-source.sh
       - name: Assemble Document 016 canonical Markdown
         run: bash scripts/assemble-document-016-source.sh
+      - name: Assemble Document 017 canonical Markdown
+        run: bash scripts/assemble-document-017-source.sh
       - name: Finish Ukrainian language polish for Document 015
         run: node scripts/polish-document-015-ua-final.mjs
       - name: Finish English adaptation for Document 015
@@ -60,6 +64,8 @@ jobs:
         run: node scripts/inject-document-015-registry.mjs
       - name: Inject Document 016 registry entry
         run: node scripts/inject-document-016-registry.mjs
+      - name: Inject Document 017 registry entry
+        run: node scripts/inject-document-017-registry.mjs
       - name: Build and preflight Research Essay PDFs
         run: bash scripts/build-public-article-pdfs.sh
       - name: Build and preflight Documents 010-012
@@ -72,6 +78,10 @@ jobs:
         run: bash scripts/build-public-article-pdfs-015.sh
       - name: Build and preflight Document 016
         run: bash scripts/build-public-article-pdfs-016.sh
+      - name: Build manifesto lineage public formats
+        run: bash scripts/build-manifesto-formats.sh
+      - name: Build Document 017 public formats
+        run: bash scripts/build-document-017-public-formats.sh
       - name: Render canonical article bodies into static HTML
         run: bash scripts/render-public-article-html.sh
       - name: Render Document 013 canonical bodies into static HTML
@@ -100,6 +110,10 @@ jobs:
         run: node scripts/inject-document-016-publication.mjs
       - name: Inject Document 016 into sitemap, llms and RSS
         run: node scripts/inject-document-016-machine-discovery.mjs
+      - name: Inject Document 017 into public discovery surfaces
+        run: node scripts/inject-document-017-publication.mjs
+      - name: Inject Document 017 and manifesto lineage into sitemap, llms and RSS
+        run: node scripts/inject-document-017-machine-discovery.mjs
       - name: Inject reader questions and public comment threads
         run: node scripts/inject-reader-response-all.mjs
       - name: Inject reader questions into Documents 003, 004 and 006
@@ -110,6 +124,8 @@ jobs:
         run: node scripts/promote-document-016-newspaper.mjs
       - name: Re-inject Document 016 after newspaper front page build
         run: node scripts/inject-document-016-publication.mjs
+      - name: Re-inject Document 017 after newspaper front page build
+        run: node scripts/inject-document-017-publication.mjs
       - name: Build search and AI topic taxonomy
         run: node scripts/build-search-taxonomy.mjs
       - name: Fix generated topic index navigation
@@ -140,6 +156,10 @@ jobs:
         run: bash scripts/inject-legal-footer.sh
       - name: Enrich discovery metadata and RSS autodiscovery
         run: node scripts/enrich-discovery-meta.mjs
+      - name: Prepare manifesto and Document 017 public surfaces
+        run: node scripts/prepare-manifesto-public-surfaces.mjs
+      - name: Verify manifesto lineage and Document 017 formats
+        run: node scripts/verify-manifesto-lineage.mjs
       - name: Verify public site
         run: node scripts/verify-public-site.mjs
       - name: Verify discovery, static links and zero-account sharing
@@ -197,6 +217,14 @@ jobs:
             documents/015-polytypic-thinking/*.md
             documents/016-right-to-a-first-chance/*.pdf
             documents/016-right-to-a-first-chance/*.md
+            documents/017-human-ai-what-or-we/*_PUBLIC.pdf
+            documents/017-human-ai-what-or-we/*_PUBLIC.epub
+            documents/017-human-ai-what-or-we/*_PUBLIC.docx
+            documents/017-human-ai-what-or-we/*.md
+            manifestos/archive/metacademy-continuity/**/*_PUBLIC.pdf
+            manifestos/archive/metacademy-continuity/**/*_PUBLIC.epub
+            manifestos/archive/metacademy-continuity/**/*_PUBLIC.docx
+            manifestos/archive/metacademy-continuity/**/*.md
             publications/*.json
             publications/PUBLICATION_REGISTRY.yml
             discovery/**
