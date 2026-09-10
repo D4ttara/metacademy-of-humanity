@@ -1,0 +1,45 @@
+{
+  "schema": "metacademy-literary-paratext/v1",
+  "id": "LIT-000",
+  "status": "publication-candidate",
+  "publication_date": "2026-09-10",
+  "language": "uk",
+  "class": "Satirical Literary Criticism / Paratext",
+  "title": "Скуф проти майбутнього",
+  "subtitle": "Інверсна критика «Згадок про Людство» перед читанням Книги I",
+  "series": "Згадки про Людство",
+  "book": "Алекс Штольман і Скрижалі Реваншу",
+  "book_edition_context": "UA v76",
+  "author": "Ievgen Karogod / Dattara",
+  "route": "/uk/books/memories-of-humanity/book-1/free-reading/skuf-review/",
+  "public_markdown": {
+    "path": "uk/books/memories-of-humanity/book-1/free-reading/source/MOH_LIT_000_SKUF_REVIEW_UA.md",
+    "sha256": "a4527a4069defba258cbdc47b704d677d8ea32fe24c92a986787ec479f29e476"
+  },
+  "source_origin": {
+    "drive_title": "ШІ-захоплення-світу.md",
+    "drive_id": "1MieyTJq4jmpnuTBt49J2H1h-d5jc6DH0",
+    "archive_dialog_date": "2026-04-27",
+    "skuf_original_language": "ru",
+    "skuf_original_sha256": "9dbcf740004ff460c3cb7048c208c1d8180812ede6c2add2fd8b17b3a09a226a",
+    "esthete_companion_language": "uk",
+    "esthete_original_sha256": "dd85ed54ebba630121f2f5765f940cda036d454cb7dd8aa3c361e8765463cd91"
+  },
+  "editorial_transform": [
+    "Ukrainian literary adaptation of the archived Skuf response",
+    "Repetitions compressed and rhythm tightened",
+    "Satirical mechanism expanded in selected passages",
+    "No claim that Skuf represents an age, sex or demographic group",
+    "Short Esthete counter-reading derived from the adjacent archived positive review"
+  ],
+  "boundaries": [
+    "SATIRE != DEMOGRAPHIC CLAIM",
+    "FICTION != RESEARCH EVIDENCE",
+    "ADAPTED PARATEXT != SOURCE WITNESS",
+    "FREE ACCESS != COPYRIGHT WAIVER"
+  ],
+  "discussion_issue": 71,
+  "full_book_url": "https://payhip.com/b/9GnpH",
+  "support_url": "/support/",
+  "translation_policy": "Ukrainian publication only until the approved official literary translation exists."
+}
