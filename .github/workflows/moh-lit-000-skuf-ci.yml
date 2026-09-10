@@ -1,0 +1,35 @@
+name: MoH LIT-000 Skuf paratext CI
+
+on:
+  pull_request:
+    branches: [main, publish-document-017-human-ai]
+    paths:
+      - 'uk/books/memories-of-humanity/**'
+      - 'uk/books/index.html'
+      - 'publications/MOH_LIT_000_SKUF_REVIEW_UA.json'
+      - 'publications/MOH_FREE_READING_UA_v76.json'
+      - 'scripts/build-moh-v76-free-reading-ua.mjs'
+      - 'scripts/enhance-moh-free-reading-paratexts.mjs'
+      - 'scripts/verify-moh-lit-000-skuf.mjs'
+      - '.github/workflows/moh-lit-000-skuf-ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Syntax check literary publication scripts
+        run: |
+          node --check scripts/build-moh-v76-free-reading-ua.mjs
+          node --check scripts/enhance-moh-free-reading-paratexts.mjs
+          node --check scripts/verify-moh-lit-000-skuf.mjs
+      - name: Build Book I Ukrainian free-reading web surfaces
+        run: node scripts/build-moh-v76-free-reading-ua.mjs
+      - name: Add Skuf preface and shared Esthete outro
+        run: node scripts/enhance-moh-free-reading-paratexts.mjs
+      - name: Verify LIT-000 provenance and all six outros
+        run: node scripts/verify-moh-lit-000-skuf.mjs
