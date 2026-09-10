@@ -1,0 +1,48 @@
+name: Manifesto lineage CI
+
+on:
+  pull_request:
+    branches: [main]
+    paths:
+      - 'manifesto/**'
+      - 'manifestos/**'
+      - 'uk/manifestos/**'
+      - 'documents/017-human-ai-what-or-we/**'
+      - 'scripts/assemble-document-017-source.sh'
+      - 'scripts/build-document-017-public-formats.sh'
+      - 'scripts/build-manifesto-formats.sh'
+      - 'scripts/prepare-manifesto-public-surfaces.mjs'
+      - 'scripts/verify-manifesto-lineage.mjs'
+      - '.github/workflows/manifesto-ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install publication toolchain
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends pandoc texlive-xetex texlive-latex-extra texlive-fonts-extra texlive-fonts-recommended poppler-utils
+      - name: Assemble Document 017 canonical Markdown
+        run: bash scripts/assemble-document-017-source.sh
+      - name: Build manifesto lineage public formats
+        run: bash scripts/build-manifesto-formats.sh
+      - name: Build Document 017 public formats
+        run: bash scripts/build-document-017-public-formats.sh
+      - name: Prepare public HTML surfaces
+        run: node scripts/prepare-manifesto-public-surfaces.mjs
+      - name: Verify manifesto lineage
+        run: node scripts/verify-manifesto-lineage.mjs
+      - name: PDF preflight
+        run: |
+          for f in manifestos/archive/metacademy-continuity/v1.*/**/*_PUBLIC.pdf documents/017-human-ai-what-or-we/*_PUBLIC.pdf; do
+            test -s "$f"
+            pdfinfo "$f" >/dev/null
+            pdffonts "$f" | grep -q 'IBMPlexSans'
+          done
+          echo 'MANIFESTO_PDF_PREFLIGHT=PASS'
