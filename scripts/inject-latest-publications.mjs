@@ -37,3 +37,5 @@ for (const job of jobs) {
   changed += 1;
 }
 console.log(`LATEST_PUBLICATIONS_INJECT=PASS changed=${changed} homes=EN_UKR updates=EN_UKR docs=010_011_012`);
+
+await import('./enhance-moh-free-reading-paratexts.mjs');
