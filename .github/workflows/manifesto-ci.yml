@@ -34,7 +34,7 @@ jobs:
       - name: Install publication toolchain
         run: |
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends pandoc texlive-xetex texlive-latex-extra texlive-fonts-extra texlive-fonts-recommended poppler-utils
+          sudo apt-get install -y --no-install-recommends pandoc texlive-xetex texlive-latex-extra texlive-fonts-extra texlive-fonts-recommended lmodern poppler-utils
       - name: Assemble Document 017 canonical Markdown
         run: bash scripts/assemble-document-017-source.sh
       - name: Build manifesto lineage public formats
