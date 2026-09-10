@@ -10,8 +10,10 @@ on:
       - 'uk/index.html'
       - 'assets/css/literary-reading.css'
       - 'publications/MOH_FREE_READING_UA_v76.json'
+      - 'publications/MOH_LIT_000_SKUF_REVIEW_UA.json'
       - 'scripts/build-moh-v76-free-reading-ua.mjs'
       - 'scripts/build-moh-v76-free-reading-formats.sh'
+      - 'scripts/build-moh-lit-000-skuf-formats.sh'
       - 'scripts/verify-moh-v76-free-reading-ua.mjs'
       - '.github/workflows/moh-free-reading-ci.yml'
       - '.github/workflows/pages.yml'
@@ -35,6 +37,7 @@ jobs:
           node --check scripts/build-moh-v76-free-reading-ua.mjs
           node --check scripts/verify-moh-v76-free-reading-ua.mjs
           bash -n scripts/build-moh-v76-free-reading-formats.sh
+          bash -n scripts/build-moh-lit-000-skuf-formats.sh
       - name: Verify exact sources and build Ukrainian web surfaces
         run: node scripts/build-moh-v76-free-reading-ua.mjs
       - name: Check six generated readers and eight public routes including LIT-000
@@ -56,6 +59,7 @@ jobs:
             uk/books/memories-of-humanity/book-1/free-reading/**/*.html
             uk/books/memories-of-humanity/book-1/free-reading/readers/*.md
             publications/MOH_FREE_READING_UA_v76*.json
+            publications/MOH_LIT_000_SKUF_REVIEW_UA.json
 
   formats:
     needs: source
@@ -70,19 +74,22 @@ jobs:
         run: node scripts/build-moh-v76-free-reading-ua.mjs
       - name: Build six PDF and EPUB reading editions
         run: bash scripts/build-moh-v76-free-reading-formats.sh
+      - name: Build LIT-000 Skuf PDF and EPUB editions
+        run: bash scripts/build-moh-lit-000-skuf-formats.sh
       - name: Verify source provenance and public routes
         run: node scripts/verify-moh-v76-free-reading-ua.mjs
       - name: PDF preflight
         shell: bash
         run: |
           mapfile -t files < <(find uk/books/memories-of-humanity/book-1/free-reading/formats -type f -name '*.pdf' -print | sort)
-          [[ "${#files[@]}" -eq 6 ]] || { printf 'Expected 6 PDFs, got %s\n' "${#files[@]}"; exit 1; }
+          [[ "${#files[@]}" -eq 7 ]] || { printf 'Expected 7 PDFs (LIT-000 + six free-reading units), got %s\n' "${#files[@]}"; exit 1; }
           for f in "${files[@]}"; do
             pdfinfo "$f" >/dev/null
             pdffonts "$f" | grep -q 'IBMPlexSans'
-            pdftotext "$f" - | grep -Fqi 'Згадки про Людство'
           done
-          echo 'MOH_FREE_READING_PDF_PREFLIGHT=PASS files=6'
+          pdftotext uk/books/memories-of-humanity/book-1/free-reading/formats/MOH_LIT_000_SKUF_REVIEW_UA.pdf - | grep -Fqi 'Скуф проти майбутнього'
+          for f in uk/books/memories-of-humanity/book-1/free-reading/formats/MOH_FREE_READING_UA_v76_LIT-*.pdf; do pdftotext "$f" - | grep -Fqi 'Згадки про Людство'; done
+          echo 'MOH_FREE_READING_PDF_PREFLIGHT=PASS files=7 skuf=1 book_units=6'
       - name: Upload literary QA package
         uses: actions/upload-artifact@v4
         with:
@@ -92,6 +99,7 @@ jobs:
           path: |
             uk/books/memories-of-humanity/book-1/free-reading/**
             publications/MOH_FREE_READING_UA_v76*.json
+            publications/MOH_LIT_000_SKUF_REVIEW_UA*.json
             sitemap.xml
             llms.txt
             feed.xml
