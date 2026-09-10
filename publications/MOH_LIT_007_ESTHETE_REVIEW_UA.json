@@ -10,6 +10,8 @@
   "series": "Згадки про Людство",
   "book": "Алекс Штольман і Скрижалі Реваншу",
   "book_edition_context": "UA v76",
+  "sequence": "LIT-000 opening + LIT-001..006 book units + LIT-007 closing",
+  "preceding_publication_count": 7,
   "book_source": {
     "drive_title": "MoH-I-UA-v76.md",
     "drive_id": "1K8vZ3i8IkM8RF2uEU5IZozEjJOtFA-DX",
