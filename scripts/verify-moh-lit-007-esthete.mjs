@@ -19,6 +19,8 @@ const exactOrTerminalLf=(path,expected,label)=>{
 must(meta.id==='LIT-007','wrong LIT id');
 must(meta.language==='uk','LIT-007 must remain Ukrainian only');
 must(meta.class==='Literary Criticism / Closing Paratext','wrong publication class');
+must(meta.preceding_publication_count===7,'LIT-007 must close the seven preceding LIT publications');
+must(meta.sequence==='LIT-000 opening + LIT-001..006 book units + LIT-007 closing','literary sequence changed');
 for(const b of ['CRITIQUE != VERDICT','DIALOGUE PARATEXT != INDEPENDENT EXTERNAL REVIEW','ADAPTED PARATEXT != SOURCE WITNESS','FICTION != RESEARCH EVIDENCE']) must(meta.boundaries.includes(b),`missing boundary ${b}`);
 must(meta.discussion_issue===72,'reader issue must be 72');
 must(meta.book_source.sha256==='5331cc387ad6500f8a6491d0a9798d6ef6f091e41e825b5b64289afeaac1d4c9','wrong Book I v76 master receipt');
@@ -52,4 +54,4 @@ for(const slug of ['prologue','chapter-1','chapter-2','chapter-3','afterlude','i
 const url='https://d4ttara.github.io/metacademy-of-humanity/uk/books/memories-of-humanity/book-1/free-reading/esthete-review/';
 for(const p of ['sitemap.xml','llms.txt','feed.xml']){exists(p);must(text(p).includes(url),`${p}: Esthete discovery route missing`);}
 
-console.log('MOH_LIT_007_VERIFY=PASS master=v76 archive=EXPLICIT expanded=YES countercritique=YES issue=72 frame=LIT-000..007 english=ZERO');
+console.log('MOH_LIT_007_VERIFY=PASS master=v76 archive=EXPLICIT expanded=YES countercritique=YES preceding=7 issue=72 frame=LIT-000..007 english=ZERO');
