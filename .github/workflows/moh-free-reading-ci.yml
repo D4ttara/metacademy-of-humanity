@@ -11,10 +11,15 @@ on:
       - 'assets/css/literary-reading.css'
       - 'publications/MOH_FREE_READING_UA_v76.json'
       - 'publications/MOH_LIT_000_SKUF_REVIEW_UA.json'
+      - 'publications/MOH_LIT_007_ESTHETE_REVIEW_UA.json'
       - 'scripts/build-moh-v76-free-reading-ua.mjs'
+      - 'scripts/enhance-moh-free-reading-paratexts.mjs'
       - 'scripts/build-moh-v76-free-reading-formats.sh'
       - 'scripts/build-moh-lit-000-skuf-formats.sh'
+      - 'scripts/build-moh-lit-007-esthete-formats.sh'
       - 'scripts/verify-moh-v76-free-reading-ua.mjs'
+      - 'scripts/verify-moh-lit-000-skuf.mjs'
+      - 'scripts/verify-moh-lit-007-esthete.mjs'
       - '.github/workflows/moh-free-reading-ci.yml'
       - '.github/workflows/pages.yml'
       - '.github/workflows/validate-publication.yml'
@@ -35,20 +40,32 @@ jobs:
       - name: Syntax check publication scripts
         run: |
           node --check scripts/build-moh-v76-free-reading-ua.mjs
+          node --check scripts/enhance-moh-free-reading-paratexts.mjs
           node --check scripts/verify-moh-v76-free-reading-ua.mjs
+          node --check scripts/verify-moh-lit-000-skuf.mjs
+          node --check scripts/verify-moh-lit-007-esthete.mjs
           bash -n scripts/build-moh-v76-free-reading-formats.sh
           bash -n scripts/build-moh-lit-000-skuf-formats.sh
-      - name: Verify exact sources and build Ukrainian web surfaces
-        run: node scripts/build-moh-v76-free-reading-ua.mjs
-      - name: Check six generated readers and eight public routes including LIT-000
+          bash -n scripts/build-moh-lit-007-esthete-formats.sh
+      - name: Build Ukrainian literary web surfaces
+        run: |
+          node scripts/build-moh-v76-free-reading-ua.mjs
+          node scripts/enhance-moh-free-reading-paratexts.mjs
+      - name: Check six book readers and nine public routes through LIT-007
         shell: bash
         run: |
           test "$(find uk/books/memories-of-humanity/book-1/free-reading/readers -type f -name 'LIT-*.md' | wc -l)" -eq 6
-          test "$(find uk/books/memories-of-humanity/book-1/free-reading -mindepth 2 -maxdepth 2 -type f -name index.html | wc -l)" -eq 7
+          test "$(find uk/books/memories-of-humanity/book-1/free-reading -mindepth 2 -maxdepth 2 -type f -name index.html | wc -l)" -eq 8
           test -s uk/books/memories-of-humanity/book-1/free-reading/index.html
           grep -Fq 'FICTION != RESEARCH EVIDENCE' uk/books/memories-of-humanity/book-1/free-reading/index.html
+          grep -Fq 'data-skuf-preface="LIT-000"' uk/books/memories-of-humanity/book-1/free-reading/index.html
+          grep -Fq 'data-esthete-closing="LIT-007"' uk/books/memories-of-humanity/book-1/free-reading/index.html
           ! grep -R -Fq 'hreflang="en"' uk/books/memories-of-humanity/book-1/free-reading
-          echo 'MOH_FREE_READING_SOURCE_QA=PASS sources=6 routes=8 including=LIT-000 english=ZERO'
+          echo 'MOH_FREE_READING_SOURCE_QA=PASS book_sources=6 public_routes=9 frame=LIT-000..007 english=ZERO'
+      - name: Verify both critical bookends
+        run: |
+          node scripts/verify-moh-lit-000-skuf.mjs
+          node scripts/verify-moh-lit-007-esthete.mjs
       - name: Upload fast web-surface QA
         uses: actions/upload-artifact@v4
         with:
@@ -60,6 +77,7 @@ jobs:
             uk/books/memories-of-humanity/book-1/free-reading/readers/*.md
             publications/MOH_FREE_READING_UA_v76*.json
             publications/MOH_LIT_000_SKUF_REVIEW_UA.json
+            publications/MOH_LIT_007_ESTHETE_REVIEW_UA.json
 
   formats:
     needs: source
@@ -71,25 +89,33 @@ jobs:
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends pandoc texlive-xetex texlive-latex-extra texlive-fonts-extra texlive-fonts-recommended lmodern poppler-utils
       - name: Rebuild Ukrainian literary publication surfaces
-        run: node scripts/build-moh-v76-free-reading-ua.mjs
-      - name: Build six PDF and EPUB reading editions
+        run: |
+          node scripts/build-moh-v76-free-reading-ua.mjs
+          node scripts/enhance-moh-free-reading-paratexts.mjs
+      - name: Build six PDF and EPUB book-reading editions
         run: bash scripts/build-moh-v76-free-reading-formats.sh
       - name: Build LIT-000 Skuf PDF and EPUB editions
         run: bash scripts/build-moh-lit-000-skuf-formats.sh
+      - name: Build LIT-007 Esthete PDF and EPUB editions
+        run: bash scripts/build-moh-lit-007-esthete-formats.sh
       - name: Verify source provenance and public routes
-        run: node scripts/verify-moh-v76-free-reading-ua.mjs
+        run: |
+          node scripts/verify-moh-v76-free-reading-ua.mjs
+          node scripts/verify-moh-lit-000-skuf.mjs
+          node scripts/verify-moh-lit-007-esthete.mjs
       - name: PDF preflight
         shell: bash
         run: |
           mapfile -t files < <(find uk/books/memories-of-humanity/book-1/free-reading/formats -type f -name '*.pdf' -print | sort)
-          [[ "${#files[@]}" -eq 7 ]] || { printf 'Expected 7 PDFs (LIT-000 + six free-reading units), got %s\n' "${#files[@]}"; exit 1; }
+          [[ "${#files[@]}" -eq 8 ]] || { printf 'Expected 8 PDFs (Skuf + six book units + Esthete), got %s\n' "${#files[@]}"; exit 1; }
           for f in "${files[@]}"; do
             pdfinfo "$f" >/dev/null
             pdffonts "$f" | grep -q 'IBMPlexSans'
           done
           pdftotext uk/books/memories-of-humanity/book-1/free-reading/formats/MOH_LIT_000_SKUF_REVIEW_UA.pdf - | grep -Fqi 'Скуф проти майбутнього'
+          pdftotext uk/books/memories-of-humanity/book-1/free-reading/formats/MOH_LIT_007_ESTHETE_REVIEW_UA.pdf - | grep -Fqi 'Естет після фіналу'
           for f in uk/books/memories-of-humanity/book-1/free-reading/formats/MOH_FREE_READING_UA_v76_LIT-*.pdf; do pdftotext "$f" - | grep -Fqi 'Згадки про Людство'; done
-          echo 'MOH_FREE_READING_PDF_PREFLIGHT=PASS files=7 skuf=1 book_units=6'
+          echo 'MOH_FREE_READING_PDF_PREFLIGHT=PASS files=8 skuf=1 book_units=6 esthete=1'
       - name: Upload literary QA package
         uses: actions/upload-artifact@v4
         with:
@@ -100,6 +126,7 @@ jobs:
             uk/books/memories-of-humanity/book-1/free-reading/**
             publications/MOH_FREE_READING_UA_v76*.json
             publications/MOH_LIT_000_SKUF_REVIEW_UA*.json
+            publications/MOH_LIT_007_ESTHETE_REVIEW_UA*.json
             sitemap.xml
             llms.txt
             feed.xml
