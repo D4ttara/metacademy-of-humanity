@@ -1,0 +1,27 @@
+import { readFileSync, writeFileSync } from 'node:fs';
+const base='https://d4ttara.github.io/metacademy-of-humanity/';
+const ua=`${base}documents/017-human-ai-what-or-we/ua/`;
+const manifestUa=`${base}manifesto/`, manifestEn=`${base}manifesto/en/`, manifestIndex=`${base}manifestos/`, archive=`${base}manifestos/archive/`, lineage=`${base}manifestos/archive/metacademy-continuity/`;
+const lastmod='2026-09-10';
+{
+ const path='sitemap.xml'; let s=readFileSync(path,'utf8'); const a='</urlset>'; if(!s.includes(a)) throw new Error('sitemap closing tag missing');
+ const urls=[ua,manifestUa,manifestEn,manifestIndex,archive,lineage].filter(u=>!s.includes(`<loc>${u}</loc>`));
+ if(urls.length){s=s.replace(a,urls.map(u=>`  <url><loc>${u}</loc><lastmod>${lastmod}</lastmod></url>`).join('\n')+'\n'+a);writeFileSync(path,s,'utf8');}
+}
+{
+ const path='llms.txt'; let s=readFileSync(path,'utf8'); if(!s.includes('Document 017 · Human and AI: What or We?')){const a='## Current public documents\n'; if(!s.includes(a)) throw new Error('llms documents anchor missing'); const b=[
+ '- Document 017 · Human and AI: What or We? · UA HTML: '+ua,
+ '- Document 017 · Canonical UA Markdown: '+base+'documents/017-human-ai-what-or-we/METACADEMY_DOCUMENT_017_HUMAN_AI_WHAT_OR_WE_UA_v1.0.md',
+ '- Document 017 · Public UA PDF: '+base+'documents/017-human-ai-what-or-we/METACADEMY_DOCUMENT_017_HUMAN_AI_WHAT_OR_WE_UA_v1.0_PUBLIC.pdf',
+ '- Document 017 · Public UA EPUB: '+base+'documents/017-human-ai-what-or-we/METACADEMY_DOCUMENT_017_HUMAN_AI_WHAT_OR_WE_UA_v1.0_PUBLIC.epub',
+ '- Document 017 · Reader response: https://github.com/D4ttara/metacademy-of-humanity/issues/61',
+ '- MET[Ȧ]CADEMY Manifest v1.2 · UA: '+manifestUa,
+ '- MET[Ȧ]CADEMY Manifest v1.2 · EN: '+manifestEn,
+ '- Manifesto index and historical lineage: '+manifestIndex,
+ '- Manifesto version lineage v1.0→v1.2: '+lineage,
+ '- Restored historical manifesto shelf: '+archive,''].join('\n'); s=s.replace(a,a+b); writeFileSync(path,s,'utf8');}
+}
+{
+ const path='feed.xml'; let s=readFileSync(path,'utf8'); if(!s.includes(ua)){const a='    <item>'; if(!s.includes(a)) throw new Error('RSS item anchor missing'); const item=`    <item>\n      <title>Human and AI: What or We? · Document 017</title>\n      <link>${ua}</link>\n      <guid isPermaLink="true">${ua}</guid>\n      <pubDate>Thu, 10 Sep 2026 18:30:00 GMT</pubDate>\n      <description>A coexistence manifesto and research essay on ethics before a final answer about AI moral status, published with a restored manifesto lineage.</description>\n    </item>\n`; s=s.replace(a,item+a); writeFileSync(path,s,'utf8');}
+}
+console.log('DOCUMENT_017_MACHINE_DISCOVERY_INJECT=PASS sitemap=DOC017+MANIFEST_LINEAGE llms=HTML_MD_PDF_EPUB_DISCUSSION rss=PASS');
