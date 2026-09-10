@@ -27,7 +27,7 @@ while IFS=$'\t' read -r id kind title expected; do
   test -s "$reader"
   tmpmd="$TMP/${id}.md"
   cat "$reader" > "$tmpmd"
-  cat >> "$tmpmd" <<EOF
+  cat >> "$tmpmd" <<'EOF'
 
 ---
 
