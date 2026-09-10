@@ -32,6 +32,8 @@ jobs:
         run: bash scripts/assemble-document-015-source.sh
       - name: Assemble Document 016 canonical Markdown
         run: bash scripts/assemble-document-016-source.sh
+      - name: Assemble Document 017 canonical Markdown
+        run: bash scripts/assemble-document-017-source.sh
       - name: Finish Ukrainian language polish for Document 015
         run: node scripts/polish-document-015-ua-final.mjs
       - name: Finish English adaptation for Document 015
@@ -44,6 +46,8 @@ jobs:
         run: node scripts/inject-document-015-registry.mjs
       - name: Inject Document 016 registry entry
         run: node scripts/inject-document-016-registry.mjs
+      - name: Inject Document 017 registry entry
+        run: node scripts/inject-document-017-registry.mjs
       - name: Build and preflight research essay PDFs
         run: bash scripts/build-public-article-pdfs.sh
       - name: Build and preflight Documents 010-012
@@ -56,6 +60,10 @@ jobs:
         run: bash scripts/build-public-article-pdfs-015.sh
       - name: Build and preflight Document 016
         run: bash scripts/build-public-article-pdfs-016.sh
+      - name: Build public formats for manifesto lineage
+        run: bash scripts/build-manifesto-formats.sh
+      - name: Build public formats for Document 017
+        run: bash scripts/build-document-017-public-formats.sh
       - name: Render canonical article bodies into static HTML
         run: bash scripts/render-public-article-html.sh
       - name: Render Document 013 canonical bodies into static HTML
@@ -124,6 +132,10 @@ jobs:
         run: bash scripts/inject-legal-footer.sh
       - name: Enrich discovery metadata and RSS autodiscovery
         run: node scripts/enrich-discovery-meta.mjs
+      - name: Prepare manifesto and Document 017 public surfaces
+        run: node scripts/prepare-manifesto-public-surfaces.mjs
+      - name: Verify manifesto lineage and Document 017 formats
+        run: node scripts/verify-manifesto-lineage.mjs
       - name: Verify public site
         run: node scripts/verify-public-site.mjs
       - name: Verify discovery, static links and zero-account sharing
