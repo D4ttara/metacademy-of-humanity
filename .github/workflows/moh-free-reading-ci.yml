@@ -21,8 +21,44 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: moh-v76-free-reading-${{ github.event.pull_request.number || github.ref }}
+  cancel-in-progress: true
+
 jobs:
-  verify:
+  source:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Syntax check publication scripts
+        run: |
+          node --check scripts/build-moh-v76-free-reading-ua.mjs
+          node --check scripts/verify-moh-v76-free-reading-ua.mjs
+          bash -n scripts/build-moh-v76-free-reading-formats.sh
+      - name: Verify exact sources and build Ukrainian web surfaces
+        run: node scripts/build-moh-v76-free-reading-ua.mjs
+      - name: Check six generated readers and seven public routes
+        shell: bash
+        run: |
+          test "$(find uk/books/memories-of-humanity/book-1/free-reading/readers -type f -name 'LIT-*.md' | wc -l)" -eq 6
+          test "$(find uk/books/memories-of-humanity/book-1/free-reading -mindepth 2 -maxdepth 2 -type f -name index.html | wc -l)" -eq 6
+          test -s uk/books/memories-of-humanity/book-1/free-reading/index.html
+          grep -Fq 'FICTION != RESEARCH EVIDENCE' uk/books/memories-of-humanity/book-1/free-reading/index.html
+          ! grep -R -Fq 'hreflang="en"' uk/books/memories-of-humanity/book-1/free-reading
+          echo 'MOH_FREE_READING_SOURCE_QA=PASS sources=6 routes=7 english=ZERO'
+      - name: Upload fast web-surface QA
+        uses: actions/upload-artifact@v4
+        with:
+          name: moh-v76-free-reading-web-surfaces
+          if-no-files-found: error
+          retention-days: 7
+          path: |
+            uk/books/memories-of-humanity/book-1/free-reading/**/*.html
+            uk/books/memories-of-humanity/book-1/free-reading/readers/*.md
+            publications/MOH_FREE_READING_UA_v76*.json
+
+  formats:
+    needs: source
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
@@ -30,7 +66,7 @@ jobs:
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends pandoc texlive-xetex texlive-latex-extra texlive-fonts-extra texlive-fonts-recommended poppler-utils
-      - name: Build Ukrainian literary publication surfaces
+      - name: Rebuild Ukrainian literary publication surfaces
         run: node scripts/build-moh-v76-free-reading-ua.mjs
       - name: Build six PDF and EPUB reading editions
         run: bash scripts/build-moh-v76-free-reading-formats.sh
