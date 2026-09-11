@@ -15,7 +15,9 @@
   "route": "/uk/books/memories-of-humanity/book-1/free-reading/skuf-review/",
   "public_markdown": {
     "path": "uk/books/memories-of-humanity/book-1/free-reading/source/MOH_LIT_000_SKUF_REVIEW_UA.md",
-    "sha256": "a4527a4069defba258cbdc47b704d677d8ea32fe24c92a986787ec479f29e476"
+    "sha256": "61df910278a5dac118e0276d1f24349af474293d33282719629305435aa9ad89",
+    "previous_public_adaptation_sha256": "a4527a4069defba258cbdc47b704d677d8ea32fe24c92a986787ec479f29e476",
+    "lineage_note": "The previous public Ukrainian adaptation is retained by hash in provenance; the current file was reread and expanded against Book I UA v76 on 2026-09-11. The archived 2026-04-27 source witness remains separate and unchanged."
   },
   "v76_canon_reread": {
     "path": "uk/books/memories-of-humanity/book-1/free-reading/source/MOH_LIT_000_SKUF_V76_ADDENDUM_UA.md",
@@ -23,8 +25,8 @@
     "source_master_title": "MoH-I-UA-v76.md",
     "source_master_drive_id": "1K8vZ3i8IkM8RF2uEU5IZozEjJOtFA-DX",
     "source_master_sha256": "5331cc387ad6500f8a6491d0a9798d6ef6f091e41e825b5b64289afeaac1d4c9",
-    "relationship": "public LIT-000 continuation after full reread of current Book I UA v76; archive witness remains unchanged",
-    "spoiler_boundary": "late-v76 spoilers are explicitly disclosed before the addendum",
+    "relationship": "focused public LIT-000 postscript after full reread of current Book I UA v76; it covers the after-novel ending layer without duplicating v76 grumbling already integrated into the main public adaptation",
+    "spoiler_boundary": "late-v76 spoilers are explicitly disclosed before the postscript",
     "current_canon_anchors": [
       "Алієна",
       "Том Туз",
@@ -49,8 +51,8 @@
     "Ukrainian literary adaptation of the archived Skuf response",
     "Repetitions compressed and rhythm tightened",
     "Satirical mechanism expanded in selected passages",
-    "Current-v76 reread added as a provenance-separated continuation rather than rewriting the archived witness",
-    "Late-v76 grumbling now covers Shiyko, Cloud Imperror, the Editor, the third option, DIM / DIM, MANIFESTs and the Third Body",
+    "Main public adaptation reread and expanded against current Book I UA v76 on 2026-09-11",
+    "Focused spoiler-marked postscript adds the MANIFESTs / Third Body / open-ending layer without duplicating the already-current Shiyko, Cloud Imperror, Editor and Threshold sections",
     "No claim that Skuf represents an age, sex or demographic group",
     "Short Esthete counter-reading derived from the adjacent archived positive review"
   ],
