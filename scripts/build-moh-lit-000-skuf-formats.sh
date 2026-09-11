@@ -8,7 +8,7 @@ ADD="$ROOT/source/MOH_LIT_000_SKUF_V76_ADDENDUM_UA.md"
 OUT="$ROOT/formats"
 PDF="$OUT/MOH_LIT_000_SKUF_REVIEW_UA.pdf"
 EPUB="$OUT/MOH_LIT_000_SKUF_REVIEW_UA.epub"
-EXPECTED="a4527a4069defba258cbdc47b704d677d8ea32fe24c92a986787ec479f29e476"
+EXPECTED="61df910278a5dac118e0276d1f24349af474293d33282719629305435aa9ad89"
 TMP="$(mktemp)"
 trap 'rm -f "$TMP"' EXIT
 mkdir -p "$OUT"
@@ -36,6 +36,7 @@ pdftotext "$PDF" - | grep -Fqi 'Скуф проти майбутнього' || {
 pdftotext "$PDF" - | grep -Fqi 'Скуф дочитав v76' || { echo "LIT_000_V76_ADDENDUM_TEXT=FAIL"; exit 1; }
 pdftotext "$PDF" - | grep -Fqi 'SATIRE != DEMOGRAPHIC CLAIM' || { echo "LIT_000_BOUNDARY_TEXT=FAIL"; exit 1; }
 pdftotext "$PDF" - | grep -Fqi 'Cloud Imperror' || { echo "LIT_000_V76_CANON_TEXT=FAIL"; exit 1; }
+pdftotext "$PDF" - | grep -Fqi 'Третє тіло' || { echo "LIT_000_THIRD_BODY_TEXT=FAIL"; exit 1; }
 
 node - "$SRC" "$ADD" "$PDF" "$EPUB" <<'NODE'
 const fs=require('node:fs'), crypto=require('node:crypto');
