@@ -25,14 +25,14 @@ jobs:
       - name: Install publication PDF toolchain
         run: |
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends pandoc texlive-xetex texlive-latex-extra texlive-fonts-extra texlive-fonts-recommended poppler-utils
+          sudo apt-get install -y --no-install-recommends pandoc texlive-xetex texlive-latex-extra texlive-fonts-extra texlive-fonts-recommended lmodern fonts-ibm-plex poppler-utils
       - name: Assemble Document 014 canonical Markdown
         run: bash scripts/assemble-document-014-source.sh
       - name: Assemble Document 015 canonical Markdown
         run: bash scripts/assemble-document-015-source.sh
       - name: Assemble Document 016 canonical Markdown
         run: bash scripts/assemble-document-016-source.sh
-      - name: Assemble Document 017 canonical Markdown
+      - name: Assemble Document 017 v1.0 provenance witness
         run: bash scripts/assemble-document-017-source.sh
       - name: Finish Ukrainian language polish for Document 015
         run: node scripts/polish-document-015-ua-final.mjs
@@ -62,8 +62,6 @@ jobs:
         run: bash scripts/build-public-article-pdfs-016.sh
       - name: Build public formats for manifesto lineage
         run: bash scripts/build-manifesto-formats.sh
-      - name: Build public formats for Document 017
-        run: bash scripts/build-document-017-public-formats.sh
       - name: Render canonical article bodies into static HTML
         run: bash scripts/render-public-article-html.sh
       - name: Render Document 013 canonical bodies into static HTML
@@ -94,7 +92,7 @@ jobs:
         run: node scripts/inject-document-016-machine-discovery.mjs
       - name: Inject Document 017 into public discovery surfaces
         run: node scripts/inject-document-017-publication.mjs
-      - name: Inject Document 017 and manifesto lineage into sitemap, llms and RSS
+      - name: Inject Document 017 v1.1 and manifesto lineage into sitemap, llms and RSS
         run: node scripts/inject-document-017-machine-discovery.mjs
       - name: Inject reader questions and public comment threads
         run: node scripts/inject-reader-response-all.mjs
@@ -140,7 +138,7 @@ jobs:
         run: node scripts/enrich-discovery-meta.mjs
       - name: Prepare manifesto and Document 017 public surfaces
         run: node scripts/prepare-manifesto-public-surfaces.mjs
-      - name: Verify manifesto lineage and Document 017 formats
+      - name: Verify manifesto lineage and Document 017 v1.1
         run: node scripts/verify-manifesto-lineage.mjs
       - name: Verify public site
         run: node scripts/verify-public-site.mjs
