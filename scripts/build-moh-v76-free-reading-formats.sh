@@ -16,6 +16,12 @@ if ! kpsewhich lmodern.sty >/dev/null 2>&1 && [[ "${CI:-}" == "true" ]] && comma
   sudo apt-get install -y --no-install-recommends lmodern
 fi
 
+# Production Pages rebuilds the six literary pages from source before this script.
+# Reapply the two critical bookends and machine-discovery layer here so CI and production
+# cannot silently diverge into different versions of the publication frame.
+node scripts/enhance-moh-free-reading-paratexts.mjs
+node scripts/enhance-moh-skuf-v76-discovery.mjs
+
 node -e 'const c=require("./publications/MOH_FREE_READING_UA_v76.json"); for(const p of c.pieces) console.log([p.id,p.kind,p.title,p.sha256].join("\t"))' |
 while IFS=$'\t' read -r id kind title expected; do
   src="$ROOT/source/$(node -e 'const c=require("./publications/MOH_FREE_READING_UA_v76.json"); const p=c.pieces.find(x=>x.id===process.argv[1]); process.stdout.write(require("node:path").basename(p.source_path))' "$id")"
