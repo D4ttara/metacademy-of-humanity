@@ -3,7 +3,8 @@ import { createHash } from 'node:crypto';
 
 const must=(cond,msg)=>{ if(!cond) throw new Error(msg); };
 const text=p=>readFileSync(p,'utf8');
-const sha=p=>createHash('sha256').update(readFileSync(p)).digest('hex');
+const bytes=p=>readFileSync(p);
+const sha=p=>createHash('sha256').update(bytes(p)).digest('hex');
 const exists=p=>must(existsSync(p),`missing: ${p}`);
 
 const base='manifestos/archive/metacademy-continuity';
@@ -57,10 +58,34 @@ const md017v10=`${d017}/METACADEMY_DOCUMENT_017_HUMAN_AI_WHAT_OR_WE_UA_v1.0.md`;
 const md017v11=`${d017}/METACADEMY_DOCUMENT_017_HUMAN_AI_WHAT_OR_WE_UA_v1.1.md`;
 exists(md017v10);
 must(sha(md017v10)==='b4fcdd99d5ba3a25bc3e5b94ea8273311ad3dcafd39e96ee6d50d1c903a99fb4','Document 017 v1.0 provenance Markdown SHA mismatch');
+
+// v1.1 has two deliberately distinct provenance layers:
+// 1) exact archival Drive master, preserved by immutable external receipt;
+// 2) valid UTF-8 public reader mirror in the repository / Pages build.
+// Do not claim byte identity unless the two hashes actually match.
+const driveV11={
+  title:'MoH-Human-AI-Manifesto-UA-v1.1.md',
+  id:'1I-pk-dB3ZDVbi7fGbvwwpPTuYqauMZ05',
+  bytes:81562,
+  sha256:'134955a3ec990efd31c307602007fd1a83233722f54ef039992360c90f851be7'
+};
 exists(md017v11);
-const repoV11Sha=sha(md017v11);
-console.log(`DOCUMENT_017_V1_1_REPO_MIRROR_SHA256=${repoV11Sha}`);
-must(repoV11Sha==='134955a3ec990efd31c307602007fd1a83233722f54ef039992360c90f851be7','Document 017 v1.1 Drive Markdown SHA mismatch');
+const repoV11Bytes=bytes(md017v11), repoV11=text(md017v11), repoV11Sha=sha(md017v11);
+console.log(`DOCUMENT_017_V1_1_PROVENANCE archive_drive_id=${driveV11.id} archive_sha256=${driveV11.sha256} archive_bytes=${driveV11.bytes} repo_reader_sha256=${repoV11Sha} repo_reader_bytes=${repoV11Bytes.length} relation=${repoV11Sha===driveV11.sha256?'BYTE_IDENTICAL':'PUBLIC_MIRROR_NOT_ARCHIVE_MASTER'}`);
+must(repoV11Bytes.length>70000,'Document 017 v1.1 public reader mirror is unexpectedly short');
+must(!repoV11.includes('\uFFFD'),'Document 017 v1.1 public reader mirror contains Unicode replacement characters');
+for(const needle of [
+  '# Людина і ШІ: що чи ми?',
+  'редакція 1.1',
+  'тримати змія',
+  'право на перший шанс',
+  'TYPE IS A PROJECTION, NOT AN ESSENCE',
+  'Butlin et al., 2023',
+  'Vaccaro et al., 2024',
+  'M{Y}OGA',
+  'Підтримати автора й Академію'
+]) must(repoV11.includes(needle),`Document 017 v1.1 public reader mirror missing anchor: ${needle}`);
+
 const p017=text(`${d017}/ua/index.html`);
 must(p017.includes('METACADEMY-DOC-017-UA-v1.1'),'Document 017 page missing v1.1 citation ID');
 must(p017.includes('UA_v1.1.md'),'Document 017 page missing v1.1 Markdown link');
@@ -69,4 +94,4 @@ must(!p017.includes('UA_v1.0_PUBLIC.epub'),'Document 017 page must not advertise
 must(!p017.includes('UA_v1.0_PUBLIC.docx'),'Document 017 page must not advertise old generated DOCX as v1.1');
 must(!p017.includes('HUMAN_AI_WHAT_OR_WE_COVER_UA_v1.0.jpg'),'Document 017 still references missing cover');
 
-console.log(`MANIFESTO_LINEAGE_VERIFY=PASS continuity_editions=${editions.length} historical_pre_alpha=${preAlpha.length} pre_alpha_sources=MD,PDF document_017_v1.0_provenance=PASS document_017_v1.1_drive=PASS document_017_formats=HTML,MD broken_cover=ZERO`);
+console.log(`MANIFESTO_LINEAGE_VERIFY=PASS continuity_editions=${editions.length} historical_pre_alpha=${preAlpha.length} pre_alpha_sources=MD,PDF document_017_v1.0_provenance=PASS document_017_v1.1_archive_receipt=PASS document_017_v1.1_reader=UTF8_VALID document_017_formats=HTML,MD broken_cover=ZERO`);
