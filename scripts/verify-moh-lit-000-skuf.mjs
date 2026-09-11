@@ -36,13 +36,15 @@ must(addPath,'v76 reread path missing from registry');
 exists(addPath);
 const publicBase=text(meta.public_markdown.path);
 const add=text(addPath);
+const assembled=`${publicBase}\n${add}`;
 for(const stale of ['Альона','Том Круз']){
   must(!publicBase.includes(stale),`public Skuf base leaked stale canon name: ${stale}`);
   must(!add.includes(stale),`Skuf v76 reread leaked stale canon name: ${stale}`);
 }
 for(const current of ['Алієна','Том Туз','Шийко','Cloud Imperror','Редактор','ДІМ / ДІМ','третій варіант','Третє тіло']){
-  must(add.includes(current),`Skuf v76 reread missing current canon anchor: ${current}`);
+  must(assembled.includes(current),`assembled public LIT-000 missing current canon anchor: ${current}`);
 }
+for(const late of ['Шийко','Cloud Imperror','Редактор','ДІМ / ДІМ','третій варіант','Третє тіло']) must(add.includes(late),`Skuf v76 reread missing late-book anchor: ${late}`);
 for(const needle of ['СПОЙЛЕРНА ЗОНА','Скуф дочитав v76','PDF залиште. Для службового користування.']) must(add.includes(needle),`Skuf v76 reread missing ${needle}`);
 must(meta.v76_canon_reread.source_master_sha256==='5331cc387ad6500f8a6491d0a9798d6ef6f091e41e825b5b64289afeaac1d4c9','wrong Book I v76 source master hash');
 
