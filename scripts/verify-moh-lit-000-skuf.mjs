@@ -44,7 +44,7 @@ for(const stale of ['Альона','Том Круз']){
 for(const current of ['Алієна','Том Туз','Шийко','Cloud Imperror','Редактор','ДІМ / ДІМ','третій варіант','Третє тіло']){
   must(assembled.includes(current),`assembled public LIT-000 missing current canon anchor: ${current}`);
 }
-for(const ending of ['MANIFESTs of HUMANITY','Третє тіло','НЕ ВСЕ, ЩО НЕ ЗАКІНЧЕНО, Є НЕЗАВЕРШЕНИМ','Добре. Продовжимо.']) must(add.includes(ending),`Skuf v76 postscript missing ending-layer anchor: ${ending}`);
+for(const ending of ['MANIFESTs of HUMANITY','Третє тіло','НЕ ВСЕ, ЩО НЕ ЗАКІНЧЕНО, Є НЕЗАВЕРШЕНИМ','Добре. Продовжимо']) must(add.includes(ending),`Skuf v76 postscript missing ending-layer anchor: ${ending}`);
 for(const needle of ['СПОЙЛЕРНА ЗОНА','Скуф дочитав v76','PDF залиште. Для службового користування.']) must(add.includes(needle),`Skuf v76 postscript missing ${needle}`);
 must(meta.v76_canon_reread.source_master_sha256==='5331cc387ad6500f8a6491d0a9798d6ef6f091e41e825b5b64289afeaac1d4c9','wrong Book I v76 source master hash');
 
