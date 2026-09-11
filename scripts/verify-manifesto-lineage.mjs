@@ -53,13 +53,18 @@ must(uaManifest.includes('V1.2_UA_PUBLIC.epub'),'UA current manifesto EPUB link 
 must(enManifest.includes('V1.2_EN_PUBLIC.epub'),'EN current manifesto EPUB link missing');
 
 const d017='documents/017-human-ai-what-or-we';
-const md017=`${d017}/METACADEMY_DOCUMENT_017_HUMAN_AI_WHAT_OR_WE_UA_v1.0.md`;
-exists(md017);
-must(sha(md017)==='b4fcdd99d5ba3a25bc3e5b94ea8273311ad3dcafd39e96ee6d50d1c903a99fb4','Document 017 canonical Markdown SHA mismatch');
-for(const ext of ['pdf','epub','docx']) exists(`${d017}/METACADEMY_DOCUMENT_017_HUMAN_AI_WHAT_OR_WE_UA_v1.0_PUBLIC.${ext}`);
-exists('publications/PUBLICATION_BUILD_RECEIPT_017_v1.0.json');
+const md017v10=`${d017}/METACADEMY_DOCUMENT_017_HUMAN_AI_WHAT_OR_WE_UA_v1.0.md`;
+const md017v11=`${d017}/METACADEMY_DOCUMENT_017_HUMAN_AI_WHAT_OR_WE_UA_v1.1.md`;
+exists(md017v10);
+must(sha(md017v10)==='b4fcdd99d5ba3a25bc3e5b94ea8273311ad3dcafd39e96ee6d50d1c903a99fb4','Document 017 v1.0 provenance Markdown SHA mismatch');
+exists(md017v11);
+must(sha(md017v11)==='134955a3ec990efd31c307602007fd1a83233722f54ef039992360c90f851be7','Document 017 v1.1 Drive Markdown SHA mismatch');
 const p017=text(`${d017}/ua/index.html`);
+must(p017.includes('METACADEMY-DOC-017-UA-v1.1'),'Document 017 page missing v1.1 citation ID');
+must(p017.includes('UA_v1.1.md'),'Document 017 page missing v1.1 Markdown link');
+must(!p017.includes('UA_v1.0_PUBLIC.pdf'),'Document 017 page must not advertise old generated PDF as v1.1');
+must(!p017.includes('UA_v1.0_PUBLIC.epub'),'Document 017 page must not advertise old generated EPUB as v1.1');
+must(!p017.includes('UA_v1.0_PUBLIC.docx'),'Document 017 page must not advertise old generated DOCX as v1.1');
 must(!p017.includes('HUMAN_AI_WHAT_OR_WE_COVER_UA_v1.0.jpg'),'Document 017 still references missing cover');
-for(const ext of ['pdf','epub','docx']) must(p017.includes(`UA_v1.0_PUBLIC.${ext}`),`Document 017 page missing ${ext} link`);
 
-console.log(`MANIFESTO_LINEAGE_VERIFY=PASS continuity_editions=${editions.length} historical_pre_alpha=${preAlpha.length} pre_alpha_sources=MD,PDF document_017_sha=PASS public_formats=PASS broken_cover=ZERO`);
+console.log(`MANIFESTO_LINEAGE_VERIFY=PASS continuity_editions=${editions.length} historical_pre_alpha=${preAlpha.length} pre_alpha_sources=MD,PDF document_017_v1.0_provenance=PASS document_017_v1.1_drive=PASS document_017_formats=HTML,MD broken_cover=ZERO`);
