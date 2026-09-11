@@ -9,7 +9,6 @@ on:
       - 'uk/manifestos/**'
       - 'documents/017-human-ai-what-or-we/**'
       - 'scripts/assemble-document-017-source.sh'
-      - 'scripts/build-document-017-public-formats.sh'
       - 'scripts/build-manifesto-formats.sh'
       - 'scripts/prepare-manifesto-public-surfaces.mjs'
       - 'scripts/verify-manifesto-lineage.mjs'
@@ -24,34 +23,24 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Export Document 017 source parts for byte-diff QA
-        uses: actions/upload-artifact@v4
-        with:
-          name: document-017-source-parts
-          if-no-files-found: error
-          retention-days: 1
-          path: documents/017-human-ai-what-or-we/source_parts/*.part
-      - name: Install publication toolchain
+      - name: Install manifesto publication toolchain
         run: |
           sudo apt-get update
           sudo apt-get install -y --no-install-recommends pandoc texlive-xetex texlive-latex-extra texlive-fonts-extra texlive-fonts-recommended lmodern fonts-ibm-plex poppler-utils
-      - name: Assemble Document 017 canonical Markdown
+      - name: Assemble Document 017 v1.0 provenance witness
         run: bash scripts/assemble-document-017-source.sh
       - name: Build manifesto lineage public formats
         run: bash scripts/build-manifesto-formats.sh
-      - name: Build Document 017 public formats
-        run: bash scripts/build-document-017-public-formats.sh
       - name: Prepare public HTML surfaces
         run: node scripts/prepare-manifesto-public-surfaces.mjs
-      - name: Verify manifesto lineage
+      - name: Verify manifesto lineage and Document 017 v1.1
         run: node scripts/verify-manifesto-lineage.mjs
-      - name: PDF preflight
+      - name: Manifesto PDF preflight
         shell: bash
         run: |
           mapfile -t files < <(find manifestos/archive/metacademy-continuity -type f -name '*_PUBLIC.pdf' -print | sort)
-          files+=("documents/017-human-ai-what-or-we/METACADEMY_DOCUMENT_017_HUMAN_AI_WHAT_OR_WE_UA_v1.0_PUBLIC.pdf")
-          if [[ "${#files[@]}" -ne 6 ]]; then
-            printf 'Expected 6 public PDFs, found %s\n' "${#files[@]}"
+          if [[ "${#files[@]}" -ne 5 ]]; then
+            printf 'Expected 5 manifesto public PDFs, found %s\n' "${#files[@]}"
             printf '%s\n' "${files[@]}"
             exit 1
           fi
@@ -60,7 +49,7 @@ jobs:
             pdfinfo "$f" >/dev/null
             pdffonts "$f" | grep -q 'IBMPlexSans'
           done
-          echo 'MANIFESTO_PDF_PREFLIGHT=PASS files=6'
+          echo 'MANIFESTO_PDF_PREFLIGHT=PASS files=5 document_017=HTML_MD_ONLY'
       - name: Upload manifesto QA artifacts
         uses: actions/upload-artifact@v4
         with:
@@ -71,7 +60,5 @@ jobs:
             manifestos/archive/metacademy-continuity/**/*_PUBLIC.pdf
             manifestos/archive/metacademy-continuity/**/*_PUBLIC.epub
             manifestos/archive/metacademy-continuity/**/*_PUBLIC.docx
-            documents/017-human-ai-what-or-we/*_PUBLIC.pdf
-            documents/017-human-ai-what-or-we/*_PUBLIC.epub
-            documents/017-human-ai-what-or-we/*_PUBLIC.docx
-            publications/PUBLICATION_BUILD_RECEIPT_017_v1.0.json
+            documents/017-human-ai-what-or-we/METACADEMY_DOCUMENT_017_HUMAN_AI_WHAT_OR_WE_UA_v1.1.md
+            documents/017-human-ai-what-or-we/ua/index.html
