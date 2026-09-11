@@ -1,8 +1,9 @@
 {
-  "schema": "metacademy-literary-paratext/v1",
+  "schema": "metacademy-literary-paratext/v2",
   "id": "LIT-000",
   "status": "publication-candidate",
   "publication_date": "2026-09-10",
+  "modified_date": "2026-09-11",
   "language": "uk",
   "class": "Satirical Literary Criticism / Paratext",
   "title": "Скуф проти майбутнього",
@@ -15,6 +16,25 @@
   "public_markdown": {
     "path": "uk/books/memories-of-humanity/book-1/free-reading/source/MOH_LIT_000_SKUF_REVIEW_UA.md",
     "sha256": "a4527a4069defba258cbdc47b704d677d8ea32fe24c92a986787ec479f29e476"
+  },
+  "v76_canon_reread": {
+    "path": "uk/books/memories-of-humanity/book-1/free-reading/source/MOH_LIT_000_SKUF_V76_ADDENDUM_UA.md",
+    "date": "2026-09-11",
+    "source_master_title": "MoH-I-UA-v76.md",
+    "source_master_drive_id": "1K8vZ3i8IkM8RF2uEU5IZozEjJOtFA-DX",
+    "source_master_sha256": "5331cc387ad6500f8a6491d0a9798d6ef6f091e41e825b5b64289afeaac1d4c9",
+    "relationship": "public LIT-000 continuation after full reread of current Book I UA v76; archive witness remains unchanged",
+    "spoiler_boundary": "late-v76 spoilers are explicitly disclosed before the addendum",
+    "current_canon_anchors": [
+      "Алієна",
+      "Том Туз",
+      "Шийко",
+      "Cloud Imperror",
+      "Редактор",
+      "ДІМ / ДІМ",
+      "третій варіант",
+      "Третє тіло"
+    ]
   },
   "source_origin": {
     "drive_title": "ШІ-захоплення-світу.md",
@@ -29,6 +49,8 @@
     "Ukrainian literary adaptation of the archived Skuf response",
     "Repetitions compressed and rhythm tightened",
     "Satirical mechanism expanded in selected passages",
+    "Current-v76 reread added as a provenance-separated continuation rather than rewriting the archived witness",
+    "Late-v76 grumbling now covers Shiyko, Cloud Imperror, the Editor, the third option, DIM / DIM, MANIFESTs and the Third Body",
     "No claim that Skuf represents an age, sex or demographic group",
     "Short Esthete counter-reading derived from the adjacent archived positive review"
   ],
