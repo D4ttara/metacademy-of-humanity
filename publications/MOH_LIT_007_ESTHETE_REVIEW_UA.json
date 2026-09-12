@@ -1,0 +1,52 @@
+{
+  "schema": "metacademy-literary-paratext/v1",
+  "id": "LIT-007",
+  "status": "publication-candidate",
+  "publication_date": "2026-09-10",
+  "language": "uk",
+  "class": "Literary Criticism / Closing Paratext",
+  "title": "Естет після фіналу",
+  "subtitle": "Критика «Згадок про Людство» після того, як книга відмовилася бути зручною",
+  "series": "Згадки про Людство",
+  "book": "Алекс Штольман і Скрижалі Реваншу",
+  "book_edition_context": "UA v76",
+  "sequence": "LIT-000 opening + LIT-001..006 book units + LIT-007 closing",
+  "preceding_publication_count": 7,
+  "book_source": {
+    "drive_title": "MoH-I-UA-v76.md",
+    "drive_id": "1K8vZ3i8IkM8RF2uEU5IZozEjJOtFA-DX",
+    "bytes": 677535,
+    "sha256": "5331cc387ad6500f8a6491d0a9798d6ef6f091e41e825b5b64289afeaac1d4c9"
+  },
+  "author": "Ievgen Karogod / Dattara",
+  "route": "/uk/books/memories-of-humanity/book-1/free-reading/esthete-review/",
+  "public_markdown": {
+    "path": "uk/books/memories-of-humanity/book-1/free-reading/source/MOH_LIT_007_ESTHETE_REVIEW_UA.md",
+    "sha256": "8e257fa31bc8c9299bece199d3c4eb3b141d0627f3dada45092d8cc051f0a16b"
+  },
+  "source_origin": {
+    "drive_title": "ШІ-захоплення-світу.md",
+    "drive_id": "1MieyTJq4jmpnuTBt49J2H1h-d5jc6DH0",
+    "archive_dialog_date": "2026-04-27",
+    "esthete_original_language": "uk",
+    "esthete_original_sha256": "dd85ed54ebba630121f2f5765f940cda036d454cb7dd8aa3c361e8765463cd91"
+  },
+  "editorial_transform": [
+    "Expanded from the archived positive critical response after a full reread of Book I UA v76",
+    "Outdated early-edition names and character states replaced with current v76 canon",
+    "Character, AI, political, structural, humor and relational readings deepened",
+    "Counter-criticism added: density, aphoristic saturation, time-sensitive satire and aftertext mode shift",
+    "No claim that this is an independent external press review"
+  ],
+  "boundaries": [
+    "CRITIQUE != VERDICT",
+    "DIALOGUE PARATEXT != INDEPENDENT EXTERNAL REVIEW",
+    "FICTION != RESEARCH EVIDENCE",
+    "ADAPTED PARATEXT != SOURCE WITNESS",
+    "FREE ACCESS != COPYRIGHT WAIVER"
+  ],
+  "discussion_issue": 72,
+  "full_book_url": "https://payhip.com/b/9GnpH",
+  "support_url": "/support/",
+  "translation_policy": "Ukrainian publication only until the approved official literary translation exists."
+}

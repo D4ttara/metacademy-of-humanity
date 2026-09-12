@@ -1,8 +1,8 @@
 cff-version: 1.2.0
-message: "If you cite the MET[Ȧ]CADEMY OF HUMANITY public research corpus or this repository, please use the canonical project name and the specific Document number or publication URL where applicable."
-title: "MET[Ȧ]CADEMY OF HUMANITY: Public Research Corpus"
-version: "Public alpha · Phase 3 review"
-date-released: 2026-08-12
+message: "If you cite the MET[Ȧ]CADEMY OF HUMANITY public research or cultural corpus, use the canonical project name and the specific Document, manifesto, literary publication, language edition, or canonical URL where applicable."
+title: "MET[Ȧ]CADEMY OF HUMANITY: Public Research and Cultural Corpus"
+version: "Public alpha · September 2026"
+date-released: 2026-09-12
 authors:
   - family-names: "Karogod"
     given-names: "Ievgen"
@@ -10,13 +10,38 @@ authors:
 repository-code: "https://github.com/D4ttara/metacademy-of-humanity"
 url: "https://d4ttara.github.io/metacademy-of-humanity/"
 keywords:
+  - METACADEMY OF HUMANITY
+  - MetaAcademy of Humanity
+  - MoH
   - artificial intelligence
+  - AI ethics
+  - AI governance
   - human-AI interaction
+  - Human AI relations
+  - large language models
+  - LLM personalization
+  - AI memory
+  - AI agency
   - semantic computing
+  - semantic migration
+  - Meta.Semantic Programming
   - epistemology
   - provenance
   - uncertainty
-  - complex systems
-  - human agency
-  - culture
   - research methodology
+  - complex systems
+  - emergence
+  - human agency
+  - behavioral systems
+  - public-interest technology
+  - polytypic thinking
+  - manifestation time
+  - genesis time
+  - M{Y}OGA JYOTISH
+  - Jyotisha
+  - astrology research
+  - time and causality
+  - Memories of Humanity
+  - Згадки про Людство
+  - Ukrainian literature
+  - multilingual culture

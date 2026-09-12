@@ -136,10 +136,23 @@ jobs:
         run: bash scripts/inject-legal-footer.sh
       - name: Enrich discovery metadata and RSS autodiscovery
         run: node scripts/enrich-discovery-meta.mjs
+      - name: Build MoH Book I v76 Ukrainian free-reading surfaces
+        run: node scripts/build-moh-v76-free-reading-ua.mjs
+      - name: Add Skuf opening, Esthete closing and v76 machine-discovery layer
+        run: |
+          node scripts/enhance-moh-free-reading-paratexts.mjs
+          node scripts/enhance-moh-skuf-v76-discovery.mjs
+      - name: Build MoH Book I v76 free-reading PDF and EPUB editions including critical bookends
+        run: bash scripts/build-moh-v76-free-reading-formats.sh
       - name: Prepare manifesto and Document 017 public surfaces
         run: node scripts/prepare-manifesto-public-surfaces.mjs
       - name: Verify manifesto lineage and Document 017 v1.1
         run: node scripts/verify-manifesto-lineage.mjs
+      - name: Verify MoH Book I v76 Ukrainian free-reading frame
+        run: |
+          node scripts/verify-moh-v76-free-reading-ua.mjs
+          node scripts/verify-moh-lit-000-skuf.mjs
+          node scripts/verify-moh-lit-007-esthete.mjs
       - name: Verify public site
         run: node scripts/verify-public-site.mjs
       - name: Verify discovery, static links and zero-account sharing

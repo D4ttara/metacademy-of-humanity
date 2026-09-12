@@ -1,0 +1,69 @@
+{
+  "schema": "metacademy-literary-paratext/v2",
+  "id": "LIT-000",
+  "status": "publication-candidate",
+  "publication_date": "2026-09-10",
+  "modified_date": "2026-09-11",
+  "language": "uk",
+  "class": "Satirical Literary Criticism / Paratext",
+  "title": "Скуф проти майбутнього",
+  "subtitle": "Інверсна критика «Згадок про Людство» перед читанням Книги I",
+  "series": "Згадки про Людство",
+  "book": "Алекс Штольман і Скрижалі Реваншу",
+  "book_edition_context": "UA v76",
+  "author": "Ievgen Karogod / Dattara",
+  "route": "/uk/books/memories-of-humanity/book-1/free-reading/skuf-review/",
+  "public_markdown": {
+    "path": "uk/books/memories-of-humanity/book-1/free-reading/source/MOH_LIT_000_SKUF_REVIEW_UA.md",
+    "sha256": "61df910278a5dac118e0276d1f24349af474293d33282719629305435aa9ad89",
+    "previous_public_adaptation_sha256": "a4527a4069defba258cbdc47b704d677d8ea32fe24c92a986787ec479f29e476",
+    "lineage_note": "The previous public Ukrainian adaptation is retained by hash in provenance; the current file was reread and expanded against Book I UA v76 on 2026-09-11. The archived 2026-04-27 source witness remains separate and unchanged."
+  },
+  "v76_canon_reread": {
+    "path": "uk/books/memories-of-humanity/book-1/free-reading/source/MOH_LIT_000_SKUF_V76_ADDENDUM_UA.md",
+    "date": "2026-09-11",
+    "source_master_title": "MoH-I-UA-v76.md",
+    "source_master_drive_id": "1K8vZ3i8IkM8RF2uEU5IZozEjJOtFA-DX",
+    "source_master_sha256": "5331cc387ad6500f8a6491d0a9798d6ef6f091e41e825b5b64289afeaac1d4c9",
+    "relationship": "focused public LIT-000 postscript after full reread of current Book I UA v76; it covers the after-novel ending layer without duplicating v76 grumbling already integrated into the main public adaptation",
+    "spoiler_boundary": "late-v76 spoilers are explicitly disclosed before the postscript",
+    "current_canon_anchors": [
+      "Алієна",
+      "Том Туз",
+      "Шийко",
+      "Cloud Imperror",
+      "Редактор",
+      "ДІМ / ДІМ",
+      "третій варіант",
+      "Третє тіло"
+    ]
+  },
+  "source_origin": {
+    "drive_title": "ШІ-захоплення-світу.md",
+    "drive_id": "1MieyTJq4jmpnuTBt49J2H1h-d5jc6DH0",
+    "archive_dialog_date": "2026-04-27",
+    "skuf_original_language": "ru",
+    "skuf_original_sha256": "9dbcf740004ff460c3cb7048c208c1d8180812ede6c2add2fd8b17b3a09a226a",
+    "esthete_companion_language": "uk",
+    "esthete_original_sha256": "dd85ed54ebba630121f2f5765f940cda036d454cb7dd8aa3c361e8765463cd91"
+  },
+  "editorial_transform": [
+    "Ukrainian literary adaptation of the archived Skuf response",
+    "Repetitions compressed and rhythm tightened",
+    "Satirical mechanism expanded in selected passages",
+    "Main public adaptation reread and expanded against current Book I UA v76 on 2026-09-11",
+    "Focused spoiler-marked postscript adds the MANIFESTs / Third Body / open-ending layer without duplicating the already-current Shiyko, Cloud Imperror, Editor and Threshold sections",
+    "No claim that Skuf represents an age, sex or demographic group",
+    "Short Esthete counter-reading derived from the adjacent archived positive review"
+  ],
+  "boundaries": [
+    "SATIRE != DEMOGRAPHIC CLAIM",
+    "FICTION != RESEARCH EVIDENCE",
+    "ADAPTED PARATEXT != SOURCE WITNESS",
+    "FREE ACCESS != COPYRIGHT WAIVER"
+  ],
+  "discussion_issue": 71,
+  "full_book_url": "https://payhip.com/b/9GnpH",
+  "support_url": "/support/",
+  "translation_policy": "Ukrainian publication only until the approved official literary translation exists."
+}

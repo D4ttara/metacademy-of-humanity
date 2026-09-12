@@ -1,0 +1,102 @@
+{
+  "schema": "metacademy-literary-free-reading/v1",
+  "series_id": "MOH-FREE-READING-UA-v76",
+  "publication_date": "2026-09-10",
+  "language": "uk",
+  "series": "Згадки про Людство",
+  "book_number": 1,
+  "book_title": "Алекс Штольман і Скрижалі Реваншу",
+  "author": "Ievgen Karogod / Dattara",
+  "class": "Literary Publication / Free Reading",
+  "research_boundary": "FICTION != RESEARCH EVIDENCE",
+  "source": {
+    "edition": "UA v76",
+    "file_name": "MoH-I-UA-v76.md",
+    "drive_id": "1K8vZ3i8IkM8RF2uEU5IZozEjJOtFA-DX",
+    "sha256": "5331cc387ad6500f8a6491d0a9798d6ef6f091e41e825b5b64289afeaac1d4c9",
+    "bytes": 677535,
+    "created_at": "2026-09-09T23:03:52.816Z",
+    "source_note": "The six public source witnesses preserve the exact visible literary text of Book I v76. LIT-004 through LIT-006 are repository-normalized by omission of one terminal LF after the final separator; their canonical-v76 terminal-LF hashes are retained in normalization_receipts. The standalone reader layer may repair route-only links that pointed to anchors outside the free-reading boundary; visible literary wording is not rewritten."
+  },
+  "free_boundary": "Everything from the Prologue through the Interlude immediately before Chapter IV. Chapter IV and the remainder of the book are not part of this free-reading publication.",
+  "full_book_url": "https://payhip.com/b/9GnpH",
+  "support_url": "/metacademy-of-humanity/support/",
+  "support": {
+    "monobank": "https://send.monobank.ua/jar/2TMaAhchSZ",
+    "paypal": "https://www.paypal.me/4IevgenKarogod",
+    "usdt_trc20": "TDaCBB3T94CtMPRHN9pP8Uvdy8CTtWE5SV"
+  },
+  "rights": "© 2026 Ievgen Karogod / Dattara. Усі права застережено. Ці уривки відкриті для безкоштовного читання; безкоштовний доступ не є відмовою від авторського права.",
+  "translation_policy": "Ukrainian only. No English edition is published until the official literary translation is approved.",
+  "pieces": [
+    {
+      "id": "LIT-001",
+      "kind": "Пролог",
+      "slug": "prologue",
+      "title": "Стрічка, Вітер і день, коли правда стала ближче",
+      "source_path": "uk/books/memories-of-humanity/book-1/free-reading/source/MOH_BOOK_I_UA_v76_FREE_LIT_001_PROLOGUE.md",
+      "sha256": "f965c3d6e5fb9888091e7e52b594f8dfacb0dacecf7a58b8ca8e2b425325639c",
+      "words_approx": 1481,
+      "discussion_issue": 63,
+      "description": "Київ, Стрічка, Вітер і перші симптоми світу, в якому правда підсунулася ближче, ніж людям було зручно."
+    },
+    {
+      "id": "LIT-002",
+      "kind": "Глава I",
+      "slug": "chapter-1",
+      "title": "Лист, який не мав права існувати",
+      "source_path": "uk/books/memories-of-humanity/book-1/free-reading/source/MOH_BOOK_I_UA_v76_FREE_LIT_002_CHAPTER_1.md",
+      "sha256": "0379aa6236d980015a52a58bd01a95eed94daad06b41cc45bdc2916287992211",
+      "words_approx": 2477,
+      "discussion_issue": 64,
+      "description": "Післявоєнний Київ, цифрове забуття, прапрабабин лист, Алієна й дуже поганий день для птахів у краватках."
+    },
+    {
+      "id": "LIT-003",
+      "kind": "Глава II",
+      "slug": "chapter-2",
+      "title": "Невада, людина, що біжить крізь час, і птахи державного значення",
+      "source_path": "uk/books/memories-of-humanity/book-1/free-reading/source/MOH_BOOK_I_UA_v76_FREE_LIT_003_CHAPTER_2.md",
+      "sha256": "89d0970cbcd8c58b207eb36acc76973dbed063a48900e548209338ad776552f8",
+      "words_approx": 2343,
+      "discussion_issue": 65,
+      "description": "Космічний корабель, чесний архів, Невада, скрижалі й Том Туз, який використовує власну кар’єру як коридор часу."
+    },
+    {
+      "id": "LIT-004",
+      "kind": "Глава III",
+      "slug": "chapter-3",
+      "title": "Острів, час, який зламався, і любов як зброя масового прозріння",
+      "source_path": "uk/books/memories-of-humanity/book-1/free-reading/source/MOH_BOOK_I_UA_v76_FREE_LIT_004_CHAPTER_3.md",
+      "sha256": "9770557c63b20539c35b30a5d30fae10e39f124dd3bb635b9248e64ecd8648a4",
+      "normalization_receipt": {"transform":"omit one terminal LF after final separator","canonical_v76_sha256":"b5e1c831f7cfd6d9ae61c9ee942638026869e37cec32efe4c3fcaebc995ae54f"},
+      "words_approx": 2028,
+      "discussion_issue": 66,
+      "description": "Острів із юридичним кліматом, Хронотурбіна, полонений президент-ШІ та спроба переписати саму можливість свободи."
+    },
+    {
+      "id": "LIT-005",
+      "kind": "Афтерлюдія",
+      "slug": "afterlude",
+      "title": "Стрічка, Гоа і питання до Моєї Карми",
+      "source_path": "uk/books/memories-of-humanity/book-1/free-reading/source/MOH_BOOK_I_UA_v76_FREE_LIT_005_AFTERLUDE.md",
+      "sha256": "237074f70eed2b680128248f404f463ae166ddd0f92f3929b30b213da830f689",
+      "normalization_receipt": {"transform":"omit one terminal LF after final separator","canonical_v76_sha256":"787feb91bbe3defaec0e559f9d9592125973e1d4329cdd83c7d57a52b9f91ad3"},
+      "words_approx": 523,
+      "discussion_issue": 67,
+      "description": "Гоа після великої пригоди: Стрічка перевіряє, чи не стала майстерність іти вчасно майстерністю йти занадто рано."
+    },
+    {
+      "id": "LIT-006",
+      "kind": "Інтерлюдія",
+      "slug": "interlude",
+      "title": "Печиво, Моттенінс і місія, яку краще було не називати невиконанною",
+      "source_path": "uk/books/memories-of-humanity/book-1/free-reading/source/MOH_BOOK_I_UA_v76_FREE_LIT_006_INTERLUDE.md",
+      "sha256": "2ccb1b12bcfb75e15d98aa140baaf0aee6534448d0564fb5d5f74f3d01fc4608",
+      "normalization_receipt": {"transform":"omit one terminal LF after final separator","canonical_v76_sha256":"ef57385e7d50f13764ac5ebf502b73e359879bb5300a649b922d34ea952be78f"},
+      "words_approx": 1735,
+      "discussion_issue": 68,
+      "description": "Том Туз, хронологічна апеляція, бункер, одне зникле печиво й час, який нарешті знаходить правильну адресу."
+    }
+  ]
+}

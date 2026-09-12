@@ -1,0 +1,48 @@
+name: MoH literary bookends CI
+
+on:
+  pull_request:
+    branches: [main, publish-document-017-human-ai]
+    paths:
+      - 'uk/books/memories-of-humanity/**'
+      - 'uk/books/index.html'
+      - 'publications/MOH_LIT_000_SKUF_REVIEW_UA.json'
+      - 'publications/MOH_LIT_007_ESTHETE_REVIEW_UA.json'
+      - 'publications/MOH_FREE_READING_UA_v76.json'
+      - 'robots.txt'
+      - 'sitemap.xml'
+      - 'llms.txt'
+      - 'feed.xml'
+      - 'scripts/build-moh-v76-free-reading-ua.mjs'
+      - 'scripts/enhance-moh-free-reading-paratexts.mjs'
+      - 'scripts/enhance-moh-skuf-v76-discovery.mjs'
+      - 'scripts/verify-moh-lit-000-skuf.mjs'
+      - 'scripts/verify-moh-lit-007-esthete.mjs'
+      - '.github/workflows/moh-lit-000-skuf-ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Syntax check literary publication scripts
+        run: |
+          node --check scripts/build-moh-v76-free-reading-ua.mjs
+          node --check scripts/enhance-moh-free-reading-paratexts.mjs
+          node --check scripts/enhance-moh-skuf-v76-discovery.mjs
+          node --check scripts/verify-moh-lit-000-skuf.mjs
+          node --check scripts/verify-moh-lit-007-esthete.mjs
+      - name: Build Book I Ukrainian free-reading web surfaces
+        run: node scripts/build-moh-v76-free-reading-ua.mjs
+      - name: Add Skuf opening, Esthete closing and six critical bridges
+        run: node scripts/enhance-moh-free-reading-paratexts.mjs
+      - name: Add Skuf v76 canon reread and machine-discovery layer
+        run: node scripts/enhance-moh-skuf-v76-discovery.mjs
+      - name: Verify LIT-000 opening provenance and current-v76 reading
+        run: node scripts/verify-moh-lit-000-skuf.mjs
+      - name: Verify LIT-007 closing provenance and v76 reading
+        run: node scripts/verify-moh-lit-007-esthete.mjs
