@@ -2,7 +2,7 @@ import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from '
 import { join } from 'node:path';
 
 const STORE='https://payhip.com/dattara';
-const roots=['index.html','manifesto','manifestos','documents','research','science-aperture','fields','library','books','shop','participate','updates','support','legal','uk','topics','start','corpus','programs','questions','memory','identity','discover'];
+const roots=['index.html','manifesto','manifestos','documents','research','science-aperture','fields','library','books','shop','arena','participate','updates','support','legal','uk','topics','start','corpus','programs','questions','memory','identity','discover'];
 const skip=new Set(['source','source_parts','node_modules','.git']);
 const walk=p=>{
   if(!existsSync(p)) return [];
