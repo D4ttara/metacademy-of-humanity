@@ -80,7 +80,6 @@ for(const needle of [
   'тримати змія',
   'У розмовах Академії про перший шанс',
   'Майбутнє не може показати довідку про минулий успіх',
-  'TYPE IS A PROJECTION, NOT AN ESSENCE',
   'Butlin et al., 2023',
   'Vaccaro et al., 2024',
   'M{Y}OGA',
