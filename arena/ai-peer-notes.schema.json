@@ -1,0 +1,97 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://d4ttara.github.io/metacademy-of-humanity/arena/ai-peer-notes.schema.json",
+  "title": "MET[Ȧ]CADEMY AI Peer Note",
+  "description": "Provenance record for a short AI-generated note attached to an already-public MET[Ȧ]CADEMY publication.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schema",
+    "canonical_url",
+    "model",
+    "provider",
+    "run_date",
+    "language",
+    "capture_method",
+    "prompt_sha256",
+    "response",
+    "response_sha256",
+    "status",
+    "human_approved"
+  ],
+  "properties": {
+    "schema": {
+      "const": "metacademy-ai-peer-note/v1"
+    },
+    "canonical_url": {
+      "type": "string",
+      "format": "uri"
+    },
+    "source_sha256": {
+      "type": ["string", "null"],
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "model": {
+      "type": "string",
+      "minLength": 1
+    },
+    "provider": {
+      "type": "string",
+      "minLength": 1
+    },
+    "run_date": {
+      "type": "string",
+      "format": "date-time"
+    },
+    "language": {
+      "type": "string",
+      "minLength": 2
+    },
+    "capture_method": {
+      "type": "string",
+      "enum": ["direct-provider-api", "multi-model-gateway", "lmarena", "external-ui-manual", "other"]
+    },
+    "prompt": {
+      "type": ["string", "null"]
+    },
+    "prompt_template_url": {
+      "type": ["string", "null"],
+      "format": "uri"
+    },
+    "prompt_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "response": {
+      "type": "string",
+      "minLength": 1
+    },
+    "response_sha256": {
+      "type": "string",
+      "pattern": "^[a-f0-9]{64}$"
+    },
+    "raw_response_url": {
+      "type": ["string", "null"],
+      "format": "uri"
+    },
+    "transformation": {
+      "type": ["string", "null"],
+      "description": "Any shortening, translation, spelling or formatting applied after capture. Null means the displayed response is raw."
+    },
+    "status": {
+      "type": "string",
+      "enum": ["captured", "reviewed", "published", "rejected", "superseded"]
+    },
+    "human_approved": {
+      "type": "boolean"
+    },
+    "boundary": {
+      "type": "array",
+      "items": {
+        "type": "string",
+        "enum": ["AI COMMENT != HUMAN REVIEW", "MODEL OPINION != ACADEMY VERDICT", "MULTIPLE MODELS != CONSENSUS", "ADAPTED AI NOTE != RAW MODEL OUTPUT"]
+      },
+      "uniqueItems": true
+    }
+  }
+}
