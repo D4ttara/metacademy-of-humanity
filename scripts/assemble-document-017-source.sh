@@ -29,10 +29,10 @@ Path(out).write_bytes(body)
 print(f'DOCUMENT_017_ASSEMBLY=PASS sha256={expected} provenance_repair=one_known_omission restored_chars=ум separator=LF')
 PY
 
-# v1.1 is preserved from the exact Drive master as three transport-safe Base64
-# fragments. The fragments are not literary/editable sources; they are a byte-safe
-# transport witness. We verify every fragment, reconstruct the bzip2 stream, then
-# verify the exact 81,562-byte Markdown master before exposing it to publication.
+# v1.1 is preserved from the exact Drive master as eight small Base64 fragments.
+# These are byte-safe transport witnesses, not editable literary sources. Every
+# fragment is verified before the bzip2 stream is reconstructed, and the decoded
+# Markdown must match the exact Drive master: 81,562 bytes and the canonical SHA.
 V11_DIR="$DOC/source_parts_v1_1"
 V11_OUT="$DOC/METACADEMY_DOCUMENT_017_HUMAN_AI_WHAT_OR_WE_UA_v1.1.md"
 V11_EXPECTED="134955a3ec990efd31c307602007fd1a83233722f54ef039992360c90f851be7"
@@ -41,9 +41,14 @@ from pathlib import Path
 import base64,bz2,hashlib,sys
 root=Path(sys.argv[1]); out=Path(sys.argv[2]); expected=sys.argv[3]
 parts=[
-    ('drive-master-v1.1.part01.b64','3edbd7c94846bd1eee6ab409a368dfea78fc49e3cde7e6de279510b5d0280692',8000),
-    ('drive-master-v1.1.part02.b64','fcc21d175be2ae1b5b6bc6ebc44b52157697370e7e7a15dac9a9411337f3ec9d',8000),
-    ('drive-master-v1.1.part03.b64','82d3100b276adb92aae9a197ed711cdb0a347b804746ae8e7197cc8743d60a4c',6904),
+    ('drive-master-v1.1.p01.b64','c4e2c51b6557917f8d822228cb2c3152f9bec0db413f11281858453408f736a9',3000),
+    ('drive-master-v1.1.p02.b64','c0630b92f36acc2e615165cf275bdf65de95c1f53b4b562c634ae04dd134d570',3000),
+    ('drive-master-v1.1.p03.b64','e695c4f89425c6029e139ba9f17d18834aaab1037dc2609e8803010dbb8fb697',3000),
+    ('drive-master-v1.1.p04.b64','07488347db7a77034e1f796cd68c06e649a1da696e53d5b3f1ab0adcf49895a4',3000),
+    ('drive-master-v1.1.p05.b64','183737ff94e493a80c3efc03ae97ecc82915c09e2d309983b2f916a665e19348',3000),
+    ('drive-master-v1.1.p06.b64','ec150c40ddbdcbda5669d96885cf6b07fcb40b1eec18f318557fc0ec32cea4f0',3000),
+    ('drive-master-v1.1.p07.b64','f3b30b0a58fcf1831389a3ea1062519474dbaec45f7d19873b4ae312f954cdf0',3000),
+    ('drive-master-v1.1.p08.b64','eb1b7ad588296d6a167913c0c4d3738b4be30cd0b52479c59c227957bae36052',1904),
 ]
 encoded=[]
 for name,want,n in parts:
@@ -62,5 +67,5 @@ if len(body)!=81562 or actual!=expected:
     raise SystemExit(f'DOCUMENT_017_V1_1_ASSEMBLY=FAIL master bytes={len(body)} sha256={actual} expected_bytes=81562 expected_sha256={expected}')
 body.decode('utf-8')
 out.write_bytes(body)
-print(f'DOCUMENT_017_V1_1_ASSEMBLY=PASS drive_id=1I-pk-dB3ZDVbi7fGbvwwpPTuYqauMZ05 bytes={len(body)} sha256={actual} transport_parts=3')
+print(f'DOCUMENT_017_V1_1_ASSEMBLY=PASS drive_id=1I-pk-dB3ZDVbi7fGbvwwpPTuYqauMZ05 bytes={len(body)} sha256={actual} transport_parts=8')
 PY
