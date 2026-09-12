@@ -21,6 +21,8 @@ on:
       - 'manifestos/**'
       - 'index.html'
       - 'uk/**'
+      - 'books/**'
+      - 'shop/**'
       - 'topics/**'
       - 'research/**'
       - 'updates/**'
@@ -43,7 +45,7 @@ jobs:
       - name: Install publication PDF toolchain
         run: |
           sudo apt-get update
-          sudo apt-get install -y --no-install-recommends pandoc texlive-xetex texlive-latex-extra texlive-fonts-extra texlive-fonts-recommended poppler-utils
+          sudo apt-get install -y --no-install-recommends pandoc texlive-xetex texlive-latex-extra texlive-fonts-extra texlive-fonts-recommended lmodern fonts-ibm-plex poppler-utils
       - name: Assemble Document 014 canonical Markdown
         run: bash scripts/assemble-document-014-source.sh
       - name: Assemble Document 015 canonical Markdown
@@ -166,6 +168,10 @@ jobs:
         run: bash scripts/build-moh-v76-free-reading-formats.sh
       - name: Prepare manifesto and Document 017 public surfaces
         run: node scripts/prepare-manifesto-public-surfaces.mjs
+      - name: Build global search, store and experience layer
+        run: node scripts/build-global-discovery.mjs
+      - name: Verify global discovery and experience layer
+        run: node scripts/verify-global-discovery.mjs
       - name: Verify manifesto lineage and Document 017 formats
         run: node scripts/verify-manifesto-lineage.mjs
       - name: Verify MoH Book I v76 Ukrainian free-reading package
@@ -247,6 +253,10 @@ jobs:
             start/**
             topics/**
             uk/topics/**
+            shop/**
+            uk/shop/**
+            ai-index.json
+            llms-full.txt
             sitemap.xml
             llms.txt
             feed.xml
