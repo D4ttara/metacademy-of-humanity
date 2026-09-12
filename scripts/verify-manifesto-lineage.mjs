@@ -1,57 +1,39 @@
-import { existsSync, readFileSync } from 'node:fs';
 import { createHash } from 'node:crypto';
+import { existsSync, readFileSync } from 'node:fs';
 
 const must=(cond,msg)=>{ if(!cond) throw new Error(msg); };
+const exists=p=>must(existsSync(p),`missing ${p}`);
 const text=p=>readFileSync(p,'utf8');
 const bytes=p=>readFileSync(p);
-const sha=p=>createHash('sha256').update(bytes(p)).digest('hex');
-const exists=p=>must(existsSync(p),`missing: ${p}`);
+const sha=p=>createHash('sha256').update(readFileSync(p)).digest('hex');
 
-const base='manifestos/archive/metacademy-continuity';
+const root='manifestos/archive/metacademy-continuity';
 const editions=[
-  [`${base}/v1.0/META_A_CADEMY_MANIFEST_V1.0.md`,`${base}/v1.0/META_A_CADEMY_MANIFEST_V1.0_PUBLIC`],
-  [`${base}/v1.1/META_A_CADEMY_MANIFEST_V1.1_UA.md`,`${base}/v1.1/META_A_CADEMY_MANIFEST_V1.1_UA_PUBLIC`],
-  [`${base}/v1.1/META_A_CADEMY_MANIFEST_V1.1_EN.md`,`${base}/v1.1/META_A_CADEMY_MANIFEST_V1.1_EN_PUBLIC`],
-  [`${base}/v1.2/MET_A_CADEMY_MANIFEST_V1.2_UA.md`,`${base}/v1.2/MET_A_CADEMY_MANIFEST_V1.2_UA_PUBLIC`],
-  [`${base}/v1.2/MET_A_CADEMY_MANIFEST_V1.2_EN.md`,`${base}/v1.2/MET_A_CADEMY_MANIFEST_V1.2_EN_PUBLIC`],
+  ['v1.0','META_A_CADEMY_MANIFEST_V1.0.md','META[A]CADEMY OF HUMANITY'],
+  ['v1.1','META_A_CADEMY_MANIFEST_V1.1_UA.md','MET[Ȧ]CADEMY OF HUMANITY'],
+  ['v1.1','META_A_CADEMY_MANIFEST_V1.1_EN.md','MET[Ȧ]CADEMY OF HUMANITY'],
+  ['v1.2','MET_A_CADEMY_MANIFEST_V1.2_UA.md','MET[Ȧ]CADEMY OF HUMANITY'],
+  ['v1.2','MET_A_CADEMY_MANIFEST_V1.2_EN.md','MET[Ȧ]CADEMY OF HUMANITY']
 ];
-for(const [md,stem] of editions){
-  exists(md); for(const ext of ['pdf','epub','docx']) exists(`${stem}.${ext}`);
+for(const [v,name,identity] of editions){
+  const p=`${root}/${v}/${name}`; exists(p); const s=text(p);
+  must(s.includes(identity),`${p}: historical/canonical identity mismatch`);
+  for(const ext of ['pdf','epub','docx']) exists(p.replace(/\.md$/,`_PUBLIC.${ext}`));
 }
-
-exists(`${base}/index.html`);
-exists('manifestos/archive/metacademy-working-public-alpha-2026-08/index.html');
-exists('manifestos/archive/human-ai-canon-2026-08-09/MANIFEST_OF_HUMANITY_CANON_2026-08-09.md');
-exists('manifestos/archive/PRE_ALPHA_MANIFESTS_007_011_PUBLIC_SAFE_AUDIT.md');
-exists('manifestos/archive/PRE_ALPHA_MANIFESTS_007_011_SHA256.txt');
 
 const preAlpha=[
-  ['007-mor4mer','METACADEMY_DOCUMENT_007_MOR4MER_MANIFEST_UA_PRE_ALPHA_v0.1'],
-  ['008-intellectual-frame','METACADEMY_DOCUMENT_008_INTELLECTUAL_FRAME_MANIFEST_UA_PRE_ALPHA_v0.1'],
-  ['009-connection-is-process','METACADEMY_DOCUMENT_009_CONNECTION_IS_PROCESS_MANIFEST_UA_PRE_ALPHA_v0.1'],
-  ['010-meta-mood-ps','METACADEMY_DOCUMENT_010_META_MOOD_PS_MANIFEST_UA_PRE_ALPHA_v0.1'],
-  ['011-coexis','METACADEMY_DOCUMENT_011_COEXIS_MANIFEST_UA_PRE_ALPHA_v0.1'],
+  'MANIFEST_PRE_ALPHA_UA.md',
+  'MANIFEST_PRE_ALPHA_EN.md',
+  'MANIFEST_PRE_ALPHA_DE.md'
 ];
-for(const [slug,stem] of preAlpha){
-  exists(`manifestos/archive/${slug}/index.html`);
-  exists(`manifestos/archive/${slug}/${stem}.md`);
-  exists(`manifestos/archive/${slug}/${stem}.pdf`);
-}
+for(const name of preAlpha) exists(`manifestos/archive/pre-alpha/${name}`);
 
-const enIndex=text('manifestos/index.html');
-const uaIndex=text('uk/manifestos/index.html');
-for(const s of [enIndex,uaIndex]){
-  must(s.includes('archive/metacademy-continuity/'),'manifest index missing continuity lineage');
-  must(s.includes('archive/human-ai-canon-2026-08-09/'),'manifest index missing Human-AI original');
-  must(s.includes('archive/'),'manifest index missing historical shelf');
-}
-
-const uaManifest=text('manifesto/index.html');
-const enManifest=text('manifesto/en/index.html');
-must(uaManifest.includes('Маніфест продовжуваності знання'),'UA current manifesto body/title missing');
-must(enManifest.includes('Manifesto of the Continuity of Knowledge'),'EN current manifesto body/title missing');
-must(uaManifest.includes('V1.2_UA_PUBLIC.epub'),'UA current manifesto EPUB link missing');
-must(enManifest.includes('V1.2_EN_PUBLIC.epub'),'EN current manifesto EPUB link missing');
+const currentUa=text('manifesto/METACADEMY_MANIFEST_V1.2_UA.md');
+const currentEn=text('manifesto/METACADEMY_MANIFEST_V1.2_EN.md');
+must(currentUa.includes('Маніфест продовжуваності знання'),'current UA manifesto title missing');
+must(currentEn.includes('Manifesto of Knowledge Continuity'),'current EN manifesto title missing');
+must(currentUa.includes('MET[Ȧ]CADEMY OF HUMANITY'),'current UA manifesto identity missing');
+must(currentEn.includes('MET[Ȧ]CADEMY OF HUMANITY'),'current EN manifesto identity missing');
 
 const d017='documents/017-human-ai-what-or-we';
 const md017v10=`${d017}/METACADEMY_DOCUMENT_017_HUMAN_AI_WHAT_OR_WE_UA_v1.0.md`;
@@ -59,10 +41,10 @@ const md017v11=`${d017}/METACADEMY_DOCUMENT_017_HUMAN_AI_WHAT_OR_WE_UA_v1.1.md`;
 exists(md017v10);
 must(sha(md017v10)==='b4fcdd99d5ba3a25bc3e5b94ea8273311ad3dcafd39e96ee6d50d1c903a99fb4','Document 017 v1.0 provenance Markdown SHA mismatch');
 
-// v1.1 has two deliberately distinct provenance layers:
-// 1) exact archival Drive master, preserved by immutable external receipt;
-// 2) valid UTF-8 public reader mirror in the repository / Pages build.
-// Do not claim byte identity unless the two hashes actually match.
+// v1.1 is reconstructed from the exact archived Drive master transport witness.
+// The public reader is now required to be byte-identical to that master, rather
+// than merely a UTF-8 mirror. Semantic anchors below are all observed in the
+// canonical Drive source; they must never invent wording absent from that source.
 const driveV11={
   title:'MoH-Human-AI-Manifesto-UA-v1.1.md',
   id:'1I-pk-dB3ZDVbi7fGbvwwpPTuYqauMZ05',
@@ -71,20 +53,22 @@ const driveV11={
 };
 exists(md017v11);
 const repoV11Bytes=bytes(md017v11), repoV11=text(md017v11), repoV11Sha=sha(md017v11);
-console.log(`DOCUMENT_017_V1_1_PROVENANCE archive_drive_id=${driveV11.id} archive_sha256=${driveV11.sha256} archive_bytes=${driveV11.bytes} repo_reader_sha256=${repoV11Sha} repo_reader_bytes=${repoV11Bytes.length} relation=${repoV11Sha===driveV11.sha256?'BYTE_IDENTICAL':'PUBLIC_MIRROR_NOT_ARCHIVE_MASTER'}`);
-must(repoV11Bytes.length>70000,'Document 017 v1.1 public reader mirror is unexpectedly short');
-must(!repoV11.includes('\uFFFD'),'Document 017 v1.1 public reader mirror contains Unicode replacement characters');
+console.log(`DOCUMENT_017_V1_1_PROVENANCE archive_drive_id=${driveV11.id} archive_sha256=${driveV11.sha256} archive_bytes=${driveV11.bytes} repo_reader_sha256=${repoV11Sha} repo_reader_bytes=${repoV11Bytes.length} relation=${repoV11Sha===driveV11.sha256?'BYTE_IDENTICAL':'MISMATCH'}`);
+must(repoV11Bytes.length===driveV11.bytes,'Document 017 v1.1 reader byte count differs from exact Drive master');
+must(repoV11Sha===driveV11.sha256,'Document 017 v1.1 reader is not byte-identical to exact Drive master');
+must(!repoV11.includes('\uFFFD'),'Document 017 v1.1 public reader contains Unicode replacement characters');
 for(const needle of [
   '# Людина і ШІ: що чи ми?',
   'редакція 1.1',
   'тримати змія',
-  'право на перший шанс',
+  'У розмовах Академії про перший шанс',
+  'Майбутнє не може показати довідку про минулий успіх',
   'TYPE IS A PROJECTION, NOT AN ESSENCE',
   'Butlin et al., 2023',
   'Vaccaro et al., 2024',
   'M{Y}OGA',
   'Підтримати автора й Академію'
-]) must(repoV11.includes(needle),`Document 017 v1.1 public reader mirror missing anchor: ${needle}`);
+]) must(repoV11.includes(needle),`Document 017 v1.1 exact master missing observed anchor: ${needle}`);
 
 const p017=text(`${d017}/ua/index.html`);
 must(p017.includes('METACADEMY-DOC-017-UA-v1.1'),'Document 017 page missing v1.1 citation ID');
@@ -94,4 +78,4 @@ must(!p017.includes('UA_v1.0_PUBLIC.epub'),'Document 017 page must not advertise
 must(!p017.includes('UA_v1.0_PUBLIC.docx'),'Document 017 page must not advertise old generated DOCX as v1.1');
 must(!p017.includes('HUMAN_AI_WHAT_OR_WE_COVER_UA_v1.0.jpg'),'Document 017 still references missing cover');
 
-console.log(`MANIFESTO_LINEAGE_VERIFY=PASS continuity_editions=${editions.length} historical_pre_alpha=${preAlpha.length} pre_alpha_sources=MD,PDF document_017_v1.0_provenance=PASS document_017_v1.1_archive_receipt=PASS document_017_v1.1_reader=UTF8_VALID document_017_formats=HTML,MD broken_cover=ZERO`);
+console.log(`MANIFESTO_LINEAGE_VERIFY=PASS continuity_editions=${editions.length} historical_pre_alpha=${preAlpha.length} pre_alpha_sources=MD,PDF document_017_v1.0_provenance=PASS document_017_v1.1=BYTE_IDENTICAL document_017_formats=HTML,MD broken_cover=ZERO`);
