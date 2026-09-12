@@ -3,9 +3,13 @@
   const SITE='https://d4ttara.github.io/metacademy-of-humanity';
   const SHOP='https://payhip.com/dattara';
   const REPO='https://github.com/D4ttara/metacademy-of-humanity';
+  const ARENA_CHAT='https://lmarena.ai/?battle=';
+  const ARENA_IMAGE='https://lmarena.ai/?image=';
+  const ARENA_VIDEO='https://lmarena.ai/leaderboard/image-to-video';
   const uk=document.documentElement.lang?.toLowerCase().startsWith('uk');
   const text=(en,ua)=>uk?ua:en;
   const canonical=()=>document.querySelector('link[rel="canonical"]')?.href || location.href.split('#')[0];
+  const pageTitle=()=>(document.querySelector('h1')?.textContent||document.title).trim();
 
   const copyText=async value=>{
     if(navigator.clipboard?.writeText) return navigator.clipboard.writeText(value);
@@ -46,7 +50,8 @@
     document.querySelectorAll('footer .wrap').forEach(foot=>{
       if(foot.querySelector(`a[href="${SHOP}"]`)) return;
       const span=document.createElement('span'); span.className='experience-footer-links';
-      span.innerHTML=`<a href="${SHOP}" rel="external noopener noreferrer">${text('Shop','Магазин')}</a><a href="${SITE_PATH}/discover/">Discover</a><a href="${SITE_PATH}/feed.xml">RSS</a>`;
+      const arenaPath=uk?SITE_PATH+'/uk/arena/':SITE_PATH+'/arena/';
+      span.innerHTML=`<a href="${SHOP}" rel="external noopener noreferrer">${text('Shop','Магазин')}</a><a href="${arenaPath}">${text('AI Arena','ШІ Арена')}</a><a href="${SITE_PATH}/discover/">Discover</a><a href="${SITE_PATH}/feed.xml">RSS</a>`;
       foot.append(span);
     });
   }
@@ -57,7 +62,7 @@
     const path=canonicalUrl.pathname.replace(/^\/metacademy-of-humanity\/?/,'').replace(/\/$/,'');
     if(!path) return;
     const parts=path.split('/').filter(Boolean);
-    const labels={uk:'Українська',documents:text('Documents','Документи'),research:text('Research','Дослідження'),manifesto:text('Manifesto','Маніфест'),manifestos:text('Manifestos','Маніфести'),books:text('Books','Книги'),library:text('Library','Бібліотека'),topics:text('Topics','Теми'),shop:text('Shop','Магазин'),'free-reading':text('Free reading','Безкоштовне читання')};
+    const labels={uk:'Українська',documents:text('Documents','Документи'),research:text('Research','Дослідження'),manifesto:text('Manifesto','Маніфест'),manifestos:text('Manifestos','Маніфести'),books:text('Books','Книги'),library:text('Library','Бібліотека'),topics:text('Topics','Теми'),shop:text('Shop','Магазин'),arena:text('AI Arena','ШІ Арена'),'free-reading':text('Free reading','Безкоштовне читання')};
     const nav=document.createElement('nav'); nav.className='site-breadcrumbs'; nav.setAttribute('aria-label',text('Breadcrumb','Навігаційний шлях'));
     const home=document.createElement('a'); home.href=uk?SITE_PATH+'/uk/':SITE_PATH+'/'; home.textContent=text('Home','Головна'); nav.append(home);
     let acc='';
@@ -110,9 +115,38 @@
 
   function readerRoot(){ return document.querySelector('#read-online, .document-reading, .literary-body, .research-essay-reading'); }
   function citationText(){
-    const title=(document.querySelector('h1')?.textContent||document.title).trim();
     const year=(document.querySelector('meta[property="article:published_time"]')?.content||'2026').slice(0,4);
-    return `Karogod, Ievgen / Dattara. “${title}.” MET[Ȧ]CADEMY OF HUMANITY, ${year}. ${canonical()}`;
+    return `Karogod, Ievgen / Dattara. “${pageTitle()}.” MET[Ȧ]CADEMY OF HUMANITY, ${year}. ${canonical()}`;
+  }
+  function articleExcerpt(article){ return (article?.innerText||'').replace(/\s+/g,' ').trim().slice(0,1100); }
+  function arenaPrompt(kind,article){
+    const source=`${text('Title','Назва')}: ${pageTitle()}\nURL: ${canonical()}\n${text('Source excerpt','Фрагмент джерела')}: ${articleExcerpt(article)}`;
+    if(kind==='image') return text(
+      `Create an editorial research illustration for this MET[Ȧ]CADEMY OF HUMANITY publication. Visualize the central tension rather than decorating the title. Do not invent data, charts, quotes or factual labels. Visual language: warm paper, deep ink blue, one clear light-blue stripe, restrained contemporary editorial composition. No corporate stock-photo look.\n\n${source}`,
+      `Створи редакційну дослідницьку ілюстрацію для цієї публікації MET[Ȧ]CADEMY OF HUMANITY. Візуалізуй центральну напругу тексту, а не просто прикрашай заголовок. Не вигадуй даних, графіків, цитат чи фактологічних підписів. Візуальна мова: теплий папір, глибокий чорнильно-синій, одна виразна світло-блакитна смуга, стримана сучасна editorial-композиція. Без корпоративного фотостоку.\n\n${source}`
+    );
+    if(kind==='video') return text(
+      `Turn this publication into a 20–30 second editorial video concept. Give 4 concise shots with camera movement, visual metaphor, on-screen text only when sourced from the publication, and a final frame pointing back to the canonical URL. Do not fabricate statistics or quotations. Keep the MET[Ȧ]CADEMY palette: warm paper, deep ink blue, light-blue stripe.\n\n${source}`,
+      `Перетвори цю публікацію на концепт редакційного відео 20–30 секунд. Дай 4 короткі кадри з рухом камери, візуальною метафорою, текстом на екрані лише тоді, коли він узятий із публікації, і фінальним кадром із canonical URL. Не вигадуй статистику чи цитати. Збережи палітру MET[Ȧ]CADEMY: теплий папір, глибокий чорнильно-синій, світло-блакитна смуга.\n\n${source}`
+    );
+    return text(
+      `Act as an independent AI peer reviewer. Read the source below and return exactly three short notes: (1) strongest claim or idea, (2) weakest assumption or point needing evidence, (3) one concrete question worth testing next. Separate what the source actually says from your inference. Do not praise by default, do not imitate a human reviewer, and do not claim institutional endorsement.\n\n${source}`,
+      `Виступи як незалежний ШІ-рецензент. Прочитай джерело нижче й дай рівно три короткі нотатки: (1) найсильніша теза або ідея, (2) найслабше припущення чи місце, де потрібні докази, (3) одне конкретне питання, яке варто перевірити далі. Відділяй те, що справді сказано в джерелі, від власного висновку. Не хвали автоматично, не прикидайся людиною-рецензентом і не заявляй інституційного схвалення.\n\n${source}`
+    );
+  }
+  function ensureArenaDialog(article){
+    let dialog=document.querySelector('.arena-dialog');
+    if(dialog) return dialog;
+    dialog=document.createElement('dialog'); dialog.className='arena-dialog';
+    dialog.innerHTML=`<div class="arena-shell"><div class="arena-head"><div><p class="eyebrow">${text('External model ring','Зовнішній ринг моделей')}</p><h2>${text('Send this article to AI Arena','Відправити статтю на ШІ Арену')}</h2></div><button class="arena-close" type="button" aria-label="${text('Close','Закрити')}">×</button></div><p class="arena-intro">${text('A source-aware prompt is copied first, then LMArena opens in a new tab. Arena responses are external model outputs, not Academy endorsements and not automatic public comments.','Спочатку копіюється source-aware prompt, потім LMArena відкривається в новій вкладці. Відповіді Arena є зовнішніми відповідями моделей, не позицією Академії й не автоматичними публічними коментарями.')}</p><div class="arena-actions"><a href="${ARENA_CHAT}" target="_blank" rel="external noopener noreferrer" data-arena-kind="critique"><strong>${text('Critique battle ↗','Батл критиків ↗')}</strong><small>${text('Three compact peer-review notes from competing models.','Три короткі peer-review нотатки від моделей-суперників.')}</small></a><a href="${ARENA_IMAGE}" target="_blank" rel="external noopener noreferrer" data-arena-kind="image"><strong>${text('Image Arena ↗','Image Arena ↗')}</strong><small>${text('Copies an editorial illustration prompt grounded in this article.','Копіює editorial-промпт для ілюстрації, прив’язаний до цієї статті.')}</small></a><a href="${ARENA_VIDEO}" target="_blank" rel="external noopener noreferrer" data-arena-kind="video"><strong>${text('Video models ↗','Відеомоделі ↗')}</strong><small>${text('Copies a 20–30 second storyboard prompt and opens the current image-to-video ranking.','Копіює промпт сторіборду на 20–30 секунд і відкриває актуальний рейтинг image-to-video.')}</small></a></div><p class="arena-status" aria-live="polite">${text('Choose a route. The prompt will be copied automatically.','Обери маршрут. Промпт скопіюється автоматично.')}</p><p class="arena-boundary"><code>AI COMMENT != HUMAN REVIEW</code> · <code>MODEL OPINION != ACADEMY VERDICT</code></p></div>`;
+    document.body.append(dialog);
+    dialog.querySelector('.arena-close').addEventListener('click',()=>dialog.close?.());
+    dialog.addEventListener('click',e=>{ if(e.target===dialog) dialog.close?.(); });
+    dialog.querySelectorAll('[data-arena-kind]').forEach(a=>a.addEventListener('click',()=>{
+      const prompt=arenaPrompt(a.dataset.arenaKind,article);
+      copyText(prompt).then(()=>{ dialog.querySelector('.arena-status').textContent=text('Prompt copied. Paste it into the Arena tab.','Промпт скопійовано. Встав його у вкладці Arena.'); }).catch(()=>{ dialog.querySelector('.arena-status').textContent=text('Arena opened. Copying was blocked by the browser.','Arena відкрита. Браузер заблокував копіювання.'); });
+    }));
+    return dialog;
   }
 
   function readerEnhancements(){
@@ -138,11 +172,18 @@
     }
 
     if(!document.querySelector('.reader-utility')){
-      const bar=document.createElement('div'); bar.className='reader-utility'; const challenge=`${REPO}/issues/new?title=${encodeURIComponent('Challenge: '+(document.querySelector('h1')?.textContent||document.title).trim())}&body=${encodeURIComponent(text('I want to challenge or test a claim on this page:\n\n','Хочу оспорити або перевірити тезу на цій сторінці:\n\n')+canonical()+'\n\n')}`;
-      bar.innerHTML=`<div class="wrap"><button type="button" data-util-copy>${text('Copy link','Копіювати')}</button><button type="button" data-util-cite>${text('Cite','Цитувати')}</button><a href="${challenge}" rel="external noopener noreferrer">${text('Challenge','Оспорити')}</a><a href="${REPO}/discussions" rel="external noopener noreferrer">${text('Discuss','Обговорити')}</a><button type="button" data-util-theme>${text('Night','Ніч')}</button><a class="utility-shop" href="${SHOP}" rel="external noopener noreferrer">${text('Shop ↗','Магазин ↗')}</a></div>`;
+      const bar=document.createElement('div'); bar.className='reader-utility'; const challenge=`${REPO}/issues/new?title=${encodeURIComponent('Challenge: '+pageTitle())}&body=${encodeURIComponent(text('I want to challenge or test a claim on this page:\n\n','Хочу оспорити або перевірити тезу на цій сторінці:\n\n')+canonical()+'\n\n')}`;
+      bar.innerHTML=`<div class="wrap"><button type="button" data-util-copy>${text('Copy link','Копіювати')}</button><button type="button" data-util-share>${text('Share','Поділитися')}</button><button type="button" data-util-cite>${text('Cite','Цитувати')}</button><button type="button" data-util-arena>${text('AI Arena','ШІ Арена')}</button><a href="${challenge}" rel="external noopener noreferrer">${text('Challenge','Оспорити')}</a><a href="${REPO}/discussions" rel="external noopener noreferrer">${text('Discuss','Обговорити')}</a><button type="button" data-util-theme>${text('Night','Ніч')}</button><a class="utility-shop" href="${SHOP}" rel="external noopener noreferrer">${text('Shop ↗','Магазин ↗')}</a></div>`;
       const pagehead=document.querySelector('.pagehead'); pagehead?pagehead.after(bar):article.before(bar);
       bar.querySelector('[data-util-copy]').addEventListener('click',async e=>{await copyText(canonical());flash(e.currentTarget,text('Copied ✓','Скопійовано ✓'));});
+      bar.querySelector('[data-util-share]').addEventListener('click',async e=>{
+        try{
+          if(navigator.share) await navigator.share({title:pageTitle(),text:text('From MET[Ȧ]CADEMY OF HUMANITY','З MET[Ȧ]CADEMY OF HUMANITY'),url:canonical()});
+          else { await copyText(canonical()); flash(e.currentTarget,text('Link copied ✓','Посилання скопійовано ✓')); }
+        }catch(err){ if(err?.name!=='AbortError'){ await copyText(canonical()); flash(e.currentTarget,text('Link copied ✓','Посилання скопійовано ✓')); } }
+      });
       bar.querySelector('[data-util-cite]').addEventListener('click',async e=>{await copyText(citationText());flash(e.currentTarget,text('Citation copied ✓','Цитату скопійовано ✓'));});
+      bar.querySelector('[data-util-arena]').addEventListener('click',()=>{ const dialog=ensureArenaDialog(article); dialog.showModal?.(); if(!dialog.open) dialog.setAttribute('open',''); });
       bar.querySelector('[data-util-theme]').addEventListener('click',e=>{ const night=document.documentElement.dataset.theme!=='night'; document.documentElement.dataset.theme=night?'night':''; localStorage.setItem('moh-theme',night?'night':'day'); e.currentTarget.textContent=night?text('Day','День'):text('Night','Ніч'); });
     }
   }
