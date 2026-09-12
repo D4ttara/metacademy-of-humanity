@@ -1,0 +1,62 @@
+name: Global search and AI discovery CI
+
+on:
+  pull_request:
+    paths:
+      - 'index.html'
+      - 'uk/**'
+      - 'documents/**'
+      - 'manifesto/**'
+      - 'manifestos/**'
+      - 'research/**'
+      - 'science-aperture/**'
+      - 'fields/**'
+      - 'library/**'
+      - 'topics/**'
+      - 'start/**'
+      - 'corpus/**'
+      - 'programs/**'
+      - 'questions/**'
+      - 'memory/**'
+      - 'identity/**'
+      - 'discover/**'
+      - 'robots.txt'
+      - 'llms.txt'
+      - 'feed.xml'
+      - 'CITATION.cff'
+      - 'AI_DISCOVERY.md'
+      - 'scripts/build-global-discovery.mjs'
+      - 'scripts/verify-global-discovery.mjs'
+      - '.github/workflows/global-discovery-ci.yml'
+  push:
+    branches: [main]
+    paths:
+      - 'index.html'
+      - 'uk/**'
+      - 'documents/**'
+      - 'manifesto/**'
+      - 'manifestos/**'
+      - 'research/**'
+      - 'topics/**'
+      - 'discover/**'
+      - 'robots.txt'
+      - 'llms.txt'
+      - 'CITATION.cff'
+      - 'AI_DISCOVERY.md'
+      - 'scripts/build-global-discovery.mjs'
+      - 'scripts/verify-global-discovery.mjs'
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Build canonical search and AI discovery surfaces
+        run: node scripts/build-global-discovery.mjs
+      - name: Verify discovery coverage
+        run: node scripts/verify-global-discovery.mjs
+      - name: Check generated text patches
+        run: git diff --check
