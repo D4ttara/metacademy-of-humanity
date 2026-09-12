@@ -1,10 +1,11 @@
 import { existsSync, readdirSync, readFileSync, statSync, writeFileSync } from 'node:fs';
-import { dirname, join, posix, relative, sep } from 'node:path';
+import { join, relative, sep } from 'node:path';
 
 const SITE='https://d4ttara.github.io/metacademy-of-humanity';
+const STORE='https://payhip.com/dattara';
 const AUTHOR='Ievgen Karogod / Dattara';
 const ORG='MET[Ȧ]CADEMY OF HUMANITY';
-const ROOTS=['index.html','manifesto','manifestos','documents','research','science-aperture','fields','library','books','participate','updates','support','legal','uk','topics','start','corpus','programs','questions','memory','identity','discover'];
+const ROOTS=['index.html','manifesto','manifestos','documents','research','science-aperture','fields','library','books','shop','participate','updates','support','legal','uk','topics','start','corpus','programs','questions','memory','identity','discover'];
 const SKIP_SEGMENTS=new Set(['source','source_parts','node_modules','.git']);
 
 function walk(path){
@@ -56,7 +57,7 @@ function typeOf(file){
   const r='/'+relative('.',file).split(sep).join('/');
   if(/\/documents\/|\/manifesto\/|\/free-reading\//.test(r)) return 'Article';
   if(/\/books\/|\/library\//.test(r)) return 'CreativeWork';
-  if(/\/topics\/|\/corpus\/|\/programs\/|\/research\/|\/start\//.test(r)) return 'CollectionPage';
+  if(/\/topics\/|\/corpus\/|\/programs\/|\/research\/|\/start\/|\/shop\//.test(r)) return 'CollectionPage';
   return 'WebPage';
 }
 function relFileFromUrl(url){
@@ -78,11 +79,23 @@ function languageAlternates(canonical){
     out.push(['uk',SITE+'/uk/books/']);
   } else if(canonical===SITE+'/uk/books/'&&fileSet.has('books/index.html')){
     out.push(['en',SITE+'/books/']);
+  } else if(canonical===SITE+'/shop/'&&fileSet.has('uk/shop/index.html')){
+    out.push(['uk',SITE+'/uk/shop/']);
+  } else if(canonical===SITE+'/uk/shop/'&&fileSet.has('shop/index.html')){
+    out.push(['en',SITE+'/shop/']);
   }
   return out;
 }
 function insertHead(html,chunk){ return html.replace(/<\/head>/i,chunk+'\n</head>'); }
 function ensure(html,re,chunk){ return has(html,re)?html:insertHead(html,chunk); }
+function ensureStaticShopNav(html,lang){
+  if(html.includes(`href="${STORE}"`)||html.includes(`href='${STORE}'`)) return html;
+  const label=lang==='uk'?'Магазин ↗':'Shop ↗';
+  const a=`<a class="nav-shop" href="${STORE}" rel="external noopener noreferrer">${label}</a>`;
+  if(/<span class=["']language-switch["']>/i.test(html)) return html.replace(/<span class=["']language-switch["']>/i,a+'<span class="language-switch">');
+  if(/<nav[^>]*class=["'][^"']*\bnav\b[^"']*["'][^>]*>/i.test(html)) return html.replace(/<\/nav>/i,a+'</nav>');
+  return html;
+}
 
 const entries=[];
 let changed=0;
@@ -102,9 +115,13 @@ for(const file of files){
   html=ensure(html,/<meta[^>]+name=["']robots["']/i,'<meta name="robots" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">');
   html=ensure(html,/<meta[^>]+name=["']googlebot["']/i,'<meta name="googlebot" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">');
   html=ensure(html,/<meta[^>]+name=["']bingbot["']/i,'<meta name="bingbot" content="index,follow,max-image-preview:large,max-snippet:-1,max-video-preview:-1">');
+  html=ensure(html,/<meta[^>]+name=["']theme-color["']/i,'<meta name="theme-color" content="#f7f3eb">');
   html=ensure(html,/<link[^>]+rel=["']author["']/i,`<link rel="author" href="${SITE}/identity/">`);
+  html=ensure(html,/<link[^>]+rel=["']me["'][^>]+payhip\.com\/dattara/i,`<link rel="me" href="${STORE}">`);
   html=ensure(html,/<link[^>]+type=["']application\/rss\+xml["']/i,`<link rel="alternate" type="application/rss+xml" href="${SITE}/feed.xml" title="${ORG} updates">`);
   html=ensure(html,/<link[^>]+href=["'][^"']*llms\.txt["']/i,`<link rel="alternate" type="text/plain" href="${SITE}/llms.txt" title="AI discovery index">`);
+  html=ensure(html,/<link[^>]+href=["'][^"']*assets\/css\/experience\.css["']/i,`<link rel="stylesheet" href="${SITE}/assets/css/experience.css">`);
+  html=ensure(html,/<script[^>]+src=["'][^"']*assets\/js\/experience\.js["']/i,`<script src="${SITE}/assets/js/experience.js" defer></script>`);
   html=ensure(html,/<meta[^>]+property=["']og:site_name["']/i,`<meta property="og:site_name" content="${ORG}">`);
   html=ensure(html,/<meta[^>]+property=["']og:type["']/i,`<meta property="og:type" content="${ogType}">`);
   html=ensure(html,/<meta[^>]+property=["']og:title["']/i,`<meta property="og:title" content="${esc(title)}">`);
@@ -113,6 +130,7 @@ for(const file of files){
   html=ensure(html,/<meta[^>]+name=["']twitter:card["']/i,'<meta name="twitter:card" content="summary">');
   html=ensure(html,/<meta[^>]+name=["']twitter:title["']/i,`<meta name="twitter:title" content="${esc(title)}">`);
   html=ensure(html,/<meta[^>]+name=["']twitter:description["']/i,`<meta name="twitter:description" content="${esc(description)}">`);
+  html=ensureStaticShopNav(html,lang);
 
   for(const [hreflang,href] of languageAlternates(canonical)){
     if(!html.includes(`hreflang="${hreflang}"`)&&!html.includes(`hreflang='${hreflang}'`)) html=insertHead(html,`<link rel="alternate" hreflang="${hreflang}" href="${href}">`);
@@ -122,8 +140,8 @@ for(const file of files){
   if(!html.includes('data-global-discovery-jsonld="v1"')){
     const graph={
       '@context':'https://schema.org','@graph':[
-        {'@type':'Organization','@id':SITE+'/#organization','name':ORG,'alternateName':['METACADEMY OF HUMANITY','MetaAcademy of Humanity','MoH'],'url':SITE+'/','founder':{'@id':SITE+'/#author'},'sameAs':['https://github.com/D4ttara/metacademy-of-humanity']},
-        {'@type':'Person','@id':SITE+'/#author','name':AUTHOR,'url':SITE+'/identity/'},
+        {'@type':'Organization','@id':SITE+'/#organization','name':ORG,'alternateName':['METACADEMY OF HUMANITY','MetaAcademy of Humanity','MoH'],'url':SITE+'/','founder':{'@id':SITE+'/#author'},'sameAs':['https://github.com/D4ttara/metacademy-of-humanity',STORE]},
+        {'@type':'Person','@id':SITE+'/#author','name':AUTHOR,'url':SITE+'/identity/','sameAs':[STORE]},
         {'@type':'WebSite','@id':SITE+'/#website','url':SITE+'/','name':ORG,'publisher':{'@id':SITE+'/#organization'},'inLanguage':['en','uk']},
         {'@type':schemaType,'@id':canonical+'#webpage','url':canonical,'name':title,'description':description,'inLanguage':lang,'isPartOf':{'@id':SITE+'/#website'},'publisher':{'@id':SITE+'/#organization'},'author':{'@id':SITE+'/#author'}}
       ]
@@ -136,7 +154,8 @@ for(const file of files){
     const heading=lang==='uk'?'Знайти, процитувати, передати іншій системі':'Find, cite, or pass this page to another system';
     const ai=lang==='uk'?'AI-індекс':'AI index';
     const identity=lang==='uk'?'Авторство й цитування':'Identity & citation';
-    const block=`<section class="related-publication-links ai-discovery-links" data-global-discovery-nav="v1"><div class="wrap"><p class="eyebrow">${label}</p><h2>${heading}</h2><div class="edition-links"><a class="button" href="${SITE}/ai-index.json">${ai}</a><a class="button" href="${SITE}/llms.txt">llms.txt</a><a class="button" href="${SITE}/feed.xml">RSS</a><a class="button" href="${SITE}/identity/">${identity}</a><a class="button" href="${SITE}/topics/">Topics</a></div></div></section>`;
+    const store=lang==='uk'?'Магазин ↗':'Shop ↗';
+    const block=`<section class="related-publication-links ai-discovery-links" data-global-discovery-nav="v1"><div class="wrap"><p class="eyebrow">${label}</p><h2>${heading}</h2><div class="edition-links"><a class="button" href="${SITE}/ai-index.json">${ai}</a><a class="button" href="${SITE}/llms.txt">llms.txt</a><a class="button" href="${SITE}/feed.xml">RSS</a><a class="button" href="${SITE}/identity/">${identity}</a><a class="button" href="${SITE}/topics/">Topics</a><a class="button" href="${STORE}" rel="external noopener noreferrer">${store}</a></div></div></section>`;
     html=html.replace(/<\/main>/i,block+'\n</main>');
   }
 
@@ -149,10 +168,10 @@ const unique=[...new Map(entries.map(x=>[x.url,x])).values()].sort((a,b)=>a.url.
 const sitemap='<?xml version="1.0" encoding="UTF-8"?>\n<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'+unique.map(x=>`  <url><loc>${esc(x.url)}</loc></url>`).join('\n')+'\n</urlset>\n';
 writeFileSync('sitemap.xml',sitemap,'utf8');
 
-const aiIndex={schema:'metacademy-public-ai-index/v1',site:SITE+'/',name:ORG,author:AUTHOR,languages:['en','uk'],discovery:{sitemap:SITE+'/sitemap.xml',rss:SITE+'/feed.xml',llms:SITE+'/llms.txt',llms_full:SITE+'/llms-full.txt',identity:SITE+'/identity/',repository:'https://github.com/D4ttara/metacademy-of-humanity'},boundaries:['PUBLIC INDEX != INTERNAL CORPUS','ARCHIVE != CANON','RESEARCH CANDIDATE != DEPLOYED SYSTEM'],entries:unique};
+const aiIndex={schema:'metacademy-public-ai-index/v1',site:SITE+'/',name:ORG,author:AUTHOR,languages:['en','uk'],discovery:{sitemap:SITE+'/sitemap.xml',rss:SITE+'/feed.xml',llms:SITE+'/llms.txt',llms_full:SITE+'/llms-full.txt',identity:SITE+'/identity/',store:STORE,repository:'https://github.com/D4ttara/metacademy-of-humanity'},boundaries:['PUBLIC INDEX != INTERNAL CORPUS','ARCHIVE != CANON','RESEARCH CANDIDATE != DEPLOYED SYSTEM','PURCHASE != GOVERNANCE'],entries:unique};
 writeFileSync('ai-index.json',JSON.stringify(aiIndex,null,2)+'\n','utf8');
 
-const llmsFull=[`# ${ORG} · full public URL index`,'',`Canonical site: ${SITE}/`,`Author: ${AUTHOR}`,'Languages: English, Ukrainian','Status: public research and cultural corpus; preserve provenance, status and uncertainty labels when citing.','',`Machine index: ${SITE}/ai-index.json`,`Sitemap: ${SITE}/sitemap.xml`,`RSS: ${SITE}/feed.xml`,`Repository: https://github.com/D4ttara/metacademy-of-humanity`,'','## Public pages',...unique.map(x=>`- [${x.language.toUpperCase()} · ${x.type}] ${x.title}: ${x.url}`),'','## Citation boundary','PUBLIC INDEX != INTERNAL CORPUS. ARCHIVE != CANON. RESEARCH CANDIDATE != DEPLOYED SYSTEM.',''].join('\n');
+const llmsFull=[`# ${ORG} · full public URL index`,'',`Canonical site: ${SITE}/`,`Author: ${AUTHOR}`,'Languages: English, Ukrainian','Status: public research and cultural corpus; preserve provenance, status and uncertainty labels when citing.','',`Machine index: ${SITE}/ai-index.json`,`Sitemap: ${SITE}/sitemap.xml`,`RSS: ${SITE}/feed.xml`,`Store: ${STORE}`,`Repository: https://github.com/D4ttara/metacademy-of-humanity`,'','## Public pages',...unique.map(x=>`- [${x.language.toUpperCase()} · ${x.type}] ${x.title}: ${x.url}`),'','## Citation boundary','PUBLIC INDEX != INTERNAL CORPUS. ARCHIVE != CANON. RESEARCH CANDIDATE != DEPLOYED SYSTEM. PURCHASE != GOVERNANCE.',''].join('\n');
 writeFileSync('llms-full.txt',llmsFull,'utf8');
 
-console.log(`GLOBAL_DISCOVERY_BUILD=PASS html=${unique.length} changed=${changed} sitemap=${unique.length} ai_index=${unique.length} llms_full=${unique.length}`);
+console.log(`GLOBAL_DISCOVERY_BUILD=PASS html=${unique.length} changed=${changed} sitemap=${unique.length} ai_index=${unique.length} llms_full=${unique.length} store=PAYHIP experience=V1`);
