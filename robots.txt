@@ -1,11 +1,14 @@
 # MET[Ȧ]CADEMY OF HUMANITY public discovery policy.
 # Public pages are crawlable; Publication Firewall controls what is published at all.
-# Search visibility is distinct from model training. This file explicitly names search/answer crawlers that benefit from a clear allow rule; all other public crawlers remain covered by User-agent: *.
+# Maximum public discoverability is intended for already-published material.
+# Search/answer crawling and model-training crawling are distinct uses, but this public
+# repository currently permits both. Historical/private material must stay outside the
+# public surface rather than relying on robots.txt as a secrecy boundary.
 
 User-agent: *
 Allow: /
 
-# Google Search and Google AI search features use Googlebot.
+# Google Search, Google Discover and Google AI search features.
 User-agent: Googlebot
 Allow: /
 
@@ -13,12 +16,53 @@ Allow: /
 User-agent: Bingbot
 Allow: /
 
-# ChatGPT Search discovery. This is not the GPTBot training crawler.
+# OpenAI: ChatGPT Search discovery.
 User-agent: OAI-SearchBot
 Allow: /
 
-# Perplexity search discovery. This is not a foundation-model training crawler.
+# OpenAI: user-directed retrieval / agent visits.
+User-agent: ChatGPT-User
+Allow: /
+
+# OpenAI: potential model-training crawler. Explicitly allowed for the public corpus.
+User-agent: GPTBot
+Allow: /
+
+# Perplexity search index.
 User-agent: PerplexityBot
+Allow: /
+
+# Perplexity user-directed retrieval.
+User-agent: Perplexity-User
+Allow: /
+
+# Anthropic / Claude search indexing.
+User-agent: Claude-SearchBot
+Allow: /
+
+# Anthropic / Claude user-directed retrieval.
+User-agent: Claude-User
+Allow: /
+
+# Anthropic model-development crawler. Explicitly allowed for the public corpus.
+User-agent: ClaudeBot
+Allow: /
+
+# Other major public-web discovery crawlers. The wildcard rule already permits them;
+# explicit entries make intent machine- and human-readable.
+User-agent: Applebot
+Allow: /
+
+User-agent: DuckDuckBot
+Allow: /
+
+User-agent: Bravebot
+Allow: /
+
+User-agent: YandexBot
+Allow: /
+
+User-agent: Amazonbot
 Allow: /
 
 Sitemap: https://d4ttara.github.io/metacademy-of-humanity/sitemap.xml
