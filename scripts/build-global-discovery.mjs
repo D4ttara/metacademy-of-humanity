@@ -4,7 +4,7 @@ import { dirname, join, posix, relative, sep } from 'node:path';
 const SITE='https://d4ttara.github.io/metacademy-of-humanity';
 const AUTHOR='Ievgen Karogod / Dattara';
 const ORG='MET[Ȧ]CADEMY OF HUMANITY';
-const ROOTS=['index.html','manifesto','manifestos','documents','research','science-aperture','fields','library','participate','updates','support','legal','uk','topics','start','corpus','programs','questions','memory','identity','discover'];
+const ROOTS=['index.html','manifesto','manifestos','documents','research','science-aperture','fields','library','books','participate','updates','support','legal','uk','topics','start','corpus','programs','questions','memory','identity','discover'];
 const SKIP_SEGMENTS=new Set(['source','source_parts','node_modules','.git']);
 
 function walk(path){
@@ -74,6 +74,10 @@ function languageAlternates(canonical){
     if(fileSet.has('uk/index.html')) out.push(['uk',SITE+'/uk/']);
   } else if(canonical===SITE+'/uk/'){
     out.push(['en',SITE+'/']);
+  } else if(canonical===SITE+'/books/'&&fileSet.has('uk/books/index.html')){
+    out.push(['uk',SITE+'/uk/books/']);
+  } else if(canonical===SITE+'/uk/books/'&&fileSet.has('books/index.html')){
+    out.push(['en',SITE+'/books/']);
   }
   return out;
 }
