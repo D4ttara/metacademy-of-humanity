@@ -73,6 +73,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      - name: Syntax check discovery and experience scripts
+        run: |
+          node --check assets/js/experience.js
+          node --check scripts/build-global-discovery.mjs
+          node --check scripts/inject-static-shop-links.mjs
+          node --check scripts/verify-global-discovery.mjs
       - name: Build canonical search, store and AI discovery surfaces
         run: node scripts/build-global-discovery.mjs
       - name: Guarantee static shop navigation
