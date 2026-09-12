@@ -1,5 +1,7 @@
 import { existsSync, readFileSync } from 'node:fs';
 
+await import('./inject-static-shop-links.mjs');
+
 const SITE='https://d4ttara.github.io/metacademy-of-humanity';
 const STORE='https://payhip.com/dattara';
 const must=(x,m)=>{ if(!x) throw new Error(m); };
@@ -36,10 +38,11 @@ for(const path of ['index.html','uk/index.html','shop/index.html','uk/shop/index
   must(h.includes('assets/css/experience.css'),`${path} experience CSS missing`);
   must(h.includes('assets/js/experience.js'),`${path} experience JS missing`);
   must(h.includes(STORE),`${path} Payhip store route missing`);
+  must(h.includes('nav-shop'),`${path} static shop navigation missing`);
 }
 const js=text('assets/js/experience.js');
 for(const token of ['data-command-trigger','reader-toc','reading-progress','Challenge','back-to-top','moh-theme']) must(js.includes(token),`experience JS missing ${token}`);
 const css=text('assets/css/experience.css');
 for(const token of ['.home-launchpad','.reader-utility','.command-dialog','.reader-toc','.back-to-top','data-theme="night"']) must(css.includes(token),`experience CSS missing ${token}`);
 
-console.log(`GLOBAL_DISCOVERY_VERIFY=PASS pages=${index.entries.length} robots=SEARCH+AI sitemap=PASS llms_full=PASS ai_index=PASS shop=PAYHIP experience=13+`);
+console.log(`GLOBAL_DISCOVERY_VERIFY=PASS pages=${index.entries.length} robots=SEARCH+AI sitemap=PASS llms_full=PASS ai_index=PASS shop=PAYHIP static_shop_nav=PASS experience=13+`);
