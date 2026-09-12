@@ -5,6 +5,9 @@ import { existsSync, readFileSync } from 'node:fs';
 // Build-generated pages are deliberately enhanced here too, so Pages and any direct verifier
 // see the same LIT-000 -> six book units -> LIT-007 publication frame.
 await import('./enhance-moh-free-reading-paratexts.mjs');
+// Global search/AI metadata is built after all public literary routes exist, so the same
+// canonical surfaces reach ordinary search engines and answer engines.
+await import('./build-global-discovery.mjs');
 
 const cfg=JSON.parse(readFileSync('publications/MOH_FREE_READING_UA_v76.json','utf8'));
 const root='uk/books/memories-of-humanity/book-1/free-reading';
@@ -88,4 +91,5 @@ must(!enBooks.includes('MOH-FREE-READING-UA-v76'),'English books index received 
 
 await import('./verify-moh-lit-000-skuf.mjs');
 await import('./verify-moh-lit-007-esthete.mjs');
+await import('./verify-global-discovery.mjs');
 console.log(`MOH_FREE_READING_VERIFY=PASS book_units=${cfg.pieces.length} frame=LIT-000..007 public_routes=9 pdf=8 epub=8 issues=63-68,71,72 english=ZERO free_boundary=BEFORE_CHAPTER_IV`);
