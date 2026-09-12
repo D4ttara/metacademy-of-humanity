@@ -17,12 +17,12 @@ must(index.schema==='metacademy-public-ai-index/v1','AI index schema mismatch');
 must(index.site===SITE+'/','AI index canonical site mismatch');
 must(Array.isArray(index.entries)&&index.entries.length>=40,`AI index unexpectedly small: ${index.entries?.length}`);
 const urls=new Set(index.entries.map(x=>x.url));
-for(const required of [SITE+'/',SITE+'/uk/',SITE+'/manifesto/',SITE+'/documents/',SITE+'/topics/',SITE+'/discover/',SITE+'/uk/books/memories-of-humanity/book-1/free-reading/',SITE+'/uk/books/memories-of-humanity/book-1/free-reading/skuf-review/',SITE+'/uk/books/memories-of-humanity/book-1/free-reading/esthete-review/']) must(urls.has(required),`AI index missing ${required}`);
+for(const required of [SITE+'/',SITE+'/uk/',SITE+'/manifesto/',SITE+'/documents/',SITE+'/discover/',SITE+'/books/',SITE+'/uk/books/',SITE+'/uk/books/memories-of-humanity/book-1/free-reading/',SITE+'/uk/books/memories-of-humanity/book-1/free-reading/skuf-review/',SITE+'/uk/books/memories-of-humanity/book-1/free-reading/esthete-review/']) must(urls.has(required),`AI index missing ${required}`);
 
 const sitemap=text('sitemap.xml');
 for(const url of urls) must(sitemap.includes(`<loc>${url}</loc>`),`sitemap missing AI-index URL ${url}`);
 const full=text('llms-full.txt');
-for(const required of [SITE+'/manifesto/',SITE+'/documents/',SITE+'/topics/',SITE+'/uk/',SITE+'/discover/']) must(full.includes(required),`llms-full missing ${required}`);
+for(const required of [SITE+'/manifesto/',SITE+'/documents/',SITE+'/uk/',SITE+'/discover/',SITE+'/books/',SITE+'/uk/books/']) must(full.includes(required),`llms-full missing ${required}`);
 
 for(const e of index.entries){
   must(e.title&&e.description&&e.language&&e.type,`AI index incomplete entry: ${e.url}`);
