@@ -1,6 +1,7 @@
 import { existsSync, readFileSync } from 'node:fs';
 
 await import('./inject-static-shop-links.mjs');
+await import('./inject-arena-discovery.mjs');
 
 const SITE='https://d4ttara.github.io/metacademy-of-humanity';
 const STORE='https://payhip.com/dattara';
