@@ -32,6 +32,7 @@ on:
       - 'AI_DISCOVERY.md'
       - 'scripts/build-global-discovery.mjs'
       - 'scripts/inject-static-shop-links.mjs'
+      - 'scripts/inject-arena-discovery.mjs'
       - 'scripts/verify-global-discovery.mjs'
       - '.github/workflows/global-discovery-ci.yml'
   push:
@@ -65,6 +66,7 @@ on:
       - 'AI_DISCOVERY.md'
       - 'scripts/build-global-discovery.mjs'
       - 'scripts/inject-static-shop-links.mjs'
+      - 'scripts/inject-arena-discovery.mjs'
       - 'scripts/verify-global-discovery.mjs'
 
 permissions:
@@ -80,11 +82,14 @@ jobs:
           node --check assets/js/experience.js
           node --check scripts/build-global-discovery.mjs
           node --check scripts/inject-static-shop-links.mjs
+          node --check scripts/inject-arena-discovery.mjs
           node --check scripts/verify-global-discovery.mjs
       - name: Build canonical search, store and AI discovery surfaces
         run: node scripts/build-global-discovery.mjs
       - name: Guarantee static shop navigation
         run: node scripts/inject-static-shop-links.mjs
+      - name: Inject AI Arena into machine discovery
+        run: node scripts/inject-arena-discovery.mjs
       - name: Verify discovery and modern experience coverage
         run: node scripts/verify-global-discovery.mjs
       - name: Check generated text patches
