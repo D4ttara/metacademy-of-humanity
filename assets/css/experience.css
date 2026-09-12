@@ -18,6 +18,16 @@ html[data-theme="night"] {
   --blue-stripe:#67b8f3;
   color-scheme:dark;
 }
+html[data-theme="night"] body { background:var(--paper); color:var(--text); }
+html[data-theme="night"] .top { background:rgba(16,24,32,.92); }
+html[data-theme="night"] .card,
+html[data-theme="night"] .reader-toc,
+html[data-theme="night"] .reader-comment,
+html[data-theme="night"] .ai-reader-lab,
+html[data-theme="night"] .reader-response { background:rgba(22,34,44,.78); }
+html[data-theme="night"] .domain { background:var(--paper); }
+html[data-theme="night"] .button.primary { color:#101820; background:var(--ink); }
+html[data-theme="night"] .button.primary:hover { color:#101820; background:var(--accent-strong); }
 
 .skip-link {
   position:fixed;
@@ -66,8 +76,7 @@ h1,h2,h3,.lede { text-wrap:balance; }
   border-radius:var(--experience-radius);
   transition:transform .18s ease,box-shadow .18s ease,border-color .18s ease;
 }
-.card:hover,
-.card:focus-within {
+.card:hover,.card:focus-within {
   transform:translateY(-3px);
   box-shadow:var(--experience-shadow-hover);
   border-color:#b8cad6;
@@ -194,8 +203,7 @@ html[data-theme="night"] .reader-utility { background:rgba(16,24,32,.94); }
   scrollbar-width:none;
 }
 .reader-utility .wrap::-webkit-scrollbar { display:none; }
-.reader-utility button,
-.reader-utility a {
+.reader-utility button,.reader-utility a {
   min-height:36px;
   white-space:nowrap;
   border:0;
@@ -207,8 +215,7 @@ html[data-theme="night"] .reader-utility { background:rgba(16,24,32,.94); }
   text-decoration:none;
   cursor:pointer;
 }
-.reader-utility button:hover,
-.reader-utility a:hover { color:var(--accent-strong); }
+.reader-utility button:hover,.reader-utility a:hover { color:var(--accent-strong); }
 .reader-utility .utility-shop { margin-left:auto; border:1px solid var(--ink); }
 .reader-utility .utility-shop:hover { background:var(--ink); color:var(--paper); }
 
@@ -281,7 +288,6 @@ html[data-theme="night"] .reader-utility { background:rgba(16,24,32,.94); }
 }
 .shop-grid { grid-template-columns:repeat(3,1fr); }
 .shop-note { color:var(--muted); max-width:48rem; }
-
 footer .experience-footer-links { display:inline-flex; flex-wrap:wrap; gap:.35rem .75rem; margin-left:.7rem; }
 
 @media (max-width:900px) {
