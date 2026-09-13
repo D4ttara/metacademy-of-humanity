@@ -7,6 +7,9 @@ on:
       - 'uk/research/index.html'
       - 'scripts/inject-living-seed-lineage-*.mjs'
       - 'scripts/verify-living-seed-lineage-v1.2.mjs'
+      - 'sitemap.xml'
+      - 'feed.xml'
+      - 'llms.txt'
       - '.github/workflows/living-seed-lineage-v1-2-ci.yml'
   workflow_dispatch:
 
@@ -18,9 +21,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Verify approved wording and lineage
-        run: node scripts/verify-living-seed-lineage-v1.2.mjs
-      - name: Exercise public discovery injector
+      - name: Build Living Seed public surfaces and discovery
         run: node scripts/inject-living-seed-lineage-discovery.mjs
-      - name: Verify after discovery build
+      - name: Verify approved wording, lineage and publication surfaces
         run: node scripts/verify-living-seed-lineage-v1.2.mjs
