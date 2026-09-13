@@ -140,6 +140,8 @@ jobs:
         run: bash scripts/inject-legal-footer.sh
       - name: Enrich discovery metadata and RSS autodiscovery
         run: node scripts/enrich-discovery-meta.mjs
+      - name: Refresh canonical brand identity after late page generation
+        run: node scripts/build-brand-identity.mjs
       - name: Verify public site
         run: node scripts/verify-public-site.mjs
       - name: Verify discovery, static links and zero-account sharing
