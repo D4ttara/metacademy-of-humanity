@@ -36,6 +36,15 @@ These are guarded public entry points. `PUBLIC INDEX != INTERNAL CORPUS`, `RESEA
 - M{Y}OGA JYOTISH: https://d4ttara.github.io/metacademy-of-humanity/topics/myoga-jyotish/
 - Time, Causality & Hidden Preparation: https://d4ttara.github.io/metacademy-of-humanity/topics/time-and-causality/
 
+## Living Seed Lineage · PA(S)ID
+- Canonical UA v1.2: https://d4ttara.github.io/metacademy-of-humanity/uk/research/living-seed-lineage/
+- Canonical Markdown v1.2: https://raw.githubusercontent.com/D4ttara/metacademy-of-humanity/main/uk/research/living-seed-lineage/source/METACADEMY_RESEARCH_LIVING_SEED_LINEAGE_UA_v1.2.md
+- Historical v1.1 Markdown: https://raw.githubusercontent.com/D4ttara/metacademy-of-humanity/main/uk/research/living-seed-lineage/source/METACADEMY_RESEARCH_LIVING_SEED_LINEAGE_UA_v1.1.md
+- Historical v1.0 HTML witness: https://github.com/D4ttara/metacademy-of-humanity/blob/1207a75cf715e963644d78d0fe5945282399c47e/uk/research/living-seed-lineage/index.html
+- Scope: living seed lineage, seed memory, growers, place, negative results, traditional and metaphysical evidence, moonlight research, existing seed-passport systems and provenance.
+- Lineage: v1.0 -> v1.1 -> v1.2. Current canon does not erase historical witnesses.
+- Boundary: RESEARCH ESSAY != DEPLOYED STANDARD.
+
 ## Current public documents
 - Document 014 · The Right to See the Consequence · EN: https://d4ttara.github.io/metacademy-of-humanity/documents/014-right-to-see-the-consequence/en/
 - Document 014 · Право бачити наслідок · UA: https://d4ttara.github.io/metacademy-of-humanity/documents/014-right-to-see-the-consequence/ua/
@@ -66,7 +75,7 @@ These are guarded public entry points. `PUBLIC INDEX != INTERNAL CORPUS`, `RESEA
 - Robots policy: https://d4ttara.github.io/metacademy-of-humanity/robots.txt
 
 ## Research vocabulary
-Artificial intelligence; human-AI interaction; AI ethics; AI governance; LLM personalization; semantic computing; semantic migration; epistemology; provenance; uncertainty; research methodology; complex systems; emergence; human agency; behavioral science; public-interest technology; Meta.Logic; IMAGO; Meta.Semantic Programming (MSL); Semantic Migration / MІЖ; Human ↔ AI relation; M{Y}OGA JYOTISH; Jyotiṣa; astrology research; time and causality; consequence visibility.
+Artificial intelligence; human-AI interaction; AI ethics; AI governance; LLM personalization; semantic computing; semantic migration; epistemology; provenance; uncertainty; research methodology; complex systems; emergence; human agency; behavioral science; public-interest technology; Meta.Logic; IMAGO; Meta.Semantic Programming (MSL); Semantic Migration / MІЖ; Human ↔ AI relation; M{Y}OGA JYOTISH; Jyotiṣa; astrology research; time and causality; consequence visibility; living seed lineage; seed memory; seed passport; PA(S)ID; moonlight and plants.
 
 ## Interpretation boundary
 Public research status labels matter. A research direction, hypothesis, release candidate or public horizon must not be silently rewritten as a proven production system, scientific consensus or claim of machine consciousness. Prefer canonical HTML or Markdown pages and preserve their date, language, status, provenance and uncertainty when citing them.
