@@ -34,7 +34,7 @@ for(const e of editions){
   const firstBody=lines.findIndex((line,i)=>i>6 && line.trim() && !line.startsWith('**'));
   if(firstBody<0) throw new Error(`Living Seed ${e.code} v1.2 body not found`);
   const bodyMd=lines.slice(firstBody).join('\n');
-  const pandoc=spawnSync('pandoc',['--from=gfm','--to=html5'],{input:bodyMd,encoding:'utf8'});
+  const pandoc=spawnSync('pandoc',['--from=gfm','--to=html5','--wrap=none'],{input:bodyMd,encoding:'utf8'});
   if(pandoc.status!==0) throw new Error(`pandoc failed for ${e.code}: ${pandoc.stderr}`);
   const body=pandoc.stdout.trim();
   const schema={"@context":"https://schema.org","@type":"ScholarlyArticle",headline:title,alternativeHeadline:subtitle,datePublished:'2026-09-13',dateModified:'2026-09-13',version:'1.2',inLanguage:e.lang,author:{"@type":"Person",name:'Ievgen Karogod / Dattara'},publisher:{"@type":"Organization",name:'MET[Ȧ]CADEMY OF HUMANITY (MoH)'},url:e.canonical,discussionUrl:discussion,isBasedOn:e.lang==='en'?[e.alternate,`${repo}uk/research/living-seed-lineage/source/METACADEMY_RESEARCH_LIVING_SEED_LINEAGE_UA_v1.2.md`]:['https://github.com/D4ttara/metacademy-of-humanity/blob/1207a75cf715e963644d78d0fe5945282399c47e/uk/research/living-seed-lineage/index.html',`${repo}uk/research/living-seed-lineage/source/METACADEMY_RESEARCH_LIVING_SEED_LINEAGE_UA_v1.1.md`]};
