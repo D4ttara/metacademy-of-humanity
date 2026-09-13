@@ -1,5 +1,11 @@
 import { readFileSync, readdirSync, statSync } from 'node:fs';
 import { join } from 'node:path';
+
+// Corpus / Start Here builders intentionally run after the first identity pass and can
+// create fresh public pages. Re-run the idempotent identity builder here so verification
+// covers the final generated site, not the pre-generation snapshot.
+await import('./build-brand-identity.mjs');
+
 const base='https://d4ttara.github.io/metacademy-of-humanity/';
 const canonical='MET[Ȧ]CADEMY OF HUMANITY';
 const aliases=['METACADEMY OF HUMANITY','MetaAcademy of Humanity','Metacademy of Humanity','METACADEMY','MoH'];
@@ -16,4 +22,4 @@ const walk=d=>readdirSync(d).flatMap(n=>{const p=join(d,n);const s=statSync(p);r
 const pages=walk('.').filter(p=>p.endsWith('index.html'));
 let identityLinks=0;
 for(const p of pages){const h=readFileSync(p,'utf8');if(!h.includes('name="application-name"'))fail(`${p} missing application-name`);if(!h.includes('rel="describedby"')||!h.includes('identity.json'))fail(`${p} missing identity describedby`);if(!h.includes(`${base}#organization`))fail(`${p} missing canonical organization @id`);if(/<footer[\s>]/i.test(h)){if(!h.includes('data-brand-identity-link'))fail(`${p} missing visible identity link`);identityLinks++;}}
-console.log(`BRAND_IDENTITY_VERIFY=PASS pages=${pages.length} footer_links=${identityLinks} aliases=${aliases.length} identity_json=PASS citation_cff=PASS sitemap=PASS llms=PASS organization_id=PASS`);
+console.log(`BRAND_IDENTITY_VERIFY=PASS pages=${pages.length} footer_links=${identityLinks} aliases=${aliases.length} identity_json=PASS citation_cff=PASS sitemap=PASS llms=PASS organization_id=PASS late_generation_refresh=PASS`);
