@@ -124,6 +124,8 @@ jobs:
         run: bash scripts/inject-legal-footer.sh
       - name: Enrich discovery metadata and RSS autodiscovery
         run: node scripts/enrich-discovery-meta.mjs
+      - name: Inject Living Seed Lineage v1.1 into sitemap, llms and RSS
+        run: node scripts/inject-living-seed-lineage-discovery.mjs
       - name: Verify public site
         run: node scripts/verify-public-site.mjs
       - name: Verify discovery, static links and zero-account sharing
