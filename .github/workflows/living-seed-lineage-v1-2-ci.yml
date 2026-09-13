@@ -1,0 +1,26 @@
+name: Living Seed Lineage v1.2 CI
+
+on:
+  pull_request:
+    paths:
+      - 'uk/research/living-seed-lineage/**'
+      - 'uk/research/index.html'
+      - 'scripts/inject-living-seed-lineage-*.mjs'
+      - 'scripts/verify-living-seed-lineage-v1.2.mjs'
+      - '.github/workflows/living-seed-lineage-v1-2-ci.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Verify approved wording and lineage
+        run: node scripts/verify-living-seed-lineage-v1.2.mjs
+      - name: Exercise public discovery injector
+        run: node scripts/inject-living-seed-lineage-discovery.mjs
+      - name: Verify after discovery build
+        run: node scripts/verify-living-seed-lineage-v1.2.mjs
