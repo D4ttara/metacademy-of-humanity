@@ -120,6 +120,8 @@ jobs:
         run: node scripts/build-corpus-programs.mjs
       - name: Harden corpus navigation and machine-readable trails
         run: node scripts/harden-corpus-programs.mjs
+      - name: Refresh canonical brand identity after late page generation
+        run: node scripts/build-brand-identity.mjs
       - name: Inject legal / privacy footer link
         run: bash scripts/inject-legal-footer.sh
       - name: Enrich discovery metadata and RSS autodiscovery
