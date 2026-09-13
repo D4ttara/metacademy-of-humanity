@@ -1,3 +1,4 @@
+import './inject-living-seed-lineage-surfaces.mjs';
 import { existsSync, readFileSync, writeFileSync } from 'node:fs';
 
 const route='https://d4ttara.github.io/metacademy-of-humanity/uk/research/living-seed-lineage/';
@@ -49,4 +50,4 @@ if (routePos >= 0) {
 }
 writeFileSync('feed.xml',feed,'utf8');
 
-console.log('LIVING_SEED_DISCOVERY=PASS version=v1.2 sitemap=PASS llms=PASS rss=PASS source=MD lineage=v1.0+v1.1+v1.2');
+console.log('LIVING_SEED_DISCOVERY=PASS version=v1.2 surfaces=EN_UA sitemap=PASS llms=PASS rss=PASS source=MD lineage=v1.0+v1.1+v1.2');
