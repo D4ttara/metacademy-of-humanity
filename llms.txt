@@ -37,8 +37,10 @@ These are guarded public entry points. `PUBLIC INDEX != INTERNAL CORPUS`, `RESEA
 - Time, Causality & Hidden Preparation: https://d4ttara.github.io/metacademy-of-humanity/topics/time-and-causality/
 
 ## Living Seed Lineage · PA(S)ID
+- Canonical EN v1.2: https://d4ttara.github.io/metacademy-of-humanity/research/living-seed-lineage/
+- Canonical EN Markdown v1.2: https://raw.githubusercontent.com/D4ttara/metacademy-of-humanity/main/research/living-seed-lineage/source/METACADEMY_RESEARCH_LIVING_SEED_LINEAGE_EN_v1.2.md
 - Canonical UA v1.2: https://d4ttara.github.io/metacademy-of-humanity/uk/research/living-seed-lineage/
-- Canonical Markdown v1.2: https://raw.githubusercontent.com/D4ttara/metacademy-of-humanity/main/uk/research/living-seed-lineage/source/METACADEMY_RESEARCH_LIVING_SEED_LINEAGE_UA_v1.2.md
+- Canonical UA Markdown v1.2: https://raw.githubusercontent.com/D4ttara/metacademy-of-humanity/main/uk/research/living-seed-lineage/source/METACADEMY_RESEARCH_LIVING_SEED_LINEAGE_UA_v1.2.md
 - Historical v1.1 Markdown: https://raw.githubusercontent.com/D4ttara/metacademy-of-humanity/main/uk/research/living-seed-lineage/source/METACADEMY_RESEARCH_LIVING_SEED_LINEAGE_UA_v1.1.md
 - Historical v1.0 HTML witness: https://github.com/D4ttara/metacademy-of-humanity/blob/1207a75cf715e963644d78d0fe5945282399c47e/uk/research/living-seed-lineage/index.html
 - Scope: living seed lineage, seed memory, growers, place, negative results, traditional and metaphysical evidence, moonlight research, existing seed-passport systems and provenance.
