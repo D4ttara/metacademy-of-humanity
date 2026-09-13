@@ -4,7 +4,10 @@ on:
   pull_request:
     paths:
       - 'uk/research/living-seed-lineage/**'
+      - 'research/living-seed-lineage/**'
       - 'uk/research/index.html'
+      - 'research/index.html'
+      - 'scripts/render-living-seed-lineage-v1.2.mjs'
       - 'scripts/inject-living-seed-lineage-*.mjs'
       - 'scripts/verify-living-seed-lineage-v1.2.mjs'
       - 'sitemap.xml'
@@ -21,7 +24,9 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Build Living Seed public surfaces and discovery
+      - name: Install Living Seed renderer dependency
+        run: sudo apt-get update && sudo apt-get install -y --no-install-recommends pandoc
+      - name: Build Living Seed public editions and discovery
         run: node scripts/inject-living-seed-lineage-discovery.mjs
       - name: Verify approved wording, lineage and publication surfaces
         run: node scripts/verify-living-seed-lineage-v1.2.mjs
