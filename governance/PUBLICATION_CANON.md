@@ -14,11 +14,13 @@ An approved earlier edition is not cosmetically rebuilt merely to conform to a l
 
 New documents use the durable route `documents/<NNN>-<canonical-slug>/`. Each edition records language, version, source relation, date, SHA-256 and supersession relation in `publications/PUBLICATION_REGISTRY.yml`.
 
-The visual series identity for a new document is: IBM Plex where available; a pale-blue left stripe; a small `(MoH)` plaque at left; a grey `MET[Ȧ]CADEMY OF HUMANITY` title one typographic step larger than the previous header; and a secondary, right-aligned sign strip exactly as written below.
+The visual series identity for a new document is: **IBM Plex family only**; a pale-blue left stripe; a small `(MoH)` plaque at left; a grey `MET[Ȧ]CADEMY OF HUMANITY` title one typographic step larger than the previous header; and a secondary, right-aligned sign strip exactly as written below.
 
 `· (A) · {Ȧ} · [Ả] · {Ã} · (Ā) ·`
 
 `[Ả]` has slightly stronger weight. The strip is secondary information, never the primary accent. Layout stays spacious, editorial and research-legible rather than ceremonial wallpaper.
+
+The Academy inherits the project-wide [`DESIGN_CANON.md`](DESIGN_CANON.md). For book-scale fixed-page publications, the primary MoH trim is **6 × 9 in**. **5 × 8 in** is the compact secondary trim; **B6** is reserved for deliberate pocket / artifact editions. **A4 and A5 are utility formats, not brand defaults.** Long-form body text uses IBM Plex Serif; headings, interface and display text use IBM Plex Sans; code, operators and technical notation use IBM Plex Mono. Script-specific typography stays inside the IBM Plex family where an appropriate Plex script family exists.
 
 ## Equal public surface across the corpus
 
