@@ -6,6 +6,7 @@ First full public Ukrainian essay published on the canonical route.
 
 - Commit: `1207a75cf715e963644d78d0fe5945282399c47e`
 - Historical HTML blob SHA: `f6c58f55b7f5ce73fb2fb1578be0d4b995dfe4c3`
+- Historical witness: `https://github.com/D4ttara/metacademy-of-humanity/blob/1207a75cf715e963644d78d0fe5945282399c47e/uk/research/living-seed-lineage/index.html`
 - Canonical route at publication: `https://d4ttara.github.io/metacademy-of-humanity/uk/research/living-seed-lineage/`
 - Status: historical public witness retained through Git history; do not rewrite this commit in provenance claims.
 
@@ -24,8 +25,31 @@ Changes:
 - adds explicit claim-boundary formulas;
 - adds canonical Markdown source.
 
-Canonical source:
+Canonical historical source:
 `source/METACADEMY_RESEARCH_LIVING_SEED_LINEAGE_UA_v1.1.md`
 
 Boundary:
 `v1.1 != silent overwrite of v1.0`.
+
+## v1.2 · 2026-09-13
+
+Author-approved public canonical Ukrainian edition.
+
+The wording of the approved v1.2 essay is preserved. Publication formatting may reflow enumerative lines into ordinary paragraphs, but does not rewrite the approved wording.
+
+Canonical source:
+`source/METACADEMY_RESEARCH_LIVING_SEED_LINEAGE_UA_v1.2.md`
+
+Public route:
+`https://d4ttara.github.io/metacademy-of-humanity/uk/research/living-seed-lineage/`
+
+Lineage:
+`v1.0 -> v1.1 -> v1.2`
+
+Boundaries:
+
+`v1.2 = CURRENT CANONICAL UA PUBLIC EDITION`
+
+`CURRENT CANON != ERASED HISTORY`
+
+`REFLOW != REWRITE`
