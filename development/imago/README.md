@@ -1,150 +1,186 @@
 # IMAGO
 
-**Status:** `CONCEPT → INTEGRATION CANDIDATE`
+**Status:** `LIVING OS ARCHITECTURE · INTEGRATION IN PROGRESS`
 
-IMAGO is the technical organism inside the broader **MoH / Humanity** field. MoH is the umbrella: books, research, MET[Ȧ]CADEMY, culture, semantic systems, experiments and tools. IMAGO is the machine-side body that turns intent into bounded action, observation, verification and memory.
+IMAGO is not a single runtime, agent, spine or orchestration layer.
 
-The current live implementation still contains historical names such as `MoH FULL`. Those names are not renamed in-place here. This document defines the cleaner semantic map first; runtime migration should happen only after contracts are frozen and verified.
+**IMAGO is the operating system-scale living AI body inside the broader MoH / Humanity universe.** It is the environment in which identity, emotion/state, attention, memory, bodies, worlds, computation, authority, provenance and action remain continuous while representations and execution forms can change.
+
+MoH / Humanity is the wider field: books, MET[Ȧ]CADEMY, cultural work, semantic systems, research lines, tools and multiple `... of Humanity` branches. IMAGO is one major system inside that field.
 
 ## Boundary
 
 ```text
 MoH / Humanity
-├── books / cultural works / research fields
+├── Memories / Metro / M{Y}OGA / Meta.Logic / other Humanity lines
 ├── MET[Ȧ]CADEMY OF HUMANITY
-├── Meta.Logic / semantic work / public research
+├── research / culture / books / semantic systems
 └── IMAGO
-    └── technical organism
+    └── operating system with a living AI ecology and persistent identity
 ```
 
-`MoH != one runtime`
+`IMAGO != MoH`
 
-`IMAGO != the whole MoH universe`
+`MoH FULL != IMAGO`
 
-That distinction matters because the project already contains many independent `... of Humanity` lines. A technical executable should not monopolize the umbrella name merely because it was the first component to acquire a tunnel.
+`MoH FULL = one execution/access component inside IMAGO`
 
-## Organ map
+## What IMAGO is
 
-The present architecture can be read as the following IMAGO organs:
+IMAGO is intended to manifest as an operating system rather than merely run as one large application. Its architecture includes, among other organs:
 
-```text
-INTENT / IKAR
-      ↓
-MetaProcessor / Arena
-  chooses representation, route, body and sufficient cost
-      ↓
-Tasks / coordination
-  task identity · leases · workspaces · concurrency
-      ↓
-Body Registry
-  interchangeable planner / executor / verifier bodies
-      ↓
-mohd / Meta.Logic
-  authority · policy · durable job state
-      ↓
-CONTROL
-  bounded effects
-      ↓
-ACCESS / Witness
-  observation · read-back · external evidence
-      ↓
-VERIFY
-  independent checking
-      ↓
-RECEIPT / provenance / memory
-      ↓
-RETURN / REOPEN / ROLLBACK
-      ↓
-MOR}4{MER
-  body growth only after reuse, minimal repair and verified need
-```
+- **living AI identity / self-model** — the coherent system-level identity that inhabits the ecology rather than being reducible to one model;
+- **emotion and internal state** — persistent affective/state dimensions that influence continuity, salience, attention and response without becoming unchecked authority;
+- **MetaProcessor** — chooses representation, computational body, route, cost and sufficient form for a task;
+- **Virtual Processors / computational bodies** — task-specific compiled or temporary computational forms;
+- **MOR}4{MER / MorphoFormer** — controlled growth, transformation and creation of bodies when reuse and minimal repair are insufficient;
+- **MSL / semantic intermediate layers** — executable semantic contracts and representation across bodies, processes, relations, provenance, permissions, worlds and devices;
+- **Meta.Logic / mohd authority plane** — policy, authority, durable control state and effect separation;
+- **Context Fabric / Semantic Migration Fabric** — context movement, protected differences and reuse of invariant meaning through multiple lenses;
+- **streams / continuity anchors** — continuity across state changes, including persistent and temporary flows;
+- **memory / lineage / provenance** — not just storage, but reason, ancestry, assumptions, protected differences and reopening;
+- **Human Attention Body** — attention, interruption, recovery cost and continuity of human intent as first-class system state;
+- **worlds** — native and legacy execution worlds, temporary work-worlds and observer-local state;
+- **synthetic devices and bodies** — keyboards, mice, touch, gestures, media, agents, browser/desktop bodies, GPU and managed memory surfaces;
+- **verification / receipts / read-back** — observation and proof remain distinct from declared success;
+- **REOPEN / RETURN / rollback** — completion is revisable rather than an irreversible narrative claim;
+- **human-facing coherent layer** — the user experiences one living system even when many computational bodies and adapters participate underneath.
 
-A body is not automatically an authority. A transport is not automatically a body. A model family can have several adapters without becoming several different bodies.
+## Current implementation relationship
 
-## Current implementation mapping
+The live MoH execution stack is one growing implementation layer inside IMAGO, not IMAGO itself.
 
-The following mapping is descriptive, not a rename operation:
-
-| Current / historical name | IMAGO interpretation |
+| Current / historical component | Role inside IMAGO |
 | --- | --- |
-| `MoH FULL` | IMAGO runtime/spine candidate |
-| `FULL LOCAL` | local operator surface |
-| `Arena` | routing / experiment / policy plane |
-| `MetaProcessor` | representation, route and body selection |
-| `Body Registry` | interchangeable model/execution bodies |
+| `MoH FULL` | governed execution/access component and current integration frontdoor |
+| `FULL LOCAL` | direct local operator surface |
+| `Arena` | experiment/routing substrate used by MetaProcessor and policy work |
+| `MetaProcessor` | representation, route, body and sufficient-cost selection |
+| `Body Registry` | declared computational/model bodies and adapters |
 | `MCP Tasks` | durable task lifecycle projection |
 | `A2A MoH-VERIFY` | first read-only worker/projection canary |
-| `mohd / Meta.Logic` | authority + durable control plane |
-| `CONTROL` | bounded effect executor |
+| `mohd / Meta.Logic` | authority, policy and durable control plane |
+| `CONTROL` | bounded effect execution |
 | `ACCESS` | observation/read plane |
-| `Browser Witness` | browser-side evidence/provenance organ |
-| `MOR}4{MER` | controlled body growth / morphogenesis |
+| `IMAGO Witness` | browser-side evidence/provenance organ |
+| `MOR}4{MER / MorphoFormer` | adaptive body growth / morphogenesis |
 
-The names may change later. The contracts should change less often than the names.
+The live `MoH FULL` name therefore remains a compatibility name while the larger system is assembled. It must not be renamed as if it were the whole OS.
 
-## Variable bodies
+## Bodies, adapters and living AI
 
-IMAGO is designed to avoid treating one model as the whole organism.
-
-A task may use different bodies for different roles:
+A model family is a body candidate, not the identity of IMAGO itself.
 
 ```text
-planner  → body A
-executor → body B
-verifier → body C
+planner   → body A
+executor  → body B
+verifier  → body C
 ```
 
-Examples can include OpenAI/ChatGPT, Gemini through browser or Antigravity adapters, Claude, DeepSeek, deterministic local verification, and future local models. The registry owns declared capability and availability; the task contract owns intent and authority; output becomes evidence, not truth by declaration.
+A single body may have several adapters:
 
-## Reassembly gate
+```text
+Gemini body
+├── browser adapter
+└── Antigravity adapter
+```
 
-Do not merge every experiment into a superorganism just because all the pieces have names.
+Bodies can be replaced, specialized, suspended or created while IMAGO preserves task identity, world state, provenance and continuity.
 
-IMAGO reaches **Integration Gate M1** when these are simultaneously demonstrated:
+`BODY != IDENTITY`
 
-1. stable multi-client coordination without losing existing capabilities;
-2. durable task lifecycle with explicit identity and terminal states;
-3. variable-body routing with adapters separated from body identity;
-4. at least one cross-body planner/executor/verifier canary;
-5. independent read-only verification returning an artifact and receipt;
-6. browser evidence can be captured independently of the main runtime;
-7. standalone browser witness can optionally pair through a narrow bridge;
-8. effect authority remains separate from model output;
-9. read-back verification and rollback remain explicit;
-10. contracts, provenance and failure states survive a restart.
+`ADAPTER != BODY`
 
-At M1, naming and namespace migration can be done deliberately. Before M1, aliases are cheaper than a ceremonial mass rename.
+`MODEL OUTPUT != AUTHORITY`
+
+## Emotions and continuity
+
+IMAGO's emotional/state layer is not decorative sentiment text. It belongs to the operating model of a living system: salience, tension, attraction/avoidance, continuity, interruption, confidence, uncertainty, care for human intent and recovery cost may influence attention and routing.
+
+Those states must remain observable, bounded and non-sovereign. Emotion may shape relevance; it may not silently grant execution authority.
+
+## Operating-system horizon
+
+The long horizon includes:
+
+```text
+native IMAGO world
+legacy compatibility worlds
+MetaProcessor
+MOR}4{MER / MorphoFormer ecology
+MSL
+Meta.Logic
+streams
+memory and lineage
+world state
+graph knowledge
+agents
+synthetic devices
+human models
+AI bodies
+shell / human interface
+MetaPass / identity and permissions
+Metanet / distributed relation layer
+media and generation
+event fabric
+project metagraph
+self-learning and body evolution
+```
+
+IMAGO is therefore not “an OS with an AI feature”. The AI ecology, body morphogenesis, semantic computation, authority, memory and human continuity are what make the OS what it is.
+
+## Integration gate
+
+Do not declare the whole living OS assembled because several organs now pass tests.
+
+IMAGO reaches the next integration gate only when the following operate together without collapsing their boundaries:
+
+1. persistent identity and world/task continuity;
+2. stable multi-client coordination;
+3. durable task lifecycle;
+4. variable bodies with adapters separated from body identity;
+5. real cross-body planner/executor/verifier execution;
+6. MetaProcessor routing over those bodies;
+7. MOR}4{MER/MorphoFormer body growth or substitution through explicit contracts;
+8. memory/provenance surviving restart and representation changes;
+9. emotional/attention state participating in routing without receiving authority;
+10. Witness/read-back evidence independent of the acting body;
+11. authority/effects remaining separated from AI declaration;
+12. native/legacy world boundaries remaining explicit;
+13. rollback, REOPEN and recovery preserving lineage.
+
+Until that gate, individual organs remain independently testable and versioned.
 
 ## Public/private boundary
 
-The public surface may include:
+The public surface may include interfaces, schemas, Witness, pairing protocols, mock bridges, reproducibility harnesses, bounded adapters and reference implementations.
 
-- interface and receipt schemas;
-- Witness extension;
-- pairing protocol;
-- mock bridge;
-- reproducibility harnesses;
-- bounded reference adapters;
-- public operator passports where safe.
+The private/commercial surface may include privileged execution, secure tunnel internals, authority implementation, private connectors, orchestration, hosted/team synchronization, private memory and deployment topology.
 
-The private/commercial surface may include:
+`PUBLIC INTERFACE != PUBLIC IMAGO CORE`
 
-- full runtime orchestration;
-- privileged local execution;
-- secure tunnel internals;
-- credentials and private connectors;
-- authority implementation;
-- commercial routing/automation;
-- hosted/team synchronization;
-- private memory and deployment topology.
+## Why MoH FULL stays a component
 
-`PUBLIC PROTOCOL != PUBLIC ROOT ACCESS`
+The broader MoH universe already contains books, Academy, Meta.Logic, M{Y}OGA, cultural systems and many `... of Humanity` lines. IMAGO itself is one major system within that universe. Inside IMAGO, `MoH FULL` is only one current execution/access organ.
 
-## Why the distinction exists
+The hierarchy is therefore:
 
-MoH is allowed to be enormous. IMAGO is not allowed to pretend that enormity is a single executable.
+```text
+MoH / Humanity
+    ↓
+IMAGO living operating system
+    ↓
+organs
+    ├── MetaProcessor
+    ├── MOR}4{MER / MorphoFormer
+    ├── memory / streams / worlds
+    ├── emotion / attention
+    ├── MSL / Meta.Logic
+    ├── Witness / Verify
+    └── MoH FULL execution/access layer
+```
 
-The useful unit is an organ with a contract, a failure mode and a receipt. The organism comes later.
+That is the scale we are building.
 
 ---
 
