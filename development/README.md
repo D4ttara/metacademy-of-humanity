@@ -4,6 +4,11 @@
 
 This directory is the public development boundary for experimental tools, protocol sketches, adapters, reproducibility harnesses and reference implementations that grow out of MET[Ȧ]CADEMY research.
 
+## Current development lane
+
+- [`IMAGO`](imago/) — public architecture boundary for the technical organism inside the wider MoH field.
+- [`IMAGO Witness`](imago/WITNESS.md) — browser-side evidence/provenance tool concept with standalone use and optional narrow pairing.
+
 ## The rule
 
 ```text
@@ -18,18 +23,18 @@ We publish enough for other people to inspect, reproduce, criticize, extend or u
 
 Good candidates include:
 
-- small standalone tools that remain useful without the private MoH runtime;
+- small standalone tools that remain useful without the private MoH/IMAGO runtime;
 - protocol and receipt schemas;
 - browser-side evidence and provenance tooling;
 - reproducibility harnesses for Human↔AI failure research;
-- bounded adapters that can optionally pair with MoH;
+- bounded adapters that can optionally pair with IMAGO;
 - reference implementations where interoperability matters more than secrecy.
 
 ## What does not automatically belong here
 
 Publishing an interface does **not** imply publishing:
 
-- the full MoH FULL runtime;
+- the full privileged runtime;
 - owner-bound execution internals;
 - private connectors, credentials or deployment topology;
 - security-sensitive orchestration logic;
@@ -48,7 +53,7 @@ Every public development item should say what it is:
 
 A status label is evidence hygiene, not decorative typography.
 
-## Standalone first, MoH-aware second
+## Standalone first, IMAGO-aware second
 
 Where practical, public tools should have two layers:
 
@@ -56,11 +61,11 @@ Where practical, public tools should have two layers:
 standalone mode
     → useful by itself
 
-optional MoH pairing
+optional IMAGO pairing
     → richer task identity, provenance, coordination and governed local effects
 ```
 
-That keeps public tools genuinely reusable while allowing the private MoH stack to provide the heavier machinery.
+That keeps public tools genuinely reusable while allowing the private IMAGO stack to provide the heavier machinery.
 
 ## Commercial boundary
 
