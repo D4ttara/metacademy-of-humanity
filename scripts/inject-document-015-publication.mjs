@@ -55,8 +55,10 @@ const jobs=[
   }
 ];
 
+const homePages = new Set(['index.html','uk/index.html']);
 let changed=0;
 for (const job of jobs) {
+  if (homePages.has(job.path)) continue;
   let html=readFileSync(job.path,'utf8');
   if (html.includes('data-document-feature="015"')) continue;
   html=insertAfterMainLead(html,job.block);
