@@ -304,6 +304,47 @@ documents:
     supersedes: null
     external_links:
       - https://d4ttara.github.io/metacademy-of-humanity/documents/006-myoga-jyotish/
+  - number: "017"
+    canonical_slug: sar-sanskrit-semantic-recognition
+    title:
+      en: "S{Ȧ}R: Don't Translate Sanskrit Too Early"
+      ua: "S{Ȧ}R: не перекладати санскрит зарано"
+    subtitle:
+      en: "Preserving word, root, ambiguity and time in a machine-readable Bhagavad Gītā"
+      ua: "Як зберегти слово, корінь, неоднозначність і час у машинному читанні Бгаґавад-ґіти"
+    class: Research Note
+    status: published
+    date: 2026-10-11
+    research_relations: ["Sanskrit", "Bhagavad Gītā", "computational philology", "semantic computing", "historical linguistics", "Indo-European", "provenance", "uncertainty", "Meta.Logic", "MSL"]
+    discussion: https://github.com/D4ttara/metacademy-of-humanity/issues/77
+    editions:
+      - language: en
+        version: v1.0
+        relation: English adaptive sibling; public research launch note
+        local_paths:
+          html: documents/017-sar-sanskrit-semantic-recognition/en/index.html
+          markdown: documents/017-sar-sanskrit-semantic-recognition/METACADEMY_DOCUMENT_017_SAR_SANSKRIT_SEMANTIC_RECOGNITION_EN_v1.0.md
+        sha256:
+          markdown: 61465cf4ff576455476b7c12ce1879658f114decdd765217b05eb4a45c8dca4a
+          html: 947eb1296e13cba882536c1681e6d9539fad73b6b36387b79de4a0e9b041a352
+      - language: ua
+        version: v1.0
+        relation: primary Ukrainian reading edition
+        local_paths:
+          html: documents/017-sar-sanskrit-semantic-recognition/ua/index.html
+          markdown: documents/017-sar-sanskrit-semantic-recognition/METACADEMY_DOCUMENT_017_SAR_SANSKRIT_SEMANTIC_RECOGNITION_UA_v1.0.md
+        sha256:
+          markdown: 096559c2d1207f08694c079d27c2f707743f3c94e90fe456069416e5fb1b942c
+          html: 0ab1fc2b426cc4fde00372fe37a58531ab433008f3220345e52336cc93009279
+    supersedes: null
+    external_links:
+      - https://gretil.sub.uni-goettingen.de/
+      - https://sanskrit.uohyd.ac.in/scl/e-readers/sbg/main.html
+      - https://sanskrit-linguistics.org/dcs/
+      - https://www.sanskrit-lexicon.uni-koeln.de/
+      - https://www.sanskritlibrary.org/
+      - https://sanskritwordnet.unipv.it/
+      - https://lrc.la.utexas.edu/lex/languages/Skt
 external_large_artifacts:
   - name: Science Aperture 2021–2026 public index
     version: v1.1

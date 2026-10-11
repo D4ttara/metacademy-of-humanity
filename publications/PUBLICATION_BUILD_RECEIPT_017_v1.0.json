@@ -1,0 +1,19 @@
+{
+  "schema": "metacademy-publication-build-receipt/v1",
+  "date": "2026-10-11",
+  "version": "v1.0",
+  "document": "017",
+  "slug": "017-sar-sanskrit-semantic-recognition",
+  "discussion": "https://github.com/D4ttara/metacademy-of-humanity/issues/77",
+  "pdf_status": "not_built_no_xelatex_in_current_windows_runtime",
+  "editions": {
+    "en": {
+      "markdown_sha256": "61465cf4ff576455476b7c12ce1879658f114decdd765217b05eb4a45c8dca4a",
+      "html_sha256": "947eb1296e13cba882536c1681e6d9539fad73b6b36387b79de4a0e9b041a352"
+    },
+    "ua": {
+      "markdown_sha256": "096559c2d1207f08694c079d27c2f707743f3c94e90fe456069416e5fb1b942c",
+      "html_sha256": "0ab1fc2b426cc4fde00372fe37a58531ab433008f3220345e52336cc93009279"
+    }
+  }
+}
