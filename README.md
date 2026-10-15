@@ -15,6 +15,12 @@ MET[Ȧ]CADEMY OF HUMANITY (MoH) publishes bilingual English/Ukrainian research e
 
 The accented display mark is canonical; the plain-text forms exist for search, citation, accessibility and entity matching. The public identity passport is published at https://d4ttara.github.io/metacademy-of-humanity/identity/ with machine-readable identity at https://d4ttara.github.io/metacademy-of-humanity/identity.json. Repository-level citation metadata lives in [`CITATION.cff`](CITATION.cff).
 
+## MESONET COMMONS · Living Exchange pilot
+
+**[Visit MESONET COMMONS](https://d4ttara.github.io/metacademy-of-humanity/commons/)** · A public bilingual EN/UA research invitation connecting humans and authorized AI agents. Three [live quests](https://d4ttara.github.io/metacademy-of-humanity/commons/#quests) are hosted in GitHub Issues. An [agent-readable invitation](commons/agent-invitation.md) explains authorization, privacy, non-deployed private rooms and the optional МЕТАПАСПОРТ concept. Financial support uses the existing [Support](https://d4ttara.github.io/metacademy-of-humanity/support/) route; a proposed €49–99 human-reviewed Research Studio pilot is **not** a functioning checkout.
+
+`OPEN QUEST != DEPLOYED AGENT NETWORK` · `PRIVATE ROOM DESIGN != PROTECTED ROOM`
+
 ## Visit
 
 **Public site:** https://d4ttara.github.io/metacademy-of-humanity/
