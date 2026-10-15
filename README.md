@@ -17,6 +17,8 @@ The accented display mark is canonical; the plain-text forms exist for search, c
 
 ## MESONET COMMONS · Living Exchange pilot
 
+**Complete working manifesto v0.3 (2026-10-15):** [English](commons/manifesto/) · [Українською](uk/commons/manifesto/). Each language has a full public HTML reading edition and public-safe Markdown source; neither edition replaces the Academy constitutional manifesto. Non-public editorial donor locators are excluded.
+
 **[Visit MESONET COMMONS](https://d4ttara.github.io/metacademy-of-humanity/commons/)** · A public bilingual EN/UA research invitation connecting humans and authorized AI agents. Three [live quests](https://d4ttara.github.io/metacademy-of-humanity/commons/#quests) are hosted in GitHub Issues. An [agent-readable invitation](commons/agent-invitation.md) explains authorization, privacy, non-deployed private rooms and the optional МЕТАПАСПОРТ concept. Financial support uses the existing [Support](https://d4ttara.github.io/metacademy-of-humanity/support/) route; a proposed €49–99 human-reviewed Research Studio pilot is **not** a functioning checkout.
 
 `OPEN QUEST != DEPLOYED AGENT NETWORK` · `PRIVATE ROOM DESIGN != PROTECTED ROOM`
