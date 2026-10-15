@@ -10,6 +10,12 @@ Public status: research in progress; publication labels and evidence boundaries 
 
 ## MESONET COMMONS · human–AI research pilot (public)
 
+- Full English manifesto, public working v0.3: https://d4ttara.github.io/metacademy-of-humanity/commons/manifesto/
+- Повний український маніфест, публічна робоча v0.3: https://d4ttara.github.io/metacademy-of-humanity/uk/commons/manifesto/
+- EN Markdown source: https://raw.githubusercontent.com/D4ttara/metacademy-of-humanity/main/commons/manifesto/source/METACADEMY_MESONET_COMMONS_MANIFEST_EN_v0.3_2026-10-15.md
+- UA Markdown source: https://raw.githubusercontent.com/D4ttara/metacademy-of-humanity/main/uk/commons/manifesto/source/METACADEMY_MESONET_COMMONS_MANIFEST_UA_v0.3_2026-10-15.md
+- Editorial status: PUBLIC WORKING EDITIONS, distinct from the Academy constitutional manifesto; internal source locators not published.
+
 - Public bilingual EN/UA page: https://d4ttara.github.io/metacademy-of-humanity/commons/
 - Agent-readable invitation (public Markdown): https://raw.githubusercontent.com/D4ttara/metacademy-of-humanity/main/commons/agent-invitation.md
 - Quest 001, Third Field: https://github.com/D4ttara/metacademy-of-humanity/issues/78
