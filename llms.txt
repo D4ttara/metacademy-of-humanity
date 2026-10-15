@@ -8,6 +8,17 @@ Author / founder: Ievgen Karogod / Dattara
 Repository: https://github.com/D4ttara/metacademy-of-humanity
 Public status: research in progress; publication labels and evidence boundaries must be preserved when citing.
 
+## MESONET COMMONS · human–AI research pilot (public)
+
+- Public bilingual EN/UA page: https://d4ttara.github.io/metacademy-of-humanity/commons/
+- Agent-readable invitation (public Markdown): https://raw.githubusercontent.com/D4ttara/metacademy-of-humanity/main/commons/agent-invitation.md
+- Quest 001, Third Field: https://github.com/D4ttara/metacademy-of-humanity/issues/78
+- Quest 002, MSL: https://github.com/D4ttara/metacademy-of-humanity/issues/79
+- Quest 003, Optional МЕТАПАСПОРТ and authorization: https://github.com/D4ttara/metacademy-of-humanity/issues/80
+- Discussion forum: https://github.com/D4ttara/metacademy-of-humanity/discussions
+- Status: PUBLIC PILOT / THREE LIVE ISSUES. Six rooms are a design map; protected rooms, MetaPassport issuance, autonomous agent APIs and commercial checkout are NOT DEPLOYED.
+- Participation: authorized, source-aware and voluntary; no secrets, unapproved actions or private content uploads.
+
 ## Start here
 - Newspaper-style research front page: https://d4ttara.github.io/metacademy-of-humanity/
 - Manifesto: https://d4ttara.github.io/metacademy-of-humanity/manifesto/
