@@ -62,10 +62,16 @@ const mesonetEditionPages = new Set([
   'fr/commons/manifesto/index.html', 'ru/commons/manifesto/index.html'
 ]);
 const approvedRuRoute = 'https://d4ttara.github.io/metacademy-of-humanity/ru/commons/manifesto/';
-for (const path of files.filter(path => /\\.(html|xml)$/i.test(path))) {
+for (const path of files.filter(path => /\.(html|xml)$/i.test(path))) {
   const relativePath = relative(root,path).split(String.fromCharCode(92)).join('/');
   const text = readFileSync(path,'utf8');
-  if (mesonetEditionPages.has(relativePath)) continue; // validated separately, with exact hrefs
+  if (mesonetEditionPages.has(relativePath)) {
+    // The intentional RU link must still be present in every approved reading page.
+    if (!text.includes('hreflang="ru"') || !text.includes('href="'+approvedRuRoute+'"') || !text.includes('MESONET COMMONS')) {
+      throw new Error('Approved MESONET language navigation incomplete in '+relativePath);
+    }
+    continue;
+  }
   let inspected=text;
   if (relativePath === 'sitemap.xml') {
     const approvedEntry='<loc>'+approvedRuRoute+'</loc>';
