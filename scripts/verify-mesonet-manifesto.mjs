@@ -33,8 +33,10 @@ for(let i=0;i<editions.length;i++){
  check(md.includes('## '+({uk:'Читати іншою мовою',en:'Read in another language',de:'In einer anderen Sprache lesen',es:'Leer en otro idioma',fr:'Lire dans une autre langue',ru:'Читать на другом языке'})[lang]),lang+' markdown links missing');
 }
 for(const [p,eyebrow] of [['index.html','MESONET COMMONS · Public working manifesto v0.3'],['uk/index.html','MESONET COMMONS · Публічна робоча редакція']]){
- const s=read(p),hero=s.indexOf('<section class="hero">'),feature=s.indexOf(eyebrow),following=s.indexOf('id="featured-017"');
- check(hero>=0&&feature>hero&&following>feature,p+' feature not directly after hero');
+ const s=read(p),hero=s.indexOf('<section class="hero">'),feature=s.indexOf(eyebrow);
+ const heroEnd=hero>=0?s.indexOf('</section>',hero)+'</section>'.length:-1;
+ const immediate=s.slice(heroEnd).trimStart();
+ check(hero>=0&&heroEnd>hero&&feature>heroEnd&&immediate.startsWith('<section><div class="wrap"><p class="eyebrow">'+eyebrow),p+' manifesto feature must appear immediately after hero');
  check(s.indexOf(eyebrow)===s.lastIndexOf(eyebrow),p+' duplicate feature');
 }
 for(const p of ['manifesto/index.html','uk/manifesto/index.html']) check(read(p).includes('MESONET COMMONS · '+(p.startsWith('uk/')?'Повний маніфест UA v0.3':'Full Manifesto EN v0.3')),p+' missing separate card');

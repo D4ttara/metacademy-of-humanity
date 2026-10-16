@@ -62,7 +62,18 @@ for (const cfg of Object.values(editions)) {
   const heroStart = html.indexOf('<section class="hero">');
   const heroEnd = html.indexOf('</section>', heroStart) + '</section>'.length;
   if (heroStart < 0 || heroEnd < 0 || whyStart < 0) throw new Error(`Front page anchors missing in ${cfg.path}`);
-  html = html.slice(0, heroEnd) + makeFrontpage(cfg) + html.slice(whyStart);
+  // Preserve the author-approved MESONET COMMONS feature directly beneath the hero.
+  // The newspaper rebuild replaces the original home sections up to "Why";
+  // without explicitly carrying this block forward, its publication CTA vanishes.
+  const mesonetMarker = '<p class="eyebrow">MESONET COMMONS · ';
+  const mesonetAt = html.indexOf(mesonetMarker, heroEnd);
+  const mesonetStart = mesonetAt >= 0 ? html.lastIndexOf('<section>', mesonetAt) : -1;
+  const mesonetEndTag = mesonetAt >= 0 ? html.indexOf('</section>', mesonetAt) : -1;
+  if (mesonetStart < heroEnd || mesonetEndTag < 0 || mesonetStart >= whyStart) {
+    throw new Error(`Missing MESONET hero feature in ${cfg.path}`);
+  }
+  const mesonetFeature = html.slice(mesonetStart, mesonetEndTag + '</section>'.length);
+  html = html.slice(0, heroEnd) + '\n' + mesonetFeature + '\n' + makeFrontpage(cfg) + html.slice(whyStart);
 
   html = html.replace(/<section><div class="wrap grid"><div class="copy"><p class="eyebrow">New field · Document 006<\/p>[\s\S]*?<\/section>/g, '');
   html = html.replace(/<section><div class="wrap grid"><div class="copy"><p class="eyebrow">Document 004<\/p>[\s\S]*?<\/section>/g, '');
