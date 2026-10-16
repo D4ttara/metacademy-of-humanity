@@ -308,3 +308,12 @@ This is a **public working edition v0.3**, released at the author's request. It 
 - [Open discussions](https://github.com/D4ttara/metacademy-of-humanity/discussions)
 
 © 2026 Ievgen Karogod / Dattara · MET[Ȧ]CADEMY OF HUMANITY (MoH)
+
+## Read in another language
+
+- [🇺🇦 Українська](https://d4ttara.github.io/metacademy-of-humanity/uk/commons/manifesto/)
+- [🇬🇧 English (current edition)](https://d4ttara.github.io/metacademy-of-humanity/commons/manifesto/)
+- [🇩🇪 Deutsch](https://d4ttara.github.io/metacademy-of-humanity/de/commons/manifesto/)
+- [🇪🇸 Español](https://d4ttara.github.io/metacademy-of-humanity/es/commons/manifesto/)
+- [🇫🇷 Français](https://d4ttara.github.io/metacademy-of-humanity/fr/commons/manifesto/)
+- [🇷🇺 Русский](https://d4ttara.github.io/metacademy-of-humanity/ru/commons/manifesto/)
