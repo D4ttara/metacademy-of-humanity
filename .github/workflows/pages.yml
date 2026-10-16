@@ -128,6 +128,8 @@ jobs:
         run: node scripts/enrich-discovery-meta.mjs
       - name: Inject legal / privacy footer link after all generated pages
         run: bash scripts/inject-legal-footer.sh
+      - name: Verify MESONET six-edition publication
+        run: node scripts/verify-mesonet-manifesto.mjs
       - name: Verify public site
         run: node scripts/verify-public-site.mjs
       - name: Verify discovery, static links and zero-account sharing

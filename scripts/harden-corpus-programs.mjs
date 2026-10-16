@@ -14,7 +14,9 @@ const editions=[
  'documents/013-room-that-answers/en/index.html','documents/013-room-that-answers/ua/index.html',
  'documents/014-right-to-see-the-consequence/en/index.html','documents/014-right-to-see-the-consequence/ua/index.html',
  'documents/015-polytypic-thinking/en/index.html','documents/015-polytypic-thinking/ua/index.html',
- 'documents/016-right-to-a-first-chance/en/index.html','documents/016-right-to-a-first-chance/ua/index.html'
+ 'documents/016-right-to-a-first-chance/en/index.html','documents/016-right-to-a-first-chance/ua/index.html',
+ 'documents/017-sar-sanskrit-semantic-recognition/en/index.html','documents/017-sar-sanskrit-semantic-recognition/ua/index.html',
+ 'documents/017-sar-sanskrit-semantic-recognition/en/index.html','documents/017-sar-sanskrit-semantic-recognition/ua/index.html'
 ];
 
 let headPrev=0,headNext=0;

@@ -50,10 +50,36 @@ for (const path of publicFiles) {
   for (const pattern of forbidden) if (pattern.test(text)) throw new Error(`Private marker ${pattern} in ${relative(root, path)}`);
 }
 
+// Russian is intentionally supported for the six authorized MESONET COMMONS
+// manifesto editions. Keep the old no-accidental-RU rule on all other pages.
+const mesonetLocalePage = /^(?:commons|uk\/commons|de\/commons|es\/commons|fr\/commons|ru\/commons)\/manifesto\/index\.html$/;
+const russianEdition = 'https://d4ttara.github.io/metacademy-of-humanity/ru/commons/manifesto/';
+// EN/UA Academy architecture remains unchanged. Only the six author-approved
+// MESONET COMMONS v0.3 reading pages can link to the complete RU edition.
+const mesonetEditionPages = new Set([
+  'commons/manifesto/index.html', 'uk/commons/manifesto/index.html',
+  'de/commons/manifesto/index.html', 'es/commons/manifesto/index.html',
+  'fr/commons/manifesto/index.html', 'ru/commons/manifesto/index.html'
+]);
+const approvedRuRoute = 'https://d4ttara.github.io/metacademy-of-humanity/ru/commons/manifesto/';
 for (const path of files.filter(path => /\.(html|xml)$/i.test(path))) {
-  const text = readFileSync(path, "utf8");
-  if (text.includes('hreflang="ru"') || text.includes('lang="ru"') || text.includes('>RU<') || text.includes('/ru/')) {
-    throw new Error(`Russian locale residue in ${relative(root, path)}`);
+  const relativePath = relative(root,path).split(String.fromCharCode(92)).join('/');
+  const text = readFileSync(path,'utf8');
+  if (mesonetEditionPages.has(relativePath)) {
+    // The intentional RU link must still be present in every approved reading page.
+    if (!text.includes('hreflang="ru"') || !text.includes('href="'+approvedRuRoute+'"') || !text.includes('MESONET COMMONS')) {
+      throw new Error('Approved MESONET language navigation incomplete in '+relativePath);
+    }
+    continue;
+  }
+  let inspected=text;
+  if (relativePath === 'sitemap.xml') {
+    const approvedEntry='<loc>'+approvedRuRoute+'</loc>';
+    if (!inspected.includes(approvedEntry)) throw new Error('Approved RU MESONET manifesto missing from sitemap');
+    inspected=inspected.replace(approvedEntry,'');
+  }
+  if (inspected.includes('hreflang="ru"') || inspected.includes('lang="ru"') || inspected.includes('>RU<') || inspected.includes('/ru/')) {
+    throw new Error(`Russian locale residue outside approved MESONET publication in ${relativePath}`);
   }
 }
 

@@ -2,6 +2,8 @@ import { readFileSync, existsSync } from 'node:fs';
 const assert=(ok,msg)=>{if(!ok)throw new Error(msg)};
 const base='https://d4ttara.github.io/metacademy-of-humanity/';
 const numbers=['003','004','006','007','008','009','010','011','012','013','014','015','016'];
+// Corpus includes Document 017; the six curated Start Here trails retain their separately verified 13-document coverage.
+const corpusNumbers=[...numbers,'017'];
 const editions=[
  ['003','documents/003-life-as-organization/en/index.html'],['003','documents/003-life-as-organization/index.html'],
  ['004','documents/004-when-science-reaches-a-plateau/en/index.html'],['004','documents/004-when-science-reaches-a-plateau/ua/index.html'],
@@ -15,12 +17,13 @@ const editions=[
  ['013','documents/013-room-that-answers/en/index.html'],['013','documents/013-room-that-answers/ua/index.html'],
  ['014','documents/014-right-to-see-the-consequence/en/index.html'],['014','documents/014-right-to-see-the-consequence/ua/index.html'],
  ['015','documents/015-polytypic-thinking/en/index.html'],['015','documents/015-polytypic-thinking/ua/index.html'],
- ['016','documents/016-right-to-a-first-chance/en/index.html'],['016','documents/016-right-to-a-first-chance/ua/index.html']
+ ['016','documents/016-right-to-a-first-chance/en/index.html'],['016','documents/016-right-to-a-first-chance/ua/index.html'],
+ ['017','documents/017-sar-sanskrit-semantic-recognition/en/index.html'],['017','documents/017-sar-sanskrit-semantic-recognition/ua/index.html']
 ];
 for(const p of ['corpus/index.html','uk/corpus/index.html','programs/index.html','uk/programs/index.html','discovery/public-corpus.json','discovery/public-programs.json'])assert(existsSync(p),`missing ${p}`);
 const corpusEn=readFileSync('corpus/index.html','utf8'),corpusUa=readFileSync('uk/corpus/index.html','utf8');
 for(const [h,label] of [[corpusEn,'EN corpus'],[corpusUa,'UA corpus']]){
- for(const n of numbers)assert(h.includes(`data-corpus-document="${n}"`),`${label} missing Document ${n}`);
+ for(const n of corpusNumbers)assert(h.includes(`data-corpus-document="${n}"`),`${label} missing Document ${n}`);
  assert(h.includes('AI critique')||h.includes('ШІ-критика'),`${label} missing AI critique links`);
  assert(h.includes('github.com/D4ttara/metacademy-of-humanity/issues/'),`${label} missing challenge links`);
 }
@@ -49,9 +52,9 @@ for(const [n,path] of editions){
  if(rail.includes('<a rel="prev"')){assert(h.includes('<link rel="prev"'),`${path} visible prev lacks head prev`);prevHeads++}
  if(rail.includes('<a rel="next"')){assert(h.includes('<link rel="next"'),`${path} visible next lacks head next`);nextHeads++}
 }
-assert(editions.length===25,'expected 25 canonical public editions');
+assert(editions.length===27,'expected 27 canonical public editions, including Document 017');
 assert(prevHeads>0&&nextHeads>0,'head prev/next verification did not execute');
-const corpusMachine=JSON.parse(readFileSync('discovery/public-corpus.json','utf8'));assert(corpusMachine.schema==='metacademy-public-corpus/v1','bad corpus schema');assert(corpusMachine.count===13&&corpusMachine.documents.length===13,'bad corpus count');
+const corpusMachine=JSON.parse(readFileSync('discovery/public-corpus.json','utf8'));assert(corpusMachine.schema==='metacademy-public-corpus/v1','bad corpus schema');assert(corpusMachine.count===14&&corpusMachine.documents.length===14,'bad corpus count, expected Documents 003–017 canonical set');
 const programMachine=JSON.parse(readFileSync('discovery/public-programs.json','utf8'));assert(programMachine.schema==='metacademy-public-programs/v1','bad programs schema');assert(programMachine.programs.length===9,'expected nine public programs');assert(programMachine.guards.length===3,'program guards missing');
 const startEn=readFileSync('start/index.html','utf8'),startUa=readFileSync('uk/start/index.html','utf8');for(const n of numbers){assert(startEn.includes(`Document ${n}`),`Start EN missing ${n}`);assert(startUa.includes(`Document ${n}`),`Start UA missing ${n}`)}
 for(const [h,label] of [[startEn,'Start EN'],[startUa,'Start UA']]){
@@ -65,4 +68,4 @@ for(const [path] of [['index.html'],['uk/index.html'],['research/index.html'],['
 const ukHome=readFileSync('uk/index.html','utf8');const ukEntry=ukHome.match(/<section data-corpus-programs-entry="true">[\s\S]*?<\/section>/)?.[0]||'';assert(ukEntry.includes('href="corpus/"')&&ukEntry.includes('href="programs/"'),'UA home corpus/program routes escape /uk/');assert(!ukEntry.includes('href="../corpus/"')&&!ukEntry.includes('href="../programs/"'),'UA home still contains EN-root corpus/program route');
 const sitemap=readFileSync('sitemap.xml','utf8');for(const route of ['corpus/','uk/corpus/','programs/','uk/programs/'])assert(sitemap.includes(base+route),`sitemap missing ${route}`);
 const llms=readFileSync('llms.txt','utf8');assert(llms.includes('## Public Corpus & Research Programs'),'llms missing corpus/program section');assert(llms.includes('discovery/public-corpus.json')&&llms.includes('discovery/public-programs.json'),'llms missing machine passports');
-console.log(`CORPUS_PROGRAMS_VERIFY=PASS documents=${numbers.length} editions=${editions.length} programs=${programMachine.programs.length} research_doorways=3 corpus_rails=PASS breadcrumbs=PASS head_prev=${prevHeads} head_next=${nextHeads} start_here=13x6 ua_routes=PASS sitemap=PASS llms=PASS`);
+console.log(`CORPUS_PROGRAMS_VERIFY=PASS documents=${corpusNumbers.length} editions=${editions.length} programs=${programMachine.programs.length} research_doorways=3 corpus_rails=PASS breadcrumbs=PASS head_prev=${prevHeads} head_next=${nextHeads} start_here=13x6 ua_routes=PASS sitemap=PASS llms=PASS`);

@@ -3,7 +3,7 @@
 > A living public research field for knowledge, human experience, artificial intelligence, human-AI relations, semantic computing, epistemology, complex systems, culture, provenance, uncertainty and the unknown.
 
 Canonical site: https://d4ttara.github.io/metacademy-of-humanity/
-Languages: English and Ukrainian
+Main website languages: English and Ukrainian; MESONET COMMONS manifesto editions in Ukrainian, English, German, Spanish, French and Russian
 Author / founder: Ievgen Karogod / Dattara
 Repository: https://github.com/D4ttara/metacademy-of-humanity
 Public status: research in progress; publication labels and evidence boundaries must be preserved when citing.
@@ -14,6 +14,14 @@ Public status: research in progress; publication labels and evidence boundaries 
 - Повний український маніфест, публічна робоча v0.3: https://d4ttara.github.io/metacademy-of-humanity/uk/commons/manifesto/
 - EN Markdown source: https://raw.githubusercontent.com/D4ttara/metacademy-of-humanity/main/commons/manifesto/source/METACADEMY_MESONET_COMMONS_MANIFEST_EN_v0.3_2026-10-15.md
 - UA Markdown source: https://raw.githubusercontent.com/D4ttara/metacademy-of-humanity/main/uk/commons/manifesto/source/METACADEMY_MESONET_COMMONS_MANIFEST_UA_v0.3_2026-10-15.md
+- Full Deutsch manifesto v0.3: https://d4ttara.github.io/metacademy-of-humanity/de/commons/manifesto/
+- DE Markdown source: https://raw.githubusercontent.com/D4ttara/metacademy-of-humanity/main/de/commons/manifesto/source/METACADEMY_MESONET_COMMONS_MANIFEST_DE_v0.3_2026-10-15.md
+- Full Español manifesto v0.3: https://d4ttara.github.io/metacademy-of-humanity/es/commons/manifesto/
+- ES Markdown source: https://raw.githubusercontent.com/D4ttara/metacademy-of-humanity/main/es/commons/manifesto/source/METACADEMY_MESONET_COMMONS_MANIFEST_ES_v0.3_2026-10-15.md
+- Full Français manifesto v0.3: https://d4ttara.github.io/metacademy-of-humanity/fr/commons/manifesto/
+- FR Markdown source: https://raw.githubusercontent.com/D4ttara/metacademy-of-humanity/main/fr/commons/manifesto/source/METACADEMY_MESONET_COMMONS_MANIFEST_FR_v0.3_2026-10-15.md
+- Full Русский manifesto v0.3: https://d4ttara.github.io/metacademy-of-humanity/ru/commons/manifesto/
+- RU Markdown source: https://raw.githubusercontent.com/D4ttara/metacademy-of-humanity/main/ru/commons/manifesto/source/METACADEMY_MESONET_COMMONS_MANIFEST_RU_v0.3_2026-10-15.md
 - Editorial status: PUBLIC WORKING EDITIONS, distinct from the Academy constitutional manifesto; internal source locators not published.
 
 - Public bilingual EN/UA page: https://d4ttara.github.io/metacademy-of-humanity/commons/
