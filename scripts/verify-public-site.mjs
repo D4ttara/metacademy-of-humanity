@@ -50,11 +50,23 @@ for (const path of publicFiles) {
   for (const pattern of forbidden) if (pattern.test(text)) throw new Error(`Private marker ${pattern} in ${relative(root, path)}`);
 }
 
+// Russian is intentionally supported for the six authorized MESONET COMMONS
+// manifesto editions. Keep the old no-accidental-RU rule on all other pages.
+const mesonetLocalePage = /^(?:commons|uk\/commons|de\/commons|es\/commons|fr\/commons|ru\/commons)\/manifesto\/index\.html$/;
+const russianEdition = 'https://d4ttara.github.io/metacademy-of-humanity/ru/commons/manifesto/';
 for (const path of files.filter(path => /\.(html|xml)$/i.test(path))) {
   const text = readFileSync(path, "utf8");
-  if (text.includes('hreflang="ru"') || text.includes('lang="ru"') || text.includes('>RU<') || text.includes('/ru/')) {
-    throw new Error(`Russian locale residue in ${relative(root, path)}`);
+  const name = relative(root, path).replaceAll('\\', '/');
+  const hasRussianLocale = text.includes('hreflang="ru"') || text.includes('lang="ru"') || text.includes('>RU<') || text.includes('/ru/');
+  if (!hasRussianLocale) continue;
+  if (mesonetLocalePage.test(name)) {
+    if (!text.includes('href="' + russianEdition + '"') || !text.includes('MESONET COMMONS')) {
+      throw new Error('Authorized RU-language navigation incomplete in ' + name);
+    }
+    continue;
   }
+  if (name === 'sitemap.xml' && text.includes('<loc>' + russianEdition + '</loc>')) continue;
+  throw new Error('Russian locale residue outside authorized MESONET editions in ' + name);
 }
 
 const fields = readFileSync(join(root, "fields/index.html"), "utf8");
