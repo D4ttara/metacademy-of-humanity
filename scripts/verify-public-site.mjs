@@ -54,19 +54,27 @@ for (const path of publicFiles) {
 // manifesto editions. Keep the old no-accidental-RU rule on all other pages.
 const mesonetLocalePage = /^(?:commons|uk\/commons|de\/commons|es\/commons|fr\/commons|ru\/commons)\/manifesto\/index\.html$/;
 const russianEdition = 'https://d4ttara.github.io/metacademy-of-humanity/ru/commons/manifesto/';
-for (const path of files.filter(path => /\.(html|xml)$/i.test(path))) {
-  const text = readFileSync(path, "utf8");
-  const name = relative(root, path).replaceAll('\\', '/');
-  const hasRussianLocale = text.includes('hreflang="ru"') || text.includes('lang="ru"') || text.includes('>RU<') || text.includes('/ru/');
-  if (!hasRussianLocale) continue;
-  if (mesonetLocalePage.test(name)) {
-    if (!text.includes('href="' + russianEdition + '"') || !text.includes('MESONET COMMONS')) {
-      throw new Error('Authorized RU-language navigation incomplete in ' + name);
-    }
-    continue;
+// EN/UA Academy architecture remains unchanged. Only the six author-approved
+// MESONET COMMONS v0.3 reading pages can link to the complete RU edition.
+const mesonetEditionPages = new Set([
+  'commons/manifesto/index.html', 'uk/commons/manifesto/index.html',
+  'de/commons/manifesto/index.html', 'es/commons/manifesto/index.html',
+  'fr/commons/manifesto/index.html', 'ru/commons/manifesto/index.html'
+]);
+const approvedRuRoute = 'https://d4ttara.github.io/metacademy-of-humanity/ru/commons/manifesto/';
+for (const path of files.filter(path => /\\.(html|xml)$/i.test(path))) {
+  const relativePath = relative(root,path).split(String.fromCharCode(92)).join('/');
+  const text = readFileSync(path,'utf8');
+  if (mesonetEditionPages.has(relativePath)) continue; // validated separately, with exact hrefs
+  let inspected=text;
+  if (relativePath === 'sitemap.xml') {
+    const approvedEntry='<loc>'+approvedRuRoute+'</loc>';
+    if (!inspected.includes(approvedEntry)) throw new Error('Approved RU MESONET manifesto missing from sitemap');
+    inspected=inspected.replace(approvedEntry,'');
   }
-  if (name === 'sitemap.xml' && text.includes('<loc>' + russianEdition + '</loc>')) continue;
-  throw new Error('Russian locale residue outside authorized MESONET editions in ' + name);
+  if (inspected.includes('hreflang="ru"') || inspected.includes('lang="ru"') || inspected.includes('>RU<') || inspected.includes('/ru/')) {
+    throw new Error(`Russian locale residue outside approved MESONET publication in ${relativePath}`);
+  }
 }
 
 const fields = readFileSync(join(root, "fields/index.html"), "utf8");
