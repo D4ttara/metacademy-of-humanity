@@ -15,6 +15,7 @@ const editions=[
  'documents/014-right-to-see-the-consequence/en/index.html','documents/014-right-to-see-the-consequence/ua/index.html',
  'documents/015-polytypic-thinking/en/index.html','documents/015-polytypic-thinking/ua/index.html',
  'documents/016-right-to-a-first-chance/en/index.html','documents/016-right-to-a-first-chance/ua/index.html',
+ 'documents/017-sar-sanskrit-semantic-recognition/en/index.html','documents/017-sar-sanskrit-semantic-recognition/ua/index.html',
  'documents/017-sar-sanskrit-semantic-recognition/en/index.html','documents/017-sar-sanskrit-semantic-recognition/ua/index.html'
 ];
 
