@@ -26,7 +26,7 @@ for(let i=0;i<editions.length;i++){
  check(html.includes('<link rel="canonical" href="'+urls[i]+'">'),lang+' canonical URL wrong');
  for(const code of hreflangs) check(html.includes('hreflang="'+code+'"'),lang+' missing hreflang '+code);
  check(html.includes('href="source/'+path.basename(mdPath)+'"'),lang+' source link missing');
- check(md.includes('### XIX.'),lang+' full text possibly truncated (XIX)');
+ check(md.includes(lang==='uk'?'### XVIII.':'### XIX.'),lang+' full text possibly truncated (final chapter)');
  if(lang==='ru')check(md.includes('### XX.'),lang+' Russian XX missing');
  check(html.includes(copyright)&&md.includes(copyright),lang+' rights missing');
  check(!/docs\.google\.com\/document\/d\//.test(html+md),lang+' private source URL leaked');
