@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Wohnung Hunter</title>
+  <style>
+    :root { color-scheme: light dark; font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif; }
+    body { margin: 0; padding: 14px; background: transparent; }
+    .top { display:flex; justify-content:space-between; gap:12px; align-items:center; margin-bottom:12px; }
+    h1 { font-size:18px; margin:0; }
+    .muted { opacity:.66; font-size:12px; }
+    .grid { display:grid; gap:10px; }
+    .card { border:1px solid color-mix(in srgb, currentColor 16%, transparent); border-radius:14px; padding:12px; background:color-mix(in srgb, Canvas 94%, transparent); }
+    .row { display:flex; gap:10px; justify-content:space-between; align-items:flex-start; }
+    .title { font-weight:700; font-size:14px; }
+    .address { font-size:12px; opacity:.72; margin-top:2px; }
+    .badge { border-radius:999px; padding:4px 8px; font-size:11px; border:1px solid color-mix(in srgb, currentColor 18%, transparent); white-space:nowrap; }
+    .score { font-weight:800; font-size:18px; }
+    .meta { display:flex; gap:7px; flex-wrap:wrap; margin-top:9px; font-size:12px; opacity:.78; }
+    .action { margin-top:9px; font-size:13px; }
+    .buttons { display:flex; gap:7px; flex-wrap:wrap; margin-top:10px; }
+    button { border:1px solid color-mix(in srgb, currentColor 20%, transparent); border-radius:9px; padding:7px 10px; background:transparent; color:inherit; cursor:pointer; font-weight:650; }
+    button:hover { background:color-mix(in srgb, currentColor 8%, transparent); }
+    .empty { padding:22px 8px; text-align:center; opacity:.7; }
+  </style>
+</head>
+<body>
+  <div class="top"><div><h1>🏠 München Wohnung Hunter</h1><div class="muted" id="stamp"></div></div><div class="muted" id="count"></div></div>
+  <div class="grid" id="grid"><div class="empty">Noch keine Wohnungen geladen.</div></div>
+<script type="module">
+  let data = { apartments: [], generatedAt: null };
+
+  const esc = (v='') => String(v).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[c]));
+  const money = n => typeof n === 'number' ? `${Math.round(n)} € kalt` : '';
+  const statusLabel = s => ({new:'Neu',applied:'Beworben',documents:'Dokumente fehlen',viewing:'Besichtigung',offer:'Mietangebot',rejected:'Absage',closed:'Geschlossen'}[s] || s);
+
+  async function callTool(name, args) {
+    if (window.openai?.callTool) return window.openai.callTool(name, args);
+    parent.postMessage({ jsonrpc:'2.0', id:crypto.randomUUID(), method:'tools/call', params:{ name, arguments:args } }, '*');
+  }
+
+  function render() {
+    const rows = data.apartments || [];
+    document.getElementById('count').textContent = `${rows.length} Fälle`;
+    document.getElementById('stamp').textContent = data.generatedAt ? `Stand ${new Date(data.generatedAt).toLocaleString('de-DE')}` : '';
+    const grid = document.getElementById('grid');
+    if (!rows.length) { grid.innerHTML = '<div class="empty">Noch keine Wohnungen geladen.</div>'; return; }
+    grid.innerHTML = rows.map(a => `
+      <div class="card">
+        <div class="row">
+          <div><div class="title">${esc(a.title)}</div><div class="address">${esc(a.address)}</div></div>
+          <div style="text-align:right"><div class="badge">${esc(statusLabel(a.status))}</div>${typeof a.score==='number' ? `<div class="score">${a.score}/100</div>` : ''}</div>
+        </div>
+        <div class="meta">
+          ${a.portal ? `<span>${esc(a.portal)}</span>`:''}
+          ${money(a.kaltmiete) ? `<span>${money(a.kaltmiete)}</span>`:''}
+          ${a.rooms ? `<span>${a.rooms} Zi.</span>`:''}
+          ${a.sqm ? `<span>${a.sqm} m²</span>`:''}
+        </div>
+        ${a.nextAction ? `<div class="action"><strong>Nächster Schritt:</strong> ${esc(a.nextAction)}</div>`:''}
+        ${a.note ? `<div class="muted" style="margin-top:5px">${esc(a.note)}</div>`:''}
+        <div class="buttons">
+          <button data-id="${esc(a.id)}" data-status="viewing">📅 Besichtigung</button>
+          <button data-id="${esc(a.id)}" data-status="documents">📎 Dokumente</button>
+          <button data-id="${esc(a.id)}" data-status="offer">✅ Mietangebot</button>
+          <button data-id="${esc(a.id)}" data-status="rejected">✖ Absage</button>
+        </div>
+      </div>`).join('');
+
+    grid.querySelectorAll('button').forEach(btn => btn.addEventListener('click', async () => {
+      btn.disabled = true;
+      try {
+        const id = btn.dataset.id;
+        const status = btn.dataset.status;
+        const result = await callTool('wohnung_set_status', { id, status });
+        const updated = result?.structuredContent?.apartment || result?.toolOutput?.apartment;
+        if (updated) data.apartments = data.apartments.map(x => x.id === id ? updated : x);
+        render();
+      } finally { btn.disabled = false; }
+    }));
+  }
+
+  window.addEventListener('message', event => {
+    const msg = event.data;
+    if (msg?.method === 'ui/notifications/tool-result') {
+      const payload = msg.params?.result?.structuredContent;
+      if (payload?.apartments) { data = payload; render(); }
+    }
+  });
+
+  if (window.openai?.toolOutput?.apartments) { data = window.openai.toolOutput; render(); }
+  render();
+</script>
+</body>
+</html>
