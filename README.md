@@ -49,6 +49,10 @@ The accented display mark is canonical; the plain-text forms exist for search, c
 
 GitHub Pages deploys the verified public build from `main` through GitHub Actions.
 
+## New research preprint · 30 October 2026
+
+**[Dialogue as Metanautics / Діалог як метанавтика (UA + EN)](publications/dialogue-as-metanavigation/README.md):** bilingual conceptual research article, prospective experimental protocol and internal critical assessment. **[External independent reviews invited](https://github.com/D4ttara/metacademy-of-humanity/issues/82).** The protocol is a *draft*, no human study has started, and no independent peer-review report has yet been received.
+
 ## What is here
 
 - a public working manifesto;
