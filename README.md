@@ -49,6 +49,10 @@ The accented display mark is canonical; the plain-text forms exist for search, c
 
 GitHub Pages deploys the verified public build from `main` through GitHub Actions.
 
+## New working paper · 30 October 2026
+
+**[Метанавтика близькості · The Horizon of Self, You/You-Plural and the Third Field](publications/metanautics-of-closeness/README.md)** (UA v0.1). A conceptual paper on autonomy without compulsory isolation, closeness without compulsory fusion, how the *question itself* shifts what relationships and choices become visible, and voluntary monogamous / consensual non-monogamous possibilities. Includes twelve open prompts plus a deliberately delayed thirteenth question and its mirrored autonomy safeguard. **Working paper, not peer reviewed; reflective prompts not experimentally validated.**
+
 ## New research preprint · 30 October 2026
 
 **[Dialogue as Metanautics / Діалог як метанавтика (UA + EN)](publications/dialogue-as-metanavigation/README.md):** bilingual conceptual research article, prospective experimental protocol and internal critical assessment. **[External independent reviews invited](https://github.com/D4ttara/metacademy-of-humanity/issues/82).** The protocol is a *draft*, no human study has started, and no independent peer-review report has yet been received.
