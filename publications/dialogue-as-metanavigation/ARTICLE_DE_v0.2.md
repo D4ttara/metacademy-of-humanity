@@ -227,7 +227,7 @@ Die praktisch überprüfbare These lautet: **Im Vergleich zu einem gewöhnlichen
 [5] Hase, A., Erdmann, M., Limbach, V., & Hasler, G. (2022). *Analysis of recreational psychedelic substance use experiences classified by substance.* Psychopharmacology, 239, 643–659. https://doi.org/10.1007/s00213-022-06062-3
 
 
-[6] Prugger, J., Derdiyok, E., Dinkelacker, J., Costines, C., & Schmidt, T. T. (2022). *The Altered States Database: Psychometric data from a systematic literature review.* Scientific Data, 9, 720. https://doi.org/10.1038/s41597-022-01822-4 ; open data: https://osf.io/8mbru/
+[6] Prugger, J., Derdiyok, E., Dinkelacker, J., Costines, C., & Schmidt, T. T. (2022). *The Altered States Database: Psychometric data from a systematic literature review.* Scientific Data, 9, 720. https://doi.org/10.1038/s41597-022-01822-4 ; offene Daten: https://osf.io/8mbru/
 
 
 [7] Galante, J., et al. (2024). *Altered states of consciousness caused by a mindfulness-based programme up to a year later: Results from a randomised controlled trial.* PLOS ONE, 19(7), e0305928. https://doi.org/10.1371/journal.pone.0305928
@@ -239,31 +239,31 @@ Die praktisch überprüfbare These lautet: **Im Vergleich zu einem gewöhnlichen
 [9] Tang, M., Hofreiter, S., Werner, C. H., Zielińska, A., & Karwowski, M. (2024/2025). *“Who” Is the Best Creative Thinking Partner? An Experimental Investigation of Human–Human, Human–Internet, and Human–AI Co-Creation.* Journal of Creative Behavior. https://doi.org/10.1002/jocb.1519
 
 
-[10] La Scala, J. A., Berney, M., Gillet, D., & Holzer, A. (2025). *When AI Joins the Brainstorm: Impacts of Generative Language Models on Collaborative Divergent Thinking.* Дослідницький запис EPFL. https://infoscience.epfl.ch/handle/20.500.14299/255366
+[10] La Scala, J. A., Berney, M., Gillet, D., & Holzer, A. (2025). *When AI Joins the Brainstorm: Impacts of Generative Language Models on Collaborative Divergent Thinking.* Forschungsbericht der EPFL. https://infoscience.epfl.ch/handle/20.500.14299/255366
 
 
 **Primärer Autorenkorpus MoH**
 
 
-[М1] *MET[Ȧ]CADEMY Manifest*, v1.2 (konstitutionelle Quelle) і v1.3-alpha (experimentelle Weiterentwicklung): (Autorenarchiv MoH; nicht öffentlich zugängliche Primärquelle) ; (Autorenarchiv MoH; nicht öffentlich zugängliche Primärquelle)
+[M1] *MET[Ȧ]CADEMY Manifest*, v1.2 (konstitutionelle Quelle) und v1.3-alpha (experimentelle Weiterentwicklung): (Autorenarchiv MoH; nicht öffentlich zugängliche Primärquelle) ; (Autorenarchiv MoH; nicht öffentlich zugängliche Primärquelle)
 
 
-[М2] *METACADEMY / MESONET / COMMONS Manifest*, v0.4.1 author-review (u. a. das dritte Feld und die Entstehung von Meta.Logic): (Autorenarchiv MoH; nicht öffentlich zugängliche Primärquelle)
+[M2] *METACADEMY / MESONET / COMMONS Manifest*, v0.4.1 author-review (u. a. das dritte Feld und die Entstehung von Meta.Logic): (Autorenarchiv MoH; nicht öffentlich zugängliche Primärquelle)
 
 
-[М3] *M41* (Unterschiede der Beweisgeltungsbereiche, Zeitkörper und des qualitativen Übergangs 9→10): (Autorenarchiv MoH; nicht öffentlich zugängliche Primärquelle)
+[M3] *M41* (Unterschiede der Beweisgeltungsbereiche, Zeitkörper und des qualitativen Übergangs 9→10): (Autorenarchiv MoH; nicht öffentlich zugängliche Primärquelle)
 
 
-[М4] *M44. Парадокс Karogod* (ursprünglicher metphilosophischer Autorentext, kein formales Theorem): (Autorenarchiv MoH; nicht öffentlich zugängliche Primärquelle)
+[M4] *M44. Karogod-Paradox* (ursprünglicher metaphilosophischer Autorentext, kein formales Theorem): (Autorenarchiv MoH; nicht öffentlich zugängliche Primärquelle)
 
 
-[М5] *MoHFr27* (Geschichte von META-PULSAR und Übergängen zwischen möglichen Welten): (Autorenarchiv MoH; nicht öffentlich zugängliche Primärquelle)
+[M5] *MoHFr27* (Geschichte von META-PULSAR und Übergängen zwischen möglichen Welten): (Autorenarchiv MoH; nicht öffentlich zugängliche Primärquelle)
 
 
-[М6] *PR-6, Gespräch vom 2. Oktober 2026* (frühe funktionale «LSD-like»/«mystic» аналогії): (Autorenarchiv MoH; nicht öffentlich zugängliche Primärquelle)
+[M6] *PR-6, Gespräch vom 2. Oktober 2026* (frühe funktionale „LSD-like“-/„mystic“- Analogien): (Autorenarchiv MoH; nicht öffentlich zugängliche Primärquelle)
 
 
-[М7] *METANAUTICS / Vermutung zugunsten der Möglichkeit*, v0.3 mit Nachtrag vom 29. Oktober 2026: lokales MoH-Forschungsarchiv, Bereich Research / Metanautics (nicht veröffentlicht)
+[M7] *METANAUTICS / Vermutung zugunsten der Möglichkeit*, v0.3 mit Nachtrag vom 29. Oktober 2026: lokales MoH-Forschungsarchiv, Bereich Research / Metanautics (nicht veröffentlicht)
 
 
 **Transparenz:** Die Quellen [1–10] bilden eine historische und vergleichende empirische Grundlage, beweisen aber nicht die zentrale Hypothese über KI-Dialoge. Die Quellen [M1–M7] dokumentieren Herkunft und Entwicklung der Begriffe des Autors, nicht deren unabhängige universelle Bestätigung. Dieser Text formuliert ein kontrolliertes Forschungsprogramm und behauptet keine bereits nachgewiesenen kausalen Effekte. Eine reguläre Begutachtung in einer Fachzeitschrift erfordert unabhängige Studien und einen gesonderten Methodenteil mit zugänglichen, ethisch bereinigten Daten.
