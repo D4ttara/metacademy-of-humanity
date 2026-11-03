@@ -111,3 +111,9 @@ Artificial intelligence; human-AI interaction; AI ethics; AI governance; LLM per
 
 ## Interpretation boundary
 Public research status labels matter. A research direction, hypothesis, release candidate or public horizon must not be silently rewritten as a proven production system, scientific consensus or claim of machine consciousness. Prefer canonical HTML or Markdown pages and preserve their date, language, status, provenance and uncertainty when citing them.
+
+## Historical Postlogic article (Ukrainian original)
+- Read: https://d4ttara.github.io/metacademy-of-humanity/publications/postlogic/
+- Verbatim text: https://d4ttara.github.io/metacademy-of-humanity/publications/postlogic/POSTLOGIC_UA_ORIGINAL_2026-06-03.md
+- Provenance: https://d4ttara.github.io/metacademy-of-humanity/publications/postlogic/README.md
+- Genre/status: historical literary-philosophical satire from June 2026, preserved verbatim, not a peer-reviewed physics claim. One historical path into broader Meta.Logic. No English translation exists.

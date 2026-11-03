@@ -377,3 +377,22 @@ research_fields:
     public_entry: research/active-research/MYOGA_JYOTISH_FIELD_ENTRY.yml
     manifesto: documents/006-myoga-jyotish/
     date_declared: 2026-08-14
+
+archival_articles:
+  - canonical_slug: postlogic
+    title: "Постлогіка. Або: як Всесвіт зламав собі мозок і не помітив"
+    language: ua
+    class: "Historical literary-philosophical article / satire"
+    status: published
+    version: archival-v1.0
+    date: 2026-11-03
+    source_witness_date: 2026-06-03
+    source_relation: "Verbatim June 3 witness; June 4 book prompt differs only by the final period; exact contribution shares not reconstructed."
+    local_paths:
+      html: publications/postlogic/index.html
+      markdown: publications/postlogic/POSTLOGIC_UA_ORIGINAL_2026-06-03.md
+      provenance: publications/postlogic/README.md
+    sha256:
+      markdown: b1697091d3ac87ec7ebe27901768f6c3346f7fb870dbd0534d9e067cf2972562
+    supersedes: null
+    translations: "No English edition created"
