@@ -49,6 +49,10 @@ The accented display mark is canonical; the plain-text forms exist for search, c
 
 GitHub Pages deploys the verified public build from `main` through GitHub Actions.
 
+## Recovered historical text · 3 November 2026
+
+**[Постлогіка / Postlogic · Ukrainian original](publications/postlogic/README.md)** — the complete June 2026 literary-philosophical article used as the basis of a MoH book. The source body is preserved verbatim; provenance, the one-punctuation difference between two historical witnesses and its archival (not peer-reviewed physics) status are recorded separately. [Read online](https://d4ttara.github.io/metacademy-of-humanity/publications/postlogic/).
+
 ## New working paper · 30 October 2026
 
 **[Метанавтика близькості · The Horizon of Self, You/You-Plural and the Third Field](publications/metanautics-of-closeness/README.md)** (UA v0.1). A conceptual paper on autonomy without compulsory isolation, closeness without compulsory fusion, how the *question itself* shifts what relationships and choices become visible, and voluntary monogamous / consensual non-monogamous possibilities. Includes twelve open prompts plus a deliberately delayed thirteenth question and its mirrored autonomy safeguard. **Working paper, not peer reviewed; reflective prompts not experimentally validated.**
